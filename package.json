@@ -1,0 +1,79 @@
+{
+  "name": "ccpro-desktop",
+  "version": "1.0.1",
+  "private": true,
+  "author": "CCPro",
+  "description": "App Cham cong PNJ",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build:machine-config-helper": "powershell -ExecutionPolicy Bypass -File scripts/build-machine-config-helper.ps1",
+    "build:device-sync-worker": "powershell -ExecutionPolicy Bypass -File scripts/build-device-sync-worker.ps1",
+    "build": "npm run build:portable",
+    "build:dir": "npm run build:device-sync-worker && npm run build:machine-config-helper && electron-vite build && electron-builder --dir",
+    "build:portable": "npm run build:device-sync-worker && npm run build:machine-config-helper && electron-vite build && electron-builder --win portable",
+    "preview": "electron-vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:init": "node scripts/init-db.mjs",
+    "admin:reset-password": "node scripts/reset-admin-password.mjs"
+  },
+  "build": {
+    "appId": "com.ccpro.desktop",
+    "productName": "App Cham cong PNJ",
+    "directories": {
+      "output": "release"
+    },
+    "artifactName": "CCPro-Portable-${version}.${ext}",
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/device-sync/device-sync-worker.exe",
+        "to": "device-sync/device-sync-worker.exe"
+      },
+      {
+        "from": "build/machine-config/machine-config-helper.exe",
+        "to": "machine-config/machine-config-helper.exe"
+      }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "electron-store": "^11.0.2",
+    "lucide-react": "^1.7.0",
+    "mssql": "^12.2.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.2",
+    "@electron-toolkit/utils": "^4.0.0",
+    "@swc/core": "^1.13.5",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^41.1.0",
+    "electron-builder": "^26.8.1",
+    "electron-vite": "^5.0.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^3.2.4"
+  }
+}
