@@ -176,7 +176,7 @@ const mockApi = (): RendererApi => {
       }))
     },
     app: {
-      checkForUpdates: vi.fn(async () => undefined),
+      checkForUpdates: vi.fn(async () => null),
       openExternal: vi.fn(async () => undefined),
       onUpdateAvailable: vi.fn(() => () => undefined)
     }

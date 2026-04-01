@@ -939,12 +939,20 @@
     {
       "id": "file:src/main/ipc/register-handlers.ts",
       "type": "file",
-      "name": "src/main/ipc/register-handlers.ts",
+      "name": "register-handlers.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 244,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/ipc/register-handlers.ts",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/admin-auth-service.test.ts",
@@ -1229,12 +1237,20 @@
     {
       "id": "file:src/preload/index.ts",
       "type": "file",
-      "name": "src/preload/index.ts",
+      "name": "index.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 55,
         "category": "code"
-      }
+      },
+      "filePath": "src/preload/index.ts",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/index.html",
@@ -1249,12 +1265,20 @@
     {
       "id": "file:src/renderer/src/App.tsx",
       "type": "file",
-      "name": "src/renderer/src/App.tsx",
+      "name": "App.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 85,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/App.tsx",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
@@ -1539,12 +1563,20 @@
     {
       "id": "file:src/shared/api.ts",
       "type": "file",
-      "name": "src/shared/api.ts",
+      "name": "api.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 280,
         "category": "code"
-      }
+      },
+      "filePath": "src/shared/api.ts",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/shared/app-time.ts",
@@ -1605,6 +1637,58 @@
         "lines": 818,
         "category": "docs"
       }
+    },
+    {
+      "id": "file:src/main/services/update-service.ts",
+      "type": "file",
+      "name": "update-service.ts",
+      "filePath": "src/main/services/update-service.ts",
+      "summary": "Module quản lý tính năng cập nhật phiên bản ứng dụng tự động.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/UpdateNotifier.tsx",
+      "type": "file",
+      "name": "UpdateNotifier.tsx",
+      "filePath": "src/renderer/src/components/UpdateNotifier.tsx",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/shared/semver.ts",
+      "type": "file",
+      "name": "semver.ts",
+      "filePath": "src/shared/semver.ts",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:version.json",
+      "type": "config",
+      "name": "version.json",
+      "filePath": "version.json",
+      "summary": "File đã được cập nhật logic liên quan đến versioning.",
+      "tags": [
+        "update",
+        "semver",
+        "auto-update"
+      ],
+      "complexity": "moderate"
     }
   ],
   "edges": [
@@ -3557,5 +3641,8 @@
         "description": "Review .codex/skills/openspec-archive-change/SKILL.md"
       }
     ]
+  },
+  "project": {
+    "analyzedAt": "2026-04-01T16:43:12.931Z"
   }
 }

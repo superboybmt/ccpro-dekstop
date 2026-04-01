@@ -308,7 +308,7 @@ export interface RendererApi {
     saveRemoteRiskPolicy(policy: RemoteRiskPolicy): Promise<MutationResult & RemoteRiskPolicy>
   }
   app: {
-    checkForUpdates(): Promise<void>
+    checkForUpdates(): Promise<UpdateInfo | null>
     openExternal(url: string): Promise<void>
     onUpdateAvailable(callback: (info: UpdateInfo) => void): () => void
   }

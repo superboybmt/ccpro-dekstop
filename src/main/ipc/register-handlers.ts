@@ -293,7 +293,7 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
 
   ipcMain.handle('app:check-for-updates', async () => {
     await ensureAppReady()
-    await updateService.checkForUpdates()
+    return updateService.checkForUpdates()
   })
 
   ipcMain.handle('app:open-external', async (_event, url: string) => {

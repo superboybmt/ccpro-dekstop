@@ -7,16 +7,29 @@ export const UpdateNotifier = (): JSX.Element | null => {
   const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
-    // Start update check
-    window.ccpro.app.checkForUpdates().catch(console.error)
+    let active = true
 
-    // Listen to update availability
     const unsubscribe = window.ccpro.app.onUpdateAvailable((info) => {
       setUpdateInfo(info)
       setDismissed(false)
     })
 
-    return () => unsubscribe()
+    window.ccpro.app
+      .checkForUpdates()
+      .then((info) => {
+        if (!active || !info) {
+          return
+        }
+
+        setUpdateInfo(info)
+        setDismissed(false)
+      })
+      .catch(console.error)
+
+    return () => {
+      active = false
+      unsubscribe()
+    }
   }, [])
 
   if (!updateInfo || dismissed) return null
