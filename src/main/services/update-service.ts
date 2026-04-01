@@ -3,7 +3,7 @@ import { isSemverGreater } from '../../shared/semver'
 import type { UpdateInfo } from '@shared/api'
 
 // TODO: Replace with the actual URL from where to fetch version.json
-export const UPDATE_MANIFEST_URL = 'https://raw.githubusercontent.com/PNJ/ccpro/main/version.json'
+export const UPDATE_MANIFEST_URL = 'https://github.com/superboybmt/ccpro-dekstop/blob/main/version.json'
 
 export class UpdateService {
   public async checkForUpdates(): Promise<UpdateInfo | null> {
