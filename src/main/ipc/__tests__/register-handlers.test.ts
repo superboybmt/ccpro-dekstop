@@ -1,0 +1,327 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+
+const ipcHandlers = new Map<string, (...args: unknown[]) => unknown>()
+const machineConfigGetMock = vi.fn(async () => ({ stateMode: 2, schedule: [] }))
+const adminUsersListMock = vi.fn(async () => ({ users: [] }))
+const setUserActiveStateMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đã vô hiệu hóa tài khoản ứng dụng'
+}))
+const resetUserPasswordMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đã reset mật khẩu tạm và yêu cầu đổi lại ở lần đăng nhập tiếp theo'
+}))
+const changeAdminPasswordMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đổi mật khẩu admin thành công'
+}))
+const resetAdminPasswordMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đã reset mật khẩu admin tạm và yêu cầu đổi lại ở lần đăng nhập tiếp theo'
+}))
+const listAdminsMock = vi.fn(async () => ({ admins: [] }))
+const saveRemoteRiskPolicyMock = vi.fn(async (policy) => ({
+  ok: true,
+  message: 'Đã lưu cấu hình chặn điều khiển từ xa',
+  mode: policy.mode
+}))
+
+let adminSession = {
+  authenticated: false,
+  mustChangePassword: false,
+  admin: null as null | { id: number; username: string; displayName: string; role: string }
+}
+
+vi.mock('electron', () => ({
+  app: {
+    getVersion: () => '1.0.0',
+    getBuildVersion: () => '1.0.0'
+  },
+  ipcMain: {
+    handle: vi.fn((channel: string, handler: (...args: unknown[]) => unknown) => {
+      ipcHandlers.set(channel, handler)
+    })
+  }
+}))
+
+vi.mock('../../session-store', () => ({
+  SessionStore: class {
+    getSession() {
+      return { authenticated: false, mustChangePassword: false, user: null }
+    }
+
+    setSession() {}
+    touch() {}
+    completePasswordChange() {}
+    clear() {}
+
+    getAdminSession() {
+      return adminSession
+    }
+
+    setAdminSession() {}
+    touchAdmin() {}
+    completeAdminPasswordChange() {}
+    clearAdmin() {}
+  }
+}))
+
+vi.mock('../../db/sql', () => ({
+  getConnectionStatus: vi.fn(async () => 'connected')
+}))
+
+vi.mock('../../services/auth-service', () => ({
+  AuthService: class {
+    login = vi.fn(async () => ({ ok: false, requiresPasswordChange: false }))
+    changePassword = vi.fn(async () => ({ ok: true, message: 'ok' }))
+  },
+  SqlAuthRepository: class {}
+}))
+
+vi.mock('../../services/admin-auth-service', () => ({
+  AdminAuthService: class {
+    login = vi.fn(async () => ({ ok: false }))
+    bootstrapFirstAdmin = vi.fn(async () => ({ ok: true, message: 'ok' }))
+    changePassword = changeAdminPasswordMock
+    resetPassword = resetAdminPasswordMock
+    listAdmins = listAdminsMock
+  },
+  SqlAdminAuthRepository: class {}
+}))
+
+vi.mock('../../services/admin-user-management-service', () => ({
+  AdminUserManagementService: class {
+    listUsers = adminUsersListMock
+    setUserActiveState = setUserActiveStateMock
+    resetUserPassword = resetUserPasswordMock
+  },
+  SqlAdminUserManagementRepository: class {}
+}))
+
+vi.mock('../../services/machine-config-service', () => ({
+  ZkMachineConfigService: class {
+    getConfig = machineConfigGetMock
+    saveConfig = vi.fn(async () => ({ ok: true, message: 'saved' }))
+    syncTime = vi.fn(async () => ({ ok: true, message: 'synced' }))
+  }
+}))
+
+vi.mock('../../services/admin-settings-service', () => ({
+  AdminSettingsService: class {
+    getRemoteRiskPolicy = vi.fn(async () => ({ mode: 'audit_only' }))
+    saveRemoteRiskPolicy = saveRemoteRiskPolicyMock
+  },
+  SqlAdminSettingsRepository: class {}
+}))
+
+vi.mock('../../services/attendance-service', () => ({
+  AttendanceService: class {
+    getDashboard = vi.fn(async () => ({}))
+    recordPunch = vi.fn(async () => ({ ok: true, message: 'ok' }))
+  },
+  SqlAttendanceRepository: class {}
+}))
+
+vi.mock('../../services/history-service', () => ({
+  HistoryService: class {
+    getHistory = vi.fn(async () => ({}))
+  },
+  SqlHistoryRepository: class {}
+}))
+
+vi.mock('../../services/notification-service', () => ({
+  NotificationService: class {
+    list = vi.fn(async () => [])
+    markRead = vi.fn(async () => undefined)
+    markAllRead = vi.fn(async () => undefined)
+  },
+  SqlNotificationRepository: class {}
+}))
+
+vi.mock('../../services/device-sync-service', () => ({
+  DeviceSyncService: class {
+    getStatus = vi.fn(async () => ({ lastSyncAt: null }))
+    retryNow = vi.fn(async () => ({}))
+  },
+  PythonDeviceSyncWorker: class {},
+  SqlDeviceSyncRepository: class {}
+}))
+
+vi.mock('../../services/settings-service', () => ({
+  SettingsService: class {
+    getProfile = vi.fn(async () => ({}))
+  }
+}))
+
+vi.mock('../../config/app-config', () => ({
+  appConfig: {
+    deviceSync: {
+      ip: '10.60.1.5'
+    }
+  }
+}))
+
+describe('registerIpcHandlers', () => {
+  beforeEach(() => {
+    ipcHandlers.clear()
+    machineConfigGetMock.mockClear()
+    adminUsersListMock.mockClear()
+    setUserActiveStateMock.mockClear()
+    resetUserPasswordMock.mockClear()
+    changeAdminPasswordMock.mockClear()
+    resetAdminPasswordMock.mockClear()
+    listAdminsMock.mockClear()
+    saveRemoteRiskPolicyMock.mockClear()
+    adminSession = { authenticated: false, mustChangePassword: false, admin: null }
+  })
+
+  it('rejects admin-only machine config reads when the admin session is missing', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('machine-config:get')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({})).rejects.toThrow('Phiên đăng nhập admin đã hết hạn')
+    expect(machineConfigGetMock).not.toHaveBeenCalled()
+  })
+
+  it('allows saving remote-risk policy when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: {
+        id: 1,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-settings:save-remote-risk-policy')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { mode: 'block_high_risk' })).resolves.toEqual({
+      ok: true,
+      message: 'Đã lưu cấu hình chặn điều khiển từ xa',
+      mode: 'block_high_risk'
+    })
+
+    expect(saveRemoteRiskPolicyMock).toHaveBeenCalledWith({ mode: 'block_high_risk' })
+  })
+
+  it('rejects admin user list reads when the admin session is missing', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:list')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { query: 'phan' })).rejects.toThrow('Phiên đăng nhập admin đã hết hạn')
+    expect(adminUsersListMock).not.toHaveBeenCalled()
+  })
+
+  it('allows resetting a user password when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: {
+        id: 5,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:reset-password')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { userEnrollNumber: 18, temporaryPassword: 'Temp@123' })).resolves.toEqual({
+      ok: true,
+      message: 'Đã reset mật khẩu tạm và yêu cầu đổi lại ở lần đăng nhập tiếp theo'
+    })
+
+    expect(resetUserPasswordMock).toHaveBeenCalledWith(
+      { userEnrollNumber: 18, temporaryPassword: 'Temp@123' },
+      5
+    )
+  })
+
+  it('blocks protected admin actions while password change is pending', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: true,
+      admin: {
+        id: 7,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('machine-config:get')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({})).rejects.toThrow('Admin cần đổi mật khẩu trước khi tiếp tục')
+    expect(machineConfigGetMock).not.toHaveBeenCalled()
+  })
+
+  it('allows admin password change while password change is pending', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: true,
+      admin: {
+        id: 9,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin:change-password')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(
+      handler?.({}, {
+        currentPassword: 'Temp@123',
+        newPassword: 'NewSecret@123',
+        confirmPassword: 'NewSecret@123'
+      })
+    ).resolves.toEqual({
+      ok: true,
+      message: 'Đổi mật khẩu admin thành công'
+    })
+
+    expect(changeAdminPasswordMock).toHaveBeenCalledWith(
+      {
+        id: 9,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      },
+      {
+        currentPassword: 'Temp@123',
+        newPassword: 'NewSecret@123',
+        confirmPassword: 'NewSecret@123'
+      }
+    )
+  })
+})

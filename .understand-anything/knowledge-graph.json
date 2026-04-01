@@ -1,0 +1,3561 @@
+{
+  "nodes": [
+    {
+      "id": "project:main",
+      "type": "project",
+      "name": "ccpro-desktop",
+      "description": "App Cham cong PNJ",
+      "metadata": {
+        "frameworks": [
+          "React",
+          "Vite",
+          "Vitest"
+        ],
+        "languages": [
+          "css",
+          "html",
+          "javascript",
+          "json",
+          "markdown",
+          "python",
+          "typescript",
+          "yaml"
+        ]
+      }
+    },
+    {
+      "id": "module:.agent",
+      "type": "concept",
+      "name": ".agent",
+      "description": "Directory containing .agent related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:.codex",
+      "type": "concept",
+      "name": ".codex",
+      "description": "Directory containing .codex related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:.understand-anything",
+      "type": "concept",
+      "name": ".understand-anything",
+      "description": "Directory containing .understand-anything related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:docs",
+      "type": "concept",
+      "name": "docs",
+      "description": "Directory containing docs related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:openspec",
+      "type": "concept",
+      "name": "openspec",
+      "description": "Directory containing openspec related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:plans",
+      "type": "concept",
+      "name": "plans",
+      "description": "Directory containing plans related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:scripts",
+      "type": "concept",
+      "name": "scripts",
+      "description": "Directory containing scripts related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:src",
+      "type": "concept",
+      "name": "src",
+      "description": "Directory containing src related files",
+      "metadata": {}
+    },
+    {
+      "id": "module:wise_eye",
+      "type": "concept",
+      "name": "wise_eye",
+      "description": "Directory containing wise_eye related files",
+      "metadata": {}
+    },
+    {
+      "id": "file:.agent/skills/openspec-apply-change/SKILL.md",
+      "type": "file",
+      "name": ".agent/skills/openspec-apply-change/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 157,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/skills/openspec-archive-change/SKILL.md",
+      "type": "file",
+      "name": ".agent/skills/openspec-archive-change/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 115,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/skills/openspec-explore/SKILL.md",
+      "type": "file",
+      "name": ".agent/skills/openspec-explore/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 289,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/skills/openspec-propose/SKILL.md",
+      "type": "file",
+      "name": ".agent/skills/openspec-propose/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 111,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/workflows/opsx-apply.md",
+      "type": "file",
+      "name": ".agent/workflows/opsx-apply.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 150,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/workflows/opsx-archive.md",
+      "type": "file",
+      "name": ".agent/workflows/opsx-archive.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 155,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/workflows/opsx-explore.md",
+      "type": "file",
+      "name": ".agent/workflows/opsx-explore.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 171,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.agent/workflows/opsx-propose.md",
+      "type": "file",
+      "name": ".agent/workflows/opsx-propose.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 104,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.codex/skills/openspec-apply-change/SKILL.md",
+      "type": "file",
+      "name": ".codex/skills/openspec-apply-change/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 157,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.codex/skills/openspec-archive-change/SKILL.md",
+      "type": "file",
+      "name": ".codex/skills/openspec-archive-change/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 115,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.codex/skills/openspec-explore/SKILL.md",
+      "type": "file",
+      "name": ".codex/skills/openspec-explore/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 289,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.codex/skills/openspec-propose/SKILL.md",
+      "type": "file",
+      "name": ".codex/skills/openspec-propose/SKILL.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 111,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:.understand-anything/tmp/ua-project-scan.js",
+      "type": "file",
+      "name": ".understand-anything/tmp/ua-project-scan.js",
+      "description": "code file in javascript",
+      "metadata": {
+        "lines": 192,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:.understand-anything/tmp/ua-scan-results.json",
+      "type": "file",
+      "name": ".understand-anything/tmp/ua-scan-results.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 34,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:docs/design-specs.md",
+      "type": "file",
+      "name": "docs/design-specs.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 61,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md",
+      "type": "file",
+      "name": "docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 265,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md",
+      "type": "file",
+      "name": "docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 205,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md",
+      "type": "file",
+      "name": "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 450,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
+      "type": "file",
+      "name": "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 216,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:electron.vite.config.ts",
+      "type": "file",
+      "name": "electron.vite.config.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 32,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-change-password/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/admin-change-password/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/design.md",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 179,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 31,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/specs/admin-auth/spec.md",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/specs/admin-auth/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 57,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/specs/device-machine-config/spec.md",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/specs/device-machine-config/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 78,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-device-config/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/admin-device-config/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 37,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-user-management/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/admin-user-management/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-user-management/design.md",
+      "type": "file",
+      "name": "openspec/changes/admin-user-management/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 109,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-user-management/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/admin-user-management/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 28,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-user-management/specs/admin-user-management/spec.md",
+      "type": "file",
+      "name": "openspec/changes/admin-user-management/specs/admin-user-management/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 52,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-user-management/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/admin-user-management/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 32,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/design.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 109,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 28,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 26,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 65,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-remote-risk-guard/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-remote-risk-guard/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 31,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/design.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 156,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 38,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/account-settings/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/account-settings/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 38,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 42,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 31,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/device-sync/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/device-sync/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 60,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 54,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/specs/notifications/spec.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/specs/notifications/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 38,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/desktop-attendance-app/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/desktop-attendance-app/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 73,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/sync-device-time/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/sync-device-time/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/sync-device-time/design.md",
+      "type": "file",
+      "name": "openspec/changes/sync-device-time/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 29,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/sync-device-time/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/sync-device-time/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 26,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/sync-device-time/specs/device-time-sync/spec.md",
+      "type": "file",
+      "name": "openspec/changes/sync-device-time/specs/device-time-sync/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 23,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/sync-device-time/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/sync-device-time/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 20,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/config.yaml",
+      "type": "file",
+      "name": "openspec/config.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 21,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:package.json",
+      "type": "file",
+      "name": "package.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 79,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md",
+      "type": "file",
+      "name": "plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 66,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md",
+      "type": "file",
+      "name": "plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 85,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md",
+      "type": "file",
+      "name": "plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 50,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md",
+      "type": "file",
+      "name": "plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 46,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:plans/260401-1910-remote-risk-guard-v2/plan.md",
+      "type": "file",
+      "name": "plans/260401-1910-remote-risk-guard-v2/plan.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 58,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:scripts/build-device-sync-worker.ps1",
+      "type": "file",
+      "name": "scripts/build-device-sync-worker.ps1",
+      "description": "script file in unknown",
+      "metadata": {
+        "lines": 50,
+        "category": "script"
+      }
+    },
+    {
+      "id": "file:scripts/build-machine-config-helper.ps1",
+      "type": "file",
+      "name": "scripts/build-machine-config-helper.ps1",
+      "description": "script file in unknown",
+      "metadata": {
+        "lines": 50,
+        "category": "script"
+      }
+    },
+    {
+      "id": "file:scripts/device-sync-worker.py",
+      "type": "file",
+      "name": "scripts/device-sync-worker.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 340,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/device-sync-worker.spec",
+      "type": "file",
+      "name": "scripts/device-sync-worker.spec",
+      "description": "code file in unknown",
+      "metadata": {
+        "lines": 41,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/init-db.mjs",
+      "type": "file",
+      "name": "scripts/init-db.mjs",
+      "description": "code file in unknown",
+      "metadata": {
+        "lines": 71,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/machine-config-helper.py",
+      "type": "file",
+      "name": "scripts/machine-config-helper.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 395,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/machine-config-helper.spec",
+      "type": "file",
+      "name": "scripts/machine-config-helper.spec",
+      "description": "code file in unknown",
+      "metadata": {
+        "lines": 46,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/requirements-device-sync.txt",
+      "type": "file",
+      "name": "scripts/requirements-device-sync.txt",
+      "description": "docs file in unknown",
+      "metadata": {
+        "lines": 3,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:scripts/tests/test_device_sync_worker.py",
+      "type": "file",
+      "name": "scripts/tests/test_device_sync_worker.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 91,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/tests/test_machine_config_helper.py",
+      "type": "file",
+      "name": "scripts/tests/test_machine_config_helper.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 88,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/tests/test_zk_apply_hc_auto_switch.py",
+      "type": "file",
+      "name": "scripts/tests/test_zk_apply_hc_auto_switch.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 106,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/tests/test_zk_shortkey_tool.py",
+      "type": "file",
+      "name": "scripts/tests/test_zk_shortkey_tool.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 99,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/tests/test_zk_state_mode.py",
+      "type": "file",
+      "name": "scripts/tests/test_zk_state_mode.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 122,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/zk-apply-hc-auto-switch.ps1",
+      "type": "file",
+      "name": "scripts/zk-apply-hc-auto-switch.ps1",
+      "description": "script file in unknown",
+      "metadata": {
+        "lines": 300,
+        "category": "script"
+      }
+    },
+    {
+      "id": "file:scripts/zk-proxy-capture.py",
+      "type": "file",
+      "name": "scripts/zk-proxy-capture.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 148,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/zk-shortkey-tool.ps1",
+      "type": "file",
+      "name": "scripts/zk-shortkey-tool.ps1",
+      "description": "script file in unknown",
+      "metadata": {
+        "lines": 540,
+        "category": "script"
+      }
+    },
+    {
+      "id": "file:scripts/zk-ssr-device-data-tool.ps1",
+      "type": "file",
+      "name": "scripts/zk-ssr-device-data-tool.ps1",
+      "description": "script file in unknown",
+      "metadata": {
+        "lines": 367,
+        "category": "script"
+      }
+    },
+    {
+      "id": "file:scripts/zk-state-mode.py",
+      "type": "file",
+      "name": "scripts/zk-state-mode.py",
+      "description": "code file in python",
+      "metadata": {
+        "lines": 149,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/__tests__/session-store.test.ts",
+      "type": "file",
+      "name": "src/main/__tests__/session-store.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 21,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/__tests__/startup.test.ts",
+      "type": "file",
+      "name": "src/main/__tests__/startup.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 88,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/config/app-config.ts",
+      "type": "file",
+      "name": "src/main/config/app-config.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 52,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/db/init.ts",
+      "type": "file",
+      "name": "src/main/db/init.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 420,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/db/sql.ts",
+      "type": "file",
+      "name": "src/main/db/sql.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 47,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/index.ts",
+      "type": "file",
+      "name": "src/main/index.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 179,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/ipc/__tests__/register-handlers.test.ts",
+      "type": "file",
+      "name": "src/main/ipc/__tests__/register-handlers.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 241,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/ipc/register-handlers.ts",
+      "type": "file",
+      "name": "src/main/ipc/register-handlers.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 244,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/admin-auth-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/admin-auth-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 61,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/admin-settings-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/admin-settings-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 34,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/admin-user-management-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 132,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/attendance-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/attendance-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 90,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/auth-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/auth-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 113,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 72,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/device-sync-repository.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/device-sync-repository.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 187,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/device-sync-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/device-sync-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 456,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/machine-config-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/machine-config-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 261,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/notification-repository.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/notification-repository.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 57,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/notification-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/notification-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 353,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/remote-risk-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/remote-risk-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 319,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/sql-datetime.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/sql-datetime.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 54,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/admin-auth-service.ts",
+      "type": "file",
+      "name": "src/main/services/admin-auth-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 171,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/admin-settings-service.ts",
+      "type": "file",
+      "name": "src/main/services/admin-settings-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 96,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/admin-user-management-service.ts",
+      "type": "file",
+      "name": "src/main/services/admin-user-management-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 392,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/attendance-service.ts",
+      "type": "file",
+      "name": "src/main/services/attendance-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 406,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/auth-service.ts",
+      "type": "file",
+      "name": "src/main/services/auth-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 291,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/device-sync-service.ts",
+      "type": "file",
+      "name": "src/main/services/device-sync-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 1351,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/history-service.ts",
+      "type": "file",
+      "name": "src/main/services/history-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 185,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/machine-config-service.ts",
+      "type": "file",
+      "name": "src/main/services/machine-config-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 247,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/notification-inout.ts",
+      "type": "file",
+      "name": "src/main/services/notification-inout.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 176,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/notification-service.ts",
+      "type": "file",
+      "name": "src/main/services/notification-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 497,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/remote-risk-service.ts",
+      "type": "file",
+      "name": "src/main/services/remote-risk-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 469,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/settings-service.ts",
+      "type": "file",
+      "name": "src/main/services/settings-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 34,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/sql-datetime.ts",
+      "type": "file",
+      "name": "src/main/services/sql-datetime.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 25,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/session-store.ts",
+      "type": "file",
+      "name": "src/main/session-store.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 163,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/startup.ts",
+      "type": "file",
+      "name": "src/main/startup.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 75,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/preload/index.ts",
+      "type": "file",
+      "name": "src/preload/index.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 55,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/index.html",
+      "type": "file",
+      "name": "src/renderer/index.html",
+      "description": "markup file in html",
+      "metadata": {
+        "lines": 17,
+        "category": "markup"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/App.tsx",
+      "type": "file",
+      "name": "src/renderer/src/App.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 85,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 215,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/app/__tests__/route-access.test.ts",
+      "type": "file",
+      "name": "src/renderer/src/app/__tests__/route-access.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 35,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/app/route-access.ts",
+      "type": "file",
+      "name": "src/renderer/src/app/route-access.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 16,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/avatar.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/avatar.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 11,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/button.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/button.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 24,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/card.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/card.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 26,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/input.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/input.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 23,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/status-pill.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/status-pill.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 17,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/lib/errors.ts",
+      "type": "file",
+      "name": "src/renderer/src/lib/errors.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 26,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/lib/format.ts",
+      "type": "file",
+      "name": "src/renderer/src/lib/format.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 29,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/lib/utils.ts",
+      "type": "file",
+      "name": "src/renderer/src/lib/utils.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 5,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/main.tsx",
+      "type": "file",
+      "name": "src/renderer/src/main.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 11,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 275,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 190,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 175,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 79,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/admin-device-config-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/admin-device-config-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 556,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/admin-login-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/admin-login-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 92,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/admin-users-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/admin-users-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 520,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/dashboard-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/dashboard-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 193,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/history-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/history-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 223,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/login-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/login-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 112,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/notifications-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/notifications-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 123,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/pages/settings-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/settings-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 216,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/providers/auth-provider.tsx",
+      "type": "file",
+      "name": "src/renderer/src/providers/auth-provider.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 81,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/styles.css",
+      "type": "file",
+      "name": "src/renderer/src/styles.css",
+      "description": "markup file in css",
+      "metadata": {
+        "lines": 1231,
+        "category": "markup"
+      }
+    },
+    {
+      "id": "file:src/shared/__tests__/app-time.test.ts",
+      "type": "file",
+      "name": "src/shared/__tests__/app-time.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 33,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/shared/__tests__/source-text-encoding.test.ts",
+      "type": "file",
+      "name": "src/shared/__tests__/source-text-encoding.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 51,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/shared/api.ts",
+      "type": "file",
+      "name": "src/shared/api.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 280,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/shared/app-time.ts",
+      "type": "file",
+      "name": "src/shared/app-time.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 76,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/test/setup.ts",
+      "type": "file",
+      "name": "src/test/setup.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 2,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:tsconfig.json",
+      "type": "file",
+      "name": "tsconfig.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 25,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 19,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:wise_eye/explore_wiseeye.js",
+      "type": "file",
+      "name": "wise_eye/explore_wiseeye.js",
+      "description": "code file in javascript",
+      "metadata": {
+        "lines": 142,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:wise_eye/wiseeye_schema.txt",
+      "type": "file",
+      "name": "wise_eye/wiseeye_schema.txt",
+      "description": "docs file in unknown",
+      "metadata": {
+        "lines": 818,
+        "category": "docs"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/skills/openspec-apply-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/skills/openspec-apply-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/skills/openspec-archive-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/skills/openspec-archive-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/skills/openspec-explore/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/skills/openspec-explore/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/skills/openspec-propose/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/skills/openspec-propose/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/workflows/opsx-apply.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/workflows/opsx-apply.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/workflows/opsx-archive.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/workflows/opsx-archive.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/workflows/opsx-explore.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/workflows/opsx-explore.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.agent",
+      "target": "file:.agent/workflows/opsx-propose.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.agent/workflows/opsx-propose.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.codex",
+      "target": "file:.codex/skills/openspec-apply-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.codex/skills/openspec-apply-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.codex",
+      "target": "file:.codex/skills/openspec-archive-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.codex/skills/openspec-archive-change/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.codex",
+      "target": "file:.codex/skills/openspec-explore/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.codex/skills/openspec-explore/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.codex",
+      "target": "file:.codex/skills/openspec-propose/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.codex/skills/openspec-propose/SKILL.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/tmp/ua-project-scan.js",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/tmp/ua-project-scan.js",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/tmp/ua-scan-results.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/tmp/ua-scan-results.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/design-specs.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/design-specs.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:electron.vite.config.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-change-password/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-change-password/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/specs/admin-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/specs/admin-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/specs/device-machine-config/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/specs/device-machine-config/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-device-config/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-device-config/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-user-management/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-user-management/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-user-management/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-user-management/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-user-management/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-user-management/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-user-management/specs/admin-user-management/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-user-management/specs/admin-user-management/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-user-management/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-user-management/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-remote-risk-guard/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/account-settings/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/account-settings/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/device-sync/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/device-sync/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/notifications/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/specs/notifications/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/desktop-attendance-app/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/desktop-attendance-app/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/sync-device-time/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/sync-device-time/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/sync-device-time/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/sync-device-time/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/sync-device-time/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/sync-device-time/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/sync-device-time/specs/device-time-sync/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/sync-device-time/specs/device-time-sync/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/sync-device-time/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/sync-device-time/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/config.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/config.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:package.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:plans",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:plans",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:plans",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:plans",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:plans",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:plans/260401-1910-remote-risk-guard-v2/plan.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/build-device-sync-worker.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/build-device-sync-worker.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/build-machine-config-helper.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/build-machine-config-helper.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/device-sync-worker.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/device-sync-worker.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/device-sync-worker.spec",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/device-sync-worker.spec",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/init-db.mjs",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/init-db.mjs",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/machine-config-helper.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/machine-config-helper.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/machine-config-helper.spec",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/machine-config-helper.spec",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/requirements-device-sync.txt",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/requirements-device-sync.txt",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/tests/test_device_sync_worker.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/tests/test_device_sync_worker.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/tests/test_machine_config_helper.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/tests/test_machine_config_helper.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/tests/test_zk_apply_hc_auto_switch.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/tests/test_zk_apply_hc_auto_switch.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/tests/test_zk_shortkey_tool.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/tests/test_zk_shortkey_tool.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/tests/test_zk_state_mode.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/tests/test_zk_state_mode.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/zk-apply-hc-auto-switch.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/zk-apply-hc-auto-switch.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/zk-proxy-capture.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/zk-proxy-capture.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/zk-shortkey-tool.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/zk-shortkey-tool.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/zk-ssr-device-data-tool.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/zk-ssr-device-data-tool.ps1",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/zk-state-mode.py",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/zk-state-mode.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/__tests__/session-store.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/__tests__/session-store.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/__tests__/session-store.test.ts",
+      "target": "file:src/main/session-store.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/__tests__/startup.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/__tests__/startup.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/__tests__/startup.test.ts",
+      "target": "file:src/main/startup.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/db/init.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/db/init.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/db/init.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/db/init.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/db/sql.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/db/sql.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/db/sql.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/index.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/index.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/index.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/index.ts",
+      "target": "file:src/main/db/init.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/index.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/index.ts",
+      "target": "file:src/main/ipc/register-handlers.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/index.ts",
+      "target": "file:src/main/startup.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/ipc/__tests__/register-handlers.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/ipc/__tests__/register-handlers.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/ipc/register-handlers.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/ipc/register-handlers.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/session-store.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/auth-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/admin-auth-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/admin-settings-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/admin-user-management-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/history-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/machine-config-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/notification-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/settings-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/startup.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/admin-auth-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/admin-auth-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/admin-auth-service.test.ts",
+      "target": "file:src/main/services/admin-auth-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/admin-settings-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/admin-settings-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/admin-settings-service.test.ts",
+      "target": "file:src/main/services/admin-settings-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
+      "target": "file:src/main/services/admin-user-management-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/attendance-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/attendance-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/attendance-service.test.ts",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/auth-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/auth-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/auth-service.test.ts",
+      "target": "file:src/main/services/auth-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "target": "file:src/main/services/device-sync-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/device-sync-repository.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/device-sync-repository.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/device-sync-repository.test.ts",
+      "target": "file:src/main/services/device-sync-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/device-sync-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/device-sync-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/machine-config-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/machine-config-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/notification-repository.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/notification-repository.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/notification-repository.test.ts",
+      "target": "file:src/main/services/notification-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/notification-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/notification-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/notification-service.test.ts",
+      "target": "file:src/main/services/notification-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/__tests__/notification-service.test.ts",
+      "target": "file:src/main/services/notification-inout.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/remote-risk-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/remote-risk-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/sql-datetime.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/sql-datetime.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/admin-auth-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/admin-auth-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/admin-auth-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/admin-auth-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/admin-settings-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/admin-settings-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/admin-settings-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/admin-settings-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/admin-user-management-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/admin-user-management-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/admin-user-management-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/admin-user-management-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/attendance-service.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/attendance-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/attendance-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/attendance-service.ts",
+      "target": "file:src/main/services/remote-risk-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/auth-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/auth-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/auth-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/auth-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/device-sync-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/device-sync-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/device-sync-service.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/device-sync-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/device-sync-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/history-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/history-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/history-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/history-service.ts",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/history-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/machine-config-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/machine-config-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/machine-config-service.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/machine-config-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/machine-config-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/notification-inout.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/notification-inout.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/notification-inout.ts",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/notification-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/notification-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/notification-service.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/notification-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/notification-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/notification-service.ts",
+      "target": "file:src/main/services/attendance-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/remote-risk-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/remote-risk-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/settings-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/settings-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/settings-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/session-store.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/session-store.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/session-store.ts",
+      "target": "file:src/main/config/app-config.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/startup.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/startup.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/preload/index.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/preload/index.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/index.html",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/index.html",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/App.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/App.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/login-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/dashboard-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/history-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/notifications-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/settings-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/admin-login-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/admin-device-config-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/admin-users-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/providers/auth-provider.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/app/route-access.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/app/__tests__/route-access.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/app/__tests__/route-access.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/app/__tests__/route-access.test.ts",
+      "target": "file:src/renderer/src/app/route-access.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/app/route-access.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/app/route-access.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/avatar.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/avatar.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/button.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/button.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/card.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/card.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/input.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/input.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/status-pill.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/status-pill.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/lib/errors.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/lib/errors.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/lib/format.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/lib/format.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/lib/utils.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/lib/utils.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/main.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/main.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/main.tsx",
+      "target": "file:src/renderer/src/App.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "target": "file:src/renderer/src/pages/admin-device-config-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "target": "file:src/renderer/src/pages/admin-users-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "target": "file:src/renderer/src/pages/dashboard-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "target": "file:src/renderer/src/pages/settings-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/admin-device-config-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/admin-device-config-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/admin-login-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/admin-login-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/admin-users-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/admin-users-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/dashboard-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/dashboard-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/history-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/history-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/login-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/login-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/notifications-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/notifications-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/settings-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/settings-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/providers/auth-provider.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/providers/auth-provider.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/styles.css",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/styles.css",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/shared/__tests__/app-time.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/shared/__tests__/app-time.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/shared/__tests__/source-text-encoding.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/shared/__tests__/source-text-encoding.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/shared/api.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/shared/api.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/shared/app-time.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/shared/app-time.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/test/setup.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/test/setup.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:tsconfig.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:vitest.config.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:wise_eye",
+      "target": "file:wise_eye/explore_wiseeye.js",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:wise_eye/explore_wiseeye.js",
+      "type": "contains"
+    },
+    {
+      "source": "module:wise_eye",
+      "target": "file:wise_eye/wiseeye_schema.txt",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:wise_eye/wiseeye_schema.txt",
+      "type": "contains"
+    }
+  ],
+  "layers": [
+    {
+      "name": "Architecture map",
+      "description": "High level modules",
+      "nodeIds": [
+        "project:main",
+        "module:.agent",
+        "module:.codex",
+        "module:.understand-anything",
+        "module:docs",
+        "module:openspec",
+        "module:plans",
+        "module:scripts",
+        "module:src",
+        "module:wise_eye"
+      ]
+    }
+  ],
+  "tour": {
+    "title": "Introduction to ccpro-desktop",
+    "description": "App Cham cong PNJ",
+    "steps": [
+      {
+        "nodeId": "file:.agent/skills/openspec-apply-change/SKILL.md",
+        "description": "Review .agent/skills/openspec-apply-change/SKILL.md"
+      },
+      {
+        "nodeId": "file:.agent/skills/openspec-archive-change/SKILL.md",
+        "description": "Review .agent/skills/openspec-archive-change/SKILL.md"
+      },
+      {
+        "nodeId": "file:.agent/skills/openspec-explore/SKILL.md",
+        "description": "Review .agent/skills/openspec-explore/SKILL.md"
+      },
+      {
+        "nodeId": "file:.agent/skills/openspec-propose/SKILL.md",
+        "description": "Review .agent/skills/openspec-propose/SKILL.md"
+      },
+      {
+        "nodeId": "file:.agent/workflows/opsx-apply.md",
+        "description": "Review .agent/workflows/opsx-apply.md"
+      },
+      {
+        "nodeId": "file:.agent/workflows/opsx-archive.md",
+        "description": "Review .agent/workflows/opsx-archive.md"
+      },
+      {
+        "nodeId": "file:.agent/workflows/opsx-explore.md",
+        "description": "Review .agent/workflows/opsx-explore.md"
+      },
+      {
+        "nodeId": "file:.agent/workflows/opsx-propose.md",
+        "description": "Review .agent/workflows/opsx-propose.md"
+      },
+      {
+        "nodeId": "file:.codex/skills/openspec-apply-change/SKILL.md",
+        "description": "Review .codex/skills/openspec-apply-change/SKILL.md"
+      },
+      {
+        "nodeId": "file:.codex/skills/openspec-archive-change/SKILL.md",
+        "description": "Review .codex/skills/openspec-archive-change/SKILL.md"
+      }
+    ]
+  }
+}

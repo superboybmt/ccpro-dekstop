@@ -1,0 +1,569 @@
+import { useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Clock, LogOut, MonitorCog, RefreshCw, Save, Sunrise, Sun, Coffee, Moon, Loader2, Settings, ShieldCheck, UserCog } from 'lucide-react'
+import { Button } from '@renderer/components/ui/button'
+import { Card } from '@renderer/components/ui/card'
+import type {
+  AdminSessionState,
+  AutoSwitchState,
+  DeviceConfig,
+  DeviceConfigResult,
+  MutationResult,
+  RemoteRiskPolicyMode
+} from '@shared/api'
+
+const STATE_MODE_LABELS: Record<number, string> = {
+  0: 'Mode 0 — Off',
+  1: 'Mode 1 — Manual',
+  2: 'Mode 2 — Auto',
+  3: 'Mode 3 — Manual + Auto',
+  4: 'Mode 4 — Manual Fixed',
+  5: 'Mode 5 — Fixed'
+}
+
+const SCHEDULE_META = [
+  { label: 'Vào ca sáng', icon: Sunrise, color: '#22c55e', defaultTime: '07:30' },
+  { label: 'Ra nghỉ trưa', icon: Coffee, color: '#f59e0b', defaultTime: '11:30' },
+  { label: 'Vào ca chiều', icon: Sun, color: '#3b82f6', defaultTime: '13:00' },
+  { label: 'Tan ca', icon: Moon, color: '#8b5cf6', defaultTime: '17:30' }
+]
+
+/** Extract HH:mm from various ZK timezone data formats */
+const parseTimeToHHmm = (raw: string): string => {
+  if (!raw) return ''
+  // Already HH:mm
+  if (/^\d{2}:\d{2}$/.test(raw)) return raw
+
+  try {
+    const parsed = JSON.parse(raw)
+    // Try common time keys
+    const time = parsed.STime || parsed.ETime || parsed.time || parsed.StartTime || parsed.Time
+    if (time && /^\d{2}:\d{2}/.test(String(time))) return String(time).slice(0, 5)
+
+    // ZK SSR statetimezone rows store weekday values as HHMM numbers.
+    const tz =
+      parsed.TimezoneId ??
+      parsed.timezone ??
+      parsed.tz ??
+      parsed.montime ??
+      parsed.tuetime ??
+      parsed.wedtime ??
+      parsed.thutime ??
+      parsed.fritime ??
+      parsed.sattime ??
+      parsed.suntime
+    if (tz !== undefined) {
+      const num = Number(tz)
+      if (!isNaN(num) && num >= 0 && num <= 2359) {
+        const hh = String(Math.floor(num / 100)).padStart(2, '0')
+        const mm = String(num % 100).padStart(2, '0')
+        return `${hh}:${mm}`
+      }
+    }
+    return ''
+  } catch {
+    return ''
+  }
+}
+
+const parseStateName = (raw: string, fallback: string): string => {
+  try {
+    const parsed = JSON.parse(raw)
+    return parsed.StateName || parsed.Name || parsed.name || fallback
+  } catch {
+    return fallback
+  }
+}
+
+type AdminSettingsBridge = {
+  getRemoteRiskPolicy: () => Promise<{ mode: RemoteRiskPolicyMode }>
+  saveRemoteRiskPolicy: (
+    policy: { mode: RemoteRiskPolicyMode }
+  ) => Promise<MutationResult & { mode: RemoteRiskPolicyMode }>
+}
+
+const missingAdminSettingsMessage =
+  'Bản app hiện tại chưa hỗ trợ đồng bộ chính sách bảo mật. Hãy mở lại app sau khi cập nhật build mới.'
+
+const resolveAdminSettingsBridge = (): AdminSettingsBridge | null => {
+  const bridge = (window.ccpro as typeof window.ccpro & { adminSettings?: AdminSettingsBridge }).adminSettings
+  if (!bridge) return null
+  if (typeof bridge.getRemoteRiskPolicy !== 'function') return null
+  if (typeof bridge.saveRemoteRiskPolicy !== 'function') return null
+  return bridge
+}
+
+interface ScheduleEditorProps {
+  times: string[]
+  originalStates: AutoSwitchState[]
+  onChange: (index: number, time: string) => void
+  disabled: boolean
+}
+
+const ScheduleEditor = ({ times, originalStates, onChange, disabled }: ScheduleEditorProps): JSX.Element => (
+  <div className="admin-schedule-table">
+    <div className="admin-schedule-table__header">
+      <span>Trạng thái</span>
+      <span>Tên trên máy</span>
+      <span>Giờ chuyển</span>
+    </div>
+    {SCHEDULE_META.map((meta, index) => {
+      const Icon = meta.icon
+      const state = originalStates[index]
+      const stateName = state ? parseStateName(state.stateList, `State ${index}`) : `State ${index}`
+      const currentTime = times[index] ?? meta.defaultTime
+
+      return (
+        <div key={index} className="admin-schedule-row">
+          <div className="admin-schedule-row__state">
+            <span className="admin-schedule-dot" style={{ background: meta.color }} />
+            <Icon size={14} style={{ color: meta.color }} />
+            <span>{meta.label}</span>
+          </div>
+          <div className="admin-schedule-row__name">
+            {stateName}
+          </div>
+          <div className="admin-schedule-row__time">
+            <input
+              type="time"
+              className="admin-time-input"
+              value={currentTime}
+              onChange={(e) => onChange(index, e.target.value)}
+              disabled={disabled}
+              style={{ borderColor: meta.color }}
+            />
+          </div>
+        </div>
+      )
+    })}
+  </div>
+)
+
+export const AdminDeviceConfigPage = (): JSX.Element => {
+  const navigate = useNavigate()
+  const [session, setSession] = useState<AdminSessionState | null>(null)
+  const [config, setConfig] = useState<DeviceConfig | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [message, setMessage] = useState<{ ok: boolean; text: string } | null>(null)
+  const [lastResult, setLastResult] = useState<DeviceConfigResult | null>(null)
+  const [policyMode, setPolicyMode] = useState<RemoteRiskPolicyMode>('audit_only')
+  const [policySaving, setPolicySaving] = useState(false)
+  const [policyMessage, setPolicyMessage] = useState<{ ok: boolean; text: string } | null>(null)
+  const [adminSettingsAvailable, setAdminSettingsAvailable] = useState(false)
+  const [syncingTime, setSyncingTime] = useState(false)
+  const [syncMessage, setSyncMessage] = useState<{ ok: boolean; text: string } | null>(null)
+  const [activeTab, setActiveTab] = useState<'general' | 'system' | 'security'>('general')
+
+  // Form state
+  const [selectedMode, setSelectedMode] = useState(0)
+  const [editTimes, setEditTimes] = useState<string[]>(['07:30', '11:30', '13:00', '17:30'])
+
+  const loadData = useCallback(async () => {
+    setLoading(true)
+    setMessage(null)
+
+    try {
+      const adminSettingsBridge = resolveAdminSettingsBridge()
+      setAdminSettingsAvailable(Boolean(adminSettingsBridge))
+
+      const adminSession = await window.ccpro.admin.getSession()
+
+      if (!adminSession.authenticated) {
+        navigate('/admin/login', { replace: true })
+        return
+      }
+
+      if (adminSession.mustChangePassword) {
+        navigate('/admin/account?forcePasswordChange=1', { replace: true })
+        return
+      }
+
+      const [deviceConfig, remoteRiskPolicy] = await Promise.all([
+        window.ccpro.machineConfig.getConfig(),
+        adminSettingsBridge?.getRemoteRiskPolicy() ?? Promise.resolve({ mode: 'audit_only' as RemoteRiskPolicyMode })
+      ])
+
+      setSession(adminSession)
+      setConfig(deviceConfig)
+      setPolicyMode(remoteRiskPolicy.mode)
+      setSelectedMode(deviceConfig.stateMode)
+
+      // Parse existing schedule times into editable inputs
+      const parsed = SCHEDULE_META.map((meta, i) => {
+        const state = deviceConfig.schedule[i]
+        if (!state) return meta.defaultTime
+        const t = parseTimeToHHmm(state.stateTimezone)
+        return t || meta.defaultTime
+      })
+      setEditTimes(parsed)
+    } catch (error) {
+      setMessage({
+        ok: false,
+        text: `Không thể tải dữ liệu: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setLoading(false)
+    }
+  }, [navigate])
+
+  useEffect(() => {
+    void loadData()
+  }, [loadData])
+
+  const handleTimeChange = (index: number, time: string): void => {
+    setEditTimes(prev => {
+      const next = [...prev]
+      next[index] = time
+      return next
+    })
+  }
+
+  const buildSchedulePayload = (): AutoSwitchState[] => {
+    return editTimes.map((time, i) => {
+      const existing = config?.schedule[i]
+      return {
+        stateKey: existing?.stateKey ?? `state${i}`,
+        stateList: existing?.stateList ?? `{"StateName":"State ${i}"}`,
+        stateTimezone: time // Send HH:mm directly — the service handles conversion
+      }
+    })
+  }
+
+  const handleSave = async (): Promise<void> => {
+    setSaving(true)
+    setMessage(null)
+    setLastResult(null)
+
+    try {
+      const result = await window.ccpro.machineConfig.saveConfig({
+        stateMode: selectedMode,
+        schedule: buildSchedulePayload()
+      })
+
+      setLastResult(result)
+      setMessage({ ok: result.ok, text: result.message })
+
+      if (result.ok && result.after) {
+        setConfig(result.after)
+        setSelectedMode(result.after.stateMode)
+        const parsed = SCHEDULE_META.map((meta, i) => {
+          const state = result.after!.schedule[i]
+          if (!state) return meta.defaultTime
+          const t = parseTimeToHHmm(state.stateTimezone)
+          return t || meta.defaultTime
+        })
+        setEditTimes(parsed)
+      }
+    } catch (error) {
+      setMessage({
+        ok: false,
+        text: `Lỗi: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const handleSavePolicy = async (): Promise<void> => {
+    setPolicySaving(true)
+    setPolicyMessage(null)
+
+    try {
+      const adminSettingsBridge = resolveAdminSettingsBridge()
+      if (!adminSettingsBridge) {
+        setPolicyMessage({
+          ok: false,
+          text: missingAdminSettingsMessage
+        })
+        return
+      }
+
+      const result = await adminSettingsBridge.saveRemoteRiskPolicy({ mode: policyMode })
+      setPolicyMode(result.mode)
+      setPolicyMessage({ ok: result.ok, text: result.message })
+    } catch (error) {
+      setPolicyMessage({
+        ok: false,
+        text: `Lỗi: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setPolicySaving(false)
+    }
+  }
+
+  const handleSyncTime = async (): Promise<void> => {
+    setSyncingTime(true)
+    setSyncMessage(null)
+
+    try {
+      const result = await window.ccpro.machineConfig.syncTime()
+      setSyncMessage({ ok: result.ok, text: result.message })
+    } catch (error) {
+      setSyncMessage({
+        ok: false,
+        text: `Đồng bộ giờ thất bại: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setSyncingTime(false)
+    }
+  }
+
+  const handleLogout = async (): Promise<void> => {
+    await window.ccpro.admin.logout()
+    navigate('/admin/login', { replace: true })
+  }
+
+  if (loading) {
+    return (
+      <div className="admin-page">
+        <div className="admin-loading-container">
+          <Loader2 className="admin-spinner" size={32} style={{ color: 'var(--primary-strong)' }} />
+          <p className="inline-message">Đang kết nối máy chấm công...</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="admin-page">
+      <div className="admin-page__header">
+        <div>
+          <h1 style={{ fontSize: '20px', fontWeight: 700 }}>
+            <MonitorCog size={20} style={{ marginRight: '8px', verticalAlign: 'text-bottom' }} />
+            Cấu hình máy chấm công
+          </h1>
+          {session?.admin ? (
+            <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '4px' }}>
+              Đăng nhập: {session.admin.displayName} ({session.admin.username})
+            </p>
+          ) : null}
+        </div>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => navigate('/admin/account')}
+          >
+            <ShieldCheck size={14} />
+            Tài khoản
+          </Button>
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => navigate('/admin/users')}
+          >
+            <UserCog size={14} />
+            Người dùng
+          </Button>
+          <Button
+            variant="secondary"
+            size="md"
+            onClick={() => void loadData()}
+            disabled={saving}
+          >
+            <RefreshCw size={14} />
+            Làm mới
+          </Button>
+          <Button variant="secondary" size="md" onClick={() => void handleLogout()}>
+            <LogOut size={14} />
+            Đăng xuất
+          </Button>
+        </div>
+      </div>
+
+      <div className="admin-tabs" style={{ display: 'flex', gap: '8px', marginBottom: '20px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '12px' }}>
+        <Button
+          variant={activeTab === 'general' ? 'primary' : 'ghost'}
+          onClick={() => setActiveTab('general')}
+          size="sm"
+        >
+          <MonitorCog size={16} style={{ marginRight: '6px' }} />
+          Máy chấm công
+        </Button>
+        <Button
+          variant={activeTab === 'system' ? 'primary' : 'ghost'}
+          onClick={() => setActiveTab('system')}
+          size="sm"
+        >
+          <Settings size={16} style={{ marginRight: '6px' }} />
+          Hệ thống
+        </Button>
+        <Button
+          variant={activeTab === 'security' ? 'primary' : 'ghost'}
+          onClick={() => setActiveTab('security')}
+          size="sm"
+        >
+          <ShieldCheck size={16} style={{ marginRight: '6px' }} />
+          Bảo mật
+        </Button>
+      </div>
+
+      <div className="admin-page__grid">
+        {activeTab === 'general' ? (
+          <>
+        {/* StateMode Card */}
+        <Card title="StateMode" description="Chế độ hiển thị trên máy chấm công">
+          <div className="admin-mode-selector">
+            {Object.entries(STATE_MODE_LABELS).map(([modeValue, label]) => (
+              <label key={modeValue} className="admin-mode-option">
+                <input
+                  type="radio"
+                  name="stateMode"
+                  value={modeValue}
+                  checked={selectedMode === Number(modeValue)}
+                  onChange={() => setSelectedMode(Number(modeValue))}
+                  disabled={saving}
+                />
+                <span>{label}</span>
+              </label>
+            ))}
+          </div>
+
+          {config ? (
+            <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px' }}>
+              Giá trị hiện tại trên máy: <strong>Mode {config.stateMode}</strong>
+            </p>
+          ) : null}
+        </Card>
+
+        {/* Schedule Card - Editable */}
+        <Card title="Lịch Auto-Switch" description="Chỉnh 4 mốc tự động đổi trạng thái trong ngày">
+          <ScheduleEditor
+            times={editTimes}
+            originalStates={config?.schedule ?? []}
+            onChange={handleTimeChange}
+            disabled={saving}
+          />
+          <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '10px' }}>
+            💡 Chỉnh giờ xong nhấn "Lưu cấu hình" để ghi xuống máy chấm công
+          </p>
+        </Card>
+
+        {/* Action Card */}
+        <Card title="Thao tác" description="Lưu cấu hình xuống máy chấm công">
+          <Button
+            size="lg"
+            onClick={() => void handleSave()}
+            disabled={saving || loading}
+            style={{ width: '100%' }}
+          >
+            <Save size={16} />
+            {saving ? 'Đang lưu + xác minh...' : 'Lưu cấu hình'}
+          </Button>
+
+          {message ? (
+            <p
+              className={`inline-message ${message.ok ? 'inline-message--success' : 'inline-message--error'}`}
+              style={{ marginTop: '12px' }}
+            >
+              {message.text}
+            </p>
+          ) : null}
+
+          {lastResult ? (
+            <div className="admin-save-result">
+              {lastResult.before ? (
+                <p>Trước: Mode {lastResult.before.stateMode}</p>
+              ) : null}
+              {lastResult.after ? (
+                <p>Sau: Mode {lastResult.after.stateMode}</p>
+              ) : null}
+            </div>
+          ) : null}
+        </Card>
+        </>
+        ) : null}
+
+        {activeTab === 'system' ? (
+        <Card
+          title="Hệ thống"
+          description="Quản lý thời gian và trạng thái thiết bị chấm công"
+        >
+          <Button
+            size="md"
+            variant="secondary"
+            onClick={() => void handleSyncTime()}
+            disabled={syncingTime || loading}
+          >
+            {syncingTime ? <Loader2 className="admin-spinner" size={14} /> : <Clock size={14} />}
+            {syncingTime ? 'Đang đồng bộ...' : 'Đồng bộ Giờ máy chấm công'}
+          </Button>
+
+          <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '8px' }}>
+            Cập nhật giờ trên máy chấm công theo giờ của Server.
+          </p>
+
+          {syncMessage ? (
+            <p
+              className={`inline-message ${syncMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+              style={{ marginTop: '12px' }}
+            >
+              {syncMessage.text}
+            </p>
+          ) : null}
+        </Card>
+        ) : null}
+
+        {activeTab === 'security' ? (
+        <Card
+          title="Bảo mật chấm công"
+          description="Điều khiển việc chặn chấm công khi phát hiện điều khiển từ xa đang active"
+        >
+          <label
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              fontSize: '14px',
+              fontWeight: 500
+            }}
+          >
+            <input
+              aria-label="Chặn chấm công khi phát hiện điều khiển từ xa"
+              type="checkbox"
+              checked={policyMode === 'block_high_risk'}
+              disabled={policySaving}
+              onChange={(event) => {
+                setPolicyMode(event.target.checked ? 'block_high_risk' : 'audit_only')
+              }}
+            />
+            <span>Chặn chấm công khi phát hiện điều khiển từ xa</span>
+          </label>
+
+          <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '10px' }}>
+            {policyMode === 'block_high_risk'
+              ? 'Đang bật chặn khi rủi ro cao. Khi tắt, app chỉ ghi nhận và audit.'
+              : 'Đang ở chế độ chỉ ghi nhận và audit, không chặn chấm công.'}
+          </p>
+
+          {!adminSettingsAvailable ? (
+            <p style={{ fontSize: '12px', color: 'var(--warning-strong)', marginTop: '10px' }}>
+              {missingAdminSettingsMessage}
+            </p>
+          ) : null}
+
+          <Button
+            size="md"
+            onClick={() => void handleSavePolicy()}
+            disabled={policySaving || !adminSettingsAvailable}
+            style={{ marginTop: '14px' }}
+          >
+            <Save size={14} />
+            {policySaving ? 'Đang lưu chính sách...' : 'Lưu chính sách bảo mật'}
+          </Button>
+
+          {policyMessage ? (
+            <p
+              className={`inline-message ${policyMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+              style={{ marginTop: '12px' }}
+            >
+              {policyMessage.text}
+            </p>
+          ) : null}
+        </Card>
+        ) : null}
+      </div>
+    </div>
+  )
+}

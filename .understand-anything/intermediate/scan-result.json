@@ -1,0 +1,1200 @@
+{
+  "name": "ccpro-desktop",
+  "description": "App Cham cong PNJ",
+  "languages": [
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "markdown",
+    "python",
+    "typescript",
+    "yaml"
+  ],
+  "frameworks": [
+    "React",
+    "Vite",
+    "Vitest"
+  ],
+  "files": [
+    {
+      "path": ".agent/skills/openspec-apply-change/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/openspec-archive-change/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 115,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/openspec-explore/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 289,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/openspec-propose/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/workflows/opsx-apply.md",
+      "language": "markdown",
+      "sizeLines": 150,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/workflows/opsx-archive.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/workflows/opsx-explore.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/workflows/opsx-propose.md",
+      "language": "markdown",
+      "sizeLines": 104,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".codex/skills/openspec-apply-change/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".codex/skills/openspec-archive-change/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 115,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".codex/skills/openspec-explore/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 289,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".codex/skills/openspec-propose/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-project-scan.js",
+      "language": "javascript",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-results.json",
+      "language": "json",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/design-specs.md",
+      "language": "markdown",
+      "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md",
+      "language": "markdown",
+      "sizeLines": 265,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md",
+      "language": "markdown",
+      "sizeLines": 205,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md",
+      "language": "markdown",
+      "sizeLines": 450,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
+      "language": "markdown",
+      "sizeLines": 216,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "electron.vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/design.md",
+      "language": "markdown",
+      "sizeLines": 179,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/proposal.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/specs/admin-auth/spec.md",
+      "language": "markdown",
+      "sizeLines": 57,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/specs/device-machine-config/spec.md",
+      "language": "markdown",
+      "sizeLines": 78,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-device-config/tasks.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-user-management/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-user-management/design.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-user-management/proposal.md",
+      "language": "markdown",
+      "sizeLines": 28,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-user-management/specs/admin-user-management/spec.md",
+      "language": "markdown",
+      "sizeLines": 52,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-user-management/tasks.md",
+      "language": "markdown",
+      "sizeLines": 32,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/design.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/proposal.md",
+      "language": "markdown",
+      "sizeLines": 28,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md",
+      "language": "markdown",
+      "sizeLines": 65,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-remote-risk-guard/tasks.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/design.md",
+      "language": "markdown",
+      "sizeLines": 156,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/proposal.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/account-settings/spec.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/device-sync/spec.md",
+      "language": "markdown",
+      "sizeLines": 60,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/specs/notifications/spec.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/desktop-attendance-app/tasks.md",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/sync-device-time/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/sync-device-time/design.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/sync-device-time/proposal.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/sync-device-time/specs/device-time-sync/spec.md",
+      "language": "markdown",
+      "sizeLines": 23,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/sync-device-time/tasks.md",
+      "language": "markdown",
+      "sizeLines": 20,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/config.yaml",
+      "language": "yaml",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 79,
+      "fileCategory": "config"
+    },
+    {
+      "path": "plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "plans/260401-1910-remote-risk-guard-v2/plan.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/build-device-sync-worker.ps1",
+      "language": "",
+      "sizeLines": 50,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/build-machine-config-helper.ps1",
+      "language": "",
+      "sizeLines": 50,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/device-sync-worker.py",
+      "language": "python",
+      "sizeLines": 340,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/device-sync-worker.spec",
+      "language": "",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/init-db.mjs",
+      "language": "",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/machine-config-helper.py",
+      "language": "python",
+      "sizeLines": 395,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/machine-config-helper.spec",
+      "language": "",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/requirements-device-sync.txt",
+      "language": "",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/tests/test_device_sync_worker.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/tests/test_machine_config_helper.py",
+      "language": "python",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/tests/test_zk_apply_hc_auto_switch.py",
+      "language": "python",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/tests/test_zk_shortkey_tool.py",
+      "language": "python",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/tests/test_zk_state_mode.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/zk-apply-hc-auto-switch.ps1",
+      "language": "",
+      "sizeLines": 300,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/zk-proxy-capture.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/zk-shortkey-tool.ps1",
+      "language": "",
+      "sizeLines": 540,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/zk-ssr-device-data-tool.ps1",
+      "language": "",
+      "sizeLines": 367,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/zk-state-mode.py",
+      "language": "python",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/__tests__/session-store.test.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/__tests__/startup.test.ts",
+      "language": "typescript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/config/app-config.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/db/init.ts",
+      "language": "typescript",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/db/sql.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/index.ts",
+      "language": "typescript",
+      "sizeLines": 179,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/ipc/__tests__/register-handlers.test.ts",
+      "language": "typescript",
+      "sizeLines": 241,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/ipc/register-handlers.ts",
+      "language": "typescript",
+      "sizeLines": 244,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-auth-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-settings-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-user-management-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/attendance-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/auth-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/device-sync-bulk-insert.test.ts",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/device-sync-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/device-sync-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 456,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/machine-config-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 261,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/notification-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/notification-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 353,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/remote-risk-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 319,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/sql-datetime.test.ts",
+      "language": "typescript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/admin-auth-service.ts",
+      "language": "typescript",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/admin-settings-service.ts",
+      "language": "typescript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/admin-user-management-service.ts",
+      "language": "typescript",
+      "sizeLines": 392,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/attendance-service.ts",
+      "language": "typescript",
+      "sizeLines": 406,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/auth-service.ts",
+      "language": "typescript",
+      "sizeLines": 291,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/device-sync-service.ts",
+      "language": "typescript",
+      "sizeLines": 1351,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/history-service.ts",
+      "language": "typescript",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/machine-config-service.ts",
+      "language": "typescript",
+      "sizeLines": 247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/notification-inout.ts",
+      "language": "typescript",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/notification-service.ts",
+      "language": "typescript",
+      "sizeLines": 497,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/remote-risk-service.ts",
+      "language": "typescript",
+      "sizeLines": 469,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/settings-service.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/sql-datetime.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/session-store.ts",
+      "language": "typescript",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/startup.ts",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/preload/index.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/index.html",
+      "language": "html",
+      "sizeLines": 17,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/renderer/src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "language": "typescript",
+      "sizeLines": 215,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/app/__tests__/route-access.test.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/app/route-access.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/avatar.tsx",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/button.tsx",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/card.tsx",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/input.tsx",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/status-pill.tsx",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/errors.ts",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/format.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/utils.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/main.tsx",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 275,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "language": "typescript",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/admin-device-config-page.tsx",
+      "language": "typescript",
+      "sizeLines": 556,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/admin-login-page.tsx",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/admin-users-page.tsx",
+      "language": "typescript",
+      "sizeLines": 520,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/dashboard-page.tsx",
+      "language": "typescript",
+      "sizeLines": 193,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/history-page.tsx",
+      "language": "typescript",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/login-page.tsx",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/notifications-page.tsx",
+      "language": "typescript",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/settings-page.tsx",
+      "language": "typescript",
+      "sizeLines": 216,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/providers/auth-provider.tsx",
+      "language": "typescript",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/styles.css",
+      "language": "css",
+      "sizeLines": 1231,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/shared/__tests__/app-time.test.ts",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/shared/__tests__/source-text-encoding.test.ts",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/shared/api.ts",
+      "language": "typescript",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/shared/app-time.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/test/setup.ts",
+      "language": "typescript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "wise_eye/explore_wiseeye.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "wise_eye/wiseeye_schema.txt",
+      "language": "",
+      "sizeLines": 818,
+      "fileCategory": "docs"
+    }
+  ],
+  "totalFiles": 152,
+  "estimatedComplexity": "large",
+  "importMap": {
+    ".agent/skills/openspec-apply-change/SKILL.md": [],
+    ".agent/skills/openspec-archive-change/SKILL.md": [],
+    ".agent/skills/openspec-explore/SKILL.md": [],
+    ".agent/skills/openspec-propose/SKILL.md": [],
+    ".agent/workflows/opsx-apply.md": [],
+    ".agent/workflows/opsx-archive.md": [],
+    ".agent/workflows/opsx-explore.md": [],
+    ".agent/workflows/opsx-propose.md": [],
+    ".codex/skills/openspec-apply-change/SKILL.md": [],
+    ".codex/skills/openspec-archive-change/SKILL.md": [],
+    ".codex/skills/openspec-explore/SKILL.md": [],
+    ".codex/skills/openspec-propose/SKILL.md": [],
+    ".understand-anything/tmp/ua-project-scan.js": [],
+    ".understand-anything/tmp/ua-scan-results.json": [],
+    "docs/design-specs.md": [],
+    "docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md": [],
+    "docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md": [],
+    "electron.vite.config.ts": [],
+    "openspec/changes/admin-change-password/.openspec.yaml": [],
+    "openspec/changes/admin-device-config/.openspec.yaml": [],
+    "openspec/changes/admin-device-config/design.md": [],
+    "openspec/changes/admin-device-config/proposal.md": [],
+    "openspec/changes/admin-device-config/specs/admin-auth/spec.md": [],
+    "openspec/changes/admin-device-config/specs/device-machine-config/spec.md": [],
+    "openspec/changes/admin-device-config/tasks.md": [],
+    "openspec/changes/admin-user-management/.openspec.yaml": [],
+    "openspec/changes/admin-user-management/design.md": [],
+    "openspec/changes/admin-user-management/proposal.md": [],
+    "openspec/changes/admin-user-management/specs/admin-user-management/spec.md": [],
+    "openspec/changes/admin-user-management/tasks.md": [],
+    "openspec/changes/attendance-remote-risk-guard/.openspec.yaml": [],
+    "openspec/changes/attendance-remote-risk-guard/design.md": [],
+    "openspec/changes/attendance-remote-risk-guard/proposal.md": [],
+    "openspec/changes/attendance-remote-risk-guard/specs/attendance-checkin/spec.md": [],
+    "openspec/changes/attendance-remote-risk-guard/specs/remote-risk-guard/spec.md": [],
+    "openspec/changes/attendance-remote-risk-guard/tasks.md": [],
+    "openspec/changes/desktop-attendance-app/.openspec.yaml": [],
+    "openspec/changes/desktop-attendance-app/design.md": [],
+    "openspec/changes/desktop-attendance-app/proposal.md": [],
+    "openspec/changes/desktop-attendance-app/specs/account-settings/spec.md": [],
+    "openspec/changes/desktop-attendance-app/specs/attendance-checkin/spec.md": [],
+    "openspec/changes/desktop-attendance-app/specs/attendance-history/spec.md": [],
+    "openspec/changes/desktop-attendance-app/specs/device-sync/spec.md": [],
+    "openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md": [],
+    "openspec/changes/desktop-attendance-app/specs/notifications/spec.md": [],
+    "openspec/changes/desktop-attendance-app/tasks.md": [],
+    "openspec/changes/sync-device-time/.openspec.yaml": [],
+    "openspec/changes/sync-device-time/design.md": [],
+    "openspec/changes/sync-device-time/proposal.md": [],
+    "openspec/changes/sync-device-time/specs/device-time-sync/spec.md": [],
+    "openspec/changes/sync-device-time/tasks.md": [],
+    "openspec/config.yaml": [],
+    "package.json": [],
+    "plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md": [],
+    "plans/260401-1910-remote-risk-guard-v2/phase-02-window-visibility.md": [],
+    "plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md": [],
+    "plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md": [],
+    "plans/260401-1910-remote-risk-guard-v2/plan.md": [],
+    "scripts/build-device-sync-worker.ps1": [],
+    "scripts/build-machine-config-helper.ps1": [],
+    "scripts/device-sync-worker.py": [],
+    "scripts/device-sync-worker.spec": [],
+    "scripts/init-db.mjs": [],
+    "scripts/machine-config-helper.py": [],
+    "scripts/machine-config-helper.spec": [],
+    "scripts/requirements-device-sync.txt": [],
+    "scripts/tests/test_device_sync_worker.py": [],
+    "scripts/tests/test_machine_config_helper.py": [],
+    "scripts/tests/test_zk_apply_hc_auto_switch.py": [],
+    "scripts/tests/test_zk_shortkey_tool.py": [],
+    "scripts/tests/test_zk_state_mode.py": [],
+    "scripts/zk-apply-hc-auto-switch.ps1": [],
+    "scripts/zk-proxy-capture.py": [],
+    "scripts/zk-shortkey-tool.ps1": [],
+    "scripts/zk-ssr-device-data-tool.ps1": [],
+    "scripts/zk-state-mode.py": [],
+    "src/main/__tests__/session-store.test.ts": [
+      "src/main/session-store.ts"
+    ],
+    "src/main/__tests__/startup.test.ts": [
+      "src/main/startup.ts"
+    ],
+    "src/main/config/app-config.ts": [],
+    "src/main/db/init.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts"
+    ],
+    "src/main/db/sql.ts": [
+      "src/main/config/app-config.ts"
+    ],
+    "src/main/index.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/init.ts",
+      "src/main/db/sql.ts",
+      "src/main/ipc/register-handlers.ts",
+      "src/main/startup.ts"
+    ],
+    "src/main/ipc/__tests__/register-handlers.test.ts": [],
+    "src/main/ipc/register-handlers.ts": [
+      "src/main/db/sql.ts",
+      "src/main/session-store.ts",
+      "src/main/services/attendance-service.ts",
+      "src/main/services/auth-service.ts",
+      "src/main/services/admin-auth-service.ts",
+      "src/main/services/admin-settings-service.ts",
+      "src/main/services/admin-user-management-service.ts",
+      "src/main/services/history-service.ts",
+      "src/main/services/machine-config-service.ts",
+      "src/main/services/notification-service.ts",
+      "src/main/services/settings-service.ts",
+      "src/main/startup.ts",
+      "src/main/config/app-config.ts"
+    ],
+    "src/main/services/__tests__/admin-auth-service.test.ts": [
+      "src/main/services/admin-auth-service.ts"
+    ],
+    "src/main/services/__tests__/admin-settings-service.test.ts": [
+      "src/main/services/admin-settings-service.ts"
+    ],
+    "src/main/services/__tests__/admin-user-management-service.test.ts": [
+      "src/main/services/admin-user-management-service.ts"
+    ],
+    "src/main/services/__tests__/attendance-service.test.ts": [
+      "src/main/services/attendance-service.ts"
+    ],
+    "src/main/services/__tests__/auth-service.test.ts": [
+      "src/main/services/auth-service.ts"
+    ],
+    "src/main/services/__tests__/device-sync-bulk-insert.test.ts": [
+      "src/main/services/device-sync-service.ts"
+    ],
+    "src/main/services/__tests__/device-sync-repository.test.ts": [
+      "src/main/services/device-sync-service.ts"
+    ],
+    "src/main/services/__tests__/device-sync-service.test.ts": [],
+    "src/main/services/__tests__/machine-config-service.test.ts": [],
+    "src/main/services/__tests__/notification-repository.test.ts": [
+      "src/main/services/notification-service.ts"
+    ],
+    "src/main/services/__tests__/notification-service.test.ts": [
+      "src/main/services/notification-service.ts",
+      "src/main/services/notification-inout.ts"
+    ],
+    "src/main/services/__tests__/remote-risk-service.test.ts": [],
+    "src/main/services/__tests__/sql-datetime.test.ts": [],
+    "src/main/services/admin-auth-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/admin-settings-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/admin-user-management-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/attendance-service.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts",
+      "src/main/services/remote-risk-service.ts"
+    ],
+    "src/main/services/auth-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/device-sync-service.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/history-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/attendance-service.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/machine-config-service.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/notification-inout.ts": [
+      "src/main/services/attendance-service.ts"
+    ],
+    "src/main/services/notification-service.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts",
+      "src/main/services/attendance-service.ts"
+    ],
+    "src/main/services/remote-risk-service.ts": [],
+    "src/main/services/settings-service.ts": [
+      "src/main/db/sql.ts"
+    ],
+    "src/main/services/sql-datetime.ts": [],
+    "src/main/session-store.ts": [
+      "src/main/config/app-config.ts"
+    ],
+    "src/main/startup.ts": [],
+    "src/preload/index.ts": [],
+    "src/renderer/index.html": [],
+    "src/renderer/src/App.tsx": [
+      "src/renderer/src/pages/login-page.tsx",
+      "src/renderer/src/pages/dashboard-page.tsx",
+      "src/renderer/src/pages/history-page.tsx",
+      "src/renderer/src/pages/notifications-page.tsx",
+      "src/renderer/src/pages/settings-page.tsx",
+      "src/renderer/src/pages/admin-login-page.tsx",
+      "src/renderer/src/pages/admin-device-config-page.tsx",
+      "src/renderer/src/pages/admin-users-page.tsx",
+      "src/renderer/src/providers/auth-provider.tsx",
+      "src/renderer/src/app/route-access.ts"
+    ],
+    "src/renderer/src/app/__tests__/full-flow.test.tsx": [],
+    "src/renderer/src/app/__tests__/route-access.test.ts": [
+      "src/renderer/src/app/route-access.ts"
+    ],
+    "src/renderer/src/app/route-access.ts": [],
+    "src/renderer/src/components/ui/avatar.tsx": [],
+    "src/renderer/src/components/ui/button.tsx": [],
+    "src/renderer/src/components/ui/card.tsx": [],
+    "src/renderer/src/components/ui/input.tsx": [],
+    "src/renderer/src/components/ui/status-pill.tsx": [],
+    "src/renderer/src/lib/errors.ts": [],
+    "src/renderer/src/lib/format.ts": [],
+    "src/renderer/src/lib/utils.ts": [],
+    "src/renderer/src/main.tsx": [
+      "src/renderer/src/App.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx": [
+      "src/renderer/src/pages/admin-device-config-page.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/admin-users-page.test.tsx": [
+      "src/renderer/src/pages/admin-users-page.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx": [
+      "src/renderer/src/pages/dashboard-page.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/settings-page.test.tsx": [
+      "src/renderer/src/pages/settings-page.tsx"
+    ],
+    "src/renderer/src/pages/admin-device-config-page.tsx": [],
+    "src/renderer/src/pages/admin-login-page.tsx": [],
+    "src/renderer/src/pages/admin-users-page.tsx": [],
+    "src/renderer/src/pages/dashboard-page.tsx": [],
+    "src/renderer/src/pages/history-page.tsx": [],
+    "src/renderer/src/pages/login-page.tsx": [],
+    "src/renderer/src/pages/notifications-page.tsx": [],
+    "src/renderer/src/pages/settings-page.tsx": [],
+    "src/renderer/src/providers/auth-provider.tsx": [],
+    "src/renderer/src/styles.css": [],
+    "src/shared/__tests__/app-time.test.ts": [],
+    "src/shared/__tests__/source-text-encoding.test.ts": [],
+    "src/shared/api.ts": [],
+    "src/shared/app-time.ts": [],
+    "src/test/setup.ts": [],
+    "tsconfig.json": [],
+    "vitest.config.ts": [],
+    "wise_eye/explore_wiseeye.js": [],
+    "wise_eye/wiseeye_schema.txt": [],
+    "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md": [],
+    "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md": []
+  }
+}

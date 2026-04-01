@@ -1,0 +1,818 @@
+Connecting to SQL Server 10.60.1.4...
+Connected!
+
+========== DATABASES ==========
+  [5] WiseEye (ONLINE) - Created: Sun Sep 07 2025 15:58:25 GMT+0700 (Indochina Time)
+
+========== DATABASE: WiseEye ==========
+  [BASE TABLE] dbo.Absent
+  [BASE TABLE] dbo.AbsentSymbol
+  [BASE TABLE] dbo.AccessDoors
+  [BASE TABLE] dbo.AccessLevels
+  [BASE TABLE] dbo.AccessUsers
+  [BASE TABLE] dbo.AcDoors
+  [BASE TABLE] dbo.Administrator
+  [BASE TABLE] dbo.AllowedYear
+  [BASE TABLE] dbo.AttPhotos
+  [BASE TABLE] dbo.BadPhotos
+  [BASE TABLE] dbo.Banks
+  [BASE TABLE] dbo.CheckInOut
+  [BASE TABLE] dbo.Commands
+  [BASE TABLE] dbo.Company
+  [BASE TABLE] dbo.DelInOut
+  [BASE TABLE] dbo.DoorAcGroups
+  [BASE TABLE] dbo.DoorHolidays
+  [BASE TABLE] dbo.DoorParameters
+  [BASE TABLE] dbo.DoorTimeZones
+  [BASE TABLE] dbo.DoorUnLockGroups
+  [BASE TABLE] dbo.EditInOutLog
+  [BASE TABLE] dbo.EndCycle
+  [BASE TABLE] dbo.Faces
+  [BASE TABLE] dbo.Formula
+  [BASE TABLE] dbo.FPReaders
+  [BASE TABLE] dbo.Holiday
+  [BASE TABLE] dbo.Hopitals
+  [BASE TABLE] dbo.InOut
+  [BASE TABLE] dbo.InOutArr
+  [BASE TABLE] dbo.LogType
+  [BASE TABLE] dbo.Machines
+  [BASE TABLE] dbo.MachinesOptions
+  [BASE TABLE] dbo.MainMenu
+  [BASE TABLE] dbo.MSchedules
+  [BASE TABLE] dbo.Nationality
+  [BASE TABLE] dbo.OperationLogs
+  [BASE TABLE] dbo.Peoples
+  [BASE TABLE] dbo.Punch
+  [BASE TABLE] dbo.RelationDept
+  [BASE TABLE] dbo.RolePrivileges
+  [BASE TABLE] dbo.Schedule
+  [BASE TABLE] dbo.SelectedDate
+  [BASE TABLE] dbo.Shifts
+  [BASE TABLE] dbo.Skills
+  [BASE TABLE] dbo.SuperLogs
+  [BASE TABLE] dbo.SymReport
+  [BASE TABLE] dbo.Template
+  [BASE TABLE] dbo.Title
+  [BASE TABLE] dbo.Towns
+  [BASE TABLE] dbo.UserAccount
+  [BASE TABLE] dbo.UserFacePhoto
+  [BASE TABLE] dbo.UserInfo
+  [BASE TABLE] dbo.UserTempSch
+  [BASE TABLE] dbo.VerifyLogs
+  [BASE TABLE] dbo.WebPort
+  [BASE TABLE] dbo.Weekend
+  [BASE TABLE] dbo.WSchedules
+  [BASE TABLE] dbo.YSchedules
+
+  --- dbo.Absent ---
+    ID: int NOT NULL
+    UserEnrollNumber: int NULL
+    UserFullCode: nvarchar(30) NULL
+    TimeDate: smalldatetime NULL
+    AbsentCode: nvarchar(10) NULL
+    Thang: int NULL
+    Nam: int NULL
+    Workingday: real NULL
+    WorkingTime: real NULL
+    Lydo: nvarchar(255) NULL
+    ForType: int NULL
+    ShiftID: int NULL
+    UserAccount: nvarchar(20) NULL
+    AddedTime: smalldatetime NULL
+
+  --- dbo.AbsentSymbol ---
+    AbsentCode: nvarchar(10) NULL
+    AbsentDescription: nvarchar(50) NULL
+    AbsentSymbol: nvarchar(20) NULL
+    IsYes: tinyint NULL
+    IsCount: bit NOT NULL
+
+  --- dbo.AccessDoors ---
+    ID: int NOT NULL [PK]
+    AccessLevelID: int NULL
+    DoorIndex: int NULL
+
+  --- dbo.AccessLevels ---
+    AccessLevelID: int NOT NULL [PK]
+    AccessLevelName: nvarchar(50) NULL
+    AccessLevelStyle: tinyint NULL
+    AccessLevelVerifyStyle: tinyint NULL
+    AccessLevelGroup: tinyint NULL
+    AccessLevelTZ1: tinyint NULL
+    AccessLevelTZ2: tinyint NULL
+    AccessLevelTZ3: tinyint NULL
+
+  --- dbo.AccessUsers ---
+    ID: int NOT NULL [PK]
+    AccessLevelID: int NULL
+    UserEnrollNumber: int NULL
+
+  --- dbo.AcDoors ---
+    DoorIndex: int NOT NULL [PK]
+    DoorName: nvarchar(50) NULL
+    MachineID: int NULL
+    AcFun: tinyint NULL
+    Door1: bit NULL
+    Door2: bit NULL
+    Door3: bit NULL
+    Door4: bit NULL
+
+  --- dbo.Administrator ---
+    UserID: int NOT NULL
+    UserAccount: nvarchar(50) NULL
+    Pass: nvarchar(50) NULL
+    IsDeleteCheckInOut: bit NULL
+    IsAddCheckInOut: bit NULL
+    IsShowHistory: bit NULL
+    IsEditInOut: bit NULL
+    IsShowAC: bit NULL
+
+  --- dbo.AllowedYear ---
+    UserEnrollNumber: int NOT NULL [PK]
+    YearID: int NOT NULL [PK]
+    AllowedYearCount: real NULL
+
+  --- dbo.AttPhotos ---
+    UserEnrollNumber: int NULL
+    PhotoDate: smalldatetime NULL
+    PhotoTimeStr: smalldatetime NULL
+    PhotoCode: nvarchar(25) NULL
+    PhotoData: image(2147483647) NULL
+    SerialNumber: nvarchar(25) NULL
+
+  --- dbo.BadPhotos ---
+    PhotoDate: smalldatetime NULL
+    PhotoTimeStr: smalldatetime NULL
+    PhotoCode: nvarchar(25) NULL
+    PhotoData: image(2147483647) NULL
+    SerialNumber: nvarchar(25) NULL
+
+  --- dbo.Banks ---
+    ID: int NOT NULL
+    BankName: nvarchar(255) NULL
+
+  --- dbo.CheckInOut ---
+    UserEnrollNumber: int NOT NULL [PK]
+    TimeStr: datetime NOT NULL [PK]
+    TimeDate: smalldatetime NULL
+    OriginType: nvarchar(10) NULL
+    NewType: nvarchar(5) NULL
+    Source: nvarchar(10) NULL
+    MachineNo: tinyint NULL
+    WorkCode: tinyint NULL
+
+  --- dbo.Commands ---
+    ID: int NOT NULL
+    SerialNumber: nvarchar(25) NULL
+    CommandStr: ntext(1073741823) NULL
+    SubmitTime: datetime NULL
+    TransferTime: datetime NULL
+    ReturnTime: datetime NULL
+    ReturnValue: int NULL
+    IsTransfer: bit NOT NULL
+    Description: nvarchar(50) NULL
+    IsFinger: bit NOT NULL DEFAULT ((0))
+    Pin: int NULL
+    FID: tinyint NULL
+    CommandType: int NULL
+
+  --- dbo.Company ---
+    IDC: int NOT NULL
+    CompName: nvarchar(100) NULL
+    CompAddress: nvarchar(100) NULL
+    CompTel: nvarchar(100) NULL
+    Logo: image(2147483647) NULL
+    CompCode: nvarchar(50) NULL
+
+  --- dbo.DelInOut ---
+    ID: int NOT NULL
+    UserEnrollNumber: int NULL
+    TimeDate: smalldatetime NULL
+    TimeStr: datetime NULL
+    TimeType: nvarchar(5) NULL
+    TimeSource: nvarchar(2) NULL
+    MachineNo: tinyint NULL
+    TimeShort: nvarchar(5) NULL
+
+  --- dbo.DoorAcGroups ---
+    DoorIndex: int NOT NULL [PK]
+    GroupNo: int NOT NULL [PK]
+    GroupName: nvarchar(50) NULL
+    TZ1: tinyint NULL
+    TZ2: tinyint NULL
+    TZ3: tinyint NULL
+    VerifycationMode: tinyint NULL
+    ValidHoliday: bit NULL
+
+  --- dbo.DoorHolidays ---
+    DoorIndex: int NOT NULL [PK]
+    HolidayID: int NOT NULL [PK]
+    HolidayName: nvarchar(50) NULL
+    BeginDate: nvarchar(4) NULL
+    EndDate: nvarchar(4) NULL
+    TimeZoneID: tinyint NULL
+
+  --- dbo.DoorParameters ---
+    DoorIndex: int NOT NULL [PK]
+    OptionName: nvarchar(50) NOT NULL [PK]
+    OptionValue: int NULL
+
+  --- dbo.DoorTimeZones ---
+    DoorIndex: int NOT NULL [PK]
+    TZIndex: tinyint NOT NULL [PK]
+    TZName: nvarchar(50) NULL
+    TZInfo: nvarchar(65) NULL
+
+  --- dbo.DoorUnLockGroups ---
+    DoorIndex: int NOT NULL [PK]
+    CombNo: tinyint NOT NULL [PK]
+    CombName: nvarchar(50) NULL
+    Group1: tinyint NULL
+    Group2: tinyint NULL
+    Group3: tinyint NULL
+    Group4: tinyint NULL
+    Group5: tinyint NULL
+
+  --- dbo.EditInOutLog ---
+    TimeDate: date NULL
+    UserEnrollNumber: int NULL
+    TimeStrOld: datetime NULL
+    TimeStrNew: datetime NULL
+    OriginType: nvarchar(10) NULL
+    Source: nvarchar(10) NULL
+    MachineNo: int NULL
+    LogType: tinyint NULL
+    UserFullCode: nvarchar(20) NULL
+    UserAccount: nvarchar(20) NULL
+
+  --- dbo.EndCycle ---
+    UserEnrollNumber: int NULL
+    EndDate: smalldatetime NULL
+    IsOverNight: bit NOT NULL
+
+  --- dbo.Faces ---
+    UserEnrollNumber: int NOT NULL [PK]
+    FaceID: int NOT NULL [PK]
+    FaceTemplate: ntext(1073741823) NULL
+    TempLength: int NULL
+    Flag: int NULL
+
+  --- dbo.Formula ---
+    ID: int NOT NULL
+    Formula: nvarchar(200) NULL
+
+  --- dbo.FPReaders ---
+    SerialNumber: nvarchar(150) NULL
+    EnrollNumber: nvarchar(20) NULL
+
+  --- dbo.Holiday ---
+    ID: int NOT NULL
+    HDate: smalldatetime NULL
+    Holiday: nvarchar(50) NULL
+
+  --- dbo.Hopitals ---
+    ID: int NOT NULL
+    HospitalName: nvarchar(255) NULL
+
+  --- dbo.InOut ---
+    ID: int NOT NULL
+    InOutID: int NULL
+    StartIn: nvarchar(5) NULL
+    EndIn: nvarchar(5) NULL
+    StartOut: nvarchar(5) NULL
+    EndOut: nvarchar(5) NULL
+
+  --- dbo.InOutArr ---
+    InOutID: int NOT NULL
+    InOutCode: nvarchar(10) NULL
+    InOutName: nvarchar(50) NULL
+    AutoMax: int NULL
+    AutoMin: int NULL
+    AutoInterval: int NULL
+    InOutMode: int NULL
+    SelectMode: int NULL
+    RemoveStart: nvarchar(5) NULL
+    RemoveEnd: nvarchar(5) NULL
+    GetMax: int NULL
+    RemoveOut: bit NOT NULL
+    StartTime: nvarchar(10) NULL
+    EndTime: nvarchar(10) NULL
+    StartDay: tinyint NULL
+    OverNightCount: int NULL
+
+  --- dbo.LogType ---
+    LogTypeID: tinyint NULL
+    LogTypeText: nvarchar(50) NULL
+
+  --- dbo.Machines ---
+    ID: int NOT NULL
+    MachineID: int NULL
+    MachineName: nvarchar(50) NULL
+    CommType: tinyint NULL
+    COMPort: tinyint NULL
+    BaudRate: int NULL
+    IPAddress: nvarchar(20) NULL
+    TCPPort: int NULL
+    DomainName: nvarchar(50) NULL
+    IsDomain: bit NOT NULL
+    ActiveKey: nvarchar(50) NULL
+    CommKey: int NULL
+    LastRecordDate: datetime NULL
+    SerialNumber: nvarchar(30) NULL
+    ColorCode: nvarchar(15) NULL
+    LastEventTime: datetime NULL
+    Stamp: nvarchar(20) NULL
+    OpStamp: nvarchar(20) NULL
+    PhotoStamp: nvarchar(20) NULL
+    ErrorDelay: tinyint NULL
+    Delay: tinyint NULL
+    TransTimes: nvarchar(100) NULL
+    TransInterval: int NULL
+    TransFlag: nvarchar(200) NULL
+    RealTime: int NULL
+    Encrypt: bit NULL
+    TimeZone: int NULL
+    Status: int NULL
+    CycleReload: int NULL
+    DeviceCode: ntext(1073741823) NULL
+    ExSerialNumber: nvarchar(100) NULL
+
+  --- dbo.MachinesOptions ---
+    SerialNumber: nvarchar(20) NOT NULL [PK]
+    OptionName: nvarchar(100) NOT NULL [PK]
+    OptionValue: nvarchar(100) NULL
+
+  --- dbo.MainMenu ---
+    MenuID: int NOT NULL
+    MenuCode: nvarchar(30) NULL
+    MenuDescription: nvarchar(50) NULL
+    RelationID: int NULL
+    LevelID: int NULL
+    ImageID: int NULL
+
+  --- dbo.MSchedules ---
+    ID: int NOT NULL
+    DayID: tinyint NULL
+    SchID: int NULL
+    ShiftID: int NULL
+    MonthID: tinyint NULL
+
+  --- dbo.Nationality ---
+    ID: int NOT NULL
+    Nationality: nvarchar(255) NULL
+
+  --- dbo.OperationLogs ---
+    TimeDate: smalldatetime NULL
+    TimeStr: datetime NULL
+    MachineName: nvarchar(30) NULL
+    Description: nvarchar(255) NULL
+
+  --- dbo.Peoples ---
+    ID: int NOT NULL
+    PeopleName: nvarchar(255) NULL
+    PeopleOName: nvarchar(255) NULL
+    PeoplePlace: nvarchar(255) NULL
+
+  --- dbo.Punch ---
+    UserEnrollNumber: int NOT NULL [PK]
+    TimeDate: datetime NOT NULL [PK]
+    TimeIn1: nvarchar(5) NULL
+    TimeOut1: nvarchar(5) NULL
+    TimeIn2: nvarchar(5) NULL
+    TimeOut2: nvarchar(5) NULL
+    TimeIn3: nvarchar(5) NULL
+    TimeOut3: nvarchar(5) NULL
+    LateIn: int NULL
+    EarlyOut: int NULL
+    WorkDay: real NULL
+    WorkHour: real NULL
+    OverTime1: real NULL
+    OverTime2: real NULL
+    OverTime3: real NULL
+    GrandTotal: real NULL
+    Symbol: nvarchar(30) NULL
+    ExtWorkDay: real NULL
+    ExtWorkHour: real NULL
+    ExtSymbol: nvarchar(10) NULL
+    ShiftName: nvarchar(30) NULL
+
+  --- dbo.RelationDept ---
+    ID: int NOT NULL
+    Description: nvarchar(50) NULL
+    RelationID: int NULL
+    LevelID: tinyint NULL
+    DeptCode: nvarchar(50) NULL
+    TempID: int NULL
+    TempRelationID: int NULL
+    IsUsedReport: bit NULL
+
+  --- dbo.RolePrivileges ---
+    RoleIndex: int NULL
+    PrivilegeID: int NULL
+    IsYes: bit NULL
+    IsIndeterminate: bit NULL
+    UserID: int NULL
+
+  --- dbo.Schedule ---
+    SchID: int NOT NULL
+    SchName: nvarchar(30) NULL
+    InOutID: int NULL
+    IsWeekend: bit NOT NULL
+    IsAbsentSat: bit NOT NULL
+    IsAbsentSun: bit NOT NULL
+    IsAbsentHol: bit NOT NULL
+    IsCountHol: bit NOT NULL
+    CycleMode: int NULL
+    IsDateOfOutTime: bit NULL
+    StartDay: int NULL
+    RoundType: tinyint NULL
+    RoundStep: tinyint NULL
+    WorkingTime: int NULL
+    Workingday: real NULL
+    IsOTPoint: bit NULL
+    OTPoint: int NULL
+    LevelOT1: int NULL
+    LevelOT2: int NULL
+    ReportMode: tinyint NULL
+    RoundDigits: int NULL
+    RoundMode: int NULL
+
+  --- dbo.SelectedDate ---
+    ID: int NOT NULL
+    StartDate: smalldatetime NULL
+    EndDate: smalldatetime NULL
+    StartDay: int NULL
+
+  --- dbo.Shifts ---
+    ShiftID: int NOT NULL
+    ShiftCode: nvarchar(20) NULL
+    Onduty: nvarchar(10) NULL
+    Offduty: nvarchar(10) NULL
+    OnTimeIn: int NULL
+    OnTimeOut: int NULL
+    CutIn: int NULL
+    CutOut: int NULL
+    OnLunch: nvarchar(5) NULL
+    OffLunch: nvarchar(5) NULL
+    WorkingTime: real NULL
+    Workingday: real NULL
+    IsNightTime: bit NOT NULL
+    StartNT: nvarchar(5) NULL
+    EndNT: nvarchar(5) NULL
+    NoOutWT: real NULL
+    NoInWT: real NULL
+    LateGrace: int NULL
+    IsLateGrace: bit NOT NULL
+    EarlyGrace: int NULL
+    IsEarlyGrace: bit NOT NULL
+    IsOT: bit NOT NULL
+    OTlevel: int NULL
+    IsSunOT: bit NOT NULL
+    SunOTLevel: int NULL
+    IsBeforeOT: bit NOT NULL
+    MinBeforeOT: int NULL
+    MaxBeforeOT: int NULL
+    IsAfterOT: bit NOT NULL
+    MinAfterOT: int NULL
+    MaxAfterOT: int NULL
+    AfterOTTotal: real NULL
+    AfterOTDeduce: int NULL
+    BeforeOTTotal: real NULL
+    BeforeOTDeduce: real NULL
+    LevelOT1: int NULL
+    LevelOT2: int NULL
+    IsOTPoint: bit NOT NULL
+    OTPoint: int NULL
+    IsHolidayOT: bit NOT NULL
+    HolidayOTLevel: int NULL
+    IsLate: bit NOT NULL
+    IsEarly: bit NOT NULL
+    WKOTLevel: int NULL
+    IsWKOTLevel: bit NOT NULL
+    HLOTLevel: int NULL
+    IsHLOTLevel: bit NOT NULL
+    ShowPosition: int NULL
+    RoundTypeLate: char(1) NULL
+    RoundStepLate: tinyint NULL
+    RoundTypeEarly: char(1) NULL
+    RoundStepEarly: tinyint NULL
+    OverNightCount: int NULL
+    IsRoundTotalByEarlyIn: bit NULL
+    IsRoundTotalByLateOut: bit NULL
+
+  --- dbo.Skills ---
+    ID: int NOT NULL
+    SkillName: nvarchar(255) NULL
+
+  --- dbo.SuperLogs ---
+    SerialNumber: nvarchar(20) NOT NULL [PK]
+    TimeStr: datetime NOT NULL [PK]
+    Manipulation: int NULL
+    Params1: int NULL
+    Params2: int NULL
+    Params3: int NULL
+    Params4: int NULL
+    SEnrollNumber: int NULL
+    Description: nvarchar(200) NULL
+
+  --- dbo.SymReport ---
+    ID: int NOT NULL
+    SymName: nvarchar(20) NULL
+    Symbol: nvarchar(6) NULL
+    IsYes: bit NOT NULL
+
+  --- dbo.Template ---
+    UserEnrollNumber: int NOT NULL [PK]
+    FingerID: tinyint NOT NULL [PK]
+    FingerTemplate: ntext(1073741823) NULL
+    TempLength: int NULL
+    Flag: bit NULL
+
+  --- dbo.Title ---
+    IDT: int NOT NULL
+    TitleName: nvarchar(50) NULL
+    TempID: int NULL
+
+  --- dbo.Towns ---
+    ID: int NOT NULL
+    TownName: nvarchar(30) NULL
+    TownShip: nvarchar(50) NULL
+    Pupulation: float NULL
+    Area: nvarchar(20) NULL
+
+  --- dbo.UserAccount ---
+    UserID: int NOT NULL
+    UserAccount: nvarchar(50) NULL
+    Pass: nvarchar(50) NULL
+    RoleID: int NULL
+
+  --- dbo.UserFacePhoto ---
+    UserEnrollNumber: int NOT NULL [PK]
+    PhotoName: nvarchar(30) NULL
+    PhotoData: image(2147483647) NULL
+    PhotoLength: int NULL
+
+  --- dbo.UserInfo ---
+    UserEnrollNumber: int NOT NULL [PK]
+    UserFullCode: nvarchar(20) NULL
+    UserFullName: nvarchar(40) NULL
+    UserLastName: nvarchar(20) NULL
+    UserEnrollName: nvarchar(30) NULL
+    UserCardNo: nvarchar(14) NULL
+    UserHireDay: smalldatetime NOT NULL
+    UserIDTitle: int NULL
+    UserSex: int NULL
+    UserBirthDay: nvarchar(12) NULL
+    UserBirthPlace: int NULL
+    UserPhoto: image(2147483647) NULL
+    UserNoted: ntext(1073741823) NULL
+    UserPW: nvarchar(20) NULL
+    UserPrivilege: int NULL
+    UserEnabled: bit NOT NULL
+    UserIDC: int NULL
+    UserIDD: int NULL
+    SchID: int NULL
+    UserGroup: int NULL
+    UserTZ: nvarchar(30) NULL
+    UserPIN1: nvarchar(50) NULL
+    PushCardID: nvarchar(50) NULL
+    UserNationality: int NULL
+    UserPeople: int NULL
+    UserNativeCountry: nvarchar(150) NULL
+    UserIDCard: nvarchar(30) NULL
+    IDCardPlaceOfIssue: nvarchar(50) NULL
+    UserCalledName: nvarchar(30) NULL
+    UserAddress: nvarchar(120) NULL DEFAULT ((128))
+    UserPhoneNumber: nvarchar(30) NULL
+    RelationshipName: nvarchar(50) NULL
+    VerifyType: int NULL
+
+  --- dbo.UserTempSch ---
+    ID: int NOT NULL
+    UserEnrollNumber: int NULL
+    StartDate: smalldatetime NULL
+    EndDate: smalldatetime NULL
+    SchID: int NULL
+
+  --- dbo.VerifyLogs ---
+    UserEnrollNumber: int NOT NULL [PK]
+    TimeStr: datetime NOT NULL [PK]
+    VerifyMode: nvarchar(50) NULL
+    InOutMode: int NULL
+    MachineNo: int NULL
+
+  --- dbo.WebPort ---
+    ID: int NULL
+    Port: int NULL
+    IPAddress: nvarchar(30) NULL
+    LastDateLogsDelete: datetime NULL
+    DeleteCycle: int NULL
+
+  --- dbo.Weekend ---
+    WeekendID: int NULL
+    IsYes: tinyint NULL
+
+  --- dbo.WSchedules ---
+    ID: int NOT NULL
+    DayID: tinyint NULL
+    SchID: int NULL
+    ShiftID: int NULL
+    MonthID: tinyint NULL
+
+  --- dbo.YSchedules ---
+    ID: int NOT NULL
+    MonthID: tinyint NULL
+    DayID: tinyint NULL
+    SchID: int NULL
+    ShiftID: int NULL
+
+========== SAMPLE DATA: CheckInOut (TOP 10) ==========
+[
+  {
+    "UserEnrollNumber": 1,
+    "TimeStr": "2026-03-30T17:32:36.043Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "O",
+    "NewType": null,
+    "Source": "PC",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 59,
+    "TimeStr": "2026-03-30T13:09:29.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 62,
+    "TimeStr": "2026-03-30T13:04:46.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 24,
+    "TimeStr": "2026-03-30T13:03:51.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 37,
+    "TimeStr": "2026-03-30T13:02:09.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 55,
+    "TimeStr": "2026-03-30T13:02:04.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 54,
+    "TimeStr": "2026-03-30T13:01:50.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 14,
+    "TimeStr": "2026-03-30T13:01:43.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "PW_OR_RF",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 43,
+    "TimeStr": "2026-03-30T13:01:29.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "I",
+    "NewType": "",
+    "Source": "FP",
+    "MachineNo": 1,
+    "WorkCode": 0
+  },
+  {
+    "UserEnrollNumber": 1,
+    "TimeStr": "2026-03-30T13:01:00.000Z",
+    "TimeDate": "2026-03-30T00:00:00.000Z",
+    "OriginType": "O",
+    "NewType": null,
+    "Source": "PC",
+    "MachineNo": 2,
+    "WorkCode": null
+  }
+]
+
+========== SAMPLE DATA: UserInfo (TOP 5) ==========
+[
+  {
+    "UserEnrollNumber": 1,
+    "UserFullCode": "E0112599",
+    "UserFullName": "PHAN THÙY",
+    "UserLastName": "00001",
+    "UserEnrollName": "PhanThuy",
+    "UserCardNo": "0000000000",
+    "UserHireDay": "2017-12-07T00:00:00.000Z",
+    "UserSex": 0,
+    "UserEnabled": true,
+    "SchID": 1
+  },
+  {
+    "UserEnrollNumber": 2,
+    "UserFullCode": "E0120230",
+    "UserFullName": "TRẦN PHƯỚC HẬU",
+    "UserLastName": "00002",
+    "UserEnrollName": "tranphuochau",
+    "UserCardNo": "0000000000",
+    "UserHireDay": "2021-01-11T00:00:00.000Z",
+    "UserSex": 1,
+    "UserEnabled": true,
+    "SchID": 1
+  },
+  {
+    "UserEnrollNumber": 3,
+    "UserFullCode": "E0125909",
+    "UserFullName": "PHẠM NHẬT THANH",
+    "UserLastName": "00003",
+    "UserEnrollName": "Pham Nhat Thanh",
+    "UserCardNo": "0000000000",
+    "UserHireDay": "2024-02-28T00:00:00.000Z",
+    "UserSex": 0,
+    "UserEnabled": true,
+    "SchID": 1
+  },
+  {
+    "UserEnrollNumber": 4,
+    "UserFullCode": "E0114093",
+    "UserFullName": "PHẠM HOÀNG CHƯƠNG",
+    "UserLastName": "00004",
+    "UserEnrollName": "PhamHoangChuong",
+    "UserCardNo": "0000000000",
+    "UserHireDay": "2018-06-19T00:00:00.000Z",
+    "UserSex": 0,
+    "UserEnabled": true,
+    "SchID": 1
+  },
+  {
+    "UserEnrollNumber": 5,
+    "UserFullCode": "E0129321",
+    "UserFullName": "ĐỖ HỒNG HẢI",
+    "UserLastName": "00005",
+    "UserEnrollName": "Do Hong Hai",
+    "UserCardNo": "0000000000",
+    "UserHireDay": "2025-08-01T00:00:00.000Z",
+    "UserSex": 0,
+    "UserEnabled": true,
+    "SchID": 1
+  }
+]
+
+========== SAMPLE DATA: VerifyLogs (TOP 10) ==========
+[]
+
+========== TOTAL RECORD COUNTS ==========
+[
+  {
+    "TableName": "CheckInOut",
+    "RecordCount": 120333
+  },
+  {
+    "TableName": "UserInfo",
+    "RecordCount": 69
+  },
+  {
+    "TableName": "Punch",
+    "RecordCount": 0
+  },
+  {
+    "TableName": "VerifyLogs",
+    "RecordCount": 0
+  }
+]
