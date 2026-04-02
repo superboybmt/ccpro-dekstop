@@ -30,6 +30,7 @@ export interface AppUserRecord {
   passwordHash: string
   isFirstLogin: boolean
   isActiveApp: boolean
+  avatarBase64: string | null
 }
 
 export interface AuthRepository {
@@ -98,11 +99,12 @@ export class AuthService {
     }
 
     const requiresPasswordChange = !appUser || appUser.isFirstLogin
+    const avatarBase64 = appUser?.avatarBase64 ?? null
 
     return {
       ok: true,
       requiresPasswordChange,
-      user: this.serializeUser(employee)
+      user: this.serializeUser(employee, avatarBase64)
     }
   }
 
@@ -155,7 +157,7 @@ export class AuthService {
     }
   }
 
-  private serializeUser(employee: EmployeeRecord): AuthUser {
+  private serializeUser(employee: EmployeeRecord, avatarBase64: string | null): AuthUser {
     return {
       userEnrollNumber: employee.userEnrollNumber,
       employeeCode: employee.employeeCode,
@@ -163,7 +165,8 @@ export class AuthService {
       department: employee.department,
       hireDate: employee.hireDate,
       scheduleName: employee.scheduleName,
-      avatarInitials: buildInitials(employee.fullName)
+      avatarInitials: buildInitials(employee.fullName),
+      avatarBase64
     }
   }
 }
@@ -216,7 +219,8 @@ export class SqlAuthRepository implements AuthRepository {
         employee_code,
         password_hash,
         is_first_login,
-        is_active_app
+        is_active_app,
+        avatar_base64
       FROM dbo.app_users
       WHERE user_enroll_number = @userEnrollNumber
     `)
@@ -229,7 +233,8 @@ export class SqlAuthRepository implements AuthRepository {
       employeeCode: row.employee_code,
       passwordHash: row.password_hash,
       isFirstLogin: row.is_first_login,
-      isActiveApp: row.is_active_app
+      isActiveApp: row.is_active_app,
+      avatarBase64: row.avatar_base64
     }
   }
 

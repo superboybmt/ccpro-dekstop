@@ -7,6 +7,7 @@ import { Input } from '@renderer/components/ui/input'
 import { toUiErrorMessage } from '@renderer/lib/errors'
 import { formatDateTime } from '@renderer/lib/format'
 import { useAuth } from '@renderer/providers/auth-provider'
+import { AvatarUploader } from '@renderer/components/ui/avatar-uploader'
 
 const EMPTY_PROFILE: SettingsProfile = {
   fullName: '',
@@ -38,7 +39,7 @@ export const SettingsPage = (): JSX.Element => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const forcePasswordChange = searchParams.get('forcePasswordChange') === '1'
-  const { markPasswordChanged } = useAuth()
+  const { user, markPasswordChanged, refreshSession, updateUserAvatar } = useAuth()
   const [profile, setProfile] = useState<SettingsProfile>(EMPTY_PROFILE)
   const [appInfo, setAppInfo] = useState<AppInfo>(EMPTY_APP_INFO)
   const [deviceSync, setDeviceSync] = useState<DeviceSyncStatus>(EMPTY_DEVICE_SYNC)
@@ -90,6 +91,30 @@ export const SettingsPage = (): JSX.Element => {
     }
   }
 
+  const handleUpdateAvatar = async (base64: string) => {
+    const previousAvatar = user?.avatarBase64 ?? null
+    updateUserAvatar(base64)
+    const result = await window.ccpro.settings.updateAvatar(base64)
+    if (result.ok) {
+      await refreshSession()
+    } else {
+      updateUserAvatar(previousAvatar)
+      setMessage(result.message)
+    }
+  }
+
+  const handleRemoveAvatar = async () => {
+    const previousAvatar = user?.avatarBase64 ?? null
+    updateUserAvatar(null)
+    const result = await window.ccpro.settings.removeAvatar()
+    if (result.ok) {
+      await refreshSession()
+    } else {
+      updateUserAvatar(previousAvatar)
+      setMessage(result.message)
+    }
+  }
+
   const [activeTab, setActiveTab] = useState<'profile' | 'security' | 'system'>('profile')
 
   return (
@@ -127,6 +152,14 @@ export const SettingsPage = (): JSX.Element => {
 
         {activeTab === 'profile' && (
           <Card title="Thông tin cá nhân">
+            <div style={{ marginBottom: '24px' }}>
+              <AvatarUploader
+                initials={user?.avatarInitials ?? '??'}
+                currentAvatarBase64={user?.avatarBase64}
+                onSave={handleUpdateAvatar}
+                onRemove={handleRemoveAvatar}
+              />
+            </div>
             <div className="profile-grid">
               <Input label="Họ tên" value={profile.fullName} readOnly />
               <Input label="Mã nhân viên" value={profile.employeeCode} readOnly />

@@ -21,7 +21,7 @@ export const Sidebar = ({
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
-        <Avatar initials={user?.avatarInitials ?? 'NV'} size="lg" />
+        <Avatar initials={user?.avatarInitials ?? 'NV'} size="lg" src={user?.avatarBase64} />
         <div>
           <p className="sidebar__name">{user?.fullName ?? 'Nhân viên'}</p>
           <p className="sidebar__code">{user?.employeeCode ?? '--'}</p>

@@ -21,6 +21,8 @@ const api: RendererApi = {
   },
   settings: {
     getProfile: () => ipcRenderer.invoke('settings:get-profile'),
+    updateAvatar: (base64) => ipcRenderer.invoke('settings:update-avatar', base64),
+    removeAvatar: () => ipcRenderer.invoke('settings:remove-avatar'),
     getAppInfo: () => ipcRenderer.invoke('settings:get-app-info')
   },
   deviceSync: {
@@ -49,6 +51,10 @@ const api: RendererApi = {
   adminSettings: {
     getRemoteRiskPolicy: () => ipcRenderer.invoke('admin-settings:get-remote-risk-policy'),
     saveRemoteRiskPolicy: (policy) => ipcRenderer.invoke('admin-settings:save-remote-risk-policy', policy)
+  },
+  adminShifts: {
+    listShifts: () => ipcRenderer.invoke('admin-shifts:list'),
+    updateShift: (payload) => ipcRenderer.invoke('admin-shifts:update', payload)
   },
   app: {
     checkForUpdates: () => ipcRenderer.invoke('app:check-for-updates'),

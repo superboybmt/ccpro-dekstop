@@ -2,7 +2,7 @@
   "name": "ccpro-desktop",
   "version": "1.0.2",
   "private": true,
-  "author": "CCPro",
+  "author": "thuyphanbmt@gmail.com",
   "description": "App Cham cong PNJ",
   "main": "out/main/index.js",
   "scripts": {
@@ -54,6 +54,7 @@
     "mssql": "^12.2.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-easy-crop": "^5.5.7",
     "react-router-dom": "^7.9.4",
     "tailwind-merge": "^3.5.0"
   },

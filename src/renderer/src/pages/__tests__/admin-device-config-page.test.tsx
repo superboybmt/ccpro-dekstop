@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { AdminDeviceConfigPage } from '../admin-device-config-page'
 
@@ -88,7 +89,7 @@ describe('AdminDeviceConfigPage', () => {
     await screen.findByText('Mode 5 — Fixed')
   })
 
-  it('renders readback schedule times from statetimezone montime rows instead of falling back to defaults', async () => {
+  it('renders readback schedule times through the shared TimePicker instead of falling back to defaults', async () => {
     window.ccpro = {
       admin: {
         getSession: vi.fn(async () => buildAdminSession()),
@@ -149,7 +150,7 @@ describe('AdminDeviceConfigPage', () => {
       deviceSync: undefined as never
     }
 
-    const { container } = render(
+    render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
         <AdminDeviceConfigPage />
       </MemoryRouter>
@@ -157,8 +158,81 @@ describe('AdminDeviceConfigPage', () => {
 
     await screen.findByText('Mode 2 — Auto')
 
-    const timeInputs = Array.from(container.querySelectorAll('input[type="time"]')) as HTMLInputElement[]
-    expect(timeInputs.map((input) => input.value)).toEqual(['07:00', '11:30', '13:00', '17:30'])
+    expect(screen.getByRole('textbox', { name: 'Lich auto-switch vao ca sang' })).toHaveValue('07:00')
+    expect(screen.getByRole('textbox', { name: 'Lich auto-switch ra nghi trua' })).toHaveValue('11:30')
+    expect(screen.getByRole('textbox', { name: 'Lich auto-switch vao ca chieu' })).toHaveValue('13:00')
+    expect(screen.getByRole('textbox', { name: 'Lich auto-switch tan ca' })).toHaveValue('17:30')
+  })
+
+  it('saves a manually typed general schedule time through the shared TimePicker', async () => {
+    const saveConfig = vi.fn(async () => ({
+      ok: true,
+      message: 'saved'
+    }))
+    const user = userEvent.setup()
+
+    window.ccpro = {
+      admin: {
+        getSession: vi.fn(async () => buildAdminSession()),
+        login: undefined as never,
+        logout: vi.fn(async () => undefined),
+        bootstrap: undefined as never
+      },
+      adminUsers: undefined as never,
+      machineConfig: {
+        getConfig: vi.fn(async () => ({
+          stateMode: 2,
+          schedule: []
+        })),
+        saveConfig,
+        syncTime: vi.fn(async () => ({
+          ok: true,
+          message: 'synced'
+        }))
+      },
+      adminSettings: {
+        getRemoteRiskPolicy: vi.fn(async () => ({
+          mode: 'audit_only'
+        })),
+        saveRemoteRiskPolicy: vi.fn(async () => ({
+          ok: true,
+          message: 'saved',
+          mode: 'audit_only'
+        }))
+      },
+      auth: undefined as never,
+      attendance: undefined as never,
+      notifications: undefined as never,
+      settings: undefined as never,
+      deviceSync: undefined as never
+    }
+
+    render(
+      <MemoryRouter initialEntries={['/admin/device-config']}>
+        <AdminDeviceConfigPage />
+      </MemoryRouter>
+    )
+
+    const startInput = await screen.findByRole('textbox', { name: 'Lich auto-switch vao ca sang' })
+    await user.clear(startInput)
+    await user.type(startInput, '07:32')
+    fireEvent.blur(startInput)
+    const saveButton = screen.getByRole('button', { name: /c\u1ea5u h\u00ecnh/i })
+    fireEvent.click(saveButton)
+
+    await waitFor(() => {
+      expect(saveConfig).toHaveBeenCalledWith(
+        expect.objectContaining({
+          stateMode: 2,
+          schedule: [
+            expect.objectContaining({ stateTimezone: '07:32' }),
+            expect.objectContaining({ stateTimezone: '11:30' }),
+            expect.objectContaining({ stateTimezone: '13:00' }),
+            expect.objectContaining({ stateTimezone: '17:30' })
+          ]
+        })
+      )
+    })
   })
 
   it('loads the remote-risk policy and saves the updated toggle through admin settings IPC', async () => {
@@ -270,5 +344,92 @@ describe('AdminDeviceConfigPage', () => {
     expect(
       screen.getByText('Bản app hiện tại chưa hỗ trợ đồng bộ chính sách bảo mật. Hãy mở lại app sau khi cập nhật build mới.')
     ).toBeInTheDocument()
+  })
+
+  it('saves a manually typed shift time through the shared TimePicker', async () => {
+    const updateShift = vi.fn(async () => ({
+      ok: true,
+      message: 'saved'
+    }))
+    const listShifts = vi.fn(async () => ({
+      shifts: [
+        {
+          shiftId: 1,
+          shiftCode: 'HC',
+          shiftName: 'Hanh chanh',
+          onduty: '07:30',
+          offduty: '17:30',
+          onLunch: '12:00',
+          offLunch: '13:00'
+        }
+      ]
+    }))
+    const user = userEvent.setup()
+
+    window.ccpro = {
+      admin: {
+        getSession: vi.fn(async () => buildAdminSession()),
+        login: undefined as never,
+        logout: vi.fn(async () => undefined),
+        bootstrap: undefined as never
+      },
+      adminUsers: undefined as never,
+      adminShifts: {
+        listShifts,
+        updateShift
+      },
+      machineConfig: {
+        getConfig: vi.fn(async () => ({
+          stateMode: 2,
+          schedule: []
+        })),
+        saveConfig: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
+        syncTime: vi.fn(async () => ({
+          ok: true,
+          message: 'synced'
+        }))
+      },
+      adminSettings: {
+        getRemoteRiskPolicy: vi.fn(async () => ({
+          mode: 'audit_only'
+        })),
+        saveRemoteRiskPolicy: vi.fn(async () => ({
+          ok: true,
+          message: 'saved',
+          mode: 'audit_only'
+        }))
+      },
+      auth: undefined as never,
+      attendance: undefined as never,
+      notifications: undefined as never,
+      settings: undefined as never,
+      deviceSync: undefined as never
+    }
+
+    render(
+      <MemoryRouter initialEntries={['/admin/device-config']}>
+        <AdminDeviceConfigPage />
+      </MemoryRouter>
+    )
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Hệ thống' }))
+
+    const startInput = await screen.findByRole('textbox', { name: 'Ca HC vao ca' })
+    await user.clear(startInput)
+    await user.type(startInput, '07:32')
+    fireEvent.blur(startInput)
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu thay đổi' }))
+
+    await waitFor(() => {
+      expect(updateShift).toHaveBeenCalledWith(
+        expect.objectContaining({
+          shiftId: 1,
+          onduty: '07:32'
+        })
+      )
+    })
   })
 })

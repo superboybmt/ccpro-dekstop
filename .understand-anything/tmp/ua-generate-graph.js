@@ -110,7 +110,7 @@ try {
   
   const meta = {
       createdAt: new Date().toISOString(),
-      commitHash: "dc09078d80ce155475eb7df76f73e599c4bf7eb5",
+      commitHash: "9d8f969326971597bcdc31028e0d72f489dbbf0e",
       version: "1.0.0",
       projectComplexity: scan.estimatedComplexity,
       totalFiles: scan.totalFiles

@@ -106,6 +106,20 @@ export class SessionStore {
     })
   }
 
+  updateAvatar(base64: string | undefined): void {
+    const session = this.store.get('session')
+    if (!session?.user) return
+
+    this.store.set('session', {
+      ...session,
+      user: {
+        ...session.user,
+        avatarBase64: base64
+      },
+      lastActivityAt: formatAppIsoOffset(new Date())
+    })
+  }
+
   completePasswordChange(): void {
     const session = this.store.get('session')
     if (!session) return

@@ -236,6 +236,12 @@ export const initializeAppDatabase = async (): Promise<void> => {
       ADD updated_by_admin_id INT NULL
     END
 
+    IF COL_LENGTH(N'dbo.app_users', N'avatar_base64') IS NULL
+    BEGIN
+      ALTER TABLE dbo.app_users
+      ADD avatar_base64 NVARCHAR(MAX) NULL
+    END
+
     IF OBJECT_ID(N'dbo.device_config_audit_logs', N'U') IS NULL
     BEGIN
       CREATE TABLE dbo.device_config_audit_logs (
@@ -391,6 +397,38 @@ export const initializeAppDatabase = async (): Promise<void> => {
     BEGIN
       CREATE INDEX IX_remote_risk_punch_audit_logs_user_checked
       ON dbo.remote_risk_punch_audit_logs(user_enroll_number, checked_at DESC)
+    END
+
+    IF OBJECT_ID(N'dbo.shift_audit_logs', N'U') IS NULL
+    BEGIN
+      CREATE TABLE dbo.shift_audit_logs (
+        id BIGINT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+        admin_id INT NOT NULL,
+        shift_id INT NOT NULL,
+        before_json NVARCHAR(MAX) NOT NULL,
+        after_json NVARCHAR(MAX) NOT NULL,
+        created_at DATETIME2 NOT NULL DEFAULT DATEADD(HOUR, 7, SYSUTCDATETIME())
+      )
+    END
+
+    IF NOT EXISTS (
+      SELECT 1
+      FROM sys.indexes
+      WHERE name = N'IX_shift_audit_logs_admin_created'
+    )
+    BEGIN
+      CREATE INDEX IX_shift_audit_logs_admin_created
+      ON dbo.shift_audit_logs(admin_id, created_at DESC)
+    END
+
+    IF NOT EXISTS (
+      SELECT 1
+      FROM sys.indexes
+      WHERE name = N'IX_shift_audit_logs_shift_created'
+    )
+    BEGIN
+      CREATE INDEX IX_shift_audit_logs_shift_created
+      ON dbo.shift_audit_logs(shift_id, created_at DESC)
     END
 
     IF NOT EXISTS (

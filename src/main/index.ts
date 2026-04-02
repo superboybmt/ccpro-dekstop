@@ -50,6 +50,7 @@ const createWindow = (): void => {
     minHeight: 720,
     show: false,
     autoHideMenuBar: true,
+    icon: join(__dirname, '../../resources/icon.png'),
     title: 'App Chấm công PNJ',
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -101,7 +102,7 @@ const createWindow = (): void => {
 }
 
 const createTray = (): void => {
-  const trayIcon = nativeImage.createFromPath(process.execPath)
+  const trayIcon = nativeImage.createFromPath(join(__dirname, '../../resources/icon.png'))
   if (trayIcon.isEmpty()) {
     throw new Error('Tray icon is not configured')
   }

@@ -5,6 +5,7 @@ import type {
   AdminResetAdminPasswordPayload,
   AdminResetUserPasswordPayload,
   AdminSetUserActivePayload,
+  AdminShiftUpdatePayload,
   ChangePasswordPayload,
   DeviceConfigPayload,
   HistoryFilter,
@@ -26,6 +27,8 @@ import { HistoryService, SqlHistoryRepository } from '../services/history-servic
 import { ZkMachineConfigService } from '../services/machine-config-service'
 import { NotificationService, SqlNotificationRepository } from '../services/notification-service'
 import { SettingsService } from '../services/settings-service'
+import { AdminShiftService, SqlAdminShiftRepository } from '../services/admin-shift-service'
+import { AvatarService } from '../services/avatar-service'
 import { UpdateService } from '../services/update-service'
 import type { RegisterIpcHandlersOptions } from '../startup'
 import { appConfig } from '../config/app-config'
@@ -91,6 +94,8 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
   const historyService = new HistoryService(new SqlHistoryRepository())
   const notificationService = new NotificationService(new SqlNotificationRepository())
   const settingsService = new SettingsService()
+  const avatarService = new AvatarService()
+  const adminShiftService = new AdminShiftService(new SqlAdminShiftRepository())
   const updateService = new UpdateService()
   const deviceSyncService =
     options?.deviceSyncService ??
@@ -178,6 +183,26 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
     await ensureAppReady()
     const session = ensureAuthenticated(sessionStore)
     return settingsService.getProfile(session.user!.userEnrollNumber)
+  })
+
+  ipcMain.handle('settings:update-avatar', async (_event, base64: string) => {
+    await ensureAppReady()
+    const session = ensureAuthenticated(sessionStore)
+    const result = await avatarService.updateAvatar(session.user!.userEnrollNumber, base64)
+    if (result.ok) {
+      sessionStore.updateAvatar(base64)
+    }
+    return result
+  })
+
+  ipcMain.handle('settings:remove-avatar', async () => {
+    await ensureAppReady()
+    const session = ensureAuthenticated(sessionStore)
+    const result = await avatarService.removeAvatar(session.user!.userEnrollNumber)
+    if (result.ok) {
+      sessionStore.updateAvatar(undefined)
+    }
+    return result
   })
 
   ipcMain.handle('settings:get-app-info', async () => ({
@@ -289,6 +314,18 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
     await ensureAppReady()
     ensureAdminAuthorized(sessionStore)
     return adminSettingsService.saveRemoteRiskPolicy(policy)
+  })
+
+  ipcMain.handle('admin-shifts:list', async () => {
+    await ensureAppReady()
+    ensureAdminAuthorized(sessionStore)
+    return adminShiftService.listShifts()
+  })
+
+  ipcMain.handle('admin-shifts:update', async (_event, payload: AdminShiftUpdatePayload) => {
+    await ensureAppReady()
+    const session = ensureAdminAuthorized(sessionStore)
+    return adminShiftService.updateShift(payload, session.admin!.id)
   })
 
   ipcMain.handle('app:check-for-updates', async () => {

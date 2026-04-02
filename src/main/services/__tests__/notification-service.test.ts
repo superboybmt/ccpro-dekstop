@@ -245,6 +245,45 @@ describe('NotificationService', () => {
     ])
   })
 
+  it('does not fall back to raw I/O when WiseEye uses 00:00 as a missing lunch-start sentinel', async () => {
+    const repo = createRepository({
+      punches: [
+        { workDate: '2026-03-27', time: parseAppDateTime('2026-03-27 07:00:55'), type: 'O' },
+        { workDate: '2026-03-27', time: parseAppDateTime('2026-03-27 11:56:34'), type: 'O' },
+        { workDate: '2026-03-27', time: parseAppDateTime('2026-03-27 12:07:48'), type: 'O' },
+        { workDate: '2026-03-27', time: parseAppDateTime('2026-03-27 13:00:00'), type: 'I' },
+        { workDate: '2026-03-27', time: parseAppDateTime('2026-03-27 17:28:46'), type: 'O' }
+      ],
+      dayConfigsByDate: {
+        '2026-03-27': {
+          shift: {
+            shiftName: 'Hanh chanh',
+            shiftCode: 'HC',
+            onduty: '07:30',
+            offduty: '17:30',
+            onLunch: '00:00',
+            offLunch: '13:00',
+            workingMinutes: 600,
+            lateGraceMinutes: 0,
+            isAbsentSaturday: false,
+            isAbsentSunday: false
+          },
+          inOutId: 1,
+          inOutCode: 'TD-HC',
+          inOutName: 'Tu dong trong ngay',
+          inOutMode: 0,
+          windows: []
+        }
+      }
+    })
+
+    const service = new NotificationService(repo.repository)
+    const notifications = await service.list(1)
+
+    expect(repo.getReconciled()).toEqual([])
+    expect(notifications).toEqual([])
+  })
+
   it('resolves day config per work date instead of reusing one shift for the full range', async () => {
     const repo = createRepository({
       punches: [

@@ -96,14 +96,16 @@ export const LoginPage = (): JSX.Element => {
           >
             Liên hệ IT Support
           </Button>
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={() => navigate('/admin/login')}
-            style={{ fontSize: '11px', opacity: 0.6, marginTop: '4px' }}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/admin/login')
+            }}
+            style={{ fontSize: '12px', opacity: 0.7, marginTop: '8px', textDecoration: 'underline', color: 'inherit' }}
           >
             Đăng nhập Admin
-          </Button>
+          </a>
         </div>
       </Card>
     </div>

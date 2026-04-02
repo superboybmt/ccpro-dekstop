@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Clock, LogOut, MonitorCog, RefreshCw, Save, Sunrise, Sun, Coffee, Moon, Loader2, Settings, ShieldCheck, UserCog } from 'lucide-react'
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
+import { TimePicker } from '@renderer/components/ui/time-picker'
 import type {
   AdminSessionState,
+  AdminShiftItem,
   AutoSwitchState,
   DeviceConfig,
   DeviceConfigResult,
@@ -75,6 +77,34 @@ const parseStateName = (raw: string, fallback: string): string => {
   }
 }
 
+const getShiftTimeAriaLabel = (shiftCode: string, field: 'onduty' | 'onLunch' | 'offLunch' | 'offduty'): string => {
+  switch (field) {
+    case 'onduty':
+      return `Ca ${shiftCode} vao ca`
+    case 'onLunch':
+      return `Ca ${shiftCode} nghi trua`
+    case 'offLunch':
+      return `Ca ${shiftCode} het nghi trua`
+    case 'offduty':
+      return `Ca ${shiftCode} tan ca`
+  }
+}
+
+const getScheduleTimeAriaLabel = (index: number): string => {
+  switch (index) {
+    case 0:
+      return 'Lich auto-switch vao ca sang'
+    case 1:
+      return 'Lich auto-switch ra nghi trua'
+    case 2:
+      return 'Lich auto-switch vao ca chieu'
+    case 3:
+      return 'Lich auto-switch tan ca'
+    default:
+      return `Lich auto-switch moc ${index + 1}`
+  }
+}
+
 type AdminSettingsBridge = {
   getRemoteRiskPolicy: () => Promise<{ mode: RemoteRiskPolicyMode }>
   saveRemoteRiskPolicy: (
@@ -124,13 +154,12 @@ const ScheduleEditor = ({ times, originalStates, onChange, disabled }: ScheduleE
             {stateName}
           </div>
           <div className="admin-schedule-row__time">
-            <input
-              type="time"
-              className="admin-time-input"
+            <TimePicker
+              className="admin-schedule-time-picker"
+              ariaLabel={getScheduleTimeAriaLabel(index)}
               value={currentTime}
-              onChange={(e) => onChange(index, e.target.value)}
+              onChange={(value) => onChange(index, value ?? currentTime)}
               disabled={disabled}
-              style={{ borderColor: meta.color }}
             />
           </div>
         </div>
@@ -158,6 +187,14 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
   // Form state
   const [selectedMode, setSelectedMode] = useState(0)
   const [editTimes, setEditTimes] = useState<string[]>(['07:30', '11:30', '13:00', '17:30'])
+
+  // Shift management state
+  const [editableShifts, setEditableShifts] = useState<AdminShiftItem[]>([])
+  const originalShiftsRef = useRef<AdminShiftItem[]>([])
+  const [shiftLoading, setShiftLoading] = useState(false)
+  const [shiftError, setShiftError] = useState<string | null>(null)
+  const [shiftSaving, setShiftSaving] = useState(false)
+  const [shiftSaveMessage, setShiftSaveMessage] = useState<{ ok: boolean; text: string } | null>(null)
 
   const loadData = useCallback(async () => {
     setLoading(true)
@@ -312,6 +349,85 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
   const handleLogout = async (): Promise<void> => {
     await window.ccpro.admin.logout()
     navigate('/admin/login', { replace: true })
+  }
+
+  // --- Shift management ---
+  const loadShifts = useCallback(async () => {
+    setShiftLoading(true)
+    setShiftError(null)
+    setShiftSaveMessage(null)
+
+    try {
+      const result = await window.ccpro.adminShifts.listShifts()
+      setEditableShifts(result.shifts)
+      originalShiftsRef.current = result.shifts.map((s) => ({ ...s }))
+    } catch (error) {
+      setShiftError(`Không thể tải ca: ${error instanceof Error ? error.message : String(error)}`)
+    } finally {
+      setShiftLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (activeTab === 'system') {
+      void loadShifts()
+    }
+  }, [activeTab, loadShifts])
+
+  const handleShiftFieldChange = (shiftId: number, field: keyof AdminShiftItem, value: string | null): void => {
+    setEditableShifts((prev) =>
+      prev.map((s) => (s.shiftId === shiftId ? { ...s, [field]: value } : s))
+    )
+  }
+
+  const isShiftDirty = (shiftId: number): boolean => {
+    const original = originalShiftsRef.current.find((s) => s.shiftId === shiftId)
+    const edited = editableShifts.find((s) => s.shiftId === shiftId)
+    if (!original || !edited) return false
+    return (
+      original.onduty !== edited.onduty ||
+      original.offduty !== edited.offduty ||
+      original.onLunch !== edited.onLunch ||
+      original.offLunch !== edited.offLunch
+    )
+  }
+
+  const dirtyShiftIds = editableShifts.filter((s) => isShiftDirty(s.shiftId)).map((s) => s.shiftId)
+  const hasDirtyShifts = dirtyShiftIds.length > 0
+
+  const handleSaveShifts = async (): Promise<void> => {
+    setShiftSaving(true)
+    setShiftSaveMessage(null)
+
+    try {
+      const dirtyShifts = editableShifts.filter((s) => isShiftDirty(s.shiftId))
+      const results: string[] = []
+
+      for (const shift of dirtyShifts) {
+        const result = await window.ccpro.adminShifts.updateShift({
+          shiftId: shift.shiftId,
+          onduty: shift.onduty,
+          offduty: shift.offduty,
+          onLunch: shift.onLunch,
+          offLunch: shift.offLunch
+        })
+        results.push(result.message)
+      }
+
+      // Refresh data from server after save
+      const freshData = await window.ccpro.adminShifts.listShifts()
+      setEditableShifts(freshData.shifts)
+      originalShiftsRef.current = freshData.shifts.map((s) => ({ ...s }))
+
+      setShiftSaveMessage({ ok: true, text: `Đã lưu ${dirtyShifts.length} ca thành công` })
+    } catch (error) {
+      setShiftSaveMessage({
+        ok: false,
+        text: `Lỗi: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setShiftSaving(false)
+    }
   }
 
   if (loading) {
@@ -476,33 +592,176 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
         ) : null}
 
         {activeTab === 'system' ? (
-        <Card
-          title="Hệ thống"
-          description="Quản lý thời gian và trạng thái thiết bị chấm công"
-        >
-          <Button
-            size="md"
-            variant="secondary"
-            onClick={() => void handleSyncTime()}
-            disabled={syncingTime || loading}
-          >
-            {syncingTime ? <Loader2 className="admin-spinner" size={14} /> : <Clock size={14} />}
-            {syncingTime ? 'Đang đồng bộ...' : 'Đồng bộ Giờ máy chấm công'}
-          </Button>
+        <>
+        {/* Compact Đồng bộ Giờ Card */}
+        <Card title="Đồng bộ Giờ" description="Cập nhật giờ máy chấm công theo Server">
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <Button
+              size="md"
+              variant="secondary"
+              onClick={() => void handleSyncTime()}
+              disabled={syncingTime || loading}
+            >
+              {syncingTime ? <Loader2 className="admin-spinner" size={14} /> : <Clock size={14} />}
+              {syncingTime ? 'Đang đồng bộ...' : 'Đồng bộ Giờ'}
+            </Button>
+            {syncMessage ? (
+              <span
+                className={`inline-message ${syncMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+                style={{ fontSize: '12px' }}
+              >
+                {syncMessage.text}
+              </span>
+            ) : null}
+          </div>
+        </Card>
 
-          <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '8px' }}>
-            Cập nhật giờ trên máy chấm công theo giờ của Server.
+        {/* Ca làm việc Card */}
+        <Card title="Ca làm việc" description="Chỉnh giờ vào/ra và nghỉ trưa trực tiếp trên WiseEye DB">
+          <p style={{
+            fontSize: '11px',
+            color: 'var(--warning-strong)',
+            margin: '0 0 12px',
+            padding: '6px 10px',
+            background: 'rgba(245, 158, 11, 0.08)',
+            borderRadius: '6px',
+            borderLeft: '3px solid var(--warning-strong)'
+          }}>
+            ⚠️ Thay đổi ca ảnh hưởng đến tất cả nhân viên dùng ca này. Mọi thay đổi được ghi audit trail.
           </p>
 
-          {syncMessage ? (
-            <p
-              className={`inline-message ${syncMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
-              style={{ marginTop: '12px' }}
-            >
-              {syncMessage.text}
+          {shiftLoading ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '20px 0' }}>
+              <Loader2 className="admin-spinner" size={18} style={{ color: 'var(--primary-strong)' }} />
+              <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>Đang tải danh sách ca...</span>
+            </div>
+          ) : shiftError ? (
+            <div style={{ padding: '12px 0' }}>
+              <p className="inline-message inline-message--error">{shiftError}</p>
+              <Button size="sm" variant="secondary" onClick={() => void loadShifts()} style={{ marginTop: '8px' }}>
+                <RefreshCw size={12} /> Thử lại
+              </Button>
+            </div>
+          ) : editableShifts.length === 0 ? (
+            <p style={{ color: 'var(--text-muted)', fontSize: '13px', padding: '16px 0' }}>
+              Không tìm thấy ca làm việc
             </p>
-          ) : null}
+          ) : (
+            <>
+              <div className="admin-shift-table">
+                <div className="admin-shift-table__header">
+                  <span>Ca</span>
+                  <span>Mã</span>
+                  <span>Vào ca</span>
+                  <span>Nghỉ trưa</span>
+                  <span>Hết nghỉ trưa</span>
+                  <span>Tan ca</span>
+                </div>
+                {editableShifts.map((shift) => {
+                  const isDirty = isShiftDirty(shift.shiftId)
+                  return (
+                    <div
+                      key={shift.shiftId}
+                      className={`admin-shift-row ${isDirty ? 'admin-shift-row--dirty' : ''}`}
+                    >
+                      <div className="admin-shift-row__name" title={shift.shiftName}>
+                        {shift.shiftName}
+                      </div>
+                      <div className="admin-shift-row__code">{shift.shiftCode}</div>
+                      {/* Vào ca */}
+                      <div className="admin-shift-row__time">
+                        <TimePicker
+                          className="admin-shift-time-picker"
+                          ariaLabel={getShiftTimeAriaLabel(shift.shiftCode, 'onduty')}
+                          value={shift.onduty}
+                          onChange={(value) => handleShiftFieldChange(shift.shiftId, 'onduty', value ?? shift.onduty)}
+                          disabled={shiftSaving}
+                        />
+                      </div>
+                      {/* Nghỉ trưa */}
+                      <div className="admin-shift-row__time">
+                        {shift.onLunch !== null ? (
+                          <TimePicker
+                            className="admin-shift-time-picker"
+                            ariaLabel={getShiftTimeAriaLabel(shift.shiftCode, 'onLunch')}
+                            nullable
+                            value={shift.onLunch}
+                            onChange={(value) => handleShiftFieldChange(shift.shiftId, 'onLunch', value)}
+                            disabled={shiftSaving}
+                          />
+                        ) : (
+                          <button
+                            className="admin-shift-add-btn"
+                            onClick={() => handleShiftFieldChange(shift.shiftId, 'onLunch', '11:30')}
+                            disabled={shiftSaving}
+                          >
+                            --
+                          </button>
+                        )}
+                      </div>
+                      {/* Hết nghỉ trưa */}
+                      <div className="admin-shift-row__time">
+                        {shift.offLunch !== null ? (
+                          <TimePicker
+                            className="admin-shift-time-picker"
+                            ariaLabel={getShiftTimeAriaLabel(shift.shiftCode, 'offLunch')}
+                            nullable
+                            value={shift.offLunch}
+                            onChange={(value) => handleShiftFieldChange(shift.shiftId, 'offLunch', value)}
+                            disabled={shiftSaving}
+                          />
+                        ) : (
+                          <button
+                            className="admin-shift-add-btn"
+                            onClick={() => handleShiftFieldChange(shift.shiftId, 'offLunch', '13:00')}
+                            disabled={shiftSaving}
+                          >
+                            --
+                          </button>
+                        )}
+                      </div>
+                      {/* Tan ca */}
+                      <div className="admin-shift-row__time">
+                        <TimePicker
+                          className="admin-shift-time-picker"
+                          ariaLabel={getShiftTimeAriaLabel(shift.shiftCode, 'offduty')}
+                          value={shift.offduty}
+                          onChange={(value) => handleShiftFieldChange(shift.shiftId, 'offduty', value ?? shift.offduty)}
+                          disabled={shiftSaving}
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '12px' }}>
+                <Button
+                  size="md"
+                  onClick={() => void handleSaveShifts()}
+                  disabled={shiftSaving || !hasDirtyShifts}
+                >
+                  {shiftSaving ? <Loader2 className="admin-spinner" size={14} /> : <Save size={14} />}
+                  {shiftSaving ? 'Đang lưu...' : 'Lưu thay đổi'}
+                </Button>
+                {hasDirtyShifts ? (
+                  <span style={{ fontSize: '12px', color: 'var(--warning-strong)' }}>
+                    {dirtyShiftIds.length} ca đã thay đổi
+                  </span>
+                ) : null}
+                {shiftSaveMessage ? (
+                  <span
+                    className={`inline-message ${shiftSaveMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+                    style={{ fontSize: '12px' }}
+                  >
+                    {shiftSaveMessage.text}
+                  </span>
+                ) : null}
+              </div>
+            </>
+          )}
         </Card>
+        </>
         ) : null}
 
         {activeTab === 'security' ? (

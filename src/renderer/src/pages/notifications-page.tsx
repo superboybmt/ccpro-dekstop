@@ -61,7 +61,7 @@ export const NotificationsPage = (): JSX.Element => {
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 280px', gap: '12px', flex: 1, minHeight: 0 }}>
           
           {/* Left Column: Notification List */}
-          <Card style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden', padding: 0 }}>
+          <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden', padding: 0 }}>
             {!loading && items.length === 0 ? (
               <div style={{ padding: '48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
                 <Bell size={48} style={{ color: 'var(--border-default)', marginBottom: '16px' }} />
@@ -69,27 +69,20 @@ export const NotificationsPage = (): JSX.Element => {
                 <p className="muted-line" style={{ margin: 0 }}>Bạn đã đọc tất cả thông báo hiện tại.</p>
               </div>
             ) : (
-              <div className="notification-list" style={{ flex: 1, overflowY: 'auto' }}>
+              <div className="notification-list" style={{ flex: 1, overflowY: 'auto', alignContent: 'start' }}>
                 {items.map((item) => (
                   <button
                     key={item.id}
                     className={`notification-card ${item.isRead ? '' : 'notification-card--unread'}`}
-                    style={{ 
-                      borderRadius: 0, 
-                      borderBottom: '1px solid var(--bg-hover)', 
-                      padding: '14px 16px',
-                      width: '100%',
-                      textAlign: 'left',
-                      display: 'block'
-                    }}
                     onClick={() => void window.ccpro.notifications.markRead(item.id).then(loadNotifications)}
                   >
+                    {!item.isRead && <div className="notification-card__new-dot" />}
                     <div className="notification-card__body">
                       <div>
-                        <strong style={{ fontSize: '15px', color: 'var(--text-main)', display: 'block', marginBottom: '4px' }}>{item.title}</strong>
-                        <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{item.description}</p>
+                        <strong>{item.title}</strong>
+                        <p>{item.description}</p>
                       </div>
-                      <span style={{ fontSize: '12px', color: 'var(--text-muted)', whiteSpace: 'nowrap', marginLeft: '24px' }}>
+                      <span className="notification-card__time">
                         {formatRelativeTime(item.createdAt)}
                       </span>
                     </div>
@@ -97,7 +90,7 @@ export const NotificationsPage = (): JSX.Element => {
                 ))}
               </div>
             )}
-          </Card>
+          </div>
 
           {/* Right Column: Stats & Settings */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', minHeight: 0 }}>

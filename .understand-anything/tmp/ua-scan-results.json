@@ -92,6 +92,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": ".understand-anything/intermediate/scan-result.json",
+      "language": "json",
+      "sizeLines": 1200,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/knowledge-graph.json",
+      "language": "json",
+      "sizeLines": 3648,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/meta.json",
+      "language": "json",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-format-scan.js",
+      "language": "javascript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-generate-graph.js",
+      "language": "javascript",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
       "path": ".understand-anything/tmp/ua-project-scan.js",
       "language": "javascript",
       "sizeLines": 192,
@@ -100,8 +130,14 @@
     {
       "path": ".understand-anything/tmp/ua-scan-results.json",
       "language": "json",
-      "sizeLines": 34,
+      "sizeLines": 1202,
       "fileCategory": "config"
+    },
+    {
+      "path": "docs/admin-password-recovery.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
     },
     {
       "path": "docs/design-specs.md",
@@ -146,6 +182,30 @@
       "fileCategory": "config"
     },
     {
+      "path": "openspec/changes/admin-change-password/design.md",
+      "language": "markdown",
+      "sizeLines": 112,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/proposal.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/tasks.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/changes/admin-device-config/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
@@ -182,6 +242,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/admin-shift-editor/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/design.md",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/proposal.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/tasks.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/changes/admin-user-management/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
@@ -209,6 +299,36 @@
       "path": "openspec/changes/admin-user-management/tasks.md",
       "language": "markdown",
       "sizeLines": 32,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/design.md",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/proposal.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/tasks.md",
+      "language": "markdown",
+      "sizeLines": 16,
       "fileCategory": "docs"
     },
     {
@@ -308,6 +428,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/manual-update-notification/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/design.md",
+      "language": "markdown",
+      "sizeLines": 44,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/proposal.md",
+      "language": "markdown",
+      "sizeLines": 25,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/tasks.md",
+      "language": "markdown",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/changes/sync-device-time/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
@@ -338,6 +488,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/update-avatar/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/update-avatar/design.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/proposal.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/tasks.md",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/config.yaml",
       "language": "yaml",
       "sizeLines": 21,
@@ -346,7 +526,7 @@
     {
       "path": "package.json",
       "language": "json",
-      "sizeLines": 79,
+      "sizeLines": 81,
       "fileCategory": "config"
     },
     {
@@ -406,7 +586,7 @@
     {
       "path": "scripts/init-db.mjs",
       "language": "",
-      "sizeLines": 71,
+      "sizeLines": 101,
       "fileCategory": "code"
     },
     {
@@ -426,6 +606,12 @@
       "language": "",
       "sizeLines": 3,
       "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/reset-admin-password.mjs",
+      "language": "",
+      "sizeLines": 113,
+      "fileCategory": "code"
     },
     {
       "path": "scripts/tests/test_device_sync_worker.py",
@@ -455,6 +641,12 @@
       "path": "scripts/tests/test_zk_state_mode.py",
       "language": "python",
       "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/update-graph.mjs",
+      "language": "",
+      "sizeLines": 86,
       "fileCategory": "code"
     },
     {
@@ -508,13 +700,13 @@
     {
       "path": "src/main/db/init.ts",
       "language": "typescript",
-      "sizeLines": 420,
+      "sizeLines": 505,
       "fileCategory": "code"
     },
     {
       "path": "src/main/db/sql.ts",
       "language": "typescript",
-      "sizeLines": 47,
+      "sizeLines": 90,
       "fileCategory": "code"
     },
     {
@@ -526,25 +718,31 @@
     {
       "path": "src/main/ipc/__tests__/register-handlers.test.ts",
       "language": "typescript",
-      "sizeLines": 241,
+      "sizeLines": 328,
       "fileCategory": "code"
     },
     {
       "path": "src/main/ipc/register-handlers.ts",
       "language": "typescript",
-      "sizeLines": 244,
+      "sizeLines": 340,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/admin-auth-service.test.ts",
       "language": "typescript",
-      "sizeLines": 61,
+      "sizeLines": 269,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/admin-settings-service.test.ts",
       "language": "typescript",
       "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-shift-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 101,
       "fileCategory": "code"
     },
     {
@@ -614,15 +812,27 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/services/__tests__/update-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/services/admin-auth-service.ts",
       "language": "typescript",
-      "sizeLines": 171,
+      "sizeLines": 449,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/admin-settings-service.ts",
       "language": "typescript",
       "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/admin-shift-service.ts",
+      "language": "typescript",
+      "sizeLines": 191,
       "fileCategory": "code"
     },
     {
@@ -634,13 +844,19 @@
     {
       "path": "src/main/services/attendance-service.ts",
       "language": "typescript",
-      "sizeLines": 406,
+      "sizeLines": 407,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/auth-service.ts",
       "language": "typescript",
-      "sizeLines": 291,
+      "sizeLines": 296,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/avatar-service.ts",
+      "language": "typescript",
+      "sizeLines": 75,
       "fileCategory": "code"
     },
     {
@@ -692,9 +908,15 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/services/update-service.ts",
+      "language": "typescript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/session-store.ts",
       "language": "typescript",
-      "sizeLines": 163,
+      "sizeLines": 194,
       "fileCategory": "code"
     },
     {
@@ -706,7 +928,7 @@
     {
       "path": "src/preload/index.ts",
       "language": "typescript",
-      "sizeLines": 55,
+      "sizeLines": 75,
       "fileCategory": "code"
     },
     {
@@ -718,13 +940,13 @@
     {
       "path": "src/renderer/src/App.tsx",
       "language": "typescript",
-      "sizeLines": 85,
+      "sizeLines": 89,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/app/__tests__/full-flow.test.tsx",
       "language": "typescript",
-      "sizeLines": 215,
+      "sizeLines": 223,
       "fileCategory": "code"
     },
     {
@@ -740,9 +962,21 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "language": "typescript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/avatar-uploader.tsx",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/components/ui/avatar.tsx",
       "language": "typescript",
-      "sizeLines": 11,
+      "sizeLines": 20,
       "fileCategory": "code"
     },
     {
@@ -770,6 +1004,12 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/components/UpdateNotifier.tsx",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/lib/errors.ts",
       "language": "typescript",
       "sizeLines": 26,
@@ -779,6 +1019,12 @@
       "path": "src/renderer/src/lib/format.ts",
       "language": "typescript",
       "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/image-utils.ts",
+      "language": "typescript",
+      "sizeLines": 63,
       "fileCategory": "code"
     },
     {
@@ -794,6 +1040,12 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
       "language": "typescript",
       "sizeLines": 275,
@@ -802,13 +1054,13 @@
     {
       "path": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
       "language": "typescript",
-      "sizeLines": 190,
+      "sizeLines": 202,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
       "language": "typescript",
-      "sizeLines": 175,
+      "sizeLines": 242,
       "fileCategory": "code"
     },
     {
@@ -818,27 +1070,33 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/pages/admin-account-page.tsx",
+      "language": "typescript",
+      "sizeLines": 305,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/pages/admin-device-config-page.tsx",
       "language": "typescript",
-      "sizeLines": 556,
+      "sizeLines": 823,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/admin-login-page.tsx",
       "language": "typescript",
-      "sizeLines": 92,
+      "sizeLines": 104,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/admin-users-page.tsx",
       "language": "typescript",
-      "sizeLines": 520,
+      "sizeLines": 529,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/dashboard-page.tsx",
       "language": "typescript",
-      "sizeLines": 193,
+      "sizeLines": 228,
       "fileCategory": "code"
     },
     {
@@ -850,31 +1108,31 @@
     {
       "path": "src/renderer/src/pages/login-page.tsx",
       "language": "typescript",
-      "sizeLines": 112,
+      "sizeLines": 114,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/notifications-page.tsx",
       "language": "typescript",
-      "sizeLines": 123,
+      "sizeLines": 116,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/settings-page.tsx",
       "language": "typescript",
-      "sizeLines": 216,
+      "sizeLines": 249,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/providers/auth-provider.tsx",
       "language": "typescript",
-      "sizeLines": 81,
+      "sizeLines": 94,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/styles.css",
       "language": "css",
-      "sizeLines": 1231,
+      "sizeLines": 1506,
       "fileCategory": "markup"
     },
     {
@@ -892,13 +1150,19 @@
     {
       "path": "src/shared/api.ts",
       "language": "typescript",
-      "sizeLines": 280,
+      "sizeLines": 345,
       "fileCategory": "code"
     },
     {
       "path": "src/shared/app-time.ts",
       "language": "typescript",
       "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/shared/semver.ts",
+      "language": "typescript",
+      "sizeLines": 20,
       "fileCategory": "code"
     },
     {
@@ -911,6 +1175,12 @@
       "path": "tsconfig.json",
       "language": "json",
       "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "version.json",
+      "language": "json",
+      "sizeLines": 6,
       "fileCategory": "config"
     },
     {
@@ -932,9 +1202,36 @@
       "fileCategory": "docs"
     }
   ],
-  "totalFiles": 152,
+  "totalFiles": 197,
   "estimatedComplexity": "large",
   "importMap": {
+    "openspec/changes/admin-shift-editor/.openspec.yaml": [],
+    "openspec/changes/admin-shift-editor/design.md": [],
+    "openspec/changes/admin-shift-editor/proposal.md": [],
+    "openspec/changes/admin-shift-editor/specs/shift-management/spec.md": [],
+    "openspec/changes/admin-shift-editor/tasks.md": [],
+    "openspec/changes/update-avatar/.openspec.yaml": [],
+    "openspec/changes/update-avatar/design.md": [],
+    "openspec/changes/update-avatar/proposal.md": [],
+    "openspec/changes/update-avatar/specs/user-avatar/spec.md": [],
+    "openspec/changes/update-avatar/tasks.md": [],
+    "src/main/services/__tests__/admin-shift-service.test.ts": [
+      "src/main/services/admin-shift-service.ts"
+    ],
+    "src/main/services/admin-shift-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/avatar-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/renderer/src/components/ui/avatar-uploader.tsx": [
+      "src/renderer/src/components/ui/avatar.tsx",
+      "src/renderer/src/components/ui/button.tsx",
+      "src/renderer/src/lib/image-utils.ts"
+    ],
+    "src/renderer/src/lib/image-utils.ts": [],
     ".agent/skills/openspec-apply-change/SKILL.md": [],
     ".agent/skills/openspec-archive-change/SKILL.md": [],
     ".agent/skills/openspec-explore/SKILL.md": [],
@@ -947,13 +1244,25 @@
     ".codex/skills/openspec-archive-change/SKILL.md": [],
     ".codex/skills/openspec-explore/SKILL.md": [],
     ".codex/skills/openspec-propose/SKILL.md": [],
+    ".understand-anything/intermediate/scan-result.json": [],
+    ".understand-anything/knowledge-graph.json": [],
+    ".understand-anything/meta.json": [],
+    ".understand-anything/tmp/ua-format-scan.js": [],
+    ".understand-anything/tmp/ua-generate-graph.js": [],
     ".understand-anything/tmp/ua-project-scan.js": [],
     ".understand-anything/tmp/ua-scan-results.json": [],
+    "docs/admin-password-recovery.md": [],
     "docs/design-specs.md": [],
     "docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md": [],
     "docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md": [],
+    "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md": [],
+    "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md": [],
     "electron.vite.config.ts": [],
     "openspec/changes/admin-change-password/.openspec.yaml": [],
+    "openspec/changes/admin-change-password/design.md": [],
+    "openspec/changes/admin-change-password/proposal.md": [],
+    "openspec/changes/admin-change-password/specs/admin-auth/spec.md": [],
+    "openspec/changes/admin-change-password/tasks.md": [],
     "openspec/changes/admin-device-config/.openspec.yaml": [],
     "openspec/changes/admin-device-config/design.md": [],
     "openspec/changes/admin-device-config/proposal.md": [],
@@ -965,6 +1274,11 @@
     "openspec/changes/admin-user-management/proposal.md": [],
     "openspec/changes/admin-user-management/specs/admin-user-management/spec.md": [],
     "openspec/changes/admin-user-management/tasks.md": [],
+    "openspec/changes/attendance-network-guard/.openspec.yaml": [],
+    "openspec/changes/attendance-network-guard/design.md": [],
+    "openspec/changes/attendance-network-guard/proposal.md": [],
+    "openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md": [],
+    "openspec/changes/attendance-network-guard/tasks.md": [],
     "openspec/changes/attendance-remote-risk-guard/.openspec.yaml": [],
     "openspec/changes/attendance-remote-risk-guard/design.md": [],
     "openspec/changes/attendance-remote-risk-guard/proposal.md": [],
@@ -981,6 +1295,11 @@
     "openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md": [],
     "openspec/changes/desktop-attendance-app/specs/notifications/spec.md": [],
     "openspec/changes/desktop-attendance-app/tasks.md": [],
+    "openspec/changes/manual-update-notification/.openspec.yaml": [],
+    "openspec/changes/manual-update-notification/design.md": [],
+    "openspec/changes/manual-update-notification/proposal.md": [],
+    "openspec/changes/manual-update-notification/specs/manual-update/spec.md": [],
+    "openspec/changes/manual-update-notification/tasks.md": [],
     "openspec/changes/sync-device-time/.openspec.yaml": [],
     "openspec/changes/sync-device-time/design.md": [],
     "openspec/changes/sync-device-time/proposal.md": [],
@@ -1001,11 +1320,13 @@
     "scripts/machine-config-helper.py": [],
     "scripts/machine-config-helper.spec": [],
     "scripts/requirements-device-sync.txt": [],
+    "scripts/reset-admin-password.mjs": [],
     "scripts/tests/test_device_sync_worker.py": [],
     "scripts/tests/test_machine_config_helper.py": [],
     "scripts/tests/test_zk_apply_hc_auto_switch.py": [],
     "scripts/tests/test_zk_shortkey_tool.py": [],
     "scripts/tests/test_zk_state_mode.py": [],
+    "scripts/update-graph.mjs": [],
     "scripts/zk-apply-hc-auto-switch.ps1": [],
     "scripts/zk-proxy-capture.py": [],
     "scripts/zk-shortkey-tool.ps1": [],
@@ -1045,6 +1366,9 @@
       "src/main/services/machine-config-service.ts",
       "src/main/services/notification-service.ts",
       "src/main/services/settings-service.ts",
+      "src/main/services/admin-shift-service.ts",
+      "src/main/services/avatar-service.ts",
+      "src/main/services/update-service.ts",
       "src/main/startup.ts",
       "src/main/config/app-config.ts"
     ],
@@ -1080,6 +1404,7 @@
     ],
     "src/main/services/__tests__/remote-risk-service.test.ts": [],
     "src/main/services/__tests__/sql-datetime.test.ts": [],
+    "src/main/services/__tests__/update-service.test.ts": [],
     "src/main/services/admin-auth-service.ts": [
       "src/main/db/sql.ts",
       "src/main/services/sql-datetime.ts"
@@ -1131,6 +1456,9 @@
       "src/main/db/sql.ts"
     ],
     "src/main/services/sql-datetime.ts": [],
+    "src/main/services/update-service.ts": [
+      "src/shared/semver.ts"
+    ],
     "src/main/session-store.ts": [
       "src/main/config/app-config.ts"
     ],
@@ -1146,14 +1474,20 @@
       "src/renderer/src/pages/admin-login-page.tsx",
       "src/renderer/src/pages/admin-device-config-page.tsx",
       "src/renderer/src/pages/admin-users-page.tsx",
+      "src/renderer/src/pages/admin-account-page.tsx",
       "src/renderer/src/providers/auth-provider.tsx",
-      "src/renderer/src/app/route-access.ts"
+      "src/renderer/src/app/route-access.ts",
+      "src/renderer/src/components/UpdateNotifier.tsx"
     ],
     "src/renderer/src/app/__tests__/full-flow.test.tsx": [],
     "src/renderer/src/app/__tests__/route-access.test.ts": [
       "src/renderer/src/app/route-access.ts"
     ],
     "src/renderer/src/app/route-access.ts": [],
+    "src/renderer/src/components/UpdateNotifier.tsx": [],
+    "src/renderer/src/components/__tests__/update-notifier.test.tsx": [
+      "src/renderer/src/components/UpdateNotifier.tsx"
+    ],
     "src/renderer/src/components/ui/avatar.tsx": [],
     "src/renderer/src/components/ui/button.tsx": [],
     "src/renderer/src/components/ui/card.tsx": [],
@@ -1164,6 +1498,9 @@
     "src/renderer/src/lib/utils.ts": [],
     "src/renderer/src/main.tsx": [
       "src/renderer/src/App.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/admin-account-page.test.tsx": [
+      "src/renderer/src/pages/admin-account-page.tsx"
     ],
     "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx": [
       "src/renderer/src/pages/admin-device-config-page.tsx"
@@ -1177,6 +1514,7 @@
     "src/renderer/src/pages/__tests__/settings-page.test.tsx": [
       "src/renderer/src/pages/settings-page.tsx"
     ],
+    "src/renderer/src/pages/admin-account-page.tsx": [],
     "src/renderer/src/pages/admin-device-config-page.tsx": [],
     "src/renderer/src/pages/admin-login-page.tsx": [],
     "src/renderer/src/pages/admin-users-page.tsx": [],
@@ -1191,12 +1529,12 @@
     "src/shared/__tests__/source-text-encoding.test.ts": [],
     "src/shared/api.ts": [],
     "src/shared/app-time.ts": [],
+    "src/shared/semver.ts": [],
     "src/test/setup.ts": [],
     "tsconfig.json": [],
+    "version.json": [],
     "vitest.config.ts": [],
     "wise_eye/explore_wiseeye.js": [],
-    "wise_eye/wiseeye_schema.txt": [],
-    "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md": [],
-    "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md": []
+    "wise_eye/wiseeye_schema.txt": []
   }
 }

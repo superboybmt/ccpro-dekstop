@@ -9,6 +9,7 @@ export interface AuthUser {
   hireDate: string | null
   scheduleName: string | null
   avatarInitials: string
+  avatarBase64?: string | null
 }
 
 export interface AdminUser {
@@ -258,6 +259,28 @@ export interface UpdateInfo {
   releaseNotes?: string
 }
 
+export interface AdminShiftItem {
+  shiftId: number
+  shiftCode: string
+  shiftName: string
+  onduty: string
+  offduty: string
+  onLunch: string | null
+  offLunch: string | null
+}
+
+export interface AdminShiftList {
+  shifts: AdminShiftItem[]
+}
+
+export interface AdminShiftUpdatePayload {
+  shiftId: number
+  onduty: string
+  offduty: string
+  onLunch: string | null
+  offLunch: string | null
+}
+
 export interface RendererApi {
   auth: {
     login(payload: LoginPayload): Promise<LoginResult>
@@ -279,6 +302,8 @@ export interface RendererApi {
   settings: {
     getProfile(): Promise<SettingsProfile>
     getAppInfo(): Promise<AppInfo>
+    updateAvatar(base64: string): Promise<MutationResult>
+    removeAvatar(): Promise<MutationResult>
   }
   deviceSync: {
     getStatus(): Promise<DeviceSyncStatus>
@@ -306,6 +331,10 @@ export interface RendererApi {
   adminSettings: {
     getRemoteRiskPolicy(): Promise<RemoteRiskPolicy>
     saveRemoteRiskPolicy(policy: RemoteRiskPolicy): Promise<MutationResult & RemoteRiskPolicy>
+  }
+  adminShifts: {
+    listShifts(): Promise<AdminShiftList>
+    updateShift(payload: AdminShiftUpdatePayload): Promise<MutationResult>
   }
   app: {
     checkForUpdates(): Promise<UpdateInfo | null>

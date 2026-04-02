@@ -4,7 +4,6 @@
       "id": "project:main",
       "type": "project",
       "name": "ccpro-desktop",
-      "description": "App Cham cong PNJ",
       "metadata": {
         "frameworks": [
           "React",
@@ -207,6 +206,56 @@
       }
     },
     {
+      "id": "file:.understand-anything/intermediate/scan-result.json",
+      "type": "file",
+      "name": ".understand-anything/intermediate/scan-result.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 1200,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:.understand-anything/knowledge-graph.json",
+      "type": "file",
+      "name": ".understand-anything/knowledge-graph.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 3648,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:.understand-anything/meta.json",
+      "type": "file",
+      "name": ".understand-anything/meta.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 7,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:.understand-anything/tmp/ua-format-scan.js",
+      "type": "file",
+      "name": ".understand-anything/tmp/ua-format-scan.js",
+      "description": "code file in javascript",
+      "metadata": {
+        "lines": 38,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:.understand-anything/tmp/ua-generate-graph.js",
+      "type": "file",
+      "name": ".understand-anything/tmp/ua-generate-graph.js",
+      "description": "code file in javascript",
+      "metadata": {
+        "lines": 125,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:.understand-anything/tmp/ua-project-scan.js",
       "type": "file",
       "name": ".understand-anything/tmp/ua-project-scan.js",
@@ -222,8 +271,18 @@
       "name": ".understand-anything/tmp/ua-scan-results.json",
       "description": "config file in json",
       "metadata": {
-        "lines": 34,
+        "lines": 1202,
         "category": "config"
+      }
+    },
+    {
+      "id": "file:docs/admin-password-recovery.md",
+      "type": "file",
+      "name": "docs/admin-password-recovery.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 21,
+        "category": "docs"
       }
     },
     {
@@ -297,6 +356,46 @@
       }
     },
     {
+      "id": "file:openspec/changes/admin-change-password/design.md",
+      "type": "file",
+      "name": "openspec/changes/admin-change-password/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 112,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-change-password/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/admin-change-password/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 33,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "type": "file",
+      "name": "openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 51,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-change-password/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/admin-change-password/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 29,
+        "category": "docs"
+      }
+    },
+    {
       "id": "file:openspec/changes/admin-device-config/.openspec.yaml",
       "type": "file",
       "name": "openspec/changes/admin-device-config/.openspec.yaml",
@@ -357,6 +456,56 @@
       }
     },
     {
+      "id": "file:openspec/changes/admin-shift-editor/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/admin-shift-editor/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-shift-editor/design.md",
+      "type": "file",
+      "name": "openspec/changes/admin-shift-editor/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 50,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-shift-editor/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/admin-shift-editor/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 30,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "type": "file",
+      "name": "openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 80,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/admin-shift-editor/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/admin-shift-editor/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 33,
+        "category": "docs"
+      }
+    },
+    {
       "id": "file:openspec/changes/admin-user-management/.openspec.yaml",
       "type": "file",
       "name": "openspec/changes/admin-user-management/.openspec.yaml",
@@ -403,6 +552,56 @@
       "description": "docs file in markdown",
       "metadata": {
         "lines": 32,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-network-guard/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/attendance-network-guard/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-network-guard/design.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-network-guard/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 73,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-network-guard/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-network-guard/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 29,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 34,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/attendance-network-guard/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/attendance-network-guard/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 16,
         "category": "docs"
       }
     },
@@ -567,6 +766,56 @@
       }
     },
     {
+      "id": "file:openspec/changes/manual-update-notification/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/manual-update-notification/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/manual-update-notification/design.md",
+      "type": "file",
+      "name": "openspec/changes/manual-update-notification/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 44,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/manual-update-notification/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/manual-update-notification/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 25,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "type": "file",
+      "name": "openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 38,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/manual-update-notification/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/manual-update-notification/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 17,
+        "category": "docs"
+      }
+    },
+    {
       "id": "file:openspec/changes/sync-device-time/.openspec.yaml",
       "type": "file",
       "name": "openspec/changes/sync-device-time/.openspec.yaml",
@@ -617,6 +866,56 @@
       }
     },
     {
+      "id": "file:openspec/changes/update-avatar/.openspec.yaml",
+      "type": "file",
+      "name": "openspec/changes/update-avatar/.openspec.yaml",
+      "description": "config file in yaml",
+      "metadata": {
+        "lines": 3,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:openspec/changes/update-avatar/design.md",
+      "type": "file",
+      "name": "openspec/changes/update-avatar/design.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 109,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/update-avatar/proposal.md",
+      "type": "file",
+      "name": "openspec/changes/update-avatar/proposal.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 30,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "type": "file",
+      "name": "openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 82,
+        "category": "docs"
+      }
+    },
+    {
+      "id": "file:openspec/changes/update-avatar/tasks.md",
+      "type": "file",
+      "name": "openspec/changes/update-avatar/tasks.md",
+      "description": "docs file in markdown",
+      "metadata": {
+        "lines": 50,
+        "category": "docs"
+      }
+    },
+    {
       "id": "file:openspec/config.yaml",
       "type": "file",
       "name": "openspec/config.yaml",
@@ -632,7 +931,7 @@
       "name": "package.json",
       "description": "config file in json",
       "metadata": {
-        "lines": 79,
+        "lines": 81,
         "category": "config"
       }
     },
@@ -732,7 +1031,7 @@
       "name": "scripts/init-db.mjs",
       "description": "code file in unknown",
       "metadata": {
-        "lines": 71,
+        "lines": 101,
         "category": "code"
       }
     },
@@ -764,6 +1063,16 @@
       "metadata": {
         "lines": 3,
         "category": "docs"
+      }
+    },
+    {
+      "id": "file:scripts/reset-admin-password.mjs",
+      "type": "file",
+      "name": "scripts/reset-admin-password.mjs",
+      "description": "code file in unknown",
+      "metadata": {
+        "lines": 113,
+        "category": "code"
       }
     },
     {
@@ -813,6 +1122,16 @@
       "description": "code file in python",
       "metadata": {
         "lines": 122,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:scripts/update-graph.mjs",
+      "type": "file",
+      "name": "scripts/update-graph.mjs",
+      "description": "code file in unknown",
+      "metadata": {
+        "lines": 86,
         "category": "code"
       }
     },
@@ -902,7 +1221,7 @@
       "name": "src/main/db/init.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 420,
+        "lines": 505,
         "category": "code"
       }
     },
@@ -912,7 +1231,7 @@
       "name": "src/main/db/sql.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 47,
+        "lines": 90,
         "category": "code"
       }
     },
@@ -932,27 +1251,19 @@
       "name": "src/main/ipc/__tests__/register-handlers.test.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 241,
+        "lines": 328,
         "category": "code"
       }
     },
     {
       "id": "file:src/main/ipc/register-handlers.ts",
       "type": "file",
-      "name": "register-handlers.ts",
+      "name": "src/main/ipc/register-handlers.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 244,
+        "lines": 340,
         "category": "code"
-      },
-      "filePath": "src/main/ipc/register-handlers.ts",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
+      }
     },
     {
       "id": "file:src/main/services/__tests__/admin-auth-service.test.ts",
@@ -960,7 +1271,7 @@
       "name": "src/main/services/__tests__/admin-auth-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 61,
+        "lines": 269,
         "category": "code"
       }
     },
@@ -971,6 +1282,16 @@
       "description": "code file in typescript",
       "metadata": {
         "lines": 34,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/__tests__/admin-shift-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/admin-shift-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 101,
         "category": "code"
       }
     },
@@ -1085,12 +1406,22 @@
       }
     },
     {
+      "id": "file:src/main/services/__tests__/update-service.test.ts",
+      "type": "file",
+      "name": "src/main/services/__tests__/update-service.test.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 140,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/main/services/admin-auth-service.ts",
       "type": "file",
       "name": "src/main/services/admin-auth-service.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 171,
+        "lines": 449,
         "category": "code"
       }
     },
@@ -1101,6 +1432,16 @@
       "description": "code file in typescript",
       "metadata": {
         "lines": 96,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/admin-shift-service.ts",
+      "type": "file",
+      "name": "src/main/services/admin-shift-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 191,
         "category": "code"
       }
     },
@@ -1120,7 +1461,7 @@
       "name": "src/main/services/attendance-service.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 406,
+        "lines": 407,
         "category": "code"
       }
     },
@@ -1130,7 +1471,17 @@
       "name": "src/main/services/auth-service.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 291,
+        "lines": 296,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/main/services/avatar-service.ts",
+      "type": "file",
+      "name": "src/main/services/avatar-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 75,
         "category": "code"
       }
     },
@@ -1215,12 +1566,22 @@
       }
     },
     {
+      "id": "file:src/main/services/update-service.ts",
+      "type": "file",
+      "name": "src/main/services/update-service.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 118,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/main/session-store.ts",
       "type": "file",
       "name": "src/main/session-store.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 163,
+        "lines": 194,
         "category": "code"
       }
     },
@@ -1237,20 +1598,12 @@
     {
       "id": "file:src/preload/index.ts",
       "type": "file",
-      "name": "index.ts",
+      "name": "src/preload/index.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 55,
+        "lines": 75,
         "category": "code"
-      },
-      "filePath": "src/preload/index.ts",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
+      }
     },
     {
       "id": "file:src/renderer/index.html",
@@ -1265,20 +1618,12 @@
     {
       "id": "file:src/renderer/src/App.tsx",
       "type": "file",
-      "name": "App.tsx",
+      "name": "src/renderer/src/App.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 85,
+        "lines": 89,
         "category": "code"
-      },
-      "filePath": "src/renderer/src/App.tsx",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
+      }
     },
     {
       "id": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
@@ -1286,7 +1631,7 @@
       "name": "src/renderer/src/app/__tests__/full-flow.test.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 215,
+        "lines": 223,
         "category": "code"
       }
     },
@@ -1311,12 +1656,32 @@
       }
     },
     {
+      "id": "file:src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 68,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/ui/avatar-uploader.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 162,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/renderer/src/components/ui/avatar.tsx",
       "type": "file",
       "name": "src/renderer/src/components/ui/avatar.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 11,
+        "lines": 20,
         "category": "code"
       }
     },
@@ -1361,6 +1726,16 @@
       }
     },
     {
+      "id": "file:src/renderer/src/components/UpdateNotifier.tsx",
+      "type": "file",
+      "name": "src/renderer/src/components/UpdateNotifier.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 114,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/renderer/src/lib/errors.ts",
       "type": "file",
       "name": "src/renderer/src/lib/errors.ts",
@@ -1377,6 +1752,16 @@
       "description": "code file in typescript",
       "metadata": {
         "lines": 29,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/renderer/src/lib/image-utils.ts",
+      "type": "file",
+      "name": "src/renderer/src/lib/image-utils.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 63,
         "category": "code"
       }
     },
@@ -1401,6 +1786,16 @@
       }
     },
     {
+      "id": "file:src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 169,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
       "type": "file",
       "name": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
@@ -1416,7 +1811,7 @@
       "name": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 190,
+        "lines": 202,
         "category": "code"
       }
     },
@@ -1426,7 +1821,7 @@
       "name": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 175,
+        "lines": 242,
         "category": "code"
       }
     },
@@ -1441,12 +1836,22 @@
       }
     },
     {
+      "id": "file:src/renderer/src/pages/admin-account-page.tsx",
+      "type": "file",
+      "name": "src/renderer/src/pages/admin-account-page.tsx",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 305,
+        "category": "code"
+      }
+    },
+    {
       "id": "file:src/renderer/src/pages/admin-device-config-page.tsx",
       "type": "file",
       "name": "src/renderer/src/pages/admin-device-config-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 556,
+        "lines": 823,
         "category": "code"
       }
     },
@@ -1456,7 +1861,7 @@
       "name": "src/renderer/src/pages/admin-login-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 92,
+        "lines": 104,
         "category": "code"
       }
     },
@@ -1466,7 +1871,7 @@
       "name": "src/renderer/src/pages/admin-users-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 520,
+        "lines": 529,
         "category": "code"
       }
     },
@@ -1476,7 +1881,7 @@
       "name": "src/renderer/src/pages/dashboard-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 193,
+        "lines": 228,
         "category": "code"
       }
     },
@@ -1496,7 +1901,7 @@
       "name": "src/renderer/src/pages/login-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 112,
+        "lines": 114,
         "category": "code"
       }
     },
@@ -1506,7 +1911,7 @@
       "name": "src/renderer/src/pages/notifications-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 123,
+        "lines": 116,
         "category": "code"
       }
     },
@@ -1516,7 +1921,7 @@
       "name": "src/renderer/src/pages/settings-page.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 216,
+        "lines": 249,
         "category": "code"
       }
     },
@@ -1526,7 +1931,7 @@
       "name": "src/renderer/src/providers/auth-provider.tsx",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 81,
+        "lines": 94,
         "category": "code"
       }
     },
@@ -1536,7 +1941,7 @@
       "name": "src/renderer/src/styles.css",
       "description": "markup file in css",
       "metadata": {
-        "lines": 1231,
+        "lines": 1506,
         "category": "markup"
       }
     },
@@ -1563,20 +1968,12 @@
     {
       "id": "file:src/shared/api.ts",
       "type": "file",
-      "name": "api.ts",
+      "name": "src/shared/api.ts",
       "description": "code file in typescript",
       "metadata": {
-        "lines": 280,
+        "lines": 345,
         "category": "code"
-      },
-      "filePath": "src/shared/api.ts",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
+      }
     },
     {
       "id": "file:src/shared/app-time.ts",
@@ -1585,6 +1982,16 @@
       "description": "code file in typescript",
       "metadata": {
         "lines": 76,
+        "category": "code"
+      }
+    },
+    {
+      "id": "file:src/shared/semver.ts",
+      "type": "file",
+      "name": "src/shared/semver.ts",
+      "description": "code file in typescript",
+      "metadata": {
+        "lines": 20,
         "category": "code"
       }
     },
@@ -1605,6 +2012,16 @@
       "description": "config file in json",
       "metadata": {
         "lines": 25,
+        "category": "config"
+      }
+    },
+    {
+      "id": "file:version.json",
+      "type": "file",
+      "name": "version.json",
+      "description": "config file in json",
+      "metadata": {
+        "lines": 6,
         "category": "config"
       }
     },
@@ -1637,58 +2054,6 @@
         "lines": 818,
         "category": "docs"
       }
-    },
-    {
-      "id": "file:src/main/services/update-service.ts",
-      "type": "file",
-      "name": "update-service.ts",
-      "filePath": "src/main/services/update-service.ts",
-      "summary": "Module quản lý tính năng cập nhật phiên bản ứng dụng tự động.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:src/renderer/src/components/UpdateNotifier.tsx",
-      "type": "file",
-      "name": "UpdateNotifier.tsx",
-      "filePath": "src/renderer/src/components/UpdateNotifier.tsx",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:src/shared/semver.ts",
-      "type": "file",
-      "name": "semver.ts",
-      "filePath": "src/shared/semver.ts",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "config:version.json",
-      "type": "config",
-      "name": "version.json",
-      "filePath": "version.json",
-      "summary": "File đã được cập nhật logic liên quan đến versioning.",
-      "tags": [
-        "update",
-        "semver",
-        "auto-update"
-      ],
-      "complexity": "moderate"
     }
   ],
   "edges": [
@@ -1814,6 +2179,56 @@
     },
     {
       "source": "module:.understand-anything",
+      "target": "file:.understand-anything/intermediate/scan-result.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/intermediate/scan-result.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/knowledge-graph.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/knowledge-graph.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/meta.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/meta.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/tmp/ua-format-scan.js",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/tmp/ua-format-scan.js",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
+      "target": "file:.understand-anything/tmp/ua-generate-graph.js",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:.understand-anything/tmp/ua-generate-graph.js",
+      "type": "contains"
+    },
+    {
+      "source": "module:.understand-anything",
       "target": "file:.understand-anything/tmp/ua-project-scan.js",
       "type": "contains"
     },
@@ -1830,6 +2245,16 @@
     {
       "source": "project:main",
       "target": "file:.understand-anything/tmp/ua-scan-results.json",
+      "type": "contains"
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/admin-password-recovery.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:docs/admin-password-recovery.md",
       "type": "contains"
     },
     {
@@ -1899,6 +2324,46 @@
     },
     {
       "source": "module:openspec",
+      "target": "file:openspec/changes/admin-change-password/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-change-password/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-change-password/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-change-password/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-change-password/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-change-password/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
       "target": "file:openspec/changes/admin-device-config/.openspec.yaml",
       "type": "contains"
     },
@@ -1959,6 +2424,56 @@
     },
     {
       "source": "module:openspec",
+      "target": "file:openspec/changes/admin-shift-editor/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-shift-editor/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-shift-editor/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-shift-editor/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-shift-editor/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-shift-editor/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/admin-shift-editor/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/admin-shift-editor/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
       "target": "file:openspec/changes/admin-user-management/.openspec.yaml",
       "type": "contains"
     },
@@ -2005,6 +2520,56 @@
     {
       "source": "project:main",
       "target": "file:openspec/changes/admin-user-management/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-network-guard/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-network-guard/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-network-guard/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-network-guard/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-network-guard/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-network-guard/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/attendance-network-guard/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/attendance-network-guard/tasks.md",
       "type": "contains"
     },
     {
@@ -2169,6 +2734,56 @@
     },
     {
       "source": "module:openspec",
+      "target": "file:openspec/changes/manual-update-notification/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/manual-update-notification/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/manual-update-notification/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/manual-update-notification/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/manual-update-notification/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/manual-update-notification/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/manual-update-notification/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/manual-update-notification/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
       "target": "file:openspec/changes/sync-device-time/.openspec.yaml",
       "type": "contains"
     },
@@ -2215,6 +2830,56 @@
     {
       "source": "project:main",
       "target": "file:openspec/changes/sync-device-time/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/update-avatar/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/update-avatar/.openspec.yaml",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/update-avatar/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/update-avatar/design.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/update-avatar/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/update-avatar/proposal.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "type": "contains"
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/changes/update-avatar/tasks.md",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:openspec/changes/update-avatar/tasks.md",
       "type": "contains"
     },
     {
@@ -2364,6 +3029,16 @@
     },
     {
       "source": "module:scripts",
+      "target": "file:scripts/reset-admin-password.mjs",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/reset-admin-password.mjs",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
       "target": "file:scripts/tests/test_device_sync_worker.py",
       "type": "contains"
     },
@@ -2410,6 +3085,16 @@
     {
       "source": "project:main",
       "target": "file:scripts/tests/test_zk_state_mode.py",
+      "type": "contains"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/update-graph.mjs",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:scripts/update-graph.mjs",
       "type": "contains"
     },
     {
@@ -2649,6 +3334,21 @@
     },
     {
       "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/admin-shift-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/avatar-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
+      "target": "file:src/main/services/update-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/ipc/register-handlers.ts",
       "target": "file:src/main/startup.ts",
       "type": "imports"
     },
@@ -2685,6 +3385,21 @@
     {
       "source": "file:src/main/services/__tests__/admin-settings-service.test.ts",
       "target": "file:src/main/services/admin-settings-service.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/__tests__/admin-shift-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/admin-shift-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/__tests__/admin-shift-service.test.ts",
+      "target": "file:src/main/services/admin-shift-service.ts",
       "type": "imports"
     },
     {
@@ -2839,6 +3554,16 @@
     },
     {
       "source": "module:src",
+      "target": "file:src/main/services/__tests__/update-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/__tests__/update-service.test.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
       "target": "file:src/main/services/admin-auth-service.ts",
       "type": "contains"
     },
@@ -2874,6 +3599,26 @@
     },
     {
       "source": "file:src/main/services/admin-settings-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/admin-shift-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/admin-shift-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/admin-shift-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/admin-shift-service.ts",
       "target": "file:src/main/services/sql-datetime.ts",
       "type": "imports"
     },
@@ -2944,6 +3689,26 @@
     },
     {
       "source": "file:src/main/services/auth-service.ts",
+      "target": "file:src/main/services/sql-datetime.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/main/services/avatar-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/avatar-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/avatar-service.ts",
+      "target": "file:src/main/db/sql.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/main/services/avatar-service.ts",
       "target": "file:src/main/services/sql-datetime.ts",
       "type": "imports"
     },
@@ -3104,6 +3869,21 @@
     },
     {
       "source": "module:src",
+      "target": "file:src/main/services/update-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/main/services/update-service.ts",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/main/services/update-service.ts",
+      "target": "file:src/shared/semver.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
       "target": "file:src/main/session-store.ts",
       "type": "contains"
     },
@@ -3199,12 +3979,22 @@
     },
     {
       "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/pages/admin-account-page.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
       "target": "file:src/renderer/src/providers/auth-provider.tsx",
       "type": "imports"
     },
     {
       "source": "file:src/renderer/src/App.tsx",
       "target": "file:src/renderer/src/app/route-access.ts",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/App.tsx",
+      "target": "file:src/renderer/src/components/UpdateNotifier.tsx",
       "type": "imports"
     },
     {
@@ -3244,6 +4034,46 @@
     },
     {
       "source": "module:src",
+      "target": "file:src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "target": "file:src/renderer/src/components/UpdateNotifier.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "target": "file:src/renderer/src/components/ui/avatar.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "target": "file:src/renderer/src/components/ui/button.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
+      "target": "file:src/renderer/src/lib/image-utils.ts",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
       "target": "file:src/renderer/src/components/ui/avatar.tsx",
       "type": "contains"
     },
@@ -3294,6 +4124,16 @@
     },
     {
       "source": "module:src",
+      "target": "file:src/renderer/src/components/UpdateNotifier.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/components/UpdateNotifier.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
       "target": "file:src/renderer/src/lib/errors.ts",
       "type": "contains"
     },
@@ -3310,6 +4150,16 @@
     {
       "source": "project:main",
       "target": "file:src/renderer/src/lib/format.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/lib/image-utils.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/lib/image-utils.ts",
       "type": "contains"
     },
     {
@@ -3335,6 +4185,21 @@
     {
       "source": "file:src/renderer/src/main.tsx",
       "target": "file:src/renderer/src/App.tsx",
+      "type": "imports"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "file:src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "target": "file:src/renderer/src/pages/admin-account-page.tsx",
       "type": "imports"
     },
     {
@@ -3399,6 +4264,16 @@
     },
     {
       "source": "module:src",
+      "target": "file:src/renderer/src/pages/admin-account-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/renderer/src/pages/admin-account-page.tsx",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
       "target": "file:src/renderer/src/pages/admin-device-config-page.tsx",
       "type": "contains"
     },
@@ -3535,6 +4410,16 @@
     {
       "source": "project:main",
       "target": "file:src/shared/app-time.ts",
+      "type": "contains"
+    },
+    {
+      "source": "module:src",
+      "target": "file:src/shared/semver.ts",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:src/shared/semver.ts",
       "type": "contains"
     },
     {
@@ -3550,6 +4435,11 @@
     {
       "source": "project:main",
       "target": "file:tsconfig.json",
+      "type": "contains"
+    },
+    {
+      "source": "project:main",
+      "target": "file:version.json",
       "type": "contains"
     },
     {
@@ -3598,7 +4488,6 @@
   ],
   "tour": {
     "title": "Introduction to ccpro-desktop",
-    "description": "App Cham cong PNJ",
     "steps": [
       {
         "nodeId": "file:.agent/skills/openspec-apply-change/SKILL.md",
@@ -3641,8 +4530,5 @@
         "description": "Review .codex/skills/openspec-archive-change/SKILL.md"
       }
     ]
-  },
-  "project": {
-    "analyzedAt": "2026-04-01T16:43:12.931Z"
   }
 }

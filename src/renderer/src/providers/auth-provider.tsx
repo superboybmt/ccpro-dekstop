@@ -14,6 +14,7 @@ interface AuthContextValue extends SessionState {
   logout(): Promise<void>
   refreshSession(): Promise<void>
   markPasswordChanged(): void
+  updateUserAvatar(base64: string | null): void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
@@ -63,6 +64,18 @@ export const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
           ...current,
           mustChangePassword: false
         }))
+      },
+      updateUserAvatar: (base64) => {
+        setSession((current) => {
+          if (!current.user) return current
+          return {
+            ...current,
+            user: {
+              ...current.user,
+              avatarBase64: base64
+            }
+          }
+        })
       }
     }),
     [ready, session]

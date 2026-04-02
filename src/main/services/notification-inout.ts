@@ -44,6 +44,11 @@ const timeToMinutes = (value: string | null | undefined): number | null => {
   return hours * 60 + minutes
 }
 
+const optionalBoundaryMinutes = (value: string | null | undefined): number | null => {
+  const minutes = timeToMinutes(value)
+  return minutes === 0 ? null : minutes
+}
+
 const midpointMinutes = (start: number | null, end: number | null): number | null => {
   if (start === null || end === null || end <= start) {
     return null
@@ -130,8 +135,8 @@ const classifyFromDerivedShiftWindows = <TPunch extends NotificationPunchLike>(
 
   const onduty = timeToMinutes(shift.onduty)
   const offduty = timeToMinutes(shift.offduty)
-  const lunchStart = timeToMinutes(shift.onLunch)
-  const lunchEnd = timeToMinutes(shift.offLunch)
+  const lunchStart = optionalBoundaryMinutes(shift.onLunch)
+  const lunchEnd = optionalBoundaryMinutes(shift.offLunch)
 
   if (onduty === null || offduty === null) {
     return null
