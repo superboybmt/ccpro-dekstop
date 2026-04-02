@@ -12,6 +12,8 @@ import {
   SqlDeviceSyncRepository
 } from './services/device-sync-service'
 import { startApplication } from './startup'
+// @ts-ignore
+import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow | null = null
 let tray: Tray | null = null
@@ -50,7 +52,7 @@ const createWindow = (): void => {
     minHeight: 720,
     show: false,
     autoHideMenuBar: true,
-    icon: join(__dirname, '../../resources/icon.png'),
+    icon: icon,
     title: 'App Chấm công PNJ',
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -102,7 +104,7 @@ const createWindow = (): void => {
 }
 
 const createTray = (): void => {
-  const trayIcon = nativeImage.createFromPath(join(__dirname, '../../resources/icon.png'))
+  const trayIcon = nativeImage.createFromPath(icon)
   if (trayIcon.isEmpty()) {
     throw new Error('Tray icon is not configured')
   }
