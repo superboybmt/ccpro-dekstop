@@ -33,6 +33,7 @@ export interface RemoteRiskDetector {
   getForegroundProcess(): Promise<RemoteProcessInfo | null>
   isRemoteSessionActive(): Promise<boolean>
   hasVisibleWindow(processIds: number[]): Promise<boolean>
+  hasActiveSessionWindow(processIds: number[]): Promise<boolean>
 }
 
 // ---------------------------------------------------------------------------
@@ -43,28 +44,127 @@ interface RemoteToolDefinition {
   name: string
   serviceProcesses: string[]
   desktopProcesses: string[]
+  /** Regex patterns matched against window titles to detect active incoming sessions. */
+  activeSessionTitlePatterns: RegExp[]
 }
 
 const REMOTE_TOOL_DEFINITIONS: readonly RemoteToolDefinition[] = [
+  // ── Tier 1: Rất phổ biến tại Việt Nam ──────────────────────────────
   {
     name: 'UltraViewer',
     serviceProcesses: ['ultraviewer_service'],
-    desktopProcesses: ['ultraviewer_desktop', 'ultraviewer']
+    desktopProcesses: ['ultraviewer_desktop', 'ultraviewer'],
+    activeSessionTitlePatterns: []
   },
   {
     name: 'TeamViewer',
     serviceProcesses: ['teamviewer_service'],
-    desktopProcesses: ['teamviewer']
+    desktopProcesses: ['teamviewer'],
+    activeSessionTitlePatterns: []
   },
   {
     name: 'AnyDesk',
-    serviceProcesses: ['anydesk_service'],
-    desktopProcesses: ['anydesk']
+    // AnyDesk has NO separate service exe — it runs AnyDesk.exe --service under SYSTEM context
+    serviceProcesses: [],
+    desktopProcesses: ['anydesk'],
+    activeSessionTitlePatterns: []
   },
   {
     name: 'RustDesk',
     serviceProcesses: [],
-    desktopProcesses: ['rustdesk']
+    desktopProcesses: ['rustdesk'],
+    // Window title "<remote_id> - RustDesk" appears when an incoming session is active
+    activeSessionTitlePatterns: [/^\d+ - RustDesk$/i]
+  },
+  {
+    name: 'Chrome Remote Desktop',
+    // remoting_host.exe — the CORE host process that accepts incoming connections (chromoting service)
+    // remoting_desktop.exe — desktop integration and session management
+    // remote_assistance_host.exe — attended remote support sessions
+    // All classified as desktop because they ARE the remote control components
+    serviceProcesses: [],
+    desktopProcesses: ['remoting_host', 'remoting_desktop', 'remote_assistance_host'],
+    activeSessionTitlePatterns: []
+  },
+
+  // ── Tier 2: Phổ biến quốc tế (Enterprise) ──────────────────────────
+  {
+    name: 'Splashtop',
+    serviceProcesses: ['srupdate'],
+    desktopProcesses: ['srservice', 'srserver'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'LogMeIn',
+    serviceProcesses: ['lmiguardiansvc'],
+    desktopProcesses: ['logmein', 'logmeinsystray'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'ConnectWise ScreenConnect',
+    serviceProcesses: [],
+    desktopProcesses: ['screenconnect.clientservice', 'screenconnect.windowsclient'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'RemotePC',
+    // RemotePCService is the host agent that accepts incoming connections
+    serviceProcesses: [],
+    desktopProcesses: ['remotepcservice'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'Zoho Assist',
+    // zaservice.exe is the unattended access agent
+    serviceProcesses: [],
+    desktopProcesses: ['zaservice'],
+    activeSessionTitlePatterns: []
+  },
+
+  // ── Tier 3: VNC Family ──────────────────────────────────────────────
+  // VNC servers are classified as desktopProcesses (NOT serviceProcesses)
+  // because they ARE the component that allows remote screen sharing/control.
+  // Classifying them as service would cause them to be skipped by detection.
+  {
+    name: 'RealVNC',
+    serviceProcesses: [],
+    desktopProcesses: ['vncserver'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'TightVNC',
+    serviceProcesses: [],
+    desktopProcesses: ['tvnserver'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'UltraVNC',
+    serviceProcesses: [],
+    desktopProcesses: ['winvnc'],
+    activeSessionTitlePatterns: []
+  },
+
+  // ── Tier 4: Additional Remote Tools ─────────────────────────────────
+  {
+    name: 'Parsec',
+    // parsecd.exe is the main app; pservice.exe is the SYSTEM-level background service
+    // Parsec uses UDP streaming (like RustDesk) — TCP connection counting may undercount
+    serviceProcesses: ['pservice'],
+    desktopProcesses: ['parsecd'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'Supremo',
+    serviceProcesses: ['supremohelper'],
+    desktopProcesses: ['supremo', 'supremoservice'],
+    activeSessionTitlePatterns: []
+  },
+  {
+    name: 'Ammyy Admin',
+    // AA_v3.exe is the standard executable name; frequently abused by scammers
+    serviceProcesses: [],
+    desktopProcesses: ['aa_v3'],
+    activeSessionTitlePatterns: []
   }
 ] as const
 
@@ -106,6 +206,9 @@ const isDesktopProcess = (processName: string): boolean => {
 const classifyRiskLevel = (activeSignals: string[]): RemoteRiskLevel => {
   // Tier 1: RDP / Terminal Services → immediate HIGH
   if (activeSignals.includes('remote-session')) return 'high'
+
+  // Tier 1b: Window title proves active incoming session (e.g. RustDesk UDP-based tools)
+  if (activeSignals.includes('active-session-window')) return 'high'
 
   // Foreground + network → HIGH (tool is in foreground AND connecting externally)
   if (activeSignals.includes('foreground') && activeSignals.includes('network')) return 'high'
@@ -210,6 +313,52 @@ public static class WindowProbe {
 `
 }
 
+// Phase 02b: EnumWindows with title extraction — detect active incoming sessions
+// e.g. RustDesk shows "1279903594 - RustDesk" when a remote peer is connected
+const buildActiveSessionWindowScript = (pids: number[]): string => {
+  const pidArray = pids.join(',')
+  return `
+  $ErrorActionPreference="Stop"
+  Add-Type @"
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+public static class SessionWindowProbe {
+  [DllImport("user32.dll")] static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+  [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr hWnd);
+  [DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pid);
+  [DllImport("user32.dll", CharSet=CharSet.Auto)] static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
+  [DllImport("user32.dll", CharSet=CharSet.Auto)] static extern int GetWindowTextLength(IntPtr hWnd);
+  public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+  public static List<string> GetWindowTitles(uint[] targetPids) {
+    var titles = new List<string>();
+    var targetSet = new HashSet<uint>(targetPids);
+    EnumWindows((hWnd, _) => {
+      if (IsWindowVisible(hWnd)) {
+        int len = GetWindowTextLength(hWnd);
+        if (len > 0) {
+          uint pid;
+          GetWindowThreadProcessId(hWnd, out pid);
+          if (targetSet.Contains(pid)) {
+            var sb = new StringBuilder(len + 1);
+            GetWindowText(hWnd, sb, sb.Capacity);
+            titles.Add(sb.ToString());
+          }
+        }
+      }
+      return true;
+    }, IntPtr.Zero);
+    return titles;
+  }
+}
+"@
+  $targetPids = @(${pidArray})
+  $titles = [SessionWindowProbe]::GetWindowTitles($targetPids)
+  ConvertTo-Json @{ titles = @($titles) } -Compress
+`
+}
+
 // Phase 02: GetSystemMetrics(SM_REMOTESESSION) for Tier 1 RDP detection
 const buildRemoteSessionScript = (): string => `
   $ErrorActionPreference="Stop"
@@ -309,6 +458,24 @@ export class WindowsRemoteRiskDetector implements RemoteRiskDetector {
       return false
     }
   }
+
+  async hasActiveSessionWindow(processIds: number[]): Promise<boolean> {
+    if (processIds.length === 0) return false
+
+    try {
+      const stdout = await runPowerShell(buildActiveSessionWindowScript(processIds))
+      const parsed = parsePowerShellJson<{ titles?: string[] }>(stdout)
+      const titles = parsed[0]?.titles ?? []
+
+      return titles.some((title) =>
+        REMOTE_TOOL_DEFINITIONS.some((tool) =>
+          tool.activeSessionTitlePatterns.some((pattern) => pattern.test(title))
+        )
+      )
+    } catch {
+      return false
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -385,9 +552,10 @@ export class RemoteRiskService {
 
     // Phase 01: Only check network for DESKTOP process PIDs (skip service heartbeats)
     const desktopPids = desktopProcesses.map((p) => p.pid)
-    const [networkConnections, hasVisibleWindow] = await Promise.all([
+    const [networkConnections, hasVisibleWindow, hasActiveSession] = await Promise.all([
       this.detector.listNetworkConnections(desktopPids),
-      this.detector.hasVisibleWindow(desktopPids)
+      this.detector.hasVisibleWindow(desktopPids),
+      this.detector.hasActiveSessionWindow(desktopPids)
     ])
 
     const activeSignals: string[] = []
@@ -439,6 +607,11 @@ export class RemoteRiskService {
       activeSignals.push('visible-window')
     }
 
+    // Phase 02b: Active session window (e.g. RustDesk "<id> - RustDesk" title)
+    if (hasActiveSession) {
+      activeSignals.push('active-session-window')
+    }
+
     const level = classifyRiskLevel(activeSignals)
 
     return {
@@ -460,6 +633,7 @@ export const remoteRiskConfig = {
 export const __internal = {
   buildForegroundProcessScript,
   buildVisibleWindowScript,
+  buildActiveSessionWindowScript,
   buildRemoteSessionScript,
   isDenylisted,
   isServiceProcess,

@@ -19,6 +19,7 @@ const createMockDetector = (
   getForegroundProcess: async () => null,
   isRemoteSessionActive: async () => false,
   hasVisibleWindow: async () => false,
+  hasActiveSessionWindow: async () => false,
   ...overrides
 })
 
@@ -48,11 +49,100 @@ describe('Process Classification', () => {
   })
 
   it('treats all classified processes as denylisted', () => {
+    // Tier 1: Vietnam popular
     expect(__internal.isDenylisted('UltraViewer_Service.exe')).toBe(true)
     expect(__internal.isDenylisted('UltraViewer_Desktop.exe')).toBe(true)
     expect(__internal.isDenylisted('TeamViewer.exe')).toBe(true)
     expect(__internal.isDenylisted('RustDesk.exe')).toBe(true)
+    expect(__internal.isDenylisted('AnyDesk.exe')).toBe(true)
+    expect(__internal.isDenylisted('remoting_host.exe')).toBe(true)
+    expect(__internal.isDenylisted('remoting_desktop.exe')).toBe(true)
+    expect(__internal.isDenylisted('remote_assistance_host.exe')).toBe(true)
+
+    // Tier 2: Enterprise
+    expect(__internal.isDenylisted('SRService.exe')).toBe(true)
+    expect(__internal.isDenylisted('LogMeIn.exe')).toBe(true)
+    expect(__internal.isDenylisted('ScreenConnect.ClientService.exe')).toBe(true)
+    expect(__internal.isDenylisted('RemotePCService.exe')).toBe(true)
+    expect(__internal.isDenylisted('zaservice.exe')).toBe(true)
+
+    // Tier 3: VNC family
+    expect(__internal.isDenylisted('vncserver.exe')).toBe(true)
+    expect(__internal.isDenylisted('tvnserver.exe')).toBe(true)
+    expect(__internal.isDenylisted('winvnc.exe')).toBe(true)
+
+    // Tier 4: Additional
+    expect(__internal.isDenylisted('parsecd.exe')).toBe(true)
+    expect(__internal.isDenylisted('pservice.exe')).toBe(true)
+    expect(__internal.isDenylisted('Supremo.exe')).toBe(true)
+    expect(__internal.isDenylisted('AA_v3.exe')).toBe(true)
+
+    // Not remote
     expect(__internal.isDenylisted('chrome.exe')).toBe(false)
+  })
+
+  // ===== Chrome Remote Desktop =====
+  it('classifies Chrome Remote Desktop as desktop processes', () => {
+    expect(__internal.isDesktopProcess('remoting_host.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('remoting_desktop.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('remote_assistance_host.exe')).toBe(true)
+    expect(__internal.isServiceProcess('remoting_host.exe')).toBe(false)
+  })
+
+  // ===== NEW TOOLS: VNC servers =====
+  it('classifies VNC servers as desktop (not service) for proper detection', () => {
+    // VNC servers are the actual remote control component
+    expect(__internal.isDesktopProcess('vncserver.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('tvnserver.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('winvnc.exe')).toBe(true)
+
+    // Must NOT be service (would be skipped)
+    expect(__internal.isServiceProcess('vncserver.exe')).toBe(false)
+    expect(__internal.isServiceProcess('tvnserver.exe')).toBe(false)
+    expect(__internal.isServiceProcess('winvnc.exe')).toBe(false)
+  })
+
+  // ===== Enterprise =====
+  it('classifies enterprise remote tools correctly', () => {
+    // Splashtop
+    expect(__internal.isDesktopProcess('SRService.exe')).toBe(true)
+    expect(__internal.isServiceProcess('SRUpdate.exe')).toBe(true)
+
+    // LogMeIn
+    expect(__internal.isDesktopProcess('LogMeIn.exe')).toBe(true)
+    expect(__internal.isServiceProcess('LMIGuardianSvc.exe')).toBe(true)
+
+    // ConnectWise ScreenConnect
+    expect(__internal.isDesktopProcess('ScreenConnect.ClientService.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('ScreenConnect.WindowsClient.exe')).toBe(true)
+
+    // RemotePC
+    expect(__internal.isDesktopProcess('RemotePCService.exe')).toBe(true)
+
+    // Zoho Assist
+    expect(__internal.isDesktopProcess('zaservice.exe')).toBe(true)
+  })
+
+  // ===== Tier 4: Additional =====
+  it('classifies Parsec, Supremo, Ammyy Admin correctly', () => {
+    // Parsec
+    expect(__internal.isDesktopProcess('parsecd.exe')).toBe(true)
+    expect(__internal.isServiceProcess('pservice.exe')).toBe(true)
+
+    // Supremo
+    expect(__internal.isDesktopProcess('Supremo.exe')).toBe(true)
+    expect(__internal.isDesktopProcess('SupremoService.exe')).toBe(true)
+    expect(__internal.isServiceProcess('SupremoHelper.exe')).toBe(true)
+
+    // Ammyy Admin
+    expect(__internal.isDesktopProcess('AA_v3.exe')).toBe(true)
+  })
+
+  // ===== AnyDesk: no separate service exe =====
+  it('classifies AnyDesk as desktop-only (no separate service exe exists)', () => {
+    expect(__internal.isDesktopProcess('AnyDesk.exe')).toBe(true)
+    // AnyDesk runs same exe with --service flag, so there is NO anydesk_service.exe
+    expect(__internal.isServiceProcess('AnyDesk.exe')).toBe(false)
   })
 })
 
@@ -91,6 +181,14 @@ describe('classifyRiskLevel', () => {
 
   it('returns medium for foreground only', () => {
     expect(__internal.classifyRiskLevel(['foreground'])).toBe('medium')
+  })
+
+  it('returns high for active-session-window (RustDesk UDP bypass fix)', () => {
+    expect(__internal.classifyRiskLevel(['active-session-window'])).toBe('high')
+  })
+
+  it('returns high for active-session-window + network', () => {
+    expect(__internal.classifyRiskLevel(['network', 'active-session-window'])).toBe('high')
   })
 
   it('returns low for no signals', () => {
@@ -314,5 +412,195 @@ describe('RemoteRiskService', () => {
     const script = __internal.buildForegroundProcessScript()
     expect(script).toContain('$foregroundPid = [uint32]0')
     expect(script).not.toContain('$pid = 0')
+  })
+
+  // ===== RUSTDESK UDP BYPASS FIX =====
+  it('returns HIGH when RustDesk has active session window (UDP-based, single TCP connection)', async () => {
+    // This simulates the exact scenario: RustDesk uses UDP for screen streaming,
+    // so only 1 TCP relay connection exists, but the window title proves an active session
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'RustDesk.exe', pid: 111 },
+          { name: 'RustDesk.exe', pid: 222 }
+        ],
+        listNetworkConnections: async () => [
+          // Only 1 relay TCP connection (below threshold of 2)
+          { pid: 111, state: 'Established', remoteAddress: '15.204.87.212' }
+        ],
+        hasVisibleWindow: async () => true,
+        hasActiveSessionWindow: async () => true // Window title: "1279903594 - RustDesk"
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('high')
+    expect(result.blocking).toBe(true)
+    expect(result.activeSignals).toContain('active-session-window')
+  })
+
+  it('returns MEDIUM when RustDesk is idle (no active session window)', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'RustDesk.exe', pid: 111 }
+        ],
+        listNetworkConnections: async () => [
+          { pid: 111, state: 'Established', remoteAddress: '15.204.87.212' }
+        ],
+        hasVisibleWindow: async () => true,
+        hasActiveSessionWindow: async () => false // Just main window "RustDesk", no session
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('medium')
+    expect(result.blocking).toBe(false)
+    expect(result.activeSignals).not.toContain('active-session-window')
+  })
+
+  // ===== NEW TOOLS: Chrome Remote Desktop =====
+  it('detects Chrome Remote Desktop host with network connections', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'remoting_desktop.exe', pid: 500 }
+        ],
+        listNetworkConnections: async () => [
+          { pid: 500, state: 'Established', remoteAddress: '142.250.185.46' }
+        ],
+        hasVisibleWindow: async () => false
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('medium')
+    expect(result.detectedProcesses).toHaveLength(1)
+    expect(result.activeSignals).toContain('network')
+  })
+
+  // ===== NEW TOOLS: VNC Family =====
+  it('detects VNC server with multiple connections as HIGH risk', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'vncserver.exe', pid: 600 }
+        ],
+        listNetworkConnections: async () => [
+          { pid: 600, state: 'Established', remoteAddress: '192.168.1.50' },
+          { pid: 600, state: 'Established', remoteAddress: '192.168.1.51' }
+        ],
+        hasVisibleWindow: async () => false
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('high')
+    expect(result.blocking).toBe(true)
+    expect(result.activeSignals).toContain('network-multi')
+  })
+
+  it('detects TightVNC with single connection as MEDIUM risk', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'tvnserver.exe', pid: 700 }
+        ],
+        listNetworkConnections: async () => [
+          { pid: 700, state: 'Established', remoteAddress: '10.0.0.50' }
+        ],
+        hasVisibleWindow: async () => false
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('medium')
+    expect(result.blocking).toBe(false)
+    expect(result.activeSignals).toContain('network')
+  })
+
+  // ===== NEW TOOLS: Enterprise =====
+  it('detects ConnectWise ScreenConnect as remote desktop tool', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'ScreenConnect.ClientService.exe', pid: 800 },
+          { name: 'ScreenConnect.WindowsClient.exe', pid: 801 }
+        ],
+        listNetworkConnections: async () => [
+          // 2+ connections on same PID triggers network-multi → HIGH
+          { pid: 800, state: 'Established', remoteAddress: '34.120.0.1' },
+          { pid: 800, state: 'Established', remoteAddress: '34.120.0.2' }
+        ],
+        hasVisibleWindow: async () => true
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('high')
+    expect(result.blocking).toBe(true)
+    expect(result.detectedProcesses).toHaveLength(2)
+  })
+
+  // ===== EDGE CASE: Multiple tools running simultaneously =====
+  it('aggregates signals from multiple remote tools running at once', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'TeamViewer.exe', pid: 100 },
+          { name: 'TeamViewer_Service.exe', pid: 101 },
+          { name: 'vncserver.exe', pid: 200 },
+          { name: 'AnyDesk.exe', pid: 300 }
+        ],
+        listNetworkConnections: async () => [
+          // Only TeamViewer and VNC have connections; AnyDesk idle
+          { pid: 100, state: 'Established', remoteAddress: '52.0.0.1' },
+          { pid: 200, state: 'Established', remoteAddress: '192.168.1.50' },
+          { pid: 200, state: 'Established', remoteAddress: '192.168.1.51' }
+        ],
+        hasVisibleWindow: async () => true
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('high') // VNC has 2 connections → network-multi
+    expect(result.blocking).toBe(true)
+    // All 4 processes reported (service + 3 desktop)
+    expect(result.detectedProcesses).toHaveLength(4)
+    expect(result.activeSignals).toContain('network-multi')
+  })
+
+  // ===== Tier 4: Parsec detection =====
+  it('detects Parsec desktop with service running as LOW (service-only not probed)', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'pservice.exe', pid: 900 } // Only service, no parsecd desktop
+        ]
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('low')
+    expect(result.detectedProcesses).toHaveLength(1)
+  })
+
+  it('detects Ammyy Admin as HIGH when actively connected', async () => {
+    const service = new RemoteRiskService({
+      detector: createMockDetector({
+        listProcesses: async () => [
+          { name: 'AA_v3.exe', pid: 950 }
+        ],
+        listNetworkConnections: async () => [
+          { pid: 950, state: 'Established', remoteAddress: '85.10.0.1' },
+          { pid: 950, state: 'Established', remoteAddress: '85.10.0.2' }
+        ],
+        hasVisibleWindow: async () => true
+      })
+    })
+
+    const result = await service.evaluate()
+    expect(result.level).toBe('high')
+    expect(result.blocking).toBe(true)
   })
 })
