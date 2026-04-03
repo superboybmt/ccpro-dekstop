@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { UpdateNotifier } from '../UpdateNotifier'
+import type { RendererApi } from '@shared/api'
 
 describe('UpdateNotifier', () => {
   it('subscribes before triggering update checks so immediate update events are not missed', async () => {
@@ -33,7 +34,7 @@ describe('UpdateNotifier', () => {
           }
         })
       }
-    }
+    } as unknown as RendererApi
 
     render(<UpdateNotifier />)
 
@@ -75,7 +76,7 @@ describe('UpdateNotifier', () => {
         openExternal,
         onUpdateAvailable: vi.fn(() => () => undefined)
       }
-    }
+    } as unknown as RendererApi
 
     render(<UpdateNotifier />)
 
@@ -122,7 +123,7 @@ describe('UpdateNotifier', () => {
         openExternal: vi.fn(async () => undefined),
         onUpdateAvailable: vi.fn(() => () => undefined)
       }
-    }
+    } as unknown as RendererApi
 
     render(<UpdateNotifier />)
 
@@ -160,7 +161,7 @@ describe('UpdateNotifier', () => {
         openExternal,
         onUpdateAvailable: vi.fn(() => () => undefined)
       }
-    }
+    } as unknown as RendererApi
 
     render(<UpdateNotifier />)
 

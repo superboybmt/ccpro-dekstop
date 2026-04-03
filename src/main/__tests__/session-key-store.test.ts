@@ -11,7 +11,7 @@ describe('getOrCreateSessionEncryptionKey', () => {
     const randomBytes = vi.fn(() => Buffer.alloc(32, 7))
 
     const key = getOrCreateSessionEncryptionKey({
-      createStore: () => store,
+      createStore: () => store as any,
       randomBytes
     })
 
@@ -30,7 +30,7 @@ describe('getOrCreateSessionEncryptionKey', () => {
         set: vi.fn((_field: string, value: string) => {
           storedKey = value
         })
-      }),
+      }) as any,
       randomBytes: vi.fn((size: number) => {
         expect(size).toBe(32)
         return randomBuffer

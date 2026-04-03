@@ -36,7 +36,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
 
@@ -72,7 +72,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
 
@@ -108,7 +108,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
 
@@ -157,7 +157,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
     await act(async () => {})
@@ -194,7 +194,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
 
@@ -230,7 +230,7 @@ describe('DashboardPage error state', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(<DashboardPage />)
 

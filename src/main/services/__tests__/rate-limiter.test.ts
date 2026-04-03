@@ -3,7 +3,7 @@ import { SlidingWindowRateLimiter } from '../rate-limiter'
 
 describe('SlidingWindowRateLimiter', () => {
   it('locks an identifier for 5 minutes after 5 failures within 15 minutes', () => {
-    let now = Date.UTC(2026, 3, 2, 7, 0, 0)
+    const now = Date.UTC(2026, 3, 2, 7, 0, 0)
     const limiter = new SlidingWindowRateLimiter({ now: () => now })
 
     for (let attempt = 0; attempt < 5; attempt += 1) {

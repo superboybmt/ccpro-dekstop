@@ -10,7 +10,7 @@ export interface NotificationInOutWindow {
 
 export interface NotificationWindowConfig {
   inOutMode: number | null
-  shift: Pick<ShiftRecord, 'onduty' | 'offduty' | 'onLunch' | 'offLunch'> | null
+  shift: Pick<ShiftRecord, 'onduty' | 'offduty' | 'onLunch' | 'offLunch' | 'lateGraceMinutes'> | null
   windows: NotificationInOutWindow[]
 }
 

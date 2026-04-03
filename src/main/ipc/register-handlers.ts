@@ -72,7 +72,7 @@ const ensureAdminAuthorized = (sessionStore: SessionStore) => {
   return session
 }
 
-type AppVersionReader = Pick<typeof app, 'getVersion'> & Partial<Pick<typeof app, 'getBuildVersion'>>
+type AppVersionReader = Pick<typeof app, 'getVersion'> & { getBuildVersion?: () => string }
 
 export const resolveBuildNumber = (appVersionReader: AppVersionReader): string =>
   typeof appVersionReader.getBuildVersion === 'function'

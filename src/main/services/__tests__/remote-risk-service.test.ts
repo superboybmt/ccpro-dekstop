@@ -2,9 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   __internal,
   RemoteRiskService,
-  type RemoteRiskDetector,
-  type RemoteProcessInfo,
-  type RemoteNetworkConnection
+  type RemoteRiskDetector
 } from '../remote-risk-service'
 
 // ---------------------------------------------------------------------------

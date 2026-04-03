@@ -60,7 +60,7 @@ describe('SettingsPage', () => {
           lastError: null
         }))
       }
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/settings']}>

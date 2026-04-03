@@ -49,7 +49,7 @@ describe('AdminUsersPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    } as typeof window.ccpro
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/users']}>
@@ -95,7 +95,7 @@ describe('AdminUsersPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    } as typeof window.ccpro
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/users']}>
@@ -144,7 +144,7 @@ describe('AdminUsersPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    } as typeof window.ccpro
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/users']}>
@@ -184,7 +184,7 @@ describe('AdminUsersPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    } as typeof window.ccpro
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/users']}>

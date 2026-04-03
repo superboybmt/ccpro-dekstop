@@ -73,7 +73,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -148,7 +148,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -205,7 +205,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -274,7 +274,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -328,7 +328,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -379,7 +379,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    } as typeof window.ccpro
+    } as unknown as typeof window.ccpro as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>
@@ -460,7 +460,7 @@ describe('AdminDeviceConfigPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/admin/device-config']}>

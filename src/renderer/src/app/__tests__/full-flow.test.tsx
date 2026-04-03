@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { App } from '@renderer/App'
 import type { RendererApi } from '@shared/api'
 
-const mockApi = (): RendererApi => {
+const mockApi = () => {
   const dashboardResponses = [
     {
       shift: {
@@ -186,7 +186,7 @@ const mockApi = (): RendererApi => {
       openExternal: vi.fn(async () => undefined),
       onUpdateAvailable: vi.fn(() => () => undefined)
     }
-  }
+  } as unknown as RendererApi
 }
 
 describe('attendance full flow', () => {

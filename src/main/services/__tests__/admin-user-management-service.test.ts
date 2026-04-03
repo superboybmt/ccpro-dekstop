@@ -48,8 +48,8 @@ describe('AdminUserManagementService', () => {
   })
 
   it('deactivates a user and writes an audit log', async () => {
-    const upsertManagedUser = vi.fn(async () => undefined)
-    const insertAuditLog = vi.fn(async () => undefined)
+    const upsertManagedUser = vi.fn<any>(async () => undefined)
+    const insertAuditLog = vi.fn<any>(async () => undefined)
     const existingHash = await bcrypt.hash('123456', 10)
 
     const service = new AdminUserManagementService({
@@ -89,8 +89,8 @@ describe('AdminUserManagementService', () => {
   })
 
   it('resets a password, preserves app activation state, and forces password change', async () => {
-    const upsertManagedUser = vi.fn(async () => undefined)
-    const insertAuditLog = vi.fn(async () => undefined)
+    const upsertManagedUser = vi.fn<any>(async () => undefined)
+    const insertAuditLog = vi.fn<any>(async () => undefined)
 
     const service = new AdminUserManagementService({
       listEmployeeDirectory: async () => [],
@@ -114,7 +114,7 @@ describe('AdminUserManagementService', () => {
       message: 'Đã reset mật khẩu tạm và yêu cầu đổi lại ở lần đăng nhập tiếp theo'
     })
 
-    const upsertArgs = upsertManagedUser.mock.calls[0]?.[0]
+    const upsertArgs = upsertManagedUser.mock.calls[0]?.[0] as any
     expect(upsertArgs).toMatchObject({
       userEnrollNumber: 18,
       isFirstLogin: true,

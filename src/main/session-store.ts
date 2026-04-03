@@ -19,7 +19,7 @@ interface StoredAdminSession {
   lastActivityAt: string
 }
 
-interface SessionStoreShape {
+interface SessionStoreShape extends Record<string, unknown> {
   session?: StoredSession
   adminSession?: StoredAdminSession
 }

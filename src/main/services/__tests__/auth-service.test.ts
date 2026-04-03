@@ -11,7 +11,7 @@ describe('AuthService', () => {
         fullName: 'Nguyen Van A',
         isEnabled: true,
         schId: 1
-      }),
+      } as any),
       findAppUserByEnrollNumber: async () => null,
       upsertPassword: async () => undefined
     })
@@ -35,7 +35,7 @@ describe('AuthService', () => {
         fullName: 'Nguyen Van A',
         isEnabled: false,
         schId: 1
-      }),
+      } as any),
       findAppUserByEnrollNumber: async () => null,
       upsertPassword: async () => undefined
     })
@@ -59,14 +59,14 @@ describe('AuthService', () => {
         fullName: 'Nguyen Van A',
         isEnabled: true,
         schId: 1
-      }),
+      } as any),
       findAppUserByEnrollNumber: async () => ({
         userEnrollNumber: 1,
         employeeCode: 'E0112599',
         passwordHash,
         isFirstLogin: false,
         isActiveApp: true
-      }),
+      } as any),
       upsertPassword: async () => undefined
     })
 
@@ -89,14 +89,14 @@ describe('AuthService', () => {
         fullName: 'Nguyen Van A',
         isEnabled: true,
         schId: 1
-      }),
+      } as any),
       findAppUserByEnrollNumber: async () => ({
         userEnrollNumber: 1,
         employeeCode: 'E0112599',
         passwordHash,
         isFirstLogin: false,
         isActiveApp: false
-      }),
+      } as any),
       upsertPassword: async () => undefined
     })
 
@@ -119,14 +119,14 @@ describe('AuthService', () => {
         fullName: 'Nguyen Van A',
         isEnabled: true,
         schId: 1
-      }),
+      } as any),
       findAppUserByEnrollNumber: async () => ({
         userEnrollNumber: 1,
         employeeCode: 'E0112599',
         passwordHash,
         isFirstLogin: false,
         isActiveApp: true
-      }),
+      } as any),
       upsertPassword: async () => undefined
     })
 

@@ -1,4 +1,4 @@
-import type { AuthUser, MutationResult } from '@shared/api'
+import type { MutationResult } from '@shared/api'
 import { getPool } from '../db/sql'
 import { formatSqlDateTime } from './sql-datetime'
 

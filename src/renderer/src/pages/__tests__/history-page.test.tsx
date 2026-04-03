@@ -49,7 +49,7 @@ describe('HistoryPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/history']}>
@@ -91,7 +91,7 @@ describe('HistoryPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/history']}>
@@ -142,7 +142,7 @@ describe('HistoryPage', () => {
       notifications: undefined as never,
       settings: undefined as never,
       deviceSync: undefined as never
-    }
+    } as unknown as typeof window.ccpro
 
     render(
       <MemoryRouter initialEntries={['/history']}>

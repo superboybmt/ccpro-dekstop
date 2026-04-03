@@ -248,12 +248,18 @@
     {
       "id": "file:.understand-anything/tmp/ua-generate-graph.js",
       "type": "file",
-      "name": ".understand-anything/tmp/ua-generate-graph.js",
+      "name": "ua-generate-graph.js",
       "description": "code file in javascript",
       "metadata": {
         "lines": 125,
         "category": "code"
-      }
+      },
+      "filePath": ".understand-anything/tmp/ua-generate-graph.js",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:.understand-anything/tmp/ua-project-scan.js",
@@ -998,12 +1004,18 @@
     {
       "id": "file:scripts/build-machine-config-helper.ps1",
       "type": "file",
-      "name": "scripts/build-machine-config-helper.ps1",
+      "name": "build-machine-config-helper.ps1",
       "description": "script file in unknown",
       "metadata": {
         "lines": 50,
         "category": "script"
-      }
+      },
+      "filePath": "scripts/build-machine-config-helper.ps1",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/device-sync-worker.py",
@@ -1028,32 +1040,50 @@
     {
       "id": "file:scripts/init-db.mjs",
       "type": "file",
-      "name": "scripts/init-db.mjs",
+      "name": "init-db.mjs",
       "description": "code file in unknown",
       "metadata": {
         "lines": 101,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/init-db.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/machine-config-helper.py",
       "type": "file",
-      "name": "scripts/machine-config-helper.py",
+      "name": "machine-config-helper.py",
       "description": "code file in python",
       "metadata": {
         "lines": 395,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/machine-config-helper.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/machine-config-helper.spec",
       "type": "file",
-      "name": "scripts/machine-config-helper.spec",
+      "name": "machine-config-helper.spec",
       "description": "code file in unknown",
       "metadata": {
         "lines": 46,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/machine-config-helper.spec",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/requirements-device-sync.txt",
@@ -1068,12 +1098,18 @@
     {
       "id": "file:scripts/reset-admin-password.mjs",
       "type": "file",
-      "name": "scripts/reset-admin-password.mjs",
+      "name": "reset-admin-password.mjs",
       "description": "code file in unknown",
       "metadata": {
         "lines": 113,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/reset-admin-password.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/tests/test_device_sync_worker.py",
@@ -1088,12 +1124,18 @@
     {
       "id": "file:scripts/tests/test_machine_config_helper.py",
       "type": "file",
-      "name": "scripts/tests/test_machine_config_helper.py",
+      "name": "test_machine_config_helper.py",
       "description": "code file in python",
       "metadata": {
         "lines": 88,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/tests/test_machine_config_helper.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/tests/test_zk_apply_hc_auto_switch.py",
@@ -1138,12 +1180,18 @@
     {
       "id": "file:scripts/zk-apply-hc-auto-switch.ps1",
       "type": "file",
-      "name": "scripts/zk-apply-hc-auto-switch.ps1",
+      "name": "zk-apply-hc-auto-switch.ps1",
       "description": "script file in unknown",
       "metadata": {
         "lines": 300,
         "category": "script"
-      }
+      },
+      "filePath": "scripts/zk-apply-hc-auto-switch.ps1",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/zk-proxy-capture.py",
@@ -1158,32 +1206,50 @@
     {
       "id": "file:scripts/zk-shortkey-tool.ps1",
       "type": "file",
-      "name": "scripts/zk-shortkey-tool.ps1",
+      "name": "zk-shortkey-tool.ps1",
       "description": "script file in unknown",
       "metadata": {
         "lines": 540,
         "category": "script"
-      }
+      },
+      "filePath": "scripts/zk-shortkey-tool.ps1",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/zk-ssr-device-data-tool.ps1",
       "type": "file",
-      "name": "scripts/zk-ssr-device-data-tool.ps1",
+      "name": "zk-ssr-device-data-tool.ps1",
       "description": "script file in unknown",
       "metadata": {
         "lines": 367,
         "category": "script"
-      }
+      },
+      "filePath": "scripts/zk-ssr-device-data-tool.ps1",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:scripts/zk-state-mode.py",
       "type": "file",
-      "name": "scripts/zk-state-mode.py",
+      "name": "zk-state-mode.py",
       "description": "code file in python",
       "metadata": {
         "lines": 149,
         "category": "code"
-      }
+      },
+      "filePath": "scripts/zk-state-mode.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/__tests__/session-store.test.ts",
@@ -1208,72 +1274,114 @@
     {
       "id": "file:src/main/config/app-config.ts",
       "type": "file",
-      "name": "src/main/config/app-config.ts",
+      "name": "app-config.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 52,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/config/app-config.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/db/init.ts",
       "type": "file",
-      "name": "src/main/db/init.ts",
+      "name": "init.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 505,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/db/init.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/db/sql.ts",
       "type": "file",
-      "name": "src/main/db/sql.ts",
+      "name": "sql.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 90,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/db/sql.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/index.ts",
       "type": "file",
-      "name": "src/main/index.ts",
+      "name": "index.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 179,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/index.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/ipc/__tests__/register-handlers.test.ts",
       "type": "file",
-      "name": "src/main/ipc/__tests__/register-handlers.test.ts",
+      "name": "register-handlers.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 328,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/ipc/__tests__/register-handlers.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/ipc/register-handlers.ts",
       "type": "file",
-      "name": "src/main/ipc/register-handlers.ts",
+      "name": "register-handlers.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 340,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/ipc/register-handlers.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/admin-auth-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/admin-auth-service.test.ts",
+      "name": "admin-auth-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 269,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/admin-auth-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/admin-settings-service.test.ts",
@@ -1288,12 +1396,18 @@
     {
       "id": "file:src/main/services/__tests__/admin-shift-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/admin-shift-service.test.ts",
+      "name": "admin-shift-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 101,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/admin-shift-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
@@ -1308,22 +1422,34 @@
     {
       "id": "file:src/main/services/__tests__/attendance-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/attendance-service.test.ts",
+      "name": "attendance-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 90,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/attendance-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/auth-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/auth-service.test.ts",
+      "name": "auth-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 113,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/auth-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/device-sync-bulk-insert.test.ts",
@@ -1348,22 +1474,34 @@
     {
       "id": "file:src/main/services/__tests__/device-sync-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/device-sync-service.test.ts",
+      "name": "device-sync-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 456,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/device-sync-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/machine-config-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/machine-config-service.test.ts",
+      "name": "machine-config-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 261,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/machine-config-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/notification-repository.test.ts",
@@ -1378,22 +1516,34 @@
     {
       "id": "file:src/main/services/__tests__/notification-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/notification-service.test.ts",
+      "name": "notification-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 353,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/notification-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/remote-risk-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/remote-risk-service.test.ts",
+      "name": "remote-risk-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 319,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/remote-risk-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/sql-datetime.test.ts",
@@ -1408,22 +1558,34 @@
     {
       "id": "file:src/main/services/__tests__/update-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/update-service.test.ts",
+      "name": "update-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 140,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/update-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/admin-auth-service.ts",
       "type": "file",
-      "name": "src/main/services/admin-auth-service.ts",
+      "name": "admin-auth-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 449,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/admin-auth-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/admin-settings-service.ts",
@@ -1438,12 +1600,18 @@
     {
       "id": "file:src/main/services/admin-shift-service.ts",
       "type": "file",
-      "name": "src/main/services/admin-shift-service.ts",
+      "name": "admin-shift-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 191,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/admin-shift-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/admin-user-management-service.ts",
@@ -1458,72 +1626,114 @@
     {
       "id": "file:src/main/services/attendance-service.ts",
       "type": "file",
-      "name": "src/main/services/attendance-service.ts",
+      "name": "attendance-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 407,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/attendance-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/auth-service.ts",
       "type": "file",
-      "name": "src/main/services/auth-service.ts",
+      "name": "auth-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 296,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/auth-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/avatar-service.ts",
       "type": "file",
-      "name": "src/main/services/avatar-service.ts",
+      "name": "avatar-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 75,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/avatar-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/device-sync-service.ts",
       "type": "file",
-      "name": "src/main/services/device-sync-service.ts",
+      "name": "device-sync-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 1351,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/device-sync-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/history-service.ts",
       "type": "file",
-      "name": "src/main/services/history-service.ts",
+      "name": "history-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 185,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/history-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/machine-config-service.ts",
       "type": "file",
-      "name": "src/main/services/machine-config-service.ts",
+      "name": "machine-config-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 247,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/machine-config-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/notification-inout.ts",
       "type": "file",
-      "name": "src/main/services/notification-inout.ts",
+      "name": "notification-inout.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 176,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/notification-inout.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/notification-service.ts",
@@ -1538,12 +1748,18 @@
     {
       "id": "file:src/main/services/remote-risk-service.ts",
       "type": "file",
-      "name": "src/main/services/remote-risk-service.ts",
+      "name": "remote-risk-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 469,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/remote-risk-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/settings-service.ts",
@@ -1568,42 +1784,66 @@
     {
       "id": "file:src/main/services/update-service.ts",
       "type": "file",
-      "name": "src/main/services/update-service.ts",
+      "name": "update-service.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 118,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/update-service.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/session-store.ts",
       "type": "file",
-      "name": "src/main/session-store.ts",
+      "name": "session-store.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 194,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/session-store.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/startup.ts",
       "type": "file",
-      "name": "src/main/startup.ts",
+      "name": "startup.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 75,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/startup.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/preload/index.ts",
       "type": "file",
-      "name": "src/preload/index.ts",
+      "name": "index.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 75,
         "category": "code"
-      }
+      },
+      "filePath": "src/preload/index.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/index.html",
@@ -1628,12 +1868,18 @@
     {
       "id": "file:src/renderer/src/app/__tests__/full-flow.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "name": "full-flow.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 223,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/app/__tests__/full-flow.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/app/__tests__/route-access.test.ts",
@@ -1658,32 +1904,50 @@
     {
       "id": "file:src/renderer/src/components/__tests__/update-notifier.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "name": "update-notifier.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 68,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/components/ui/avatar-uploader.tsx",
       "type": "file",
-      "name": "src/renderer/src/components/ui/avatar-uploader.tsx",
+      "name": "avatar-uploader.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 162,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/components/ui/avatar-uploader.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/components/ui/avatar.tsx",
       "type": "file",
-      "name": "src/renderer/src/components/ui/avatar.tsx",
+      "name": "avatar.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 20,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/components/ui/avatar.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/components/ui/button.tsx",
@@ -1728,22 +1992,34 @@
     {
       "id": "file:src/renderer/src/components/UpdateNotifier.tsx",
       "type": "file",
-      "name": "src/renderer/src/components/UpdateNotifier.tsx",
+      "name": "UpdateNotifier.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 114,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/components/UpdateNotifier.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/lib/errors.ts",
       "type": "file",
-      "name": "src/renderer/src/lib/errors.ts",
+      "name": "errors.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 26,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/lib/errors.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/lib/format.ts",
@@ -1758,12 +2034,18 @@
     {
       "id": "file:src/renderer/src/lib/image-utils.ts",
       "type": "file",
-      "name": "src/renderer/src/lib/image-utils.ts",
+      "name": "image-utils.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 63,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/lib/image-utils.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/lib/utils.ts",
@@ -1798,12 +2080,18 @@
     {
       "id": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "name": "admin-device-config-page.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 275,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
@@ -1818,12 +2106,18 @@
     {
       "id": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "name": "dashboard-error-state.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 242,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
@@ -1848,32 +2142,50 @@
     {
       "id": "file:src/renderer/src/pages/admin-device-config-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/admin-device-config-page.tsx",
+      "name": "admin-device-config-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 823,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/admin-device-config-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/admin-login-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/admin-login-page.tsx",
+      "name": "admin-login-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 104,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/admin-login-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/admin-users-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/admin-users-page.tsx",
+      "name": "admin-users-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 529,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/admin-users-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/dashboard-page.tsx",
@@ -1888,62 +2200,98 @@
     {
       "id": "file:src/renderer/src/pages/history-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/history-page.tsx",
+      "name": "history-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 223,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/history-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/login-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/login-page.tsx",
+      "name": "login-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 114,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/login-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/notifications-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/notifications-page.tsx",
+      "name": "notifications-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 116,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/notifications-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/settings-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/settings-page.tsx",
+      "name": "settings-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 249,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/settings-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/providers/auth-provider.tsx",
       "type": "file",
-      "name": "src/renderer/src/providers/auth-provider.tsx",
+      "name": "auth-provider.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 94,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/providers/auth-provider.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/styles.css",
       "type": "file",
-      "name": "src/renderer/src/styles.css",
+      "name": "styles.css",
       "description": "markup file in css",
       "metadata": {
         "lines": 1506,
         "category": "markup"
-      }
+      },
+      "filePath": "src/renderer/src/styles.css",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/shared/__tests__/app-time.test.ts",
@@ -1968,12 +2316,18 @@
     {
       "id": "file:src/shared/api.ts",
       "type": "file",
-      "name": "src/shared/api.ts",
+      "name": "api.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 345,
         "category": "code"
-      }
+      },
+      "filePath": "src/shared/api.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/shared/app-time.ts",
@@ -2054,6 +2408,985 @@
         "lines": 818,
         "category": "docs"
       }
+    },
+    {
+      "id": "config:.codex/skills/utf8-vietnamese-guard/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".codex/skills/utf8-vietnamese-guard/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.env.example",
+      "type": "file",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.githooks/pre-commit",
+      "type": "file",
+      "name": "pre-commit",
+      "filePath": ".githooks/pre-commit",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.gitignore",
+      "type": "file",
+      "name": ".gitignore",
+      "filePath": ".gitignore",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.understand-anything/knowledge-graph.json",
+      "type": "config",
+      "name": "knowledge-graph.json",
+      "filePath": ".understand-anything/knowledge-graph.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.understand-anything/meta.json",
+      "type": "config",
+      "name": "meta.json",
+      "filePath": ".understand-anything/meta.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.understand-anything/tmp/ua-scan-results.json",
+      "type": "config",
+      "name": "ua-scan-results.json",
+      "filePath": ".understand-anything/tmp/ua-scan-results.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:AGENTS.md",
+      "type": "config",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app-logo.png",
+      "type": "file",
+      "name": "app-logo.png",
+      "filePath": "app-logo.png",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/reports/audit_2026-04-02.md",
+      "type": "config",
+      "name": "audit_2026-04-02.md",
+      "filePath": "docs/reports/audit_2026-04-02.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/reports/production-go-live-checklist.md",
+      "type": "config",
+      "name": "production-go-live-checklist.md",
+      "filePath": "docs/reports/production-go-live-checklist.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/reports/update-integrity-rollout.md",
+      "type": "config",
+      "name": "update-integrity-rollout.md",
+      "filePath": "docs/reports/update-integrity-rollout.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-02-electron-sandbox-hardening.md",
+      "type": "config",
+      "name": "2026-04-02-electron-sandbox-hardening.md",
+      "filePath": "docs/superpowers/plans/2026-04-02-electron-sandbox-hardening.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-02-history-temporal-inputs-phase-2.md",
+      "type": "config",
+      "name": "2026-04-02-history-temporal-inputs-phase-2.md",
+      "filePath": "docs/superpowers/plans/2026-04-02-history-temporal-inputs-phase-2.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-02-shared-temporal-inputs-phase-1.md",
+      "type": "config",
+      "name": "2026-04-02-shared-temporal-inputs-phase-1.md",
+      "filePath": "docs/superpowers/plans/2026-04-02-shared-temporal-inputs-phase-1.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-02-update-integrity-hardening.md",
+      "type": "config",
+      "name": "2026-04-02-update-integrity-hardening.md",
+      "filePath": "docs/superpowers/plans/2026-04-02-update-integrity-hardening.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-03-local-config-bootstrap.md",
+      "type": "config",
+      "name": "2026-04-03-local-config-bootstrap.md",
+      "filePath": "docs/superpowers/plans/2026-04-03-local-config-bootstrap.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/plans/2026-04-03-portable-no-admin-runtime.md",
+      "type": "config",
+      "name": "2026-04-03-portable-no-admin-runtime.md",
+      "filePath": "docs/superpowers/plans/2026-04-03-portable-no-admin-runtime.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/specs/2026-04-03-local-config-bootstrap-design.md",
+      "type": "config",
+      "name": "2026-04-03-local-config-bootstrap-design.md",
+      "filePath": "docs/superpowers/specs/2026-04-03-local-config-bootstrap-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docs/superpowers/specs/2026-04-03-portable-no-admin-runtime-design.md",
+      "type": "config",
+      "name": "2026-04-03-portable-no-admin-runtime-design.md",
+      "filePath": "docs/superpowers/specs/2026-04-03-portable-no-admin-runtime-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/admin-shift-editor/.openspec.yaml",
+      "type": "config",
+      "name": ".openspec.yaml",
+      "filePath": "openspec/changes/admin-shift-editor/.openspec.yaml",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/admin-shift-editor/design.md",
+      "type": "config",
+      "name": "design.md",
+      "filePath": "openspec/changes/admin-shift-editor/design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/admin-shift-editor/proposal.md",
+      "type": "config",
+      "name": "proposal.md",
+      "filePath": "openspec/changes/admin-shift-editor/proposal.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "type": "config",
+      "name": "spec.md",
+      "filePath": "openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/admin-shift-editor/tasks.md",
+      "type": "config",
+      "name": "tasks.md",
+      "filePath": "openspec/changes/admin-shift-editor/tasks.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/.openspec.yaml",
+      "type": "config",
+      "name": ".openspec.yaml",
+      "filePath": "openspec/changes/security-audit-fixes/.openspec.yaml",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/design.md",
+      "type": "config",
+      "name": "design.md",
+      "filePath": "openspec/changes/security-audit-fixes/design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/proposal.md",
+      "type": "config",
+      "name": "proposal.md",
+      "filePath": "openspec/changes/security-audit-fixes/proposal.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/specs/env-config/spec.md",
+      "type": "config",
+      "name": "spec.md",
+      "filePath": "openspec/changes/security-audit-fixes/specs/env-config/spec.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/specs/login-rate-limiting/spec.md",
+      "type": "config",
+      "name": "spec.md",
+      "filePath": "openspec/changes/security-audit-fixes/specs/login-rate-limiting/spec.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/specs/url-whitelist/spec.md",
+      "type": "config",
+      "name": "spec.md",
+      "filePath": "openspec/changes/security-audit-fixes/specs/url-whitelist/spec.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/security-audit-fixes/tasks.md",
+      "type": "config",
+      "name": "tasks.md",
+      "filePath": "openspec/changes/security-audit-fixes/tasks.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/update-avatar/.openspec.yaml",
+      "type": "config",
+      "name": ".openspec.yaml",
+      "filePath": "openspec/changes/update-avatar/.openspec.yaml",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/update-avatar/design.md",
+      "type": "config",
+      "name": "design.md",
+      "filePath": "openspec/changes/update-avatar/design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/update-avatar/proposal.md",
+      "type": "config",
+      "name": "proposal.md",
+      "filePath": "openspec/changes/update-avatar/proposal.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "type": "config",
+      "name": "spec.md",
+      "filePath": "openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:openspec/changes/update-avatar/tasks.md",
+      "type": "config",
+      "name": "tasks.md",
+      "filePath": "openspec/changes/update-avatar/tasks.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:package-lock.json",
+      "type": "config",
+      "name": "package-lock.json",
+      "filePath": "package-lock.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:resources/icon.png",
+      "type": "file",
+      "name": "icon.png",
+      "filePath": "resources/icon.png",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/__pycache__/machine-config-helper.cpython-313.pyc",
+      "type": "file",
+      "name": "machine-config-helper.cpython-313.pyc",
+      "filePath": "scripts/__pycache__/machine-config-helper.cpython-313.pyc",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/__pycache__/zk-state-mode.cpython-313.pyc",
+      "type": "file",
+      "name": "zk-state-mode.cpython-313.pyc",
+      "filePath": "scripts/__pycache__/zk-state-mode.cpython-313.pyc",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/__tests__/script-security.test.ts",
+      "type": "file",
+      "name": "script-security.test.ts",
+      "filePath": "scripts/__tests__/script-security.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/build-app-config-seed.mjs",
+      "type": "file",
+      "name": "build-app-config-seed.mjs",
+      "filePath": "scripts/build-app-config-seed.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/build-app-icon.py",
+      "type": "file",
+      "name": "build-app-icon.py",
+      "filePath": "scripts/build-app-icon.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/check-encoding.mjs",
+      "type": "file",
+      "name": "check-encoding.mjs",
+      "filePath": "scripts/check-encoding.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/tests/__pycache__/test_machine_config_helper.cpython-313.pyc",
+      "type": "file",
+      "name": "test_machine_config_helper.cpython-313.pyc",
+      "filePath": "scripts/tests/__pycache__/test_machine_config_helper.cpython-313.pyc",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/__tests__/external-url.test.ts",
+      "type": "file",
+      "name": "external-url.test.ts",
+      "filePath": "src/main/__tests__/external-url.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/__tests__/session-key-store.test.ts",
+      "type": "file",
+      "name": "session-key-store.test.ts",
+      "filePath": "src/main/__tests__/session-key-store.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/__tests__/session-store-resilience.test.ts",
+      "type": "file",
+      "name": "session-store-resilience.test.ts",
+      "filePath": "src/main/__tests__/session-store-resilience.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/__tests__/startup-config-bootstrap.test.ts",
+      "type": "file",
+      "name": "startup-config-bootstrap.test.ts",
+      "filePath": "src/main/__tests__/startup-config-bootstrap.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/__tests__/window-security.test.ts",
+      "type": "file",
+      "name": "window-security.test.ts",
+      "filePath": "src/main/__tests__/window-security.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/config/__tests__/app-config.test.ts",
+      "type": "file",
+      "name": "app-config.test.ts",
+      "filePath": "src/main/config/__tests__/app-config.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/config/app-runtime-config.ts",
+      "type": "file",
+      "name": "app-runtime-config.ts",
+      "filePath": "src/main/config/app-runtime-config.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/db/__tests__/init.test.ts",
+      "type": "file",
+      "name": "init.test.ts",
+      "filePath": "src/main/db/__tests__/init.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/electron-store.ts",
+      "type": "file",
+      "name": "electron-store.ts",
+      "filePath": "src/main/electron-store.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/external-url.ts",
+      "type": "file",
+      "name": "external-url.ts",
+      "filePath": "src/main/external-url.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/runtime/__tests__/runtime-artifact-manager.test.ts",
+      "type": "file",
+      "name": "runtime-artifact-manager.test.ts",
+      "filePath": "src/main/runtime/__tests__/runtime-artifact-manager.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/runtime/__tests__/runtime-environment.test.ts",
+      "type": "file",
+      "name": "runtime-environment.test.ts",
+      "filePath": "src/main/runtime/__tests__/runtime-environment.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/runtime/runtime-artifact-manager.ts",
+      "type": "file",
+      "name": "runtime-artifact-manager.ts",
+      "filePath": "src/main/runtime/runtime-artifact-manager.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/runtime/runtime-environment.ts",
+      "type": "file",
+      "name": "runtime-environment.ts",
+      "filePath": "src/main/runtime/runtime-environment.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/__tests__/admin-shift-repository.test.ts",
+      "type": "file",
+      "name": "admin-shift-repository.test.ts",
+      "filePath": "src/main/services/__tests__/admin-shift-repository.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/__tests__/avatar-service.test.ts",
+      "type": "file",
+      "name": "avatar-service.test.ts",
+      "filePath": "src/main/services/__tests__/avatar-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/__tests__/rate-limiter.test.ts",
+      "type": "file",
+      "name": "rate-limiter.test.ts",
+      "filePath": "src/main/services/__tests__/rate-limiter.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/rate-limiter.ts",
+      "type": "file",
+      "name": "rate-limiter.ts",
+      "filePath": "src/main/services/rate-limiter.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/update-integrity.ts",
+      "type": "file",
+      "name": "update-integrity.ts",
+      "filePath": "src/main/services/update-integrity.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/session-key-store.ts",
+      "type": "file",
+      "name": "session-key-store.ts",
+      "filePath": "src/main/session-key-store.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/window-options.ts",
+      "type": "file",
+      "name": "window-options.ts",
+      "filePath": "src/main/window-options.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/app/__tests__/sandbox-smoke.test.tsx",
+      "type": "file",
+      "name": "sandbox-smoke.test.tsx",
+      "filePath": "src/renderer/src/app/__tests__/sandbox-smoke.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/layout/sidebar.tsx",
+      "type": "file",
+      "name": "sidebar.tsx",
+      "filePath": "src/renderer/src/components/layout/sidebar.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/layout/top-header.tsx",
+      "type": "file",
+      "name": "top-header.tsx",
+      "filePath": "src/renderer/src/components/layout/top-header.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/__tests__/date-picker.test.tsx",
+      "type": "file",
+      "name": "date-picker.test.tsx",
+      "filePath": "src/renderer/src/components/ui/__tests__/date-picker.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/__tests__/date-time-picker.test.tsx",
+      "type": "file",
+      "name": "date-time-picker.test.tsx",
+      "filePath": "src/renderer/src/components/ui/__tests__/date-time-picker.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/__tests__/month-picker.test.tsx",
+      "type": "file",
+      "name": "month-picker.test.tsx",
+      "filePath": "src/renderer/src/components/ui/__tests__/month-picker.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/__tests__/time-picker.test.tsx",
+      "type": "file",
+      "name": "time-picker.test.tsx",
+      "filePath": "src/renderer/src/components/ui/__tests__/time-picker.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/date-picker.tsx",
+      "type": "file",
+      "name": "date-picker.tsx",
+      "filePath": "src/renderer/src/components/ui/date-picker.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/date-time-picker.tsx",
+      "type": "file",
+      "name": "date-time-picker.tsx",
+      "filePath": "src/renderer/src/components/ui/date-time-picker.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/month-picker.tsx",
+      "type": "file",
+      "name": "month-picker.tsx",
+      "filePath": "src/renderer/src/components/ui/month-picker.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/time-picker.tsx",
+      "type": "file",
+      "name": "time-picker.tsx",
+      "filePath": "src/renderer/src/components/ui/time-picker.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/components/ui/use-floating-popover.ts",
+      "type": "file",
+      "name": "use-floating-popover.ts",
+      "filePath": "src/renderer/src/components/ui/use-floating-popover.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/lib/__tests__/temporal-input.test.ts",
+      "type": "file",
+      "name": "temporal-input.test.ts",
+      "filePath": "src/renderer/src/lib/__tests__/temporal-input.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/lib/temporal-input.ts",
+      "type": "file",
+      "name": "temporal-input.ts",
+      "filePath": "src/renderer/src/lib/temporal-input.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/history-page.test.tsx",
+      "type": "file",
+      "name": "history-page.test.tsx",
+      "filePath": "src/renderer/src/pages/__tests__/history-page.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/login-startup-status.test.tsx",
+      "type": "file",
+      "name": "login-startup-status.test.tsx",
+      "filePath": "src/renderer/src/pages/__tests__/login-startup-status.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:version.json",
+      "type": "config",
+      "name": "version.json",
+      "filePath": "version.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/device-sync.types.ts",
+      "type": "file",
+      "name": "device-sync.types.ts",
+      "filePath": "src/main/services/device-sync.types.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/python-device-sync-worker.ts",
+      "type": "file",
+      "name": "python-device-sync-worker.ts",
+      "filePath": "src/main/services/python-device-sync-worker.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/sql-device-sync-repository.ts",
+      "type": "file",
+      "name": "sql-device-sync-repository.ts",
+      "filePath": "src/main/services/sql-device-sync-repository.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/pages/admin-device-config-utils.ts",
+      "type": "file",
+      "name": "admin-device-config-utils.ts",
+      "filePath": "src/renderer/src/pages/admin-device-config-utils.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     }
   ],
   "edges": [
@@ -4530,5 +5863,8 @@
         "description": "Review .codex/skills/openspec-archive-change/SKILL.md"
       }
     ]
+  },
+  "project": {
+    "analyzedAt": "2026-04-03T06:02:36.728Z"
   }
 }

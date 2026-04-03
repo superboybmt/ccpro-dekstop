@@ -11,7 +11,9 @@ interface TestPunchRecord {
 }
 
 interface StoredNotification extends NotificationItem {
+  id: number
   notificationKey: string
+  [key: string]: any
 }
 
 const createRepository = (args: {
@@ -359,7 +361,8 @@ describe('classifyNotificationPunches', () => {
         onduty: '07:30',
         offduty: '17:00',
         onLunch: '11:30',
-        offLunch: '13:00'
+        offLunch: '13:00',
+        lateGraceMinutes: 0
       },
       windows: [
         { startIn: '05:00', endIn: '09:00', startOut: '09:01', endOut: '12:15' },

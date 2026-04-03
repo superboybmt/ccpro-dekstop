@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { useEffect, useState } from 'react'
 import type { RendererApi } from '@shared/api'
 
-const createApi = (): RendererApi => ({
+const createApi = () => ({
   auth: {
     login: vi.fn(async () => ({ ok: false, requiresPasswordChange: false })),
     getSession: vi.fn(async () => ({
@@ -107,7 +107,7 @@ const createApi = (): RendererApi => ({
     openExternal: vi.fn(async () => undefined),
     onUpdateAvailable: vi.fn(() => () => undefined)
   }
-})
+}) as unknown as RendererApi
 
 const SandboxSmokeHarness = (): JSX.Element => {
   const [status, setStatus] = useState('booting')

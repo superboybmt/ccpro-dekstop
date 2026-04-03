@@ -12,12 +12,6 @@ import type {
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
 import { Input } from '@renderer/components/ui/input'
-
-const STATUS_LABEL = {
-  active: 'Đang hoạt động',
-  inactive: 'Đã vô hiệu hóa'
-} as const
-
 const missingAdminUsersMessage =
   'Bản app hiện tại chưa hỗ trợ quản lý người dùng. Hãy mở lại app sau khi cập nhật build mới.'
 

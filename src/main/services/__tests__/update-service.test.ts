@@ -107,7 +107,7 @@ describe('UpdateService', () => {
   it('rewrites GitHub blob manifest URLs to the raw endpoint before fetching', async () => {
     process.env.CCPRO_UPDATE_MANIFEST_URL = 'https://github.com/superboybmt/ccpro-dekstop/blob/main/version.json'
 
-    const fetchMock = vi.fn(async () => ({
+    const fetchMock = vi.fn<any>(async () => ({
       ok: true,
       headers: new Headers({ 'content-type': 'application/json' }),
       json: async () => ({
@@ -197,7 +197,7 @@ describe('UpdateService', () => {
     const { publicKey, privateKey } = generateKeyPairSync('rsa', { modulusLength: 2048 })
     integrityPublicKey = publicKey.export({ type: 'spki', format: 'pem' }).toString()
 
-    const manifest = {
+    const manifest: any = {
       latest: '1.0.4',
       downloadUrl: 'https://example.com/download-1.0.4.exe',
       releaseNotes: 'Signed release',

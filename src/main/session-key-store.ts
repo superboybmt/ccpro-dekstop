@@ -1,7 +1,7 @@
 import { randomBytes as defaultRandomBytes } from 'node:crypto'
 import { createElectronStore } from './electron-store'
 
-interface SessionKeyStoreShape {
+interface SessionKeyStoreShape extends Record<string, unknown> {
   sessionEncryptionKey?: string
 }
 
