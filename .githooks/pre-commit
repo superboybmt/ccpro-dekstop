@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -eu
+
+staged_files="$(git diff --cached --name-only --diff-filter=ACMR)"
+
+needs_encoding_check=0
+for file in $staged_files
+do
+  case "$file" in
+    src/*|scripts/*|docs/*|.codex/skills/*|AGENTS.md|.env.example)
+      needs_encoding_check=1
+      break
+      ;;
+  esac
+done
+
+if [ "$needs_encoding_check" -eq 0 ]; then
+  exit 0
+fi
+
+echo "Running UTF-8 Vietnamese encoding guard..."
+node scripts/check-encoding.mjs $staged_files
+npm run test:encoding

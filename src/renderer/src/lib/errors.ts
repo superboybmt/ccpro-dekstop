@@ -1,9 +1,15 @@
+const unwrapElectronInvokeError = (message: string): string => {
+  const match = message.match(/^Error invoking remote method '[^']+': Error: (.+)$/u)
+  return match?.[1] ?? message
+}
+
 export const toUiErrorMessage = (error: unknown, fallback: string): string => {
   if (!(error instanceof Error)) {
     return fallback
   }
 
-  const normalized = error.message.toLowerCase()
+  const message = unwrapElectronInvokeError(error.message).trim()
+  const normalized = message.toLowerCase()
 
   if (
     normalized.includes('failed to connect') ||
@@ -21,5 +27,5 @@ export const toUiErrorMessage = (error: unknown, fallback: string): string => {
     return 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.'
   }
 
-  return error.message || fallback
+  return message || fallback
 }

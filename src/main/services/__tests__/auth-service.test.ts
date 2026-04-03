@@ -109,4 +109,42 @@ describe('AuthService', () => {
     expect(result.ok).toBe(false)
     expect(result.message).toBe('Tài khoản ứng dụng đã bị vô hiệu hóa')
   })
+
+  it('temporarily locks login after 5 failed attempts for the same employee code', async () => {
+    const passwordHash = await bcrypt.hash('correct-password', 10)
+    const service = new AuthService({
+      findEmployeeByCode: async (employeeCode) => ({
+        userEnrollNumber: 1,
+        employeeCode,
+        fullName: 'Nguyen Van A',
+        isEnabled: true,
+        schId: 1
+      }),
+      findAppUserByEnrollNumber: async () => ({
+        userEnrollNumber: 1,
+        employeeCode: 'E0112599',
+        passwordHash,
+        isFirstLogin: false,
+        isActiveApp: true
+      }),
+      upsertPassword: async () => undefined
+    })
+
+    for (let attempt = 0; attempt < 5; attempt += 1) {
+      await service.login({
+        employeeCode: 'E0112599',
+        password: 'wrong-password',
+        rememberMe: false
+      })
+    }
+
+    const lockedResult = await service.login({
+      employeeCode: 'E0112599',
+      password: 'correct-password',
+      rememberMe: false
+    })
+
+    expect(lockedResult.ok).toBe(false)
+    expect(lockedResult.message).toContain('khóa')
+  })
 })

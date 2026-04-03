@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const ipcHandlers = new Map<string, (...args: unknown[]) => unknown>()
+const shellOpenExternalMock = vi.fn(async () => undefined)
 const machineConfigGetMock = vi.fn(async () => ({ stateMode: 2, schedule: [] }))
 const adminUsersListMock = vi.fn(async () => ({ users: [] }))
 const setUserActiveStateMock = vi.fn(async () => ({
@@ -25,6 +26,12 @@ const saveRemoteRiskPolicyMock = vi.fn(async (policy) => ({
   message: 'Đã lưu cấu hình chặn điều khiển từ xa',
   mode: policy.mode
 }))
+const checkForUpdatesMock = vi.fn(async () => null)
+const downloadVerifiedUpdateMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đã tải và mở bản cập nhật đã xác thực.',
+  filePath: 'E:/temp/CCPro-Portable-1.0.4.exe'
+}))
 
 let adminSession = {
   authenticated: false,
@@ -36,6 +43,9 @@ vi.mock('electron', () => ({
   app: {
     getVersion: () => '1.0.0',
     getBuildVersion: () => '1.0.0'
+  },
+  shell: {
+    openExternal: shellOpenExternalMock
   },
   ipcMain: {
     handle: vi.fn((channel: string, handler: (...args: unknown[]) => unknown) => {
@@ -153,6 +163,13 @@ vi.mock('../../services/settings-service', () => ({
   }
 }))
 
+vi.mock('../../services/update-service', () => ({
+  UpdateService: class {
+    checkForUpdates = checkForUpdatesMock
+    downloadVerifiedUpdate = downloadVerifiedUpdateMock
+  }
+}))
+
 vi.mock('../../config/app-config', () => ({
   appConfig: {
     deviceSync: {
@@ -172,6 +189,9 @@ describe('registerIpcHandlers', () => {
     resetAdminPasswordMock.mockClear()
     listAdminsMock.mockClear()
     saveRemoteRiskPolicyMock.mockClear()
+    checkForUpdatesMock.mockClear()
+    downloadVerifiedUpdateMock.mockClear()
+    shellOpenExternalMock.mockClear()
     adminSession = { authenticated: false, mustChangePassword: false, admin: null }
   })
 
@@ -323,5 +343,100 @@ describe('registerIpcHandlers', () => {
         confirmPassword: 'NewSecret@123'
       }
     )
+  })
+  it('opens external links only when the URL uses HTTPS', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('app:open-external')
+    expect(handler).toBeTypeOf('function')
+
+    await handler?.({}, 'https://github.com/example/releases')
+
+    expect(shellOpenExternalMock).toHaveBeenCalledWith('https://github.com/example/releases')
+  })
+
+  it('blocks non-HTTPS external links', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('app:open-external')
+    expect(handler).toBeTypeOf('function')
+
+    await handler?.({}, 'file:///C:/Windows/System32/cmd.exe')
+
+    expect(shellOpenExternalMock).not.toHaveBeenCalled()
+  })
+
+  it('allows update checks even when app readiness fails', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({
+      ensureAppReady: async () => {
+        throw new Error('Missing required environment variable: WISEEYE_SQL_PASSWORD')
+      }
+    })
+
+    const handler = ipcHandlers.get('app:check-for-updates')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({})).resolves.toBeNull()
+    expect(checkForUpdatesMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('exposes startup diagnostics without waiting for app readiness', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({
+      ensureAppReady: async () => {
+        throw new Error('Missing required environment variable: WISEEYE_SQL_PASSWORD')
+      },
+      getStartupStatus: () => ({
+        status: 'error',
+        category: 'missing-config',
+        message: 'Missing required environment variable: WISEEYE_SQL_PASSWORD'
+      })
+    })
+
+    const handler = ipcHandlers.get('app:get-startup-status')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({})).resolves.toEqual({
+      status: 'error',
+      category: 'missing-config',
+      message: 'Missing required environment variable: WISEEYE_SQL_PASSWORD'
+    })
+  })
+
+  it('delegates verified update downloads to UpdateService instead of opening the remote URL directly', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('app:download-verified-update')
+    expect(handler).toBeTypeOf('function')
+
+    const updateInfo = {
+      latest: '1.0.4',
+      downloadUrl: 'https://example.com/download-1.0.4.exe',
+      releaseNotes: 'Signed release',
+      integrity: {
+        checksumSha256: 'b'.repeat(64),
+        signature: 'signature',
+        signedFieldsVersion: 1,
+        status: 'verified' as const
+      }
+    }
+
+    await expect(handler?.({}, updateInfo)).resolves.toEqual({
+      ok: true,
+      message: 'Đã tải và mở bản cập nhật đã xác thực.',
+      filePath: 'E:/temp/CCPro-Portable-1.0.4.exe'
+    })
+
+    expect(downloadVerifiedUpdateMock).toHaveBeenCalledWith(updateInfo)
+    expect(shellOpenExternalMock).not.toHaveBeenCalled()
   })
 })

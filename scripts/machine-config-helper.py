@@ -1,9 +1,12 @@
 import argparse
 import base64
+import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -21,10 +24,69 @@ DEFAULT_STATE_NAMES = {
 }
 
 
+def is_packaged() -> bool:
+    return bool(getattr(sys, "frozen", False))
+
+
+def runtime_root() -> Path:
+    if is_packaged():
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parents[1]
+
+
 def bundled_root() -> Path:
     if hasattr(sys, "_MEIPASS"):
         return Path(sys._MEIPASS)  # type: ignore[attr-defined]
-    return Path(__file__).resolve().parents[1]
+    return runtime_root()
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(1024 * 1024)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sync_file(source_path: Path, target_path: Path) -> None:
+    if target_path.exists() and sha256_file(source_path) == sha256_file(target_path):
+        return
+
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source_path, target_path)
+
+
+def sync_directory(source_dir: Path, target_dir: Path) -> None:
+    if not source_dir.exists():
+        return
+
+    for source_path in source_dir.rglob("*"):
+        if source_path.is_dir():
+            continue
+        sync_file(source_path, target_dir / source_path.relative_to(source_dir))
+
+
+def stage_packaged_payload() -> None:
+    if not is_packaged() or not hasattr(sys, "_MEIPASS"):
+        return
+
+    source_root = bundled_root()
+    target_root = runtime_root()
+    if source_root == target_root:
+        return
+
+    source_sdk_dir = source_root / "sdk"
+    target_sdk_dir = target_root / "sdk"
+    sync_directory(source_sdk_dir, target_sdk_dir)
+
+    source_scripts_dir = source_root / "scripts"
+    source_ssr_tool = source_scripts_dir / "zk-ssr-device-data-tool.ps1"
+    target_ssr_tool = target_root / "scripts" / "zk-ssr-device-data-tool.ps1"
+    if source_ssr_tool.exists():
+        sync_file(source_ssr_tool, target_ssr_tool)
 
 
 def powershell_32_path() -> str:
@@ -33,21 +95,38 @@ def powershell_32_path() -> str:
 
 
 def ssr_tool_path() -> str:
-    return str(bundled_root() / "scripts" / "zk-ssr-device-data-tool.ps1")
+    stage_packaged_payload()
+    return str(runtime_root() / "scripts" / "zk-ssr-device-data-tool.ps1")
 
 
 def sdk_dir_path() -> str:
-    return str(bundled_root() / "sdk")
+    stage_packaged_payload()
+    return str(runtime_root() / "sdk")
 
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(description="Machine config helper for ZKTeco devices.")
-    parser.add_argument("command", choices=("get-config", "save-config", "sync-time"))
-    parser.add_argument("--ip", required=True)
-    parser.add_argument("--port", type=int, required=True)
-    parser.add_argument("--password", type=int, required=True)
+    parser.add_argument("command", choices=("preflight-sdk", "get-config", "save-config", "sync-time", "bootstrap-app-config"))
+    parser.add_argument("--ip")
+    parser.add_argument("--port", type=int)
+    parser.add_argument("--password", type=int)
     parser.add_argument("--payloadB64")
-    return parser.parse_args(argv)
+    parser.add_argument("--output")
+    parser.add_argument("--seed")
+    parsed = parser.parse_args(argv)
+
+    if parsed.command == "bootstrap-app-config":
+        if not parsed.output or not parsed.seed:
+            parser.error("--output and --seed are required for bootstrap-app-config")
+        return parsed
+
+    if parsed.command == "preflight-sdk":
+        return parsed
+
+    if parsed.ip is None or parsed.port is None or parsed.password is None:
+        parser.error("--ip, --port, and --password are required for device commands")
+
+    return parsed
 
 
 def create_device(ip: str, port: int, password: int):
@@ -143,6 +222,10 @@ def run_ssr_tool(ip: str, port: int, password: int, command: str, extra_args: li
         raise RuntimeError(stderr or stdout or f"SSR tool failed with exit code {completed.returncode}")
 
     return json.loads(stdout) if stdout else {}
+
+
+def preflight_machine_config_sdk() -> dict:
+    return run_ssr_tool("127.0.0.1", 4370, 0, "preflight", [])
 
 
 def get_ssr_rows(ip: str, port: int, password: int, table: str) -> list[dict[str, str]]:
@@ -369,11 +452,46 @@ def sync_time(ip: str, port: int, password: int) -> dict:
                 pass
 
 
+def bootstrap_app_config(output_path: str, seed_path: str) -> dict:
+    output = Path(output_path)
+    seed = Path(seed_path)
+
+    if output.exists():
+        return {
+            "ok": True,
+            "message": "Local app config already exists",
+            "outputPath": str(output),
+        }
+
+    if not seed.exists():
+        raise RuntimeError(f"Seed file not found: {seed}")
+
+    config_data = json.loads(seed.read_text(encoding="utf-8"))
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    with tempfile.NamedTemporaryFile("w", delete=False, dir=output.parent, encoding="utf-8", newline="\n") as handle:
+        json.dump(config_data, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+        temp_path = Path(handle.name)
+
+    temp_path.replace(output)
+
+    return {
+        "ok": True,
+        "message": "Bootstrapped local app config",
+        "outputPath": str(output),
+    }
+
+
 def main(argv=None):
     args = parse_args(sys.argv[1:] if argv is None else argv)
 
     try:
-        if args.command == "get-config":
+        if args.command == "bootstrap-app-config":
+            result = bootstrap_app_config(args.output, args.seed)
+        elif args.command == "preflight-sdk":
+            result = preflight_machine_config_sdk()
+        elif args.command == "get-config":
             result = get_config(args.ip, args.port, args.password)
         elif args.command == "sync-time":
             result = sync_time(args.ip, args.port, args.password)

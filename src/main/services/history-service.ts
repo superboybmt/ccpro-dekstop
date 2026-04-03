@@ -56,6 +56,7 @@ export class HistoryService {
     let absences = 0
 
     const cursor = new Date(startDate)
+    const todayKey = formatDateKey(new Date())
     while (cursor <= endDate) {
       const dateKey = formatDateKey(cursor)
       const dayPunches = (grouped.get(dateKey) ?? []).sort((left, right) => left.getTime() - right.getTime())
@@ -63,7 +64,7 @@ export class HistoryService {
       const lastPunch = dayPunches.length > 1 ? dayPunches.at(-1) ?? null : null
 
       if (dayPunches.length === 0) {
-        if (!isScheduledOff(cursor, shift)) {
+        if (!isScheduledOff(cursor, shift) && dateKey <= todayKey) {
           absences += 1
         }
       } else {

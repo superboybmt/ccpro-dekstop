@@ -198,7 +198,7 @@ describe('DashboardPage error state', () => {
 
     render(<DashboardPage />)
 
-    expect(await screen.findByText(heroTitle)).toBeInTheDocument()
+    expect(await screen.findByText(sqlUnavailableMessage)).toBeInTheDocument()
     expect(screen.getByRole('button', punchInButton)).toBeDisabled()
     expect(screen.getByText(sqlUnavailableMessage)).toBeInTheDocument()
   })

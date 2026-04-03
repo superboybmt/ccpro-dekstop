@@ -1,10 +1,27 @@
 import sql from 'mssql'
 
+const requireEnvironmentVariable = (name, value) => {
+  if ((value ?? '').trim().length > 0) {
+    return value
+  }
+
+  throw new Error(`Missing required environment variable: ${name}`)
+}
+
+const validateDatabaseName = (name) => {
+  if (!/^[A-Za-z0-9_]+$/.test(name)) {
+    throw new Error('Invalid CCPRO_APP_DATABASE. Use only letters, numbers, and underscores.')
+  }
+
+  return name
+}
+
 const databaseName = process.env.CCPRO_APP_DATABASE ?? 'CCPro'
+const validatedDatabaseName = validateDatabaseName(databaseName)
 
 const config = {
   user: process.env.WISEEYE_SQL_USER ?? 'sa',
-  password: process.env.WISEEYE_SQL_PASSWORD ?? 'Pnj@12345',
+  password: requireEnvironmentVariable('WISEEYE_SQL_PASSWORD', process.env.WISEEYE_SQL_PASSWORD ?? ''),
   server: process.env.WISEEYE_SQL_SERVER ?? '10.60.1.4',
   port: Number(process.env.WISEEYE_SQL_PORT ?? 1433),
   options: {
@@ -21,9 +38,9 @@ const masterPool = await sql.connect({
 })
 
 await masterPool.request().query(`
-  IF DB_ID(N'${databaseName}') IS NULL
+  IF DB_ID(N'${validatedDatabaseName}') IS NULL
   BEGIN
-    CREATE DATABASE [${databaseName}]
+    CREATE DATABASE [${validatedDatabaseName}]
   END
 `)
 
@@ -31,7 +48,7 @@ await masterPool.close()
 
 const appPool = await sql.connect({
   ...config,
-  database: databaseName
+  database: validatedDatabaseName
 })
 
 await appPool.request().query(`
@@ -97,4 +114,4 @@ await appPool.request().query(`
 
 await appPool.close()
 
-console.log(`Initialized database ${databaseName}`)
+console.log(`Initialized database ${validatedDatabaseName}`)

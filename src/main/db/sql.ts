@@ -24,7 +24,16 @@ export const getPool = (name: PoolName): Promise<ConnectionPool> => {
   const existing = poolPromises.get(name)
   if (existing) return existing
 
-  const pool = new sql.ConnectionPool(getSqlConfig(resolveDatabaseName(name)))
+  const connectionPool = new sql.ConnectionPool(getSqlConfig(resolveDatabaseName(name)))
+
+  // Bắt các event lỗi rớt mạng/đóng kết nối bất ngờ (socketError)
+  connectionPool.on('error', (err) => {
+    console.error(`[SQL] Connection pool ${name} encountered an error:`, err)
+    // Xoá pool khỏi cache để lần gọi tiếp theo nó tự kết nối lại (Auto-heal)
+    poolPromises.delete(name)
+  })
+
+  const poolPromise = connectionPool
     .connect()
     .then((connectedPool) => connectedPool)
     .catch((error) => {
@@ -32,8 +41,8 @@ export const getPool = (name: PoolName): Promise<ConnectionPool> => {
       throw error
     })
 
-  poolPromises.set(name, pool)
-  return pool
+  poolPromises.set(name, poolPromise)
+  return poolPromise
 }
 
 export const closePools = async (): Promise<void> => {

@@ -235,6 +235,59 @@ describe('AdminDeviceConfigPage', () => {
     })
   })
 
+  it('shows the root helper error message instead of the Electron remote-method wrapper', async () => {
+    window.ccpro = {
+      admin: {
+        getSession: vi.fn(async () => buildAdminSession()),
+        login: undefined as never,
+        logout: vi.fn(async () => undefined),
+        bootstrap: undefined as never
+      },
+      adminUsers: undefined as never,
+      machineConfig: {
+        getConfig: vi.fn(async () => {
+          throw new Error(
+            "Error invoking remote method 'machine-config:get': Error: Could not create COM object 'zkemkeeper.ZKEM'. The bundled SDK was found but Windows requires Administrator rights to register it automatically."
+          )
+        }),
+        saveConfig: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
+        syncTime: vi.fn(async () => ({
+          ok: true,
+          message: 'synced'
+        }))
+      },
+      adminSettings: {
+        getRemoteRiskPolicy: vi.fn(async () => ({
+          mode: 'audit_only'
+        })),
+        saveRemoteRiskPolicy: vi.fn(async () => ({
+          ok: true,
+          message: 'saved',
+          mode: 'audit_only'
+        }))
+      },
+      auth: undefined as never,
+      attendance: undefined as never,
+      notifications: undefined as never,
+      settings: undefined as never,
+      deviceSync: undefined as never
+    }
+
+    render(
+      <MemoryRouter initialEntries={['/admin/device-config']}>
+        <AdminDeviceConfigPage />
+      </MemoryRouter>
+    )
+
+    expect(
+      await screen.findByText(/Could not create COM object 'zkemkeeper\.ZKEM'/i)
+    ).toBeInTheDocument()
+    expect(screen.queryByText(/Error invoking remote method 'machine-config:get'/i)).not.toBeInTheDocument()
+  })
+
   it('loads the remote-risk policy and saves the updated toggle through admin settings IPC', async () => {
     const saveRemoteRiskPolicy = vi.fn(async () => ({
       ok: true,

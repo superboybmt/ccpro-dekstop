@@ -53,6 +53,7 @@ interface DeviceWorkerLaunchInput {
   platform: NodeJS.Platform
   processCwd: string
   processResourcesPath: string
+  overrideExecutablePath?: string
 }
 
 interface DeviceWorkerLaunch {
@@ -162,6 +163,16 @@ interface DeviceSyncServiceOptions {
   runTimeoutMs?: number
 }
 
+interface ResolvedDeviceSyncServiceOptions {
+  deviceIp: string
+  devicePort: number
+  devicePassword?: number
+  bootstrapDays: number
+  pollIntervalMs: number
+  leaderLeaseMs: number
+  runTimeoutMs: number
+}
+
 const toErrorMessage = (error: unknown): string => {
   if (error instanceof Error) {
     return error.message
@@ -242,11 +253,12 @@ export const resolveDeviceSyncWorkerLaunch = ({
   isPackaged,
   platform,
   processCwd,
-  processResourcesPath
+  processResourcesPath,
+  overrideExecutablePath
 }: DeviceWorkerLaunchInput): DeviceWorkerLaunch => {
   if (isPackaged && platform === 'win32') {
     return {
-      command: join(processResourcesPath, 'device-sync', 'device-sync-worker.exe'),
+      command: overrideExecutablePath?.trim() || join(processResourcesPath, 'device-sync', 'device-sync-worker.exe'),
       args: []
     }
   }
@@ -258,7 +270,7 @@ export const resolveDeviceSyncWorkerLaunch = ({
 }
 
 export class DeviceSyncService {
-  private readonly options: Required<DeviceSyncServiceOptions>
+  private readonly options: ResolvedDeviceSyncServiceOptions
 
   private state: DeviceSyncStateRecord
 
@@ -451,7 +463,7 @@ export class DeviceSyncService {
     return {
       deviceIp: this.options.deviceIp,
       devicePort: this.options.devicePort,
-      devicePassword: this.options.devicePassword,
+      devicePassword: this.getDevicePassword(),
       bootstrapDays: this.options.bootstrapDays,
       lastLogUid: state.lastLogUid,
       lastLogTime: toWorkerLocalDateTime(state.lastLogTime),
@@ -655,6 +667,14 @@ export class DeviceSyncService {
       lastSkippedCount: state.lastSkippedCount,
       lastError: state.lastError
     }
+  }
+
+  private getDevicePassword(): number {
+    if (typeof this.options.devicePassword === 'number' && Number.isFinite(this.options.devicePassword)) {
+      return this.options.devicePassword
+    }
+
+    throw new Error('Missing required environment variable: ZK_DEVICE_PASSWORD')
   }
 }
 
@@ -1267,7 +1287,8 @@ export class PythonDeviceSyncWorker implements DeviceSyncWorker {
       isPackaged: app.isPackaged,
       platform: process.platform,
       processCwd: process.cwd(),
-      processResourcesPath: process.resourcesPath
+      processResourcesPath: process.resourcesPath,
+      overrideExecutablePath: process.env.CCPRO_DEVICE_SYNC_WORKER_PATH
     })
     const payload = JSON.stringify({ mode, input })
 

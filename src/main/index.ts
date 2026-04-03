@@ -2,24 +2,33 @@ import { app, BrowserWindow, Menu, Tray, nativeImage, shell } from 'electron'
 import { appendFileSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { formatAppIsoOffset } from '@shared/app-time'
-import { appConfig } from './config/app-config'
+import { appConfig, refreshAppConfig } from './config/app-config'
+import {
+  readEnvAppRuntimeConfig,
+  readLocalAppRuntimeConfig,
+  resolveLocalAppConfigPath,
+  resolvePackagedAppConfigSeedPath,
+  writeLocalAppRuntimeConfig
+} from './config/app-runtime-config'
 import { initializeAppDatabase } from './db/init'
 import { closePools } from './db/sql'
+import { denyAndOpenAllowedExternalUrl } from './external-url'
 import { registerIpcHandlers } from './ipc/register-handlers'
+import { preparePackagedRuntimeEnvironment } from './runtime/runtime-environment'
+import { createMainWindowOptions } from './window-options'
 import {
   DeviceSyncService,
   PythonDeviceSyncWorker,
   SqlDeviceSyncRepository
 } from './services/device-sync-service'
+import { bootstrapLocalAppConfig } from './services/machine-config-service'
 import { startApplication } from './startup'
 // @ts-ignore
 import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow | null = null
 let tray: Tray | null = null
-const deviceSyncService = new DeviceSyncService(new SqlDeviceSyncRepository(), new PythonDeviceSyncWorker(), {
-  deviceIp: appConfig.deviceSync.ip
-})
+let deviceSyncService: DeviceSyncService | null = null
 
 const earlyLogFile = join(process.env.TEMP ?? process.cwd(), 'ccpro-startup.log')
 
@@ -43,22 +52,42 @@ const logStartup = (message: string): void => {
 
 logEarly(`module:loaded appType=${typeof app}`)
 
+const prepareRuntimeConfig = async (): Promise<void> => {
+  if (app.isPackaged) {
+    preparePackagedRuntimeEnvironment({
+      appDataPath: process.env.APPDATA ?? app.getPath('appData'),
+      appVersion: app.getVersion(),
+      processResourcesPath: process.resourcesPath
+    })
+  }
+
+  if (readLocalAppRuntimeConfig()) {
+    refreshAppConfig()
+    return
+  }
+
+  const envConfig = readEnvAppRuntimeConfig()
+  if (envConfig) {
+    writeLocalAppRuntimeConfig(envConfig)
+    refreshAppConfig()
+    return
+  }
+
+  if (!app.isPackaged) {
+    refreshAppConfig()
+    return
+  }
+
+  await bootstrapLocalAppConfig({
+    outputPath: resolveLocalAppConfigPath(),
+    seedPath: resolvePackagedAppConfigSeedPath()
+  })
+  refreshAppConfig()
+}
+
 const createWindow = (): void => {
   logStartup('createWindow:start')
-  mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 720,
-    minWidth: 1280,
-    minHeight: 720,
-    show: false,
-    autoHideMenuBar: true,
-    icon: icon,
-    title: 'App Chấm công PNJ',
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
-  })
+  mainWindow = new BrowserWindow(createMainWindowOptions(icon))
 
   const revealWindow = (): void => {
     if (!mainWindow || mainWindow.isDestroyed() || mainWindow.isVisible()) {
@@ -87,10 +116,11 @@ const createWindow = (): void => {
     logStartup(`createWindow:render-process-gone:${details.reason}`)
   })
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
+  mainWindow.webContents.setWindowOpenHandler((details) =>
+    denyAndOpenAllowedExternalUrl(details.url, (url) => {
+      void shell.openExternal(url)
+    })
+  )
 
   if (!app.isPackaged && process.env.ELECTRON_RENDERER_URL) {
     logStartup(`createWindow:loadURL:${process.env.ELECTRON_RENDERER_URL}`)
@@ -110,7 +140,7 @@ const createTray = (): void => {
   }
 
   tray = new Tray(trayIcon)
-  tray.setToolTip('App Chấm công PNJ')
+  tray.setToolTip('CCPro PNJ')
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
@@ -146,8 +176,12 @@ app.whenReady()
     }
 
     await startApplication({
+      prepareRuntimeConfig,
       initializeAppDatabase,
       registerIpcHandlers: (options) => {
+        deviceSyncService = new DeviceSyncService(new SqlDeviceSyncRepository(), new PythonDeviceSyncWorker(), {
+          deviceIp: appConfig.deviceSync.ip
+        })
         registerIpcHandlers({
           ...options,
           deviceSyncService
@@ -176,6 +210,6 @@ app.on('window-all-closed', () => {
 })
 
 app.on('before-quit', async () => {
-  await deviceSyncService.stop()
+  await deviceSyncService?.stop()
   await closePools()
 })

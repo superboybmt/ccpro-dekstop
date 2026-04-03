@@ -1,11 +1,20 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, shell } from 'electron'
 import * as fs from 'node:fs/promises'
 import path from 'node:path'
 import { isSemverGreater } from '../../shared/semver'
-import type { UpdateInfo } from '@shared/api'
+import type { UpdateDownloadState, UpdateInfo, UpdateIntegrityInfo } from '@shared/api'
+import { isAllowedExternalUrl } from '../external-url'
+import { appConfig } from '../config/app-config'
+import {
+  buildSignedManifestPayload,
+  hashFileSha256,
+  isValidSha256,
+  verifyManifestSignature
+} from './update-integrity'
 
 export const UPDATE_MANIFEST_URL = 'https://raw.githubusercontent.com/superboybmt/ccpro-dekstop/main/version.json'
 const LOCAL_MANIFEST_PATH = path.resolve(process.cwd(), 'version.json')
+const UPDATE_DOWNLOAD_DIR = 'ccpro-updates'
 
 const normalizeManifestUrl = (value: string): string => {
   try {
@@ -76,6 +85,90 @@ const readLocalManifest = async (): Promise<UpdateInfo | null> => {
   }
 }
 
+const isIntegrityMetadataPresent = (integrity: UpdateIntegrityInfo | undefined): boolean =>
+  Boolean(integrity?.checksumSha256 || integrity?.signature || integrity?.signedFieldsVersion)
+
+const verifyIntegrity = (info: UpdateInfo): UpdateInfo | null => {
+  const integrity = info.integrity
+  const hasIntegrityMetadata = isIntegrityMetadataPresent(integrity)
+
+  if (!hasIntegrityMetadata) {
+    if (appConfig.updateIntegrity.mode === 'enforce') {
+      console.warn('Skipped update check because manifest integrity metadata was required.', {
+        latest: info.latest
+      })
+      return null
+    }
+
+    return {
+      ...info,
+      integrity: {
+        status: 'legacy'
+      }
+    }
+  }
+
+  if (
+    !integrity ||
+    !integrity.signature ||
+    !integrityPublicKeyAvailable() ||
+    !isValidSha256(integrity.checksumSha256 ?? '') ||
+    !Number.isInteger(integrity.signedFieldsVersion)
+  ) {
+    console.warn('Skipped update check because manifest integrity metadata was invalid.', {
+      latest: info.latest
+    })
+    return null
+  }
+
+  const payload = buildSignedManifestPayload(info)
+  if (!verifyManifestSignature(payload, integrity.signature, appConfig.updateIntegrity.publicKey!)) {
+    console.warn('Skipped update check because manifest signature verification failed.', {
+      latest: info.latest
+    })
+    return null
+  }
+
+  return {
+    ...info,
+    integrity: {
+      ...integrity,
+      status: 'verified'
+    }
+  }
+}
+
+const integrityPublicKeyAvailable = (): boolean => typeof appConfig.updateIntegrity.publicKey === 'string'
+
+const sanitizeUpdateInfo = (info: UpdateInfo | null): UpdateInfo | null => {
+  if (!info) {
+    return null
+  }
+
+  if (!isAllowedExternalUrl(info.downloadUrl)) {
+    console.warn('Skipped update check because manifest download URL was not HTTPS.', {
+      downloadUrl: info.downloadUrl
+    })
+    return null
+  }
+
+  return verifyIntegrity(info)
+}
+
+const ensureUpdateFileName = (info: UpdateInfo): string => {
+  try {
+    const url = new URL(info.downloadUrl)
+    const fileName = path.basename(url.pathname)
+    if (fileName.length > 0) {
+      return fileName
+    }
+  } catch {
+    // Fall through to generated name.
+  }
+
+  return `CCPro-Portable-${info.latest}.exe`
+}
+
 export class UpdateService {
   public async checkForUpdates(): Promise<UpdateInfo | null> {
     try {
@@ -85,7 +178,15 @@ export class UpdateService {
         data = await readLocalManifest()
       } else {
         const manifestUrl = process.env.CCPRO_UPDATE_MANIFEST_URL ?? UPDATE_MANIFEST_URL
-        const url = `${normalizeManifestUrl(manifestUrl)}?t=${Date.now()}`
+        const normalizedManifestUrl = normalizeManifestUrl(manifestUrl)
+        if (!isAllowedExternalUrl(normalizedManifestUrl)) {
+          console.warn('Skipped update check because manifest URL was not HTTPS.', {
+            manifestUrl
+          })
+          return null
+        }
+
+        const url = `${normalizedManifestUrl}?t=${Date.now()}`
         const response = await fetch(url, { signal: AbortSignal.timeout(5000) })
         if (!response.ok) {
           return null
@@ -93,6 +194,8 @@ export class UpdateService {
 
         data = await parseManifest(response)
       }
+
+      data = sanitizeUpdateInfo(data)
 
       const currentVersion = app.getVersion()
 
@@ -104,6 +207,68 @@ export class UpdateService {
       console.error('Failed to perform update check:', err)
     }
     return null
+  }
+
+  public async downloadVerifiedUpdate(info: UpdateInfo): Promise<UpdateDownloadState> {
+    if (!isAllowedExternalUrl(info.downloadUrl)) {
+      return {
+        ok: false,
+        message: 'Liên kết tải bản cập nhật không hợp lệ.'
+      }
+    }
+
+    const checksum = info.integrity?.checksumSha256
+    if (!checksum || !isValidSha256(checksum)) {
+      return {
+        ok: false,
+        message: 'Bản cập nhật chưa có checksum để xác thực.'
+      }
+    }
+
+    const targetDir = path.join(app.getPath('temp'), UPDATE_DOWNLOAD_DIR)
+    const filePath = path.join(targetDir, ensureUpdateFileName(info))
+
+    try {
+      await fs.mkdir(targetDir, { recursive: true })
+      const response = await fetch(info.downloadUrl, { signal: AbortSignal.timeout(30_000) })
+      if (!response.ok) {
+        return {
+          ok: false,
+          message: 'Không thể tải bản cập nhật.'
+        }
+      }
+
+      const content = Buffer.from(await response.arrayBuffer())
+      await fs.writeFile(filePath, content)
+
+      const actualChecksum = await hashFileSha256(filePath)
+      if (actualChecksum !== checksum.toLowerCase()) {
+        await fs.unlink(filePath).catch(() => undefined)
+        return {
+          ok: false,
+          message: 'Checksum bản cập nhật không khớp. Đã hủy cài đặt.'
+        }
+      }
+
+      const openResult = await shell.openPath(filePath)
+      if (openResult) {
+        return {
+          ok: false,
+          message: openResult
+        }
+      }
+
+      return {
+        ok: true,
+        message: 'Đã tải và mở bản cập nhật đã xác thực.',
+        filePath
+      }
+    } catch (error) {
+      return {
+        ok: false,
+        message: error instanceof Error ? error.message : 'Không thể tải bản cập nhật.'
+      }
+    }
   }
 
   private notifyRenderer(info: UpdateInfo) {

@@ -1,5 +1,14 @@
+import 'dotenv/config'
 import bcrypt from 'bcryptjs'
 import sql from 'mssql'
+
+const requireEnvironmentVariable = (name, value) => {
+  if ((value ?? '').trim().length > 0) {
+    return value
+  }
+
+  throw new Error(`Missing required environment variable: ${name}`)
+}
 
 const parseArgs = (argv) => {
   const parsed = {
@@ -44,7 +53,7 @@ if (temporaryPassword.length < 6) {
 
 const config = {
   user: process.env.WISEEYE_SQL_USER ?? 'sa',
-  password: process.env.WISEEYE_SQL_PASSWORD ?? 'Pnj@12345',
+  password: requireEnvironmentVariable('WISEEYE_SQL_PASSWORD', process.env.WISEEYE_SQL_PASSWORD ?? ''),
   server: process.env.WISEEYE_SQL_SERVER ?? '10.60.1.4',
   port: Number(process.env.WISEEYE_SQL_PORT ?? 1433),
   database: process.env.CCPRO_APP_DATABASE ?? 'CCPro',

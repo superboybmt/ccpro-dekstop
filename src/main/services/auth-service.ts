@@ -7,6 +7,7 @@ import type {
   MutationResult
 } from '@shared/api'
 import { getPool } from '../db/sql'
+import { SlidingWindowRateLimiter, formatLockoutMessage } from './rate-limiter'
 import { formatSqlDateTime } from './sql-datetime'
 
 const INVALID_CREDENTIALS_MESSAGE = 'Sai mã nhân viên hoặc mật khẩu'
@@ -54,13 +55,26 @@ const buildInitials = (fullName: string): string =>
     .toUpperCase()
 
 export class AuthService {
-  constructor(private readonly repository: AuthRepository) {}
+  constructor(
+    private readonly repository: AuthRepository,
+    private readonly rateLimiter = new SlidingWindowRateLimiter()
+  ) {}
 
   async login(payload: LoginPayload): Promise<LoginResult> {
     const employeeCode = payload.employeeCode.trim().toUpperCase()
+    const lockout = this.rateLimiter.getLockout(employeeCode)
+    if (lockout.locked) {
+      return {
+        ok: false,
+        requiresPasswordChange: false,
+        message: formatLockoutMessage(lockout.remainingMs)
+      }
+    }
+
     const employee = await this.repository.findEmployeeByCode(employeeCode)
 
     if (!employee) {
+      this.rateLimiter.recordFailure(employeeCode)
       return {
         ok: false,
         requiresPasswordChange: false,
@@ -69,6 +83,7 @@ export class AuthService {
     }
 
     if (!employee.isEnabled) {
+      this.rateLimiter.recordFailure(employeeCode)
       return {
         ok: false,
         requiresPasswordChange: false,
@@ -78,6 +93,7 @@ export class AuthService {
 
     const appUser = await this.repository.findAppUserByEnrollNumber(employee.userEnrollNumber)
     if (appUser && !appUser.isActiveApp) {
+      this.rateLimiter.recordFailure(employeeCode)
       return {
         ok: false,
         requiresPasswordChange: false,
@@ -91,6 +107,7 @@ export class AuthService {
       : password === employeeCode
 
     if (!matchesPassword) {
+      this.rateLimiter.recordFailure(employeeCode)
       return {
         ok: false,
         requiresPasswordChange: false,
@@ -100,6 +117,7 @@ export class AuthService {
 
     const requiresPasswordChange = !appUser || appUser.isFirstLogin
     const avatarBase64 = appUser?.avatarBase64 ?? null
+    this.rateLimiter.reset(employeeCode)
 
     return {
       ok: true,

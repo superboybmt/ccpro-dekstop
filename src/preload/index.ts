@@ -57,7 +57,9 @@ const api: RendererApi = {
     updateShift: (payload) => ipcRenderer.invoke('admin-shifts:update', payload)
   },
   app: {
+    getStartupStatus: () => ipcRenderer.invoke('app:get-startup-status'),
     checkForUpdates: () => ipcRenderer.invoke('app:check-for-updates'),
+    downloadVerifiedUpdate: (info) => ipcRenderer.invoke('app:download-verified-update', info),
     openExternal: (url) => ipcRenderer.invoke('app:open-external', url),
     onUpdateAvailable: (callback) => {
       const listener = (_event: Electron.IpcRendererEvent, info: any) => callback(info)

@@ -9,6 +9,8 @@ import {
   type DeviceWorkerResult
 } from '../device-sync-service'
 
+const TEST_DEVICE_PASSWORD = 938948
+
 const createDeferred = <T,>() => {
   let resolve!: (value: T | PromiseLike<T>) => void
   let reject!: (reason?: unknown) => void
@@ -117,6 +119,7 @@ describe('DeviceSyncService', () => {
     const ready = createDeferred<void>()
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -151,6 +154,7 @@ describe('DeviceSyncService', () => {
 
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -191,6 +195,7 @@ describe('DeviceSyncService', () => {
 
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -233,6 +238,7 @@ describe('DeviceSyncService', () => {
 
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -297,6 +303,7 @@ describe('DeviceSyncService', () => {
 
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -321,6 +328,7 @@ describe('DeviceSyncService', () => {
 
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000,
       runTimeoutMs: 2_000
     })
@@ -366,6 +374,21 @@ describe('DeviceSyncService', () => {
     })
   })
 
+  it('prefers a staged AppData worker executable over the packaged resources path', () => {
+    const launch = resolveDeviceSyncWorkerLaunch({
+      isPackaged: true,
+      platform: 'win32',
+      processCwd: 'E:\\ccpro',
+      processResourcesPath: 'E:\\ccpro\\release\\win-unpacked\\resources',
+      overrideExecutablePath: 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\runtime\\1.0.3\\device-sync\\device-sync-worker.exe'
+    })
+
+    expect(launch).toEqual({
+      command: 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\runtime\\1.0.3\\device-sync\\device-sync-worker.exe',
+      args: []
+    })
+  })
+
   it('falls back to script-based worker in development', () => {
     const launch = resolveDeviceSyncWorkerLaunch({
       isPackaged: false,
@@ -393,6 +416,7 @@ describe('DeviceSyncService', () => {
     const ready = createDeferred<void>()
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 
@@ -432,6 +456,7 @@ describe('DeviceSyncService', () => {
     const ready = createDeferred<void>()
     const service = new DeviceSyncService(repository, worker, {
       deviceIp: '10.60.1.5',
+      devicePassword: TEST_DEVICE_PASSWORD,
       pollIntervalMs: 60_000
     })
 

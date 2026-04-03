@@ -55,6 +55,18 @@ describe('ZkMachineConfigService', () => {
       callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
     ) => {
       callback(null, jsonStdout({
+        ok: true,
+        message: 'SDK ready'
+      }))
+    })
+
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
         stateMode: 2,
         schedule: [
           {
@@ -92,7 +104,15 @@ describe('ZkMachineConfigService', () => {
 
     expect(result.stateMode).toBe(2)
     expect(result.schedule).toHaveLength(4)
-    expect(execFileMock).toHaveBeenCalledTimes(1)
+    expect(execFileMock).toHaveBeenCalledTimes(2)
+    expect(execFileMock).toHaveBeenCalledWith(
+      'C:\\tools\\machine-config-helper.exe',
+      ['preflight-sdk'],
+      expect.objectContaining({
+        timeout: 30_000
+      }),
+      expect.any(Function)
+    )
     expect(execFileMock).toHaveBeenCalledWith(
       'C:\\tools\\machine-config-helper.exe',
       [
@@ -139,6 +159,18 @@ describe('ZkMachineConfigService', () => {
     ) => {
       callback(null, jsonStdout({
         ok: true,
+        message: 'SDK ready'
+      }))
+    })
+
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
+        ok: true,
         message: 'saved',
         before,
         after
@@ -166,8 +198,8 @@ describe('ZkMachineConfigService', () => {
       before,
       after
     })
-    expect(execFileMock).toHaveBeenCalledTimes(1)
-    const helperArgs = execFileMock.mock.calls[0]?.[1] as string[]
+    expect(execFileMock).toHaveBeenCalledTimes(2)
+    const helperArgs = execFileMock.mock.calls[1]?.[1] as string[]
     const payloadIndex = helperArgs.indexOf('--payloadB64')
     const payload = JSON.parse(Buffer.from(helperArgs[payloadIndex + 1] ?? '', 'base64').toString('utf8'))
     expect(helperArgs.slice(0, 7)).toEqual([
@@ -185,6 +217,18 @@ describe('ZkMachineConfigService', () => {
   })
 
   it('allows a longer helper timeout for save-config readback verification', async () => {
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
+        ok: true,
+        message: 'SDK ready'
+      }))
+    })
+
     execFileMock.mockImplementationOnce((
       _file: string,
       _args: string[],
@@ -218,7 +262,129 @@ describe('ZkMachineConfigService', () => {
     )
   })
 
+  it('throws the helper JSON error message for get-config instead of only the execFile command string', async () => {
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
+        ok: true,
+        message: 'SDK ready'
+      }))
+    })
+
+    const helperError = Object.assign(new Error('Command failed: machine-config-helper.exe get-config ...'), {
+      stdout: JSON.stringify({
+        ok: false,
+        message: "Could not activate current-user COM registration for 'zkemkeeper.ZKEM' using 'C:\\sdk\\zkemkeeper.dll'."
+      }),
+      stderr: ''
+    })
+
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result?: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(helperError)
+    })
+
+    const { ZkMachineConfigService } = await import('../machine-config-service')
+    const service = new ZkMachineConfigService({
+      deviceIp: '10.60.1.5',
+      devicePort: 4370,
+      devicePassword: 938948
+    })
+
+    await expect(service.getConfig()).rejects.toThrow(
+      "Could not activate current-user COM registration for 'zkemkeeper.ZKEM' using 'C:\\sdk\\zkemkeeper.dll'."
+    )
+  })
+
+  it('fails fast when SDK preflight does not pass before reading machine config', async () => {
+    const helperError = Object.assign(new Error('Command failed: machine-config-helper.exe preflight-sdk ...'), {
+      stdout: JSON.stringify({
+        ok: false,
+        message: "Missing zkemkeeper.dll at 'C:\\sdk\\zkemkeeper.dll'."
+      }),
+      stderr: ''
+    })
+
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result?: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(helperError)
+    })
+
+    const { ZkMachineConfigService } = await import('../machine-config-service')
+    const service = new ZkMachineConfigService({
+      deviceIp: '10.60.1.5',
+      devicePort: 4370,
+      devicePassword: 938948
+    })
+
+    await expect(service.getConfig()).rejects.toThrow("Missing zkemkeeper.dll at 'C:\\sdk\\zkemkeeper.dll'.")
+    expect(execFileMock).toHaveBeenCalledTimes(1)
+    expect(execFileMock).toHaveBeenCalledWith(
+      'C:\\tools\\machine-config-helper.exe',
+      ['preflight-sdk'],
+      expect.objectContaining({
+        timeout: 30_000
+      }),
+      expect.any(Function)
+    )
+  })
+
+  it('surfaces a diagnostic preflight message when the helper exits before returning stdout or stderr details', async () => {
+    const helperError = Object.assign(
+      new Error('Command failed: C:\\Users\\Administrator\\AppData\\Roaming\\ccpro-desktop\\runtime\\1.0.3\\machine-config\\machine-config-helper.exe preflight-sdk'),
+      {
+        stdout: '',
+        stderr: ''
+      }
+    )
+
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result?: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(helperError)
+    })
+
+    const { ZkMachineConfigService } = await import('../machine-config-service')
+    const service = new ZkMachineConfigService({
+      deviceIp: '10.60.1.5',
+      devicePort: 4370,
+      devicePassword: 938948
+    })
+
+    const result = service.getConfig()
+    await expect(result).rejects.toThrow('Machine config helper exited before returning diagnostics.')
+    await expect(result).rejects.toThrow('MSVBVM60.DLL')
+    await expect(result).rejects.toThrow('machine-config-helper.exe preflight-sdk')
+  })
+
   it('returns the helper JSON error message instead of only the execFile command string', async () => {
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
+        ok: true,
+        message: 'SDK ready'
+      }))
+    })
+
     const helperError = Object.assign(new Error('Command failed: machine-config-helper.exe save-config ...'), {
       stdout: JSON.stringify({
         ok: false,
@@ -256,5 +422,45 @@ describe('ZkMachineConfigService', () => {
       message: 'Lưu cấu hình thất bại: Readback không khớp hoàn toàn với cấu hình yêu cầu'
     })
     expect(requestMock.query).toHaveBeenCalledTimes(1)
+  })
+
+  it('bootstraps the local app config through the packaged helper executable', async () => {
+    execFileMock.mockImplementationOnce((
+      _file: string,
+      _args: string[],
+      _options: unknown,
+      callback: (error: Error | null, result: { stdout: string; stderr: string }) => void
+    ) => {
+      callback(null, jsonStdout({
+        ok: true,
+        message: 'Bootstrapped local app config',
+        outputPath: 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\config.json'
+      }))
+    })
+
+    const { bootstrapLocalAppConfig } = await import('../machine-config-service')
+
+    const result = await bootstrapLocalAppConfig({
+      outputPath: 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\config.json',
+      seedPath: 'C:\\app\\resources\\bootstrap\\app-config.seed.json'
+    })
+
+    expect(result).toEqual({
+      ok: true,
+      message: 'Bootstrapped local app config',
+      outputPath: 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\config.json'
+    })
+    expect(execFileMock).toHaveBeenCalledWith(
+      'C:\\tools\\machine-config-helper.exe',
+      [
+        'bootstrap-app-config',
+        '--output', 'C:\\Users\\tester\\AppData\\Roaming\\ccpro-desktop\\config.json',
+        '--seed', 'C:\\app\\resources\\bootstrap\\app-config.seed.json'
+      ],
+      expect.objectContaining({
+        timeout: 30_000
+      }),
+      expect.any(Function)
+    )
   })
 })

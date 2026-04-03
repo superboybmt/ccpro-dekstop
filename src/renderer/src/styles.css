@@ -1477,6 +1477,36 @@ input {
   gap: 16px;
 }
 
+.icon-action-btn:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--primary) !important;
+}
+
+.admin-users__dialog-overlay {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.admin-users__toast {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .admin-save-result {
   margin-top: 12px;
   font-size: 12px;

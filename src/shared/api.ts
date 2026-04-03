@@ -253,10 +253,32 @@ export interface DeviceSyncStatus {
   lastError: string | null
 }
 
+export type UpdateIntegrityState = 'legacy' | 'verified' | 'failed'
+
+export interface UpdateIntegrityInfo {
+  checksumSha256?: string
+  signature?: string
+  signedFieldsVersion?: number
+  status?: UpdateIntegrityState
+}
+
 export interface UpdateInfo {
   latest: string
   downloadUrl: string
   releaseNotes?: string
+  integrity?: UpdateIntegrityInfo
+}
+
+export interface UpdateDownloadState {
+  ok: boolean
+  message: string
+  filePath?: string | null
+}
+
+export interface StartupStatus {
+  status: 'ready' | 'error'
+  category: 'missing-config' | 'sql-connectivity' | 'unknown'
+  message: string | null
 }
 
 export interface AdminShiftItem {
@@ -337,7 +359,9 @@ export interface RendererApi {
     updateShift(payload: AdminShiftUpdatePayload): Promise<MutationResult>
   }
   app: {
+    getStartupStatus(): Promise<StartupStatus>
     checkForUpdates(): Promise<UpdateInfo | null>
+    downloadVerifiedUpdate(info: UpdateInfo): Promise<UpdateDownloadState>
     openExternal(url: string): Promise<void>
     onUpdateAvailable(callback: (info: UpdateInfo) => void): () => void
   }

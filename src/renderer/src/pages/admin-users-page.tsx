@@ -465,12 +465,14 @@ export const AdminUsersPage = (): JSX.Element => {
 
       {/* Custom Alert Dialog for Actions */}
       {confirmToggle && (
-        <div style={{
+        <div
+          className="admin-users__dialog-overlay"
+          style={{
           position: 'fixed', inset: 0, zIndex: 1000,
           background: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(2px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          animation: 'fadeIn 0.2s ease-out'
-        }}>
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}
+        >
           <div style={{
             background: 'var(--bg-card)', padding: '24px', borderRadius: 'var(--radius-xl)',
             width: '400px', maxWidth: '90%', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
@@ -501,14 +503,17 @@ export const AdminUsersPage = (): JSX.Element => {
 
       {/* Custom Toast Notification */}
       {toastMessage && (
-        <div style={{
+        <div
+          className="admin-users__toast"
+          style={{
           position: 'fixed', bottom: '24px', right: '24px', zIndex: 1100,
           background: 'var(--bg-card)', border: '1px solid var(--line)',
           borderLeft: `4px solid ${toastMessage.ok ? 'var(--success)' : 'var(--danger)'}`,
           boxShadow: 'var(--shadow-glow)', borderRadius: 'var(--radius-md)',
           padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px',
-          minWidth: '300px', maxWidth: '400px', animation: 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-        }}>
+          minWidth: '300px', maxWidth: '400px'
+        }}
+        >
           {toastMessage.ok ? <CheckCircle2 size={24} color="var(--success)" /> : <AlertTriangle size={24} color="var(--danger)" />}
           <div style={{ flex: 1, fontSize: '14px', color: 'var(--text-main)', lineHeight: '1.4' }}>
             {toastMessage.text}
@@ -518,11 +523,6 @@ export const AdminUsersPage = (): JSX.Element => {
           </button>
         </div>
       )}
-      <style dangerouslySetInnerHTML={{__html: `
-        .icon-action-btn:hover { background: var(--bg-hover) !important; border-color: var(--primary) !important; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-      `}} />
     </div>
   )
 }

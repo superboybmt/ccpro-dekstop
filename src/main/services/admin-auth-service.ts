@@ -10,6 +10,7 @@ import type {
   MutationResult
 } from '@shared/api'
 import { getPool } from '../db/sql'
+import { SlidingWindowRateLimiter, formatLockoutMessage } from './rate-limiter'
 import { formatSqlDateTime } from './sql-datetime'
 
 const INVALID_CREDENTIALS_MESSAGE = 'Sai tên đăng nhập hoặc mật khẩu'
@@ -91,27 +92,72 @@ const validateTemporaryPassword = (temporaryPassword: string): MutationResult | 
   return null
 }
 
+const validateBootstrapArgs = (args: {
+  username: string
+  password: string
+  displayName: string
+}): MutationResult | null => {
+  if (!args.username.trim()) {
+    return {
+      ok: false,
+      message: 'Tên đăng nhập admin không được để trống'
+    }
+  }
+
+  if (!args.displayName.trim()) {
+    return {
+      ok: false,
+      message: 'Tên hiển thị admin không được để trống'
+    }
+  }
+
+  if (args.password.length < 6) {
+    return {
+      ok: false,
+      message: 'Mật khẩu admin phải có ít nhất 6 ký tự'
+    }
+  }
+
+  return null
+}
+
 export class AdminAuthService {
-  constructor(private readonly repository: AdminAuthRepository) {}
+  constructor(
+    private readonly repository: AdminAuthRepository,
+    private readonly rateLimiter = new SlidingWindowRateLimiter()
+  ) {}
 
   async login(payload: AdminLoginPayload): Promise<AdminLoginResult> {
     const username = payload.username.trim().toLowerCase()
+    const lockout = this.rateLimiter.getLockout(username)
+    if (lockout.locked) {
+      return {
+        ok: false,
+        message: formatLockoutMessage(lockout.remainingMs),
+        requiresPasswordChange: false
+      }
+    }
+
     const admin = await this.repository.findByUsername(username)
 
     if (!admin) {
+      this.rateLimiter.recordFailure(username)
       return { ok: false, message: INVALID_CREDENTIALS_MESSAGE, requiresPasswordChange: false }
     }
 
     if (!admin.isActive) {
+      this.rateLimiter.recordFailure(username)
       return { ok: false, message: 'Tài khoản đã bị vô hiệu hóa', requiresPasswordChange: false }
     }
 
     const passwordMatches = await bcrypt.compare(payload.password, admin.passwordHash)
     if (!passwordMatches) {
+      this.rateLimiter.recordFailure(username)
       return { ok: false, message: INVALID_CREDENTIALS_MESSAGE, requiresPasswordChange: false }
     }
 
     await this.repository.updateLastLogin(admin.id)
+    this.rateLimiter.reset(username)
 
     return {
       ok: true,
@@ -254,11 +300,16 @@ export class AdminAuthService {
       return { ok: false, message: 'Admin đã tồn tại, không cần bootstrap' }
     }
 
+    const validationError = validateBootstrapArgs(args)
+    if (validationError) {
+      return validationError
+    }
+
     const passwordHash = await bcrypt.hash(args.password, 10)
     await this.repository.createAdmin({
       username: args.username.trim().toLowerCase(),
       passwordHash,
-      displayName: args.displayName,
+      displayName: args.displayName.trim(),
       role: 'admin'
     })
 

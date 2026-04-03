@@ -100,6 +100,21 @@ function Get-OptionValue {
   return $Default
 }
 
+function Resolve-DevicePassword {
+  param([hashtable]$Options)
+
+  $optionValue = Get-OptionValue -Options $Options -Name 'password'
+  if (-not [string]::IsNullOrWhiteSpace([string]$optionValue)) {
+    return [int]$optionValue
+  }
+
+  if (-not [string]::IsNullOrWhiteSpace([string]$env:ZK_DEVICE_PASSWORD)) {
+    return [int]$env:ZK_DEVICE_PASSWORD
+  }
+
+  return 0
+}
+
 function Parse-Arguments {
   param([string[]]$Tokens)
 
@@ -512,7 +527,7 @@ try {
   $options = $parsed['options']
   $deviceIp = [string](Get-OptionValue -Options $options -Name 'ip' -Default '10.60.1.5')
   $port = [int](Get-OptionValue -Options $options -Name 'port' -Default 4370)
-  $password = [int](Get-OptionValue -Options $options -Name 'password' -Default 938948)
+  $password = Resolve-DevicePassword -Options $options
   $statePath = $env:ZK_SHORTKEY_FAKE_STATE_PATH
   $sdkDir = [string](Get-OptionValue -Options $options -Name 'sdkDir' -Default $script:DefaultSdkDir)
   $useFake = -not [string]::IsNullOrWhiteSpace($statePath)

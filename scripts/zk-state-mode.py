@@ -8,7 +8,7 @@ from zk import ZK, const
 
 DEFAULT_DEVICE_IP = os.getenv("ZK_DEVICE_IP", "10.60.1.5")
 DEFAULT_DEVICE_PORT = int(os.getenv("ZK_DEVICE_PORT", "4370"))
-DEFAULT_DEVICE_PASSWORD = int(os.getenv("ZK_DEVICE_PASSWORD", "938948"))
+DEFAULT_DEVICE_PASSWORD = int(os.getenv("ZK_DEVICE_PASSWORD", "0"))
 STATE_MODE_KEY = "StateMode"
 VALID_MODES = tuple(range(6))
 

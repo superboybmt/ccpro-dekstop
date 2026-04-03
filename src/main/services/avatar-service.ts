@@ -2,13 +2,41 @@ import type { AuthUser, MutationResult } from '@shared/api'
 import { getPool } from '../db/sql'
 import { formatSqlDateTime } from './sql-datetime'
 
+const MAX_AVATAR_DATA_URL_LENGTH = 1_000_000
+const SAFE_AVATAR_DATA_URL_PATTERN = /^data:image\/(?:jpeg|png|webp);base64,[a-z0-9+/=]+$/iu
+
+const validateAvatarPayload = (base64: string): MutationResult | null => {
+  const normalized = base64.trim()
+
+  if (!SAFE_AVATAR_DATA_URL_PATTERN.test(normalized)) {
+    return {
+      ok: false,
+      message: 'Ảnh đại diện không hợp lệ. Chỉ chấp nhận JPEG, PNG hoặc WebP.'
+    }
+  }
+
+  if (normalized.length > MAX_AVATAR_DATA_URL_LENGTH) {
+    return {
+      ok: false,
+      message: 'Ảnh đại diện quá lớn. Vui lòng chọn ảnh nhỏ hơn.'
+    }
+  }
+
+  return null
+}
+
 export class AvatarService {
   async updateAvatar(userEnrollNumber: number, base64: string): Promise<MutationResult> {
+    const validationError = validateAvatarPayload(base64)
+    if (validationError) {
+      return validationError
+    }
+
     try {
       const pool = await getPool('app')
       const request = pool.request()
       request.input('userEnrollNumber', userEnrollNumber)
-      request.input('avatarBase64', base64)
+      request.input('avatarBase64', base64.trim())
       request.input('updatedAt', formatSqlDateTime(new Date()))
 
       // Mặc định là app_users luôn có record vì khi auth login nó đã upsert hoặc ta có thể update trực tiếp.
@@ -71,4 +99,9 @@ export class AvatarService {
       }
     }
   }
+}
+
+export const __internal = {
+  validateAvatarPayload,
+  MAX_AVATAR_DATA_URL_LENGTH
 }

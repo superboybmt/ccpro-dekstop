@@ -1,8 +1,14 @@
+import os
 from pathlib import Path
 
 project_root = Path.cwd()
 script_path = project_root / 'scripts' / 'machine-config-helper.py'
-sdk_dir = project_root / '.tmp' / 'Standalone-SDK' / 'Communication Protocol SDK(32Bit Ver6.2.4.11)' / 'sdk'
+sdk_dir = Path(
+    os.environ.get(
+        'CCPRO_MACHINE_CONFIG_SDK_DIR',
+        str(project_root / '.tmp' / 'Standalone-SDK' / 'Communication Protocol SDK(32Bit Ver6.2.4.11)' / 'sdk'),
+    )
+)
 ssr_tool_path = project_root / 'scripts' / 'zk-ssr-device-data-tool.ps1'
 
 a = Analysis(

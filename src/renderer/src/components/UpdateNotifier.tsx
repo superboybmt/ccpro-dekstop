@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { DownloadCloud, X } from 'lucide-react'
-import type { UpdateInfo } from '@shared/api'
+import type { UpdateDownloadState, UpdateInfo } from '@shared/api'
 
 export const UpdateNotifier = (): JSX.Element | null => {
   const [updateInfo, setUpdateInfo] = useState<UpdateInfo | null>(null)
   const [dismissed, setDismissed] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
+  const [downloadState, setDownloadState] = useState<UpdateDownloadState | null>(null)
 
   useEffect(() => {
     let active = true
@@ -12,6 +14,7 @@ export const UpdateNotifier = (): JSX.Element | null => {
     const unsubscribe = window.ccpro.app.onUpdateAvailable((info) => {
       setUpdateInfo(info)
       setDismissed(false)
+      setDownloadState(null)
     })
 
     window.ccpro.app
@@ -23,6 +26,7 @@ export const UpdateNotifier = (): JSX.Element | null => {
 
         setUpdateInfo(info)
         setDismissed(false)
+        setDownloadState(null)
       })
       .catch(console.error)
 
@@ -32,7 +36,11 @@ export const UpdateNotifier = (): JSX.Element | null => {
     }
   }, [])
 
-  if (!updateInfo || dismissed) return null
+  if (!updateInfo || dismissed) {
+    return null
+  }
+
+  const shouldUseVerifiedDownload = Boolean(updateInfo.integrity?.checksumSha256)
 
   return (
     <div
@@ -65,7 +73,9 @@ export const UpdateNotifier = (): JSX.Element | null => {
             <DownloadCloud size={20} />
           </div>
           <div>
-            <h4 style={{ margin: 0, fontSize: '14px', fontWeight: 600, color: 'var(--text)' }}>Có bản cập nhật mới!</h4>
+            <h4 style={{ margin: 0, fontSize: '14px', fontWeight: 600, color: 'var(--text)' }}>
+              Có bản cập nhật mới!
+            </h4>
             <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-light)', marginTop: '2px' }}>
               Phiên bản {updateInfo.latest} đã sẵn sàng
             </p>
@@ -87,10 +97,30 @@ export const UpdateNotifier = (): JSX.Element | null => {
       </div>
 
       <button
-        onClick={() => {
-          setDismissed(true)
-          if (updateInfo.downloadUrl) {
-            window.ccpro.app.openExternal(updateInfo.downloadUrl)
+        onClick={async () => {
+          if (!shouldUseVerifiedDownload) {
+            setDismissed(true)
+            await window.ccpro.app.openExternal(updateInfo.downloadUrl)
+            return
+          }
+
+          setIsDownloading(true)
+          setDownloadState(null)
+
+          try {
+            const result = await window.ccpro.app.downloadVerifiedUpdate(updateInfo)
+            setDownloadState(result)
+
+            if (result.ok) {
+              setDismissed(true)
+            }
+          } catch (error) {
+            setDownloadState({
+              ok: false,
+              message: error instanceof Error ? error.message : 'Không thể tải bản cập nhật.'
+            })
+          } finally {
+            setIsDownloading(false)
           }
         }}
         style={{
@@ -99,15 +129,21 @@ export const UpdateNotifier = (): JSX.Element | null => {
           border: 'none',
           padding: '8px 12px',
           borderRadius: '4px',
-          cursor: 'pointer',
+          cursor: isDownloading ? 'default' : 'pointer',
           fontWeight: 500,
           fontSize: '13px',
           textAlign: 'center',
-          width: '100%'
+          width: '100%',
+          opacity: isDownloading ? 0.8 : 1
         }}
+        disabled={isDownloading}
       >
-        Tải xuống ngay
+        {isDownloading ? 'Đang tải bản cập nhật...' : 'Tải xuống ngay'}
       </button>
+
+      {downloadState && !downloadState.ok ? (
+        <p style={{ margin: 0, fontSize: '12px', color: 'var(--danger, #b42318)' }}>{downloadState.message}</p>
+      ) : null}
     </div>
   )
 }

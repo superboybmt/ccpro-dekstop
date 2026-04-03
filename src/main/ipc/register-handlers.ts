@@ -32,6 +32,7 @@ import { AvatarService } from '../services/avatar-service'
 import { UpdateService } from '../services/update-service'
 import type { RegisterIpcHandlersOptions } from '../startup'
 import { appConfig } from '../config/app-config'
+import { isAllowedExternalUrl } from '../external-url'
 
 const DISCONNECTED_DASHBOARD = {
   shift: null,
@@ -84,6 +85,13 @@ type RegisterHandlersOptions = RegisterIpcHandlersOptions & {
 
 export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>): void => {
   const ensureAppReady = options?.ensureAppReady ?? (async () => undefined)
+  const getStartupStatus =
+    options?.getStartupStatus ??
+    (() => ({
+      status: 'ready' as const,
+      category: 'unknown' as const,
+      message: null
+    }))
   const sessionStore = new SessionStore()
   const authService = new AuthService(new SqlAuthRepository())
   const adminAuthService = new AdminAuthService(new SqlAdminAuthRepository())
@@ -212,6 +220,8 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
     lastSyncAt: (await ensureAppReady().then(() => deviceSyncService.getStatus())).lastSyncAt
   }))
 
+  ipcMain.handle('app:get-startup-status', async () => getStartupStatus())
+
   ipcMain.handle('device-sync:get-status', async () => {
     await ensureAppReady()
     return deviceSyncService.getStatus()
@@ -329,11 +339,19 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
   })
 
   ipcMain.handle('app:check-for-updates', async () => {
-    await ensureAppReady()
     return updateService.checkForUpdates()
   })
 
+  ipcMain.handle('app:download-verified-update', async (_event, info) => {
+    return updateService.downloadVerifiedUpdate(info)
+  })
+
   ipcMain.handle('app:open-external', async (_event, url: string) => {
-    import('electron').then(({ shell }) => shell.openExternal(url))
+    if (!isAllowedExternalUrl(url)) {
+      return
+    }
+
+    const { shell } = await import('electron')
+    await shell.openExternal(url)
   })
 }

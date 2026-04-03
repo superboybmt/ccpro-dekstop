@@ -176,7 +176,13 @@ const mockApi = (): RendererApi => {
       }))
     },
     app: {
+      getStartupStatus: vi.fn(async () => ({
+        status: 'ready',
+        category: 'unknown',
+        message: null
+      })),
       checkForUpdates: vi.fn(async () => null),
+      downloadVerifiedUpdate: vi.fn(async () => ({ ok: true, message: 'ok', filePath: null })),
       openExternal: vi.fn(async () => undefined),
       onUpdateAvailable: vi.fn(() => () => undefined)
     }

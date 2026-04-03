@@ -202,7 +202,7 @@ export const HistoryPage = (): JSX.Element => {
           </Card>
           <Card style={{ padding: '14px 16px' }}>
             <div className="muted-line" style={{ marginBottom: '8px' }}>
-              Số lần nghỉ phép
+              Vắng
             </div>
             <strong
               style={{

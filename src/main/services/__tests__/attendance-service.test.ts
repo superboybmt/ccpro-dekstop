@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { AttendanceService } from '../attendance-service'
 
 describe('AttendanceService', () => {
@@ -52,6 +52,69 @@ describe('AttendanceService', () => {
       ok: true,
       message: 'Chấm công vào thành công'
     })
+  })
+
+  it('skips remote-risk evaluation while loading dashboard when policy is audit-only', async () => {
+    const repository = {
+      getShiftForUser: vi.fn(async () => null),
+      getPunchesForDate: vi.fn(async () => []),
+      getLatestPunch: vi.fn(async () => null),
+      insertPunch: vi.fn(async () => undefined),
+      insertRemoteRiskAuditLog: vi.fn(async () => undefined),
+      getRemoteRiskPolicyMode: vi.fn(async () => 'audit_only' as const)
+    }
+    const remoteRiskService = {
+      evaluate: vi.fn(async () => ({
+        level: 'low' as const,
+        blocking: false,
+        detectedProcesses: [],
+        activeSignals: [],
+        checkedAt: '2026-04-01T08:00:00+07:00',
+        reason: null
+      }))
+    }
+
+    const service = new AttendanceService(repository, remoteRiskService)
+
+    await expect(service.getDashboard(18)).resolves.toMatchObject({
+      connectionStatus: 'connected',
+      remoteRisk: null
+    })
+
+    expect(remoteRiskService.evaluate).not.toHaveBeenCalled()
+  })
+
+  it('evaluates remote-risk while loading dashboard when policy is block-high-risk', async () => {
+    const repository = {
+      getShiftForUser: vi.fn(async () => null),
+      getPunchesForDate: vi.fn(async () => []),
+      getLatestPunch: vi.fn(async () => null),
+      insertPunch: vi.fn(async () => undefined),
+      insertRemoteRiskAuditLog: vi.fn(async () => undefined),
+      getRemoteRiskPolicyMode: vi.fn(async () => 'block_high_risk' as const)
+    }
+    const remoteRiskService = {
+      evaluate: vi.fn(async () => ({
+        level: 'high' as const,
+        blocking: true,
+        detectedProcesses: [{ name: 'UltraViewer.exe', pid: 999 }],
+        activeSignals: ['network', 'foreground'],
+        checkedAt: '2026-04-01T08:00:00+07:00',
+        reason: 'Phát hiện điều khiển từ xa đang hoạt động'
+      }))
+    }
+
+    const service = new AttendanceService(repository, remoteRiskService)
+
+    await expect(service.getDashboard(18)).resolves.toMatchObject({
+      connectionStatus: 'connected',
+      remoteRisk: {
+        level: 'high',
+        blocking: true
+      }
+    })
+
+    expect(remoteRiskService.evaluate).toHaveBeenCalledTimes(1)
   })
 
   it('blocks punch and writes audit log when remote-risk is high and policy enforcement is enabled', async () => {

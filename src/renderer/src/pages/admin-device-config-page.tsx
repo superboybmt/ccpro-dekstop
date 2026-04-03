@@ -4,6 +4,7 @@ import { Clock, LogOut, MonitorCog, RefreshCw, Save, Sunrise, Sun, Coffee, Moon,
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
 import { TimePicker } from '@renderer/components/ui/time-picker'
+import { toUiErrorMessage } from '@renderer/lib/errors'
 import type {
   AdminSessionState,
   AdminShiftItem,
@@ -237,7 +238,7 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
     } catch (error) {
       setMessage({
         ok: false,
-        text: `Không thể tải dữ liệu: ${error instanceof Error ? error.message : String(error)}`
+        text: toUiErrorMessage(error, 'Không thể tải dữ liệu cấu hình máy chấm công.')
       })
     } finally {
       setLoading(false)
@@ -295,7 +296,7 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
     } catch (error) {
       setMessage({
         ok: false,
-        text: `Lỗi: ${error instanceof Error ? error.message : String(error)}`
+        text: toUiErrorMessage(error, 'Lưu cấu hình thất bại.')
       })
     } finally {
       setSaving(false)
@@ -322,7 +323,7 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
     } catch (error) {
       setPolicyMessage({
         ok: false,
-        text: `Lỗi: ${error instanceof Error ? error.message : String(error)}`
+        text: toUiErrorMessage(error, 'Lưu chính sách bảo mật thất bại.')
       })
     } finally {
       setPolicySaving(false)
@@ -339,7 +340,7 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
     } catch (error) {
       setSyncMessage({
         ok: false,
-        text: `Đồng bộ giờ thất bại: ${error instanceof Error ? error.message : String(error)}`
+        text: toUiErrorMessage(error, 'Đồng bộ giờ thất bại.')
       })
     } finally {
       setSyncingTime(false)

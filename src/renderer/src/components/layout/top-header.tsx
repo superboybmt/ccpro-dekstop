@@ -1,9 +1,8 @@
-import { AlertCircle, Bell, LoaderCircle, RefreshCw, Search, Wifi } from 'lucide-react'
+import { AlertCircle, Bell, LoaderCircle, RefreshCw, Wifi } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import type { DeviceSyncStatus } from '@shared/api'
 import { getAppHour } from '@shared/app-time'
 import { Button } from '@renderer/components/ui/button'
-import { Input } from '@renderer/components/ui/input'
 import { useAuth } from '@renderer/providers/auth-provider'
 
 const getGreeting = (): string => {
@@ -97,11 +96,6 @@ export const TopHeader = ({
           <RefreshCw size={16} />
           Làm mới
         </Button>
-
-        <div className="top-header__search">
-          <Search size={16} />
-          <Input placeholder="Tìm kiếm nhanh..." aria-label="Tìm kiếm nhanh" />
-        </div>
 
         <button
           type="button"

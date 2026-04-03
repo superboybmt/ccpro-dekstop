@@ -2,8 +2,18 @@ import bcrypt from 'bcryptjs'
 import { appConfig } from '../config/app-config'
 import { getPool } from './sql'
 
+const DATABASE_NAME_PATTERN = /^[a-zA-Z0-9_]+$/
+
+export const assertSafeDatabaseName = (databaseName: string): string => {
+  if (!DATABASE_NAME_PATTERN.test(databaseName)) {
+    throw new Error(`Invalid database name: ${databaseName}`)
+  }
+
+  return databaseName
+}
+
 export const initializeAppDatabase = async (): Promise<void> => {
-  const databaseName = appConfig.sql.appDatabase
+  const databaseName = assertSafeDatabaseName(appConfig.sql.appDatabase)
   const masterPool = await getPool('master')
 
   await masterPool.request().query(`
@@ -475,7 +485,7 @@ const seedDefaultAdmin = async (pool: Awaited<ReturnType<typeof getPool>>): Prom
     )
   `)
 
-  console.log('[init] Created default admin account: admin / ccpro@2026')
+  console.log('[init] Created default admin account: admin')
 }
 
 const seedDefaultEmployee = async (pool: Awaited<ReturnType<typeof getPool>>): Promise<void> => {
@@ -500,5 +510,5 @@ const seedDefaultEmployee = async (pool: Awaited<ReturnType<typeof getPool>>): P
     )
   `)
 
-  console.log('[init] Created default employee account: E0000000 / pnj@1234')
+  console.log('[init] Created default employee account: E0000000')
 }

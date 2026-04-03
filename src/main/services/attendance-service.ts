@@ -99,12 +99,13 @@ export class AttendanceService {
 
   async getDashboard(userEnrollNumber: number): Promise<DashboardData> {
     const today = new Date()
-    const [shift, punches, policyMode, rawRemoteRisk] = await Promise.all([
+    const [shift, punches, policyMode] = await Promise.all([
       this.repository.getShiftForUser(userEnrollNumber, today),
       this.repository.getPunchesForDate(userEnrollNumber, today),
-      this.repository.getRemoteRiskPolicyMode(),
-      this.remoteRiskService.evaluate().catch(() => null)
+      this.repository.getRemoteRiskPolicyMode()
     ])
+    const rawRemoteRisk =
+      policyMode === 'block_high_risk' ? await this.remoteRiskService.evaluate().catch(() => null) : null
 
     const sortedPunches = punches
       .map((item) => item.time)

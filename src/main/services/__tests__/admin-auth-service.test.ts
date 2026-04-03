@@ -265,4 +265,51 @@ describe('AdminAuthService', () => {
       })
     )
   })
+
+  it('rejects bootstrap when the first admin password is too short', async () => {
+    const repository = createRepository()
+    const service = new AdminAuthService(repository)
+
+    await expect(
+      service.bootstrapFirstAdmin({
+        username: 'admin',
+        password: '123',
+        displayName: 'Administrator'
+      })
+    ).resolves.toEqual({
+      ok: false,
+      message: 'Mật khẩu admin phải có ít nhất 6 ký tự'
+    })
+
+    expect(repository.createAdmin).not.toHaveBeenCalled()
+  })
+
+  it('temporarily locks login after 5 failed attempts for the same admin username', async () => {
+    const repository = createRepository()
+    const passwordHash = await bcrypt.hash('correct-password', 4)
+
+    vi.mocked(repository.findByUsername).mockResolvedValue({
+      id: 21,
+      username: 'admin',
+      passwordHash,
+      displayName: 'Administrator',
+      role: 'admin',
+      isActive: true,
+      mustChangePassword: false
+    })
+
+    const service = new AdminAuthService(repository)
+
+    for (let attempt = 0; attempt < 5; attempt += 1) {
+      await service.login({ username: 'admin', password: 'wrong-password' })
+    }
+
+    await expect(service.login({ username: 'admin', password: 'correct-password' })).resolves.toEqual(
+      expect.objectContaining({
+        ok: false,
+        message: expect.stringContaining('khóa'),
+        requiresPasswordChange: false
+      })
+    )
+  })
 })

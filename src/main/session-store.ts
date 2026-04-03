@@ -1,35 +1,10 @@
-import { createRequire } from 'node:module'
 import { formatAppIsoOffset } from '@shared/app-time'
 import { appConfig } from './config/app-config'
+import { createElectronStore } from './electron-store'
+import { getOrCreateSessionEncryptionKey } from './session-key-store'
 import type { AdminSessionState, AdminUser, AuthUser, SessionState } from '@shared/api'
 
-type ElectronStoreConstructor = typeof import('electron-store').default
-type ElectronStoreModule = ElectronStoreConstructor | { default?: ElectronStoreConstructor }
-type ElectronStoreOptions<T extends Record<string, unknown>> = import('electron-store').Options<T>
-
-const require = createRequire(import.meta.url)
-
-export const resolveStoreConstructor = (
-  storeModule: ElectronStoreModule
-): ElectronStoreConstructor => {
-  const constructor = typeof storeModule === 'function' ? storeModule : storeModule.default
-
-  if (typeof constructor !== 'function') {
-    throw new TypeError('electron-store export is not a constructor')
-  }
-
-  return constructor
-}
-const loadElectronStore = (): ElectronStoreConstructor =>
-  resolveStoreConstructor(require('electron-store') as ElectronStoreModule)
-
-const createElectronStore = <T extends Record<string, unknown>>(
-  options?: ElectronStoreOptions<T>
-) => {
-  const ElectronStore = loadElectronStore()
-
-  return new ElectronStore<T>(options)
-}
+export { resolveStoreConstructor } from './electron-store'
 
 interface StoredSession {
   user: AuthUser
@@ -52,7 +27,8 @@ interface SessionStoreShape {
 export class SessionStore {
   private readonly store = createElectronStore<SessionStoreShape>({
     name: 'ccpro-session',
-    encryptionKey: appConfig.sessionEncryptionKey
+    encryptionKey: getOrCreateSessionEncryptionKey(),
+    clearInvalidConfig: true
   })
 
   getSession(): SessionState {

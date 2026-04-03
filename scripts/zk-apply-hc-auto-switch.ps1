@@ -1,7 +1,7 @@
 param(
   [string]$Ip = '10.60.1.5',
   [int]$Port = 4370,
-  [int]$Password = 938948,
+  [Nullable[int]]$Password = $null,
   [int]$StateMode = 2,
   [switch]$SkipStateMode,
   [string]$PythonExe = 'python',
@@ -83,7 +83,7 @@ function Get-OptionalPropertyValue {
 
 function Get-CurrentShortkeys {
   return Invoke-JsonCommand -ErrorMessage 'Cannot read current shortkey config.' -Command {
-    Invoke-ShortkeyTool -ToolArguments @('get', '--ip', $Ip, '--port', "$Port", '--password', "$Password")
+    Invoke-ShortkeyTool -ToolArguments @('get', '--ip', $Ip, '--port', "$Port", '--password', "$resolvedPassword")
   }
 }
 
@@ -94,7 +94,7 @@ function Get-SsrRows {
   )
 
   $result = Invoke-JsonCommand -ErrorMessage "Cannot read table '$Table'." -Command {
-    $arguments = @('get', '--ip', $Ip, '--port', "$Port", '--password', "$Password", '--table', $Table)
+    $arguments = @('get', '--ip', $Ip, '--port', "$Port", '--password', "$resolvedPassword", '--table', $Table)
     if (-not [string]::IsNullOrWhiteSpace($Filter)) {
       $arguments += @('--filter', $Filter)
     }
@@ -137,7 +137,7 @@ function Set-ShortkeySchedule {
         '--port',
         "$Port",
         '--password',
-        "$Password",
+        "$resolvedPassword",
         '--shortKeyId',
         "$($target.shortKeyId)",
         '--shortKeyFun',
@@ -188,7 +188,7 @@ function Set-SsrRow {
       '--port',
       "$Port",
       '--password',
-      "$Password",
+      "$resolvedPassword",
       '--table',
       $Table,
       '--data',
@@ -269,11 +269,19 @@ function Set-DeviceStateMode {
   }
 
   return Invoke-JsonCommand -ErrorMessage "Cannot set StateMode=$StateMode." -Command {
-    & $PythonExe $StateModeScriptPath --ip $Ip --port $Port --password $Password --mode $StateMode
+    & $PythonExe $StateModeScriptPath --ip $Ip --port $Port --password $resolvedPassword --mode $StateMode
   }
 }
 
 $useFakeShortkeyPath = -not [string]::IsNullOrWhiteSpace($env:ZK_SHORTKEY_FAKE_STATE_PATH)
+$resolvedPassword =
+if ($null -ne $Password) {
+  [int]$Password
+} elseif (-not [string]::IsNullOrWhiteSpace([string]$env:ZK_DEVICE_PASSWORD)) {
+  [int]$env:ZK_DEVICE_PASSWORD
+} else {
+  0
+}
 $currentConfig = Get-CurrentShortkeys
 $ssrResult = $null
 

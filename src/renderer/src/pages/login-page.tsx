@@ -1,9 +1,10 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
 import { Input } from '@renderer/components/ui/input'
+import { toUiErrorMessage } from '@renderer/lib/errors'
 import { useAuth } from '@renderer/providers/auth-provider'
 
 export const LoginPage = (): JSX.Element => {
@@ -15,27 +16,43 @@ export const LoginPage = (): JSX.Element => {
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
+  useEffect(() => {
+    void window.ccpro.app
+      .getStartupStatus()
+      .then((status) => {
+        if (status.status === 'error' && status.message) {
+          setMessage(status.message)
+        }
+      })
+      .catch(() => undefined)
+  }, [])
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
     setSubmitting(true)
     setMessage(null)
 
-    const result = await login({
-      employeeCode,
-      password,
-      rememberMe
-    })
+    try {
+      const result = await login({
+        employeeCode,
+        password,
+        rememberMe
+      })
 
-    setSubmitting(false)
+      setSubmitting(false)
 
-    if (!result.ok) {
-      setMessage(result.message ?? 'Đăng nhập thất bại')
-      return
+      if (!result.ok) {
+        setMessage(result.message ?? 'Đăng nhập thất bại')
+        return
+      }
+
+      navigate(result.requiresPasswordChange ? '/settings?forcePasswordChange=1' : '/dashboard', {
+        replace: true
+      })
+    } catch (error) {
+      setSubmitting(false)
+      setMessage(toUiErrorMessage(error, 'Đăng nhập thất bại'))
     }
-
-    navigate(result.requiresPasswordChange ? '/settings?forcePasswordChange=1' : '/dashboard', {
-      replace: true
-    })
   }
 
   return (
@@ -48,7 +65,7 @@ export const LoginPage = (): JSX.Element => {
         </div>
 
         <div className="login-card__heading">
-          <h1>ChấmCông PNJ</h1>
+          <h1>CCPro PNJ</h1>
         </div>
 
         <form className="login-form" onSubmit={onSubmit}>

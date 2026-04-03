@@ -4,6 +4,7 @@ import { ShieldCheck } from 'lucide-react'
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
 import { Input } from '@renderer/components/ui/input'
+import { toUiErrorMessage } from '@renderer/lib/errors'
 
 export const AdminLoginPage = (): JSX.Element => {
   const navigate = useNavigate()
@@ -20,6 +21,15 @@ export const AdminLoginPage = (): JSX.Element => {
         replace: true
       })
     })
+
+    void window.ccpro.app
+      .getStartupStatus()
+      .then((status) => {
+        if (status.status === 'error' && status.message) {
+          setMessage(status.message)
+        }
+      })
+      .catch(() => undefined)
   }, [navigate])
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -39,8 +49,8 @@ export const AdminLoginPage = (): JSX.Element => {
       navigate(result.requiresPasswordChange ? '/admin/account?forcePasswordChange=1' : '/admin/device-config', {
         replace: true
       })
-    } catch {
-      setMessage('Lỗi kết nối, vui lòng thử lại')
+    } catch (error) {
+      setMessage(toUiErrorMessage(error, 'Đăng nhập thất bại'))
       setSubmitting(false)
     }
   }

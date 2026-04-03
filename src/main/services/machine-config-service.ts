@@ -10,10 +10,15 @@ import { formatSqlDateTime } from './sql-datetime'
 const execFile = promisify(execFileCallback)
 const helperResourceSegments = ['machine-config', 'machine-config-helper.exe'] as const
 const helperTimeoutMs = {
+  'preflight-sdk': 30_000,
   'get-config': 30_000,
   'save-config': 120_000,
-  'sync-time': 30_000
+  'sync-time': 30_000,
+  'bootstrap-app-config': 30_000
 } as const
+
+const machineConfigDiagnosticFallback =
+  'Machine config helper exited before returning diagnostics. The target machine may be missing a bundled runtime dependency such as MSVBVM60.DLL.'
 
 const resolveMachineConfigHelperPath = (): string => {
   const override = process.env.CCPRO_MACHINE_CONFIG_HELPER_PATH?.trim()
@@ -30,7 +35,7 @@ const resolveMachineConfigHelperPath = (): string => {
 }
 
 const runMachineConfigHelper = async (
-  command: 'get-config' | 'save-config' | 'sync-time',
+  command: 'preflight-sdk' | 'get-config' | 'save-config' | 'sync-time' | 'bootstrap-app-config',
   args: string[]
 ): Promise<string> => {
   const helperPath = resolveMachineConfigHelperPath()
@@ -62,6 +67,10 @@ const extractHelperErrorMessage = (error: unknown): string => {
     }
   }
 
+  if (error instanceof Error && /Command failed: .*machine-config-helper\.exe/i.test(error.message)) {
+    return `${machineConfigDiagnosticFallback} Original error: ${error.message}`
+  }
+
   return error instanceof Error ? error.message : String(error)
 }
 
@@ -72,12 +81,47 @@ type HelperBaseArgs = {
 }
 
 type HelperSaveResult = DeviceConfigResult
+type AppConfigBootstrapResult = {
+  ok: boolean
+  message: string
+  outputPath: string
+}
+
+type MachineConfigSdkPreflightResult = {
+  ok: boolean
+  message: string
+}
 
 const buildHelperConnectionArgs = (args: HelperBaseArgs): string[] => [
   '--ip', args.deviceIp,
   '--port', String(args.devicePort),
   '--password', String(args.devicePassword)
 ]
+
+export const bootstrapLocalAppConfig = async (args: {
+  outputPath: string
+  seedPath: string
+}): Promise<AppConfigBootstrapResult> => {
+  const output = await runMachineConfigHelper('bootstrap-app-config', [
+    '--output', args.outputPath,
+    '--seed', args.seedPath
+  ])
+
+  return parseHelperJson<AppConfigBootstrapResult>(output)
+}
+
+const ensureMachineConfigSdkReady = async (): Promise<void> => {
+  try {
+    const output = await runMachineConfigHelper('preflight-sdk', [])
+    const result = parseHelperJson<MachineConfigSdkPreflightResult>(output)
+
+    if (!result.ok) {
+      throw new Error(result.message)
+    }
+  } catch (error) {
+    throw new Error(extractHelperErrorMessage(error))
+  }
+}
 
 export interface MachineConfigService {
   getConfig(): Promise<DeviceConfig>
@@ -88,7 +132,7 @@ export interface MachineConfigService {
 export class ZkMachineConfigService implements MachineConfigService {
   private readonly deviceIp: string
   private readonly devicePort: number
-  private readonly devicePassword: number
+  private readonly devicePassword?: number
 
   constructor(options?: { deviceIp?: string; devicePort?: number; devicePassword?: number }) {
     this.deviceIp = options?.deviceIp ?? appConfig.deviceSync.ip
@@ -97,26 +141,34 @@ export class ZkMachineConfigService implements MachineConfigService {
   }
 
   async getConfig(): Promise<DeviceConfig> {
-    const output = await runMachineConfigHelper('get-config', buildHelperConnectionArgs({
-      deviceIp: this.deviceIp,
-      devicePort: this.devicePort,
-      devicePassword: this.devicePassword
-    }))
+    await ensureMachineConfigSdkReady()
 
-    return parseHelperJson<DeviceConfig>(output)
+    try {
+      const output = await runMachineConfigHelper('get-config', buildHelperConnectionArgs({
+        deviceIp: this.deviceIp,
+        devicePort: this.devicePort,
+        devicePassword: this.getDevicePassword()
+      }))
+
+      return parseHelperJson<DeviceConfig>(output)
+    } catch (error) {
+      throw new Error(extractHelperErrorMessage(error))
+    }
   }
 
   async saveConfig(payload: DeviceConfigPayload, adminId: number): Promise<DeviceConfigResult> {
     const payloadB64 = Buffer.from(JSON.stringify(payload)).toString('base64')
 
     try {
+      await ensureMachineConfigSdkReady()
+
       const output = await runMachineConfigHelper(
         'save-config',
         [
           ...buildHelperConnectionArgs({
             deviceIp: this.deviceIp,
             devicePort: this.devicePort,
-            devicePassword: this.devicePassword
+            devicePassword: this.getDevicePassword()
           }),
           '--payloadB64', payloadB64
         ]
@@ -159,7 +211,7 @@ export class ZkMachineConfigService implements MachineConfigService {
         buildHelperConnectionArgs({
           deviceIp: this.deviceIp,
           devicePort: this.devicePort,
-          devicePassword: this.devicePassword
+          devicePassword: this.getDevicePassword()
         })
       )
 
@@ -192,6 +244,14 @@ export class ZkMachineConfigService implements MachineConfigService {
         message: `Đồng bộ giờ thất bại: ${errorMessage}`
       }
     }
+  }
+
+  private getDevicePassword(): number {
+    if (typeof this.devicePassword === 'number' && Number.isFinite(this.devicePassword)) {
+      return this.devicePassword
+    }
+
+    throw new Error('Missing required environment variable: ZK_DEVICE_PASSWORD')
   }
 
   private async writeAuditLog(args: {
@@ -242,5 +302,6 @@ export const __internal = {
   resolveMachineConfigHelperPath,
   buildHelperConnectionArgs,
   extractHelperErrorMessage,
-  helperTimeoutMs
+  helperTimeoutMs,
+  machineConfigDiagnosticFallback
 }
