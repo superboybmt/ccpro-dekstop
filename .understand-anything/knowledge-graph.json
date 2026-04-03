@@ -1254,12 +1254,18 @@
     {
       "id": "file:src/main/__tests__/session-store.test.ts",
       "type": "file",
-      "name": "src/main/__tests__/session-store.test.ts",
+      "name": "session-store.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 21,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/__tests__/session-store.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/__tests__/startup.test.ts",
@@ -1412,12 +1418,18 @@
     {
       "id": "file:src/main/services/__tests__/admin-user-management-service.test.ts",
       "type": "file",
-      "name": "src/main/services/__tests__/admin-user-management-service.test.ts",
+      "name": "admin-user-management-service.test.ts",
       "description": "code file in typescript",
       "metadata": {
         "lines": 132,
         "category": "code"
-      }
+      },
+      "filePath": "src/main/services/__tests__/admin-user-management-service.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/main/services/__tests__/attendance-service.test.ts",
@@ -1952,12 +1964,18 @@
     {
       "id": "file:src/renderer/src/components/ui/button.tsx",
       "type": "file",
-      "name": "src/renderer/src/components/ui/button.tsx",
+      "name": "button.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 24,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/components/ui/button.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/components/ui/card.tsx",
@@ -2070,12 +2088,18 @@
     {
       "id": "file:src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "name": "admin-account-page.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 169,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
@@ -2096,12 +2120,18 @@
     {
       "id": "file:src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "name": "admin-users-page.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 202,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
@@ -2122,12 +2152,18 @@
     {
       "id": "file:src/renderer/src/pages/__tests__/settings-page.test.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "name": "settings-page.test.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 79,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/__tests__/settings-page.test.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/admin-account-page.tsx",
@@ -3382,6 +3418,50 @@
       "type": "file",
       "name": "admin-device-config-utils.ts",
       "filePath": "src/renderer/src/pages/admin-device-config-utils.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:eslint.config.mjs",
+      "type": "file",
+      "name": "eslint.config.mjs",
+      "filePath": "eslint.config.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/update-graph-auto.mjs",
+      "type": "file",
+      "name": "update-graph-auto.mjs",
+      "filePath": "scripts/update-graph-auto.mjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "src/renderer/src/vite-env.d.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
       "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
@@ -5865,6 +5945,6 @@
     ]
   },
   "project": {
-    "analyzedAt": "2026-04-03T06:02:36.728Z"
+    "analyzedAt": "2026-04-03T07:11:41.206Z"
   }
 }
