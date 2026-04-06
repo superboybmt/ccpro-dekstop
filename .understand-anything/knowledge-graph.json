@@ -1351,7 +1351,7 @@
         "category": "code"
       },
       "filePath": "src/main/ipc/__tests__/register-handlers.test.ts",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
       "tags": [
         "auto-updated"
       ],
@@ -1367,7 +1367,7 @@
         "category": "code"
       },
       "filePath": "src/main/ipc/register-handlers.ts",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Updated to reflect attendance stats refactor (avgWorkingHoursPerDay).",
       "tags": [
         "auto-updated"
       ],
@@ -1709,7 +1709,7 @@
         "category": "code"
       },
       "filePath": "src/main/services/history-service.ts",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Backend service for history logic, calculating attendance stats like avgWorkingHoursPerDay with 60-second duplicates filtration.",
       "tags": [
         "auto-updated"
       ],
@@ -1887,7 +1887,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/app/__tests__/full-flow.test.tsx",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
       "tags": [
         "auto-updated"
       ],
@@ -2143,7 +2143,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
       "tags": [
         "auto-updated"
       ],
@@ -2243,7 +2243,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/pages/history-page.tsx",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Frontend History page visualizing detailed metrics including Average Working Hours.",
       "tags": [
         "auto-updated"
       ],
@@ -2359,7 +2359,7 @@
         "category": "code"
       },
       "filePath": "src/shared/api.ts",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Shared API interfaces, defining AttendanceStats (including avgWorkingHoursPerDay replacing missingPunchDays).",
       "tags": [
         "auto-updated"
       ],
@@ -3198,7 +3198,7 @@
       "type": "file",
       "name": "sandbox-smoke.test.tsx",
       "filePath": "src/renderer/src/app/__tests__/sandbox-smoke.test.tsx",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
       "tags": [
         "auto-updated"
       ],
@@ -3352,7 +3352,7 @@
       "type": "file",
       "name": "history-page.test.tsx",
       "filePath": "src/renderer/src/pages/__tests__/history-page.test.tsx",
-      "summary": "Updated automatically from git diff.",
+      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
       "tags": [
         "auto-updated"
       ],
