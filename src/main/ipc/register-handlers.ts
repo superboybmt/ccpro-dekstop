@@ -42,6 +42,8 @@ const DISCONNECTED_DASHBOARD = {
   connectionStatus: 'disconnected' as const,
   remoteRisk: null
 }
+const SYNCING_PUNCH_BLOCK_MESSAGE =
+  'Không thể chấm công trong khi hệ thống đang đồng bộ dữ liệu từ máy chấm công. Vui lòng thử lại sau.'
 
 const ensureAuthenticated = (sessionStore: SessionStore) => {
   const session = sessionStore.getSession()
@@ -143,23 +145,50 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
   ipcMain.handle('attendance:get-dashboard', async () => {
     await ensureAppReady()
     const session = ensureAuthenticated(sessionStore)
-    const connectionStatus = await getConnectionStatus()
+    const [connectionStatus, syncStatus] = await Promise.all([
+      getConnectionStatus(),
+      deviceSyncService.getStatus()
+    ])
+
     if (connectionStatus === 'disconnected') {
-      return DISCONNECTED_DASHBOARD
+      return {
+        ...DISCONNECTED_DASHBOARD,
+        deviceSyncStatus: syncStatus.status
+      }
     }
 
-    return attendanceService.getDashboard(session.user!.userEnrollNumber)
+    const dashboard = await attendanceService.getDashboard(session.user!.userEnrollNumber)
+    return {
+      ...dashboard,
+      deviceSyncStatus: syncStatus.status
+    }
   })
 
   ipcMain.handle('attendance:check-in', async () => {
     await ensureAppReady()
     const session = ensureAuthenticated(sessionStore)
+    const syncStatus = await deviceSyncService.getStatus()
+    if (syncStatus.status === 'syncing') {
+      return {
+        ok: false,
+        message: SYNCING_PUNCH_BLOCK_MESSAGE
+      }
+    }
+
     return attendanceService.recordPunch(session.user!.userEnrollNumber, 'check-in')
   })
 
   ipcMain.handle('attendance:check-out', async () => {
     await ensureAppReady()
     const session = ensureAuthenticated(sessionStore)
+    const syncStatus = await deviceSyncService.getStatus()
+    if (syncStatus.status === 'syncing') {
+      return {
+        ok: false,
+        message: SYNCING_PUNCH_BLOCK_MESSAGE
+      }
+    }
+
     return attendanceService.recordPunch(session.user!.userEnrollNumber, 'check-out')
   })
 

@@ -38,6 +38,19 @@ let adminSession = {
   mustChangePassword: false,
   admin: null as null | { id: number; username: string; displayName: string; role: string }
 }
+let userSession = {
+  authenticated: false,
+  mustChangePassword: false,
+  user: null as null | {
+    userEnrollNumber: number
+    employeeCode: string
+    fullName: string
+    department: string | null
+    hireDate: string | null
+    scheduleName: string | null
+    avatarInitials: string
+  }
+}
 
 vi.mock('electron', () => ({
   app: {
@@ -57,13 +70,21 @@ vi.mock('electron', () => ({
 vi.mock('../../session-store', () => ({
   SessionStore: class {
     getSession() {
-      return { authenticated: false, mustChangePassword: false, user: null }
+      return userSession
     }
 
-    setSession() {}
+    setSession(user: NonNullable<typeof userSession.user>, mustChangePassword: boolean) {
+      userSession = {
+        authenticated: true,
+        mustChangePassword,
+        user
+      }
+    }
     touch() {}
     completePasswordChange() {}
-    clear() {}
+    clear() {
+      userSession = { authenticated: false, mustChangePassword: false, user: null }
+    }
 
     getAdminSession() {
       return adminSession
@@ -193,6 +214,7 @@ describe('registerIpcHandlers', () => {
     downloadVerifiedUpdateMock.mockClear()
     shellOpenExternalMock.mockClear()
     adminSession = { authenticated: false, mustChangePassword: false, admin: null }
+    userSession = { authenticated: false, mustChangePassword: false, user: null }
   })
 
   it('rejects admin-only machine config reads when the admin session is missing', async () => {
@@ -344,6 +366,60 @@ describe('registerIpcHandlers', () => {
       }
     )
   })
+
+  it('blocks attendance punches while device sync is in progress', async () => {
+    userSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      user: {
+        userEnrollNumber: 18,
+        employeeCode: 'E0112599',
+        fullName: 'Nguyen Van A',
+        department: null,
+        hireDate: null,
+        scheduleName: null,
+        avatarInitials: 'NA'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({
+      ensureAppReady: async () => undefined,
+      deviceSyncService: {
+        getStatus: vi.fn(async () => ({
+          status: 'syncing',
+          deviceIp: '10.60.1.5',
+          lastSyncAt: null,
+          lastRunStartedAt: null,
+          lastRunFinishedAt: null,
+          lastImportedCount: 0,
+          lastSkippedCount: 0,
+          lastError: null
+        })),
+        retryNow: vi.fn(async () => ({
+          status: 'syncing',
+          deviceIp: '10.60.1.5',
+          lastSyncAt: null,
+          lastRunStartedAt: null,
+          lastRunFinishedAt: null,
+          lastImportedCount: 0,
+          lastSkippedCount: 0,
+          lastError: null
+        }))
+      } as any
+    })
+
+    const handler = ipcHandlers.get('attendance:check-in')
+    expect(handler).toBeTypeOf('function')
+
+    const result = await handler?.({})
+    expect(result).toMatchObject({
+      ok: false
+    })
+    expect(result).toMatchObject({ message: expect.stringMatching(/đồng bộ dữ liệu/i) })
+  })
+
   it('opens external links only when the URL uses HTTPS', async () => {
     const { registerIpcHandlers } = await import('../register-handlers')
 

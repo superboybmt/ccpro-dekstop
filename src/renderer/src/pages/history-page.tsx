@@ -22,8 +22,8 @@ const EMPTY_HISTORY: HistoryData = {
   stats: {
     totalWorkingDays: 0,
     onTimeRate: 0,
-    totalOvertimeHours: 0,
-    absences: 0
+    lateDays: 0,
+    avgWorkingHoursPerDay: 0
   },
   records: [],
   total: 0
@@ -194,24 +194,18 @@ export const HistoryPage = (): JSX.Element => {
           </Card>
           <Card style={{ padding: '14px 16px' }}>
             <div className="muted-line" style={{ marginBottom: '8px' }}>
-              Tổng giờ tăng ca
+              Ngày đi trễ
             </div>
             <strong style={{ fontSize: '20px', fontWeight: 600 }}>
-              {history.stats.totalOvertimeHours}h
+              {history.stats.lateDays}
             </strong>
           </Card>
           <Card style={{ padding: '14px 16px' }}>
             <div className="muted-line" style={{ marginBottom: '8px' }}>
-              Vắng
+              Giờ làm trung bình
             </div>
-            <strong
-              style={{
-                fontSize: '20px',
-                fontWeight: 600,
-                color: history.stats.absences > 0 ? 'var(--text-error)' : 'inherit'
-              }}
-            >
-              {history.stats.absences}
+            <strong style={{ fontSize: '20px', fontWeight: 600 }}>
+              {history.stats.avgWorkingHoursPerDay}h
             </strong>
           </Card>
         </div>
@@ -263,16 +257,16 @@ export const HistoryPage = (): JSX.Element => {
                       Ngày
                     </th>
                     <th style={{ padding: '16px 24px', textAlign: 'left', borderBottom: '1px solid var(--border-default)', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                      Vào
+                      Vào 1
                     </th>
                     <th style={{ padding: '16px 24px', textAlign: 'left', borderBottom: '1px solid var(--border-default)', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                      Ra
+                      Ra 1
                     </th>
                     <th style={{ padding: '16px 24px', textAlign: 'left', borderBottom: '1px solid var(--border-default)', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                      Tổng giờ
+                      Vào 2
                     </th>
                     <th style={{ padding: '16px 24px', textAlign: 'left', borderBottom: '1px solid var(--border-default)', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                      Ca làm
+                      Ra 2
                     </th>
                     <th style={{ padding: '16px 24px', textAlign: 'left', borderBottom: '1px solid var(--border-default)', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
                       Trạng thái
@@ -281,16 +275,14 @@ export const HistoryPage = (): JSX.Element => {
                 </thead>
                 <tbody>
                   {history.records.map((record) => (
-                    <tr key={`${record.date}-${record.checkIn}`} style={{ borderBottom: '1px solid var(--bg-hover)' }}>
+                    <tr key={`${record.date}-${record.checkIn1}`} style={{ borderBottom: '1px solid var(--bg-hover)' }}>
                       <td style={{ padding: '16px 24px', fontSize: '14px', fontWeight: 500 }}>
                         {record.date}
                       </td>
-                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkIn}</td>
-                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkOut}</td>
-                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.totalHours}</td>
-                      <td style={{ padding: '16px 24px', fontSize: '14px' }} className="muted-line">
-                        {record.shiftName}
-                      </td>
+                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkIn1}</td>
+                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkOut1}</td>
+                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkIn2}</td>
+                      <td style={{ padding: '16px 24px', fontSize: '14px' }}>{record.checkOut2}</td>
                       <td style={{ padding: '16px 24px' }}>
                         <StatusPill status={record.status} />
                       </td>

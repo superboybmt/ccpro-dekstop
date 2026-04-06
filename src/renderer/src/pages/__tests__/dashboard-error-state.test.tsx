@@ -4,7 +4,7 @@ import { DashboardPage } from '../dashboard-page'
 
 const EMPTY_HISTORY = {
   filter: { month: null, startDate: '', endDate: '', page: 1, pageSize: 5 },
-  stats: { totalWorkingDays: 0, onTimeRate: 0, totalOvertimeHours: 0, absences: 0 },
+  stats: { totalWorkingDays: 0, onTimeRate: 0, lateDays: 0, avgWorkingHoursPerDay: 0 },
   records: [],
   total: 0
 }

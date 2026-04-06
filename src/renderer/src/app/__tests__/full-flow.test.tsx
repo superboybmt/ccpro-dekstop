@@ -117,17 +117,17 @@ const mockApi = () => {
         stats: {
           totalWorkingDays: 1,
           onTimeRate: 100,
-          totalOvertimeHours: 0,
-          absences: 0
+          lateDays: 0,
+          avgWorkingHoursPerDay: 0
         },
         records: [
           {
             date: '31/03/2026',
-            checkIn: '08:00',
-            checkOut: '17:00',
-            totalHours: '9h 00m',
-            status: 'on-time',
-            shiftName: 'Ca sang'
+            checkIn1: '08:00',
+            checkOut1: '12:00',
+            checkIn2: '13:00',
+            checkOut2: '17:00',
+            status: 'on-time'
           }
         ],
         total: 1

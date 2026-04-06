@@ -177,23 +177,24 @@ export interface DashboardData {
   nextAction: AttendanceAction
   lastEventAt: string | null
   connectionStatus: 'connected' | 'disconnected'
+  deviceSyncStatus?: DeviceSyncStatus['status']
   remoteRisk?: RemoteRiskSnapshot | null
 }
 
 export interface AttendanceDayRecord {
   date: string
-  checkIn: string
-  checkOut: string
-  totalHours: string
+  checkIn1: string
+  checkOut1: string
+  checkIn2: string
+  checkOut2: string
   status: AttendanceStatus
-  shiftName: string
 }
 
 export interface AttendanceStats {
   totalWorkingDays: number
   onTimeRate: number
-  totalOvertimeHours: number
-  absences: number
+  lateDays: number
+  avgWorkingHoursPerDay: number
 }
 
 export interface HistoryFilter {

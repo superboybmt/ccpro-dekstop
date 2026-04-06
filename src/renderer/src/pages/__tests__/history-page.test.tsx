@@ -17,8 +17,8 @@ const createHistoryResult = (overrides?: Partial<Parameters<typeof window.ccpro.
   stats: {
     totalWorkingDays: 0,
     onTimeRate: 0,
-    totalOvertimeHours: 0,
-    absences: 0
+    lateDays: 0,
+    avgWorkingHoursPerDay: 0
   },
   records: [],
   total: 0

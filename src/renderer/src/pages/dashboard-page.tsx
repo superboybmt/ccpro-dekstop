@@ -17,7 +17,7 @@ const DEFAULT_DASHBOARD: DashboardData = {
 
 const EMPTY_HISTORY: HistoryData = {
   filter: { month: null, startDate: '', endDate: '', page: 1, pageSize: 5 },
-  stats: { totalWorkingDays: 0, onTimeRate: 0, totalOvertimeHours: 0, absences: 0 },
+  stats: { totalWorkingDays: 0, onTimeRate: 0, lateDays: 0, avgWorkingHoursPerDay: 0 },
   records: [],
   total: 0
 }
@@ -26,6 +26,9 @@ const DASHBOARD_REFRESH_INTERVAL_MS = 5_000
 const SQL_CONNECTION_ERROR_TEXT = 'SQL Server'
 const SQL_UNAVAILABLE_PUNCH_MESSAGE =
   'Không thể chấm công khi ứng dụng chưa kết nối được SQL Server nội bộ. Vui lòng kết nối lại mạng LAN và thử lại.'
+
+const DEVICE_SYNCING_PUNCH_MESSAGE =
+  'Hệ thống đang đồng bộ dữ liệu từ máy chấm công. Tạm thời không thể chấm công để tránh ghi nhận trùng.'
 
 const markDashboardDisconnected = (current: DashboardData): DashboardData => ({
   ...current,
@@ -115,6 +118,7 @@ export const DashboardPage = (): JSX.Element => {
   }
 
   const punchBlockedByConnection = dashboard.connectionStatus === 'disconnected'
+  const punchBlockedBySync = dashboard.deviceSyncStatus === 'syncing'
   const remoteRisk = dashboard.remoteRisk
   const punchBlockedByRemoteRisk = remoteRisk?.blocking === true
   const remoteRiskMessage =
@@ -150,7 +154,9 @@ export const DashboardPage = (): JSX.Element => {
               <Button
                 size="lg"
                 className="dashboard-actions__hero"
-                disabled={loading || submitting || punchBlockedByConnection || punchBlockedByRemoteRisk}
+                disabled={
+                  loading || submitting || punchBlockedByConnection || punchBlockedBySync || punchBlockedByRemoteRisk
+                }
                 onClick={() => void handlePunch(dashboard.nextAction)}
               >
                 <Fingerprint size={18} />
@@ -161,6 +167,12 @@ export const DashboardPage = (): JSX.Element => {
             {punchBlockedByConnection ? (
               <p className="inline-message inline-message--error" style={{ marginTop: '8px' }}>
                 {SQL_UNAVAILABLE_PUNCH_MESSAGE}
+              </p>
+            ) : null}
+
+            {punchBlockedBySync ? (
+              <p className="inline-message inline-message--error" style={{ marginTop: '8px' }}>
+                {DEVICE_SYNCING_PUNCH_MESSAGE}
               </p>
             ) : null}
 
@@ -184,11 +196,11 @@ export const DashboardPage = (): JSX.Element => {
             <Card title="Đúng giờ">
               <strong className="stat-number">{formatPercent(history.stats.onTimeRate)}</strong>
             </Card>
-            <Card title="Tăng ca">
-              <strong className="stat-number">{history.stats.totalOvertimeHours}h</strong>
+            <Card title="Ngày đi trễ">
+              <strong className="stat-number">{history.stats.lateDays}</strong>
             </Card>
-            <Card title="Vắng">
-              <strong className="stat-number">{history.stats.absences}</strong>
+            <Card title="Trung bình/ngày">
+              <strong className="stat-number">{history.stats.avgWorkingHoursPerDay}h</strong>
             </Card>
           </div>
         </div>

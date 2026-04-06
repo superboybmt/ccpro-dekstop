@@ -25,7 +25,7 @@ const createApi = () => ({
     checkOut: vi.fn(async () => ({ ok: true, message: 'ok' })),
     getHistory: vi.fn(async () => ({
       filter: { month: null, startDate: '2026-04-01', endDate: '2026-04-02', page: 1, pageSize: 10 },
-      stats: { totalWorkingDays: 0, onTimeRate: 0, totalOvertimeHours: 0, absences: 0 },
+      stats: { totalWorkingDays: 0, onTimeRate: 0, lateDays: 0, avgWorkingHoursPerDay: 0 },
       records: [],
       total: 0
     }))

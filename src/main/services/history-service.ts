@@ -19,12 +19,6 @@ const formatDateLabel = (date: Date): string => {
 const formatTime = (date: Date | null): string =>
   date ? formatSqlDateTime(date).slice(11, 16) : '--:--'
 
-const formatHourDiff = (start: Date | null, end: Date | null): string => {
-  if (!start || !end || end <= start) return '0h 00m'
-  const totalMinutes = Math.round((end.getTime() - start.getTime()) / 60000)
-  return `${Math.floor(totalMinutes / 60)}h ${String(totalMinutes % 60).padStart(2, '0')}m`
-}
-
 const parseShiftDateTime = (date: string, time: string): Date => parseSqlDateTime(`${date} ${time}:00`)
 
 const isScheduledOff = (date: Date, shift: ShiftRecord | null): boolean => {
@@ -52,35 +46,47 @@ export class HistoryService {
 
     const allRecords: AttendanceDayRecord[] = []
     let onTimeDays = 0
-    let overtimeMinutes = 0
-    let absences = 0
+    let lateDays = 0
+    let totalWorkingMinutes = 0
 
     const cursor = new Date(startDate)
     const todayKey = formatDateKey(new Date())
     while (cursor <= endDate) {
       const dateKey = formatDateKey(cursor)
-      const dayPunches = (grouped.get(dateKey) ?? []).sort((left, right) => left.getTime() - right.getTime())
+      let dayPunches = (grouped.get(dateKey) ?? []).sort((left, right) => left.getTime() - right.getTime())
+      
+      // Deduplicate punches within 1 minute to avoid odd counts from double-punching
+      dayPunches = dayPunches.filter((punch, idx) => {
+        if (idx === 0) return true
+        const prev = dayPunches[idx - 1]!
+        return punch.getTime() - prev.getTime() > 60000 
+      })
+
       const firstPunch = dayPunches[0] ?? null
       const lastPunch = dayPunches.length > 1 ? dayPunches.at(-1) ?? null : null
+      const middlePunches = dayPunches.slice(1, -1)
+      const firstBreakPunch = middlePunches[0] ?? null
+      const secondStartPunch = middlePunches[1] ?? null
 
-      if (dayPunches.length === 0) {
-        if (!isScheduledOff(cursor, shift) && dateKey <= todayKey) {
-          absences += 1
-        }
-      } else {
+      if (dayPunches.length > 0) {
         const lateMinutes = this.getLateMinutes(dateKey, firstPunch, shift)
         const status: AttendanceStatus = lateMinutes > 0 ? 'late' : 'on-time'
         if (status === 'on-time') onTimeDays += 1
+        else lateDays += 1
 
-        overtimeMinutes += this.getOvertimeMinutes(dateKey, lastPunch, shift)
+        let dayWorkingMinutes = 0
+        for (let i = 0; i < dayPunches.length - 1; i += 2) {
+          dayWorkingMinutes += Math.max(0, Math.round((dayPunches[i + 1].getTime() - dayPunches[i].getTime()) / 60000))
+        }
+        totalWorkingMinutes += dayWorkingMinutes
 
         allRecords.push({
           date: formatDateLabel(cursor),
-          checkIn: formatTime(firstPunch),
-          checkOut: formatTime(lastPunch),
-          totalHours: formatHourDiff(firstPunch, lastPunch),
-          status,
-          shiftName: shift?.shiftName ?? 'Ca mặc định'
+          checkIn1: formatTime(firstPunch),
+          checkOut1: formatTime(firstBreakPunch),
+          checkIn2: formatTime(secondStartPunch),
+          checkOut2: formatTime(lastPunch),
+          status
         })
       }
 
@@ -104,8 +110,8 @@ export class HistoryService {
       stats: {
         totalWorkingDays: allRecords.length,
         onTimeRate: allRecords.length === 0 ? 0 : Math.round((onTimeDays / allRecords.length) * 100),
-        totalOvertimeHours: Number((overtimeMinutes / 60).toFixed(1)),
-        absences
+        lateDays,
+        avgWorkingHoursPerDay: allRecords.length === 0 ? 0 : Number((totalWorkingMinutes / 60 / allRecords.length).toFixed(1))
       },
       records: allRecords.slice(offset, offset + pageSize),
       total: allRecords.length
