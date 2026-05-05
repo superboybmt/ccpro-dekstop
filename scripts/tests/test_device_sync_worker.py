@@ -85,6 +85,40 @@ class ExtractLogsFromBufferTests(unittest.TestCase):
             ],
         )
 
+    def test_read_snapshot_still_scans_when_record_count_is_unchanged(self):
+        worker = load_worker_module()
+        payload = (
+            build_record(10, "10", 0, worker.datetime(2026, 4, 7, 7, 24, 0), 0)
+            + build_record(11, "11", 0, worker.datetime(2026, 4, 7, 7, 25, 0), 0)
+        )
+        data = pack("<I", len(payload)) + payload
+
+        class FakeConnection:
+            def __init__(self):
+                self.records = 2
+
+            def read_sizes(self):
+                return None
+
+            def get_time(self):
+                return worker.datetime(2026, 4, 7, 8, 0, 0)
+
+            def read_with_buffer(self, _command):
+                return data, len(data)
+
+        snapshot = worker.read_snapshot(
+            FakeConnection(),
+            {
+                "deviceIp": "10.60.1.5",
+                "bootstrapDays": 7,
+                "lastLogUid": 9,
+                "lastLogTime": "2026-04-06 19:54:29",
+                "lastDeviceRecordCount": 2,
+            },
+        )
+
+        self.assertEqual([log["uid"] for log in snapshot["logs"]], [10, 11])
+
 
 if __name__ == "__main__":
     unittest.main()

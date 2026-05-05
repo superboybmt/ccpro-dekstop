@@ -29,3 +29,25 @@
 - [x] 5.2 Add tests for admin user management service actions and audit logging
 - [x] 5.3 Add renderer tests for the admin user management page flows
 - [ ] 5.4 Verify end-to-end manually: deactivate user, confirm login is blocked, reset password, and confirm forced password change on next login
+
+## 6. Bulk Operations — Backend
+
+- [x] 6.1 Add shared types: `AdminBatchSetActivePayload`, `AdminBatchUnbindPayload`, `BatchMutationResult` in `api.ts`
+- [x] 6.2 Add repository methods: `batchSetUserActiveState(userEnrollNumbers[], isActive)` and `batchUnbindDevices(userEnrollNumbers[])` with per-user upsert and audit log
+- [x] 6.3 Add service methods that wrap repository batch calls with validation and error handling
+- [x] 6.4 Add IPC handlers: `adminUsers.batchSetActiveState` and `adminUsers.batchUnbindDevices`
+
+## 7. Bulk Operations — UI
+
+- [x] 7.1 Add checkbox column to user table with per-row checkbox and header "Select All" toggle (scoped to current page)
+- [x] 7.2 Add selection state management (`selectedUserIds: Set<number>`) with clear-on-page-change and clear-on-search behavior
+- [x] 7.3 Add floating bulk action bar (appears when ≥1 selected) with "Khóa tất cả", "Mở tất cả", "Gỡ thiết bị", "Bỏ chọn" buttons
+- [x] 7.4 Add confirmation dialogs for bulk activate/deactivate and bulk unbind with affected count display
+- [x] 7.5 Wire bulk action handlers to batch IPC calls with loading state, toast feedback, auto-clear selection, and list reload
+
+## 8. Bulk Operations — Verification
+
+- [x] 8.1 Add tests for batch repository methods and audit log creation
+- [x] 8.2 Add tests for batch IPC handlers
+- [x] 8.3 Add renderer tests for multi-select, bulk action bar visibility, and bulk action flows
+- [ ] 8.4 Verify bulk operations end-to-end manually: select multiple users, bulk deactivate, confirm all blocked, bulk unbind, confirm devices cleared

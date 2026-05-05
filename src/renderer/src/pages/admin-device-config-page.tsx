@@ -80,6 +80,9 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
   const [policyMode, setPolicyMode] = useState<RemoteRiskPolicyMode>('audit_only')
   const [policySaving, setPolicySaving] = useState(false)
   const [policyMessage, setPolicyMessage] = useState<{ ok: boolean; text: string } | null>(null)
+  const [deviceBindingEnabled, setDeviceBindingEnabled] = useState(false)
+  const [deviceBindingSaving, setDeviceBindingSaving] = useState(false)
+  const [deviceBindingMessage, setDeviceBindingMessage] = useState<{ ok: boolean; text: string } | null>(null)
   const [adminSettingsAvailable, setAdminSettingsAvailable] = useState(false)
   const [syncingTime, setSyncingTime] = useState(false)
   const [syncMessage, setSyncMessage] = useState<{ ok: boolean; text: string } | null>(null)
@@ -117,14 +120,16 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
         return
       }
 
-      const [deviceConfig, remoteRiskPolicy] = await Promise.all([
+      const [deviceConfig, remoteRiskPolicy, bindingEnabled] = await Promise.all([
         window.ccpro.machineConfig.getConfig(),
-        adminSettingsBridge?.getRemoteRiskPolicy() ?? Promise.resolve({ mode: 'audit_only' as RemoteRiskPolicyMode })
+        adminSettingsBridge?.getRemoteRiskPolicy() ?? Promise.resolve({ mode: 'audit_only' as RemoteRiskPolicyMode }),
+        adminSettingsBridge?.getDeviceBindingEnabled() ?? Promise.resolve(false)
       ])
 
       setSession(adminSession)
       setConfig(deviceConfig)
       setPolicyMode(remoteRiskPolicy.mode)
+      setDeviceBindingEnabled(bindingEnabled)
       setSelectedMode(deviceConfig.stateMode)
 
       // Parse existing schedule times into editable inputs
@@ -227,6 +232,32 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
       })
     } finally {
       setPolicySaving(false)
+    }
+  }
+
+  const handleSaveDeviceBinding = async (): Promise<void> => {
+    setDeviceBindingSaving(true)
+    setDeviceBindingMessage(null)
+
+    try {
+      const adminSettingsBridge = resolveAdminSettingsBridge()
+      if (!adminSettingsBridge) {
+        setDeviceBindingMessage({
+          ok: false,
+          text: missingAdminSettingsMessage
+        })
+        return
+      }
+
+      const result = await adminSettingsBridge.saveDeviceBindingEnabled(deviceBindingEnabled)
+      setDeviceBindingMessage({ ok: result.ok, text: result.message })
+    } catch (error) {
+      setDeviceBindingMessage({
+        ok: false,
+        text: toUiErrorMessage(error, 'Lưu ràng buộc thiết bị thất bại.')
+      })
+    } finally {
+      setDeviceBindingSaving(false)
     }
   }
 
@@ -666,62 +697,125 @@ export const AdminDeviceConfigPage = (): JSX.Element => {
         ) : null}
 
         {activeTab === 'security' ? (
-        <Card
-          title="Bảo mật chấm công"
-          description="Điều khiển việc chặn chấm công khi phát hiện điều khiển từ xa đang active"
-        >
-          <label
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              fontSize: '14px',
-              fontWeight: 500
-            }}
-          >
-            <input
-              aria-label="Chặn chấm công khi phát hiện điều khiển từ xa"
-              type="checkbox"
-              checked={policyMode === 'block_high_risk'}
-              disabled={policySaving}
-              onChange={(event) => {
-                setPolicyMode(event.target.checked ? 'block_high_risk' : 'audit_only')
-              }}
-            />
-            <span>Chặn chấm công khi phát hiện điều khiển từ xa</span>
-          </label>
-
-          <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '10px' }}>
-            {policyMode === 'block_high_risk'
-              ? 'Đang bật chặn khi rủi ro cao. Khi tắt, app chỉ ghi nhận và audit.'
-              : 'Đang ở chế độ chỉ ghi nhận và audit, không chặn chấm công.'}
-          </p>
-
-          {!adminSettingsAvailable ? (
-            <p style={{ fontSize: '12px', color: 'var(--warning-strong)', marginTop: '10px' }}>
-              {missingAdminSettingsMessage}
-            </p>
-          ) : null}
-
-          <Button
-            size="md"
-            onClick={() => void handleSavePolicy()}
-            disabled={policySaving || !adminSettingsAvailable}
-            style={{ marginTop: '14px' }}
-          >
-            <Save size={14} />
-            {policySaving ? 'Đang lưu chính sách...' : 'Lưu chính sách bảo mật'}
-          </Button>
-
-          {policyMessage ? (
-            <p
-              className={`inline-message ${policyMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
-              style={{ marginTop: '12px' }}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <Card
+              title="Khóa thiết bị đăng nhập (Device Binding)"
+              description="Giới hạn mỗi tài khoản nhân viên chỉ được đăng nhập trên một thiết bị duy nhất."
             >
-              {policyMessage.text}
-            </p>
-          ) : null}
-        </Card>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <label
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <input
+                    aria-label="Bật ràng buộc thiết bị đăng nhập"
+                    type="checkbox"
+                    checked={deviceBindingEnabled}
+                    disabled={deviceBindingSaving}
+                    onChange={(event) => {
+                      setDeviceBindingEnabled(event.target.checked)
+                    }}
+                    style={{ width: '16px', height: '16px' }}
+                  />
+                  <span>Chỉ cho phép nhân viên đăng nhập trên thiết bị đã gắn</span>
+                </label>
+
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>
+                  {deviceBindingEnabled
+                    ? 'Trạng thái: BẬT. Tài khoản và thiết bị sẽ bị kiểm tra hai chiều khi đăng nhập.'
+                    : 'Trạng thái: TẮT. App vẫn ghi nhận Hardware ID để chuẩn bị dữ liệu trước khi bật.'}
+                </p>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '4px' }}>
+                  <Button
+                    size="sm"
+                    onClick={() => void handleSaveDeviceBinding()}
+                    disabled={deviceBindingSaving || !adminSettingsAvailable}
+                  >
+                    <Save size={14} />
+                    {deviceBindingSaving ? 'Đang lưu...' : 'Lưu thiết lập'}
+                  </Button>
+
+                  {deviceBindingMessage ? (
+                    <span
+                      className={`inline-message ${deviceBindingMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+                      style={{ fontSize: '12px', margin: 0 }}
+                    >
+                      {deviceBindingMessage.text}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+            </Card>
+
+            <Card
+              title="Chống điều khiển từ xa"
+              description="Ngăn chặn nhân viên sử dụng AnyDesk, TeamViewer để chấm công từ xa."
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <label
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <input
+                    aria-label="Chặn chấm công khi phát hiện điều khiển từ xa"
+                    type="checkbox"
+                    checked={policyMode === 'block_high_risk'}
+                    disabled={policySaving}
+                    onChange={(event) => {
+                      setPolicyMode(event.target.checked ? 'block_high_risk' : 'audit_only')
+                    }}
+                    style={{ width: '16px', height: '16px' }}
+                  />
+                  <span>Chặn chấm công khi phát hiện phần mềm điều khiển từ xa</span>
+                </label>
+
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>
+                  {policyMode === 'block_high_risk'
+                    ? 'Trạng thái: BẬT. Sẽ chặn chấm công khi phát hiện rủi ro cao.'
+                    : 'Trạng thái: TẮT (Audit Only). Chỉ ghi nhận sự kiện, không chặn chấm công.'}
+                </p>
+
+                {!adminSettingsAvailable ? (
+                  <p style={{ fontSize: '12px', color: 'var(--warning-strong)', margin: 0 }}>
+                    {missingAdminSettingsMessage}
+                  </p>
+                ) : null}
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '4px' }}>
+                  <Button
+                    size="sm"
+                    onClick={() => void handleSavePolicy()}
+                    disabled={policySaving || !adminSettingsAvailable}
+                  >
+                    <Save size={14} />
+                    {policySaving ? 'Đang lưu...' : 'Lưu chính sách'}
+                  </Button>
+
+                  {policyMessage ? (
+                    <span
+                      className={`inline-message ${policyMessage.ok ? 'inline-message--success' : 'inline-message--error'}`}
+                      style={{ fontSize: '12px', margin: 0 }}
+                    >
+                      {policyMessage.text}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+            </Card>
+          </div>
         ) : null}
       </div>
     </div>

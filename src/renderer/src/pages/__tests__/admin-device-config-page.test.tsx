@@ -59,6 +59,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),
@@ -134,6 +139,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),
@@ -191,6 +201,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),
@@ -260,6 +275,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),
@@ -318,6 +338,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),
@@ -348,6 +373,74 @@ describe('AdminDeviceConfigPage', () => {
 
     await waitFor(() => {
       expect(saveRemoteRiskPolicy).toHaveBeenCalledWith({ mode: 'block_high_risk' })
+    })
+  })
+
+  it('loads the device binding toggle and saves the updated value through admin settings IPC', async () => {
+    const saveDeviceBindingEnabled = vi.fn(async () => ({
+      ok: true,
+      message: 'Đã bật ràng buộc thiết bị đăng nhập'
+    }))
+
+    window.ccpro = {
+      admin: {
+        getSession: vi.fn(async () => buildAdminSession()),
+        login: undefined as never,
+        logout: vi.fn(async () => undefined),
+        bootstrap: undefined as never
+      },
+      adminUsers: undefined as never,
+      machineConfig: {
+        getConfig: vi.fn(async () => ({
+          stateMode: 2,
+          schedule: []
+        })),
+        saveConfig: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
+        syncTime: vi.fn(async () => ({
+          ok: true,
+          message: 'synced'
+        }))
+      },
+      adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled,
+        getRemoteRiskPolicy: vi.fn(async () => ({
+          mode: 'audit_only'
+        })),
+        saveRemoteRiskPolicy: vi.fn(async () => ({
+          ok: true,
+          message: 'saved',
+          mode: 'audit_only'
+        }))
+      },
+      auth: undefined as never,
+      attendance: undefined as never,
+      notifications: undefined as never,
+      settings: undefined as never,
+      deviceSync: undefined as never
+    } as unknown as typeof window.ccpro
+
+    render(
+      <MemoryRouter initialEntries={['/admin/device-config']}>
+        <AdminDeviceConfigPage />
+      </MemoryRouter>
+    )
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Bảo mật' }))
+
+    const toggle = await screen.findByRole('checkbox', {
+      name: 'Bật ràng buộc thiết bị đăng nhập'
+    })
+    expect(toggle).not.toBeChecked()
+
+    fireEvent.click(toggle)
+    fireEvent.click(screen.getByRole('button', { name: 'Lưu ràng buộc thiết bị' }))
+
+    await waitFor(() => {
+      expect(saveDeviceBindingEnabled).toHaveBeenCalledWith(true)
     })
   })
 
@@ -446,6 +539,11 @@ describe('AdminDeviceConfigPage', () => {
         }))
       },
       adminSettings: {
+        getDeviceBindingEnabled: vi.fn(async () => false),
+        saveDeviceBindingEnabled: vi.fn(async () => ({
+          ok: true,
+          message: 'saved'
+        })),
         getRemoteRiskPolicy: vi.fn(async () => ({
           mode: 'audit_only'
         })),

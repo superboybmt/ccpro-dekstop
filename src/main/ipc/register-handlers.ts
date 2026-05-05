@@ -5,6 +5,8 @@ import type {
   AdminResetAdminPasswordPayload,
   AdminResetUserPasswordPayload,
   AdminSetUserActivePayload,
+  AdminBatchSetActivePayload,
+  AdminBatchUnbindPayload,
   AdminShiftUpdatePayload,
   ChangePasswordPayload,
   DeviceConfigPayload,
@@ -18,6 +20,7 @@ import { AuthService, SqlAuthRepository } from '../services/auth-service'
 import { AdminAuthService, SqlAdminAuthRepository } from '../services/admin-auth-service'
 import { AdminSettingsService, SqlAdminSettingsRepository } from '../services/admin-settings-service'
 import { AdminUserManagementService, SqlAdminUserManagementRepository } from '../services/admin-user-management-service'
+import { getHardwareId } from '../services/hardware-id'
 import {
   DeviceSyncService,
   PythonDeviceSyncWorker,
@@ -95,11 +98,15 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
       message: null
     }))
   const sessionStore = new SessionStore()
-  const authService = new AuthService(new SqlAuthRepository())
+  const adminSettingsService = new AdminSettingsService(new SqlAdminSettingsRepository())
+  const authService = new AuthService(
+    new SqlAuthRepository(),
+    undefined,
+    () => adminSettingsService.getDeviceBindingEnabled()
+  )
   const adminAuthService = new AdminAuthService(new SqlAdminAuthRepository())
   const adminUserManagementService = new AdminUserManagementService(new SqlAdminUserManagementRepository())
   const machineConfigService = new ZkMachineConfigService()
-  const adminSettingsService = new AdminSettingsService(new SqlAdminSettingsRepository())
   const attendanceService = new AttendanceService(new SqlAttendanceRepository())
   const historyService = new HistoryService(new SqlHistoryRepository())
   const notificationService = new NotificationService(new SqlNotificationRepository())
@@ -115,7 +122,8 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
 
   ipcMain.handle('auth:login', async (_event, payload: LoginPayload) => {
     await ensureAppReady()
-    const result = await authService.login(payload)
+    const hardwareId = await getHardwareId()
+    const result = await authService.login(payload, hardwareId)
 
     if (result.ok && result.user) {
       sessionStore.setSession(result.user, result.requiresPasswordChange, payload.rememberMe)
@@ -325,6 +333,24 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
     return adminUserManagementService.resetUserPassword(payload, session.admin!.id)
   })
 
+  ipcMain.handle('admin-users:unbind-device', async (_event, userEnrollNumber: number) => {
+    await ensureAppReady()
+    const session = ensureAdminAuthorized(sessionStore)
+    return adminUserManagementService.unbindDevice(session.admin!.id, userEnrollNumber)
+  })
+
+  ipcMain.handle('admin-users:batch-set-active-state', async (_event, payload: AdminBatchSetActivePayload) => {
+    await ensureAppReady()
+    const session = ensureAdminAuthorized(sessionStore)
+    return adminUserManagementService.batchSetUserActiveState(payload, session.admin!.id)
+  })
+
+  ipcMain.handle('admin-users:batch-unbind-devices', async (_event, payload: AdminBatchUnbindPayload) => {
+    await ensureAppReady()
+    const session = ensureAdminAuthorized(sessionStore)
+    return adminUserManagementService.batchUnbindDevices(payload, session.admin!.id)
+  })
+
   ipcMain.handle('machine-config:get', async () => {
     await ensureAppReady()
     ensureAdminAuthorized(sessionStore)
@@ -349,10 +375,22 @@ export const registerIpcHandlers = (options?: Partial<RegisterHandlersOptions>):
     return adminSettingsService.getRemoteRiskPolicy()
   })
 
+  ipcMain.handle('admin-settings:get-device-binding-enabled', async () => {
+    await ensureAppReady()
+    ensureAdminAuthorized(sessionStore)
+    return adminSettingsService.getDeviceBindingEnabled()
+  })
+
   ipcMain.handle('admin-settings:save-remote-risk-policy', async (_event, policy) => {
     await ensureAppReady()
     ensureAdminAuthorized(sessionStore)
     return adminSettingsService.saveRemoteRiskPolicy(policy)
+  })
+
+  ipcMain.handle('admin-settings:save-device-binding-enabled', async (_event, enabled: boolean) => {
+    await ensureAppReady()
+    ensureAdminAuthorized(sessionStore)
+    return adminSettingsService.saveDeviceBindingEnabled(enabled)
   })
 
   ipcMain.handle('admin-shifts:list', async () => {

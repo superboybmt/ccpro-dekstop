@@ -1,6 +1,8 @@
 {
+  "scriptCompleted": true,
   "name": "ccpro-desktop",
-  "description": "App Cham cong PNJ",
+  "rawDescription": "CCPro PNJ",
+  "readmeHead": "",
   "languages": [
     "css",
     "html",
@@ -66,6 +68,804 @@
       "fileCategory": "docs"
     },
     {
+      "path": ".agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/banner-design/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 193,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/approval-checklist.md",
+      "language": "markdown",
+      "sizeLines": 170,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/asset-organization.md",
+      "language": "markdown",
+      "sizeLines": 158,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/brand-guideline-template.md",
+      "language": "markdown",
+      "sizeLines": 141,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/color-palette-management.md",
+      "language": "markdown",
+      "sizeLines": 187,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/consistency-checklist.md",
+      "language": "markdown",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/logo-usage-rules.md",
+      "language": "markdown",
+      "sizeLines": 186,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/messaging-framework.md",
+      "language": "markdown",
+      "sizeLines": 86,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/typography-specifications.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/update.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/visual-identity.md",
+      "language": "markdown",
+      "sizeLines": 97,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/voice-framework.md",
+      "language": "markdown",
+      "sizeLines": 89,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "language": "",
+      "sizeLines": 342,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "language": "",
+      "sizeLines": 350,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "language": "",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "language": "",
+      "sizeLines": 388,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 98,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/templates/brand-guidelines-starter.md",
+      "language": "markdown",
+      "sizeLines": 276,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-backgrounds.csv",
+      "language": "",
+      "sizeLines": 12,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-charts.csv",
+      "language": "",
+      "sizeLines": 27,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-color-logic.csv",
+      "language": "",
+      "sizeLines": 15,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-copy.csv",
+      "language": "",
+      "sizeLines": 27,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-layout-logic.csv",
+      "language": "",
+      "sizeLines": 17,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-layouts.csv",
+      "language": "",
+      "sizeLines": 27,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-strategies.csv",
+      "language": "",
+      "sizeLines": 17,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-typography.csv",
+      "language": "",
+      "sizeLines": 16,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/references/component-specs.md",
+      "language": "markdown",
+      "sizeLines": 237,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/component-tokens.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/primitive-tokens.md",
+      "language": "markdown",
+      "sizeLines": 204,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/semantic-tokens.md",
+      "language": "markdown",
+      "sizeLines": 216,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/states-and-variants.md",
+      "language": "markdown",
+      "sizeLines": 242,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/tailwind-integration.md",
+      "language": "markdown",
+      "sizeLines": 252,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/token-architecture.md",
+      "language": "markdown",
+      "sizeLines": 225,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/embed-tokens.cjs",
+      "language": "",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/fetch-background.py",
+      "language": "python",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/generate-slide.py",
+      "language": "python",
+      "sizeLines": 754,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/generate-tokens.cjs",
+      "language": "",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/html-token-validator.py",
+      "language": "python",
+      "sizeLines": 328,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/search-slides.py",
+      "language": "python",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/slide_search_core.py",
+      "language": "python",
+      "sizeLines": 454,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/slide-token-validator.py",
+      "language": "python",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/validate-tokens.cjs",
+      "language": "",
+      "sizeLines": 252,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 245,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/templates/design-tokens-starter.json",
+      "language": "json",
+      "sizeLines": 144,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/deliverables.csv",
+      "language": "",
+      "sizeLines": 51,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/industries.csv",
+      "language": "",
+      "sizeLines": 21,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/mockup-contexts.csv",
+      "language": "",
+      "sizeLines": 21,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/styles.csv",
+      "language": "",
+      "sizeLines": 21,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/icon/styles.csv",
+      "language": "",
+      "sizeLines": 17,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/colors.csv",
+      "language": "",
+      "sizeLines": 57,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/industries.csv",
+      "language": "",
+      "sizeLines": 57,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/styles.csv",
+      "language": "",
+      "sizeLines": 57,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-deliverable-guide.md",
+      "language": "markdown",
+      "sizeLines": 96,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-design.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-prompt-engineering.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-style-guide.md",
+      "language": "markdown",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/design-routing.md",
+      "language": "markdown",
+      "sizeLines": 208,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/icon-design.md",
+      "language": "markdown",
+      "sizeLines": 123,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-color-psychology.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-design.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-prompt-engineering.md",
+      "language": "markdown",
+      "sizeLines": 159,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-style-guide.md",
+      "language": "markdown",
+      "sizeLines": 110,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-copywriting-formulas.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-create.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-html-template.md",
+      "language": "markdown",
+      "sizeLines": 296,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-layout-patterns.md",
+      "language": "markdown",
+      "sizeLines": 138,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-strategies.md",
+      "language": "markdown",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides.md",
+      "language": "markdown",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/social-photos-design.md",
+      "language": "markdown",
+      "sizeLines": 330,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/core.py",
+      "language": "python",
+      "sizeLines": 216,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/generate.py",
+      "language": "python",
+      "sizeLines": 485,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/render-html.py",
+      "language": "python",
+      "sizeLines": 425,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/search.py",
+      "language": "python",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/icon/generate.py",
+      "language": "python",
+      "sizeLines": 488,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/core.py",
+      "language": "python",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/generate.py",
+      "language": "python",
+      "sizeLines": 363,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/search.py",
+      "language": "python",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 303,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/copywriting-formulas.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/create.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/html-template.md",
+      "language": "markdown",
+      "sizeLines": 296,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/layout-patterns.md",
+      "language": "markdown",
+      "sizeLines": 138,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/slide-strategies.md",
+      "language": "markdown",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/ArsenalSC-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/BigShoulders-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Boldonse-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/DMMono-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/EricaOne-OFL.txt",
+      "language": "",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/GeistMono-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Gloock-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/IBMPlexMono-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Italiana-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/JetBrainsMono-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Jura-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/LibreBaskerville-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Lora-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/NationalPark-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Outfit-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/PixelifySans-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/PoiretOne-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/RedHatMono-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Silkscreen-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/SmoochSans-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/Tektur-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/WorkSans-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/canvas-fonts/YoungSerif-OFL.txt",
+      "language": "",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/LICENSE.txt",
+      "language": "",
+      "sizeLines": 202,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/canvas-design-system.md",
+      "language": "markdown",
+      "sizeLines": 321,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "language": "markdown",
+      "sizeLines": 472,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-components.md",
+      "language": "markdown",
+      "sizeLines": 425,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-theming.md",
+      "language": "markdown",
+      "sizeLines": 374,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-customization.md",
+      "language": "markdown",
+      "sizeLines": 484,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-responsive.md",
+      "language": "markdown",
+      "sizeLines": 383,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-utilities.md",
+      "language": "markdown",
+      "sizeLines": 456,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/.coverage",
+      "language": "",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/requirements.txt",
+      "language": "",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/shadcn_add.py",
+      "language": "python",
+      "sizeLines": 293,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tailwind_config_gen.py",
+      "language": "python",
+      "sizeLines": 457,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/coverage-ui.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/requirements.txt",
+      "language": "",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py",
+      "language": "python",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
+      "language": "python",
+      "sizeLines": 337,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 325,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data",
+      "language": "",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts",
+      "language": "",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 659,
+      "fileCategory": "docs"
+    },
+    {
       "path": ".codex/skills/openspec-apply-change/SKILL.md",
       "language": "markdown",
       "sizeLines": 157,
@@ -90,6 +890,54 @@
       "fileCategory": "docs"
     },
     {
+      "path": ".codex/skills/utf8-vietnamese-guard/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 40,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".env.example",
+      "language": "",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".githooks/pre-commit",
+      "language": "",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/intermediate/scan-result.json",
+      "language": "json",
+      "sizeLines": 1200,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/knowledge-graph.json",
+      "language": "json",
+      "sizeLines": 5950,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/meta.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-format-scan.js",
+      "language": "javascript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-generate-graph.js",
+      "language": "javascript",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
       "path": ".understand-anything/tmp/ua-project-scan.js",
       "language": "javascript",
       "sizeLines": 192,
@@ -98,13 +946,43 @@
     {
       "path": ".understand-anything/tmp/ua-scan-results.json",
       "language": "json",
-      "sizeLines": 34,
+      "sizeLines": 1540,
       "fileCategory": "config"
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 16,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/admin-password-recovery.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
     },
     {
       "path": "docs/design-specs.md",
       "language": "markdown",
       "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/reports/audit_2026-04-02.md",
+      "language": "markdown",
+      "sizeLines": 167,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/reports/production-go-live-checklist.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/reports/update-integrity-rollout.md",
+      "language": "markdown",
+      "sizeLines": 77,
       "fileCategory": "docs"
     },
     {
@@ -126,9 +1004,57 @@
       "fileCategory": "docs"
     },
     {
+      "path": "docs/superpowers/plans/2026-04-02-electron-sandbox-hardening.md",
+      "language": "markdown",
+      "sizeLines": 238,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-02-history-temporal-inputs-phase-2.md",
+      "language": "markdown",
+      "sizeLines": 187,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-02-shared-temporal-inputs-phase-1.md",
+      "language": "markdown",
+      "sizeLines": 488,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-02-update-integrity-hardening.md",
+      "language": "markdown",
+      "sizeLines": 340,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-03-local-config-bootstrap.md",
+      "language": "markdown",
+      "sizeLines": 305,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-03-portable-no-admin-runtime.md",
+      "language": "markdown",
+      "sizeLines": 281,
+      "fileCategory": "docs"
+    },
+    {
       "path": "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md",
       "language": "markdown",
       "sizeLines": 216,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-04-03-local-config-bootstrap-design.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-04-03-portable-no-admin-runtime-design.md",
+      "language": "markdown",
+      "sizeLines": 303,
       "fileCategory": "docs"
     },
     {
@@ -138,10 +1064,40 @@
       "fileCategory": "code"
     },
     {
+      "path": "eslint.config.mjs",
+      "language": "",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
       "path": "openspec/changes/admin-change-password/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
       "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/design.md",
+      "language": "markdown",
+      "sizeLines": 112,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/proposal.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/specs/admin-auth/spec.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-change-password/tasks.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
     },
     {
       "path": "openspec/changes/admin-device-config/.openspec.yaml",
@@ -180,6 +1136,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/admin-shift-editor/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/design.md",
+      "language": "markdown",
+      "sizeLines": 168,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/proposal.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/specs/shift-management/spec.md",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/admin-shift-editor/tasks.md",
+      "language": "markdown",
+      "sizeLines": 53,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/changes/admin-user-management/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
@@ -207,6 +1193,36 @@
       "path": "openspec/changes/admin-user-management/tasks.md",
       "language": "markdown",
       "sizeLines": 32,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/design.md",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/proposal.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/attendance-network-guard/tasks.md",
+      "language": "markdown",
+      "sizeLines": 16,
       "fileCategory": "docs"
     },
     {
@@ -306,6 +1322,78 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/manual-update-notification/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/design.md",
+      "language": "markdown",
+      "sizeLines": 44,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/proposal.md",
+      "language": "markdown",
+      "sizeLines": 25,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/specs/manual-update/spec.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/manual-update-notification/tasks.md",
+      "language": "markdown",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/design.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/proposal.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/specs/env-config/spec.md",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/specs/login-rate-limiting/spec.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/specs/url-whitelist/spec.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/security-audit-fixes/tasks.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/changes/sync-device-time/.openspec.yaml",
       "language": "yaml",
       "sizeLines": 3,
@@ -336,6 +1424,36 @@
       "fileCategory": "docs"
     },
     {
+      "path": "openspec/changes/update-avatar/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/update-avatar/design.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/proposal.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/specs/user-avatar/spec.md",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/update-avatar/tasks.md",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
       "path": "openspec/config.yaml",
       "language": "yaml",
       "sizeLines": 21,
@@ -344,7 +1462,7 @@
     {
       "path": "package.json",
       "language": "json",
-      "sizeLines": 79,
+      "sizeLines": 98,
       "fileCategory": "config"
     },
     {
@@ -378,6 +1496,24 @@
       "fileCategory": "docs"
     },
     {
+      "path": "scripts/__tests__/script-security.test.ts",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/build-app-config-seed.mjs",
+      "language": "",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/build-app-icon.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
       "path": "scripts/build-device-sync-worker.ps1",
       "language": "",
       "sizeLines": 50,
@@ -386,13 +1522,19 @@
     {
       "path": "scripts/build-machine-config-helper.ps1",
       "language": "",
-      "sizeLines": 50,
+      "sizeLines": 130,
       "fileCategory": "script"
+    },
+    {
+      "path": "scripts/check-encoding.mjs",
+      "language": "",
+      "sizeLines": 61,
+      "fileCategory": "code"
     },
     {
       "path": "scripts/device-sync-worker.py",
       "language": "python",
-      "sizeLines": 340,
+      "sizeLines": 331,
       "fileCategory": "code"
     },
     {
@@ -404,19 +1546,19 @@
     {
       "path": "scripts/init-db.mjs",
       "language": "",
-      "sizeLines": 71,
+      "sizeLines": 118,
       "fileCategory": "code"
     },
     {
       "path": "scripts/machine-config-helper.py",
       "language": "python",
-      "sizeLines": 395,
+      "sizeLines": 513,
       "fileCategory": "code"
     },
     {
       "path": "scripts/machine-config-helper.spec",
       "language": "",
-      "sizeLines": 46,
+      "sizeLines": 52,
       "fileCategory": "code"
     },
     {
@@ -426,15 +1568,21 @@
       "fileCategory": "docs"
     },
     {
+      "path": "scripts/reset-admin-password.mjs",
+      "language": "",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
       "path": "scripts/tests/test_device_sync_worker.py",
       "language": "python",
-      "sizeLines": 91,
+      "sizeLines": 125,
       "fileCategory": "code"
     },
     {
       "path": "scripts/tests/test_machine_config_helper.py",
       "language": "python",
-      "sizeLines": 88,
+      "sizeLines": 165,
       "fileCategory": "code"
     },
     {
@@ -456,9 +1604,21 @@
       "fileCategory": "code"
     },
     {
+      "path": "scripts/update-graph-auto.mjs",
+      "language": "",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/update-graph.mjs",
+      "language": "",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
       "path": "scripts/zk-apply-hc-auto-switch.ps1",
       "language": "",
-      "sizeLines": 300,
+      "sizeLines": 308,
       "fileCategory": "script"
     },
     {
@@ -470,13 +1630,13 @@
     {
       "path": "scripts/zk-shortkey-tool.ps1",
       "language": "",
-      "sizeLines": 540,
+      "sizeLines": 555,
       "fileCategory": "script"
     },
     {
       "path": "scripts/zk-ssr-device-data-tool.ps1",
       "language": "",
-      "sizeLines": 367,
+      "sizeLines": 489,
       "fileCategory": "script"
     },
     {
@@ -486,9 +1646,33 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/__tests__/external-url.test.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/__tests__/session-key-store.test.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/__tests__/session-store-resilience.test.ts",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/__tests__/session-store.test.ts",
       "language": "typescript",
       "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/__tests__/startup-config-bootstrap.test.ts",
+      "language": "typescript",
+      "sizeLines": 56,
       "fileCategory": "code"
     },
     {
@@ -498,51 +1682,123 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/__tests__/window-security.test.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/config/__tests__/app-config.test.ts",
+      "language": "typescript",
+      "sizeLines": 198,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/config/app-config.ts",
       "language": "typescript",
-      "sizeLines": 52,
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/config/app-runtime-config.ts",
+      "language": "typescript",
+      "sizeLines": 302,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/db/__tests__/init.test.ts",
+      "language": "typescript",
+      "sizeLines": 15,
       "fileCategory": "code"
     },
     {
       "path": "src/main/db/init.ts",
       "language": "typescript",
-      "sizeLines": 420,
+      "sizeLines": 515,
       "fileCategory": "code"
     },
     {
       "path": "src/main/db/sql.ts",
       "language": "typescript",
-      "sizeLines": 47,
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/electron-store.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/external-url.ts",
+      "language": "typescript",
+      "sizeLines": 19,
       "fileCategory": "code"
     },
     {
       "path": "src/main/index.ts",
       "language": "typescript",
-      "sizeLines": 179,
+      "sizeLines": 216,
       "fileCategory": "code"
     },
     {
       "path": "src/main/ipc/__tests__/register-handlers.test.ts",
       "language": "typescript",
-      "sizeLines": 241,
+      "sizeLines": 519,
       "fileCategory": "code"
     },
     {
       "path": "src/main/ipc/register-handlers.ts",
       "language": "typescript",
-      "sizeLines": 244,
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/runtime/__tests__/runtime-artifact-manager.test.ts",
+      "language": "typescript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/runtime/__tests__/runtime-environment.test.ts",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/runtime/runtime-artifact-manager.ts",
+      "language": "typescript",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/runtime/runtime-environment.ts",
+      "language": "typescript",
+      "sizeLines": 16,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/admin-auth-service.test.ts",
       "language": "typescript",
-      "sizeLines": 61,
+      "sizeLines": 316,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/admin-settings-service.test.ts",
       "language": "typescript",
       "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-shift-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/admin-shift-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 101,
       "fileCategory": "code"
     },
     {
@@ -554,13 +1810,19 @@
     {
       "path": "src/main/services/__tests__/attendance-service.test.ts",
       "language": "typescript",
-      "sizeLines": 90,
+      "sizeLines": 153,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/auth-service.test.ts",
       "language": "typescript",
-      "sizeLines": 113,
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/avatar-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 64,
       "fileCategory": "code"
     },
     {
@@ -572,19 +1834,25 @@
     {
       "path": "src/main/services/__tests__/device-sync-repository.test.ts",
       "language": "typescript",
-      "sizeLines": 187,
+      "sizeLines": 210,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/device-sync-service.test.ts",
       "language": "typescript",
-      "sizeLines": 456,
+      "sizeLines": 481,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/history-dedupe.test.ts",
+      "language": "typescript",
+      "sizeLines": 22,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/machine-config-service.test.ts",
       "language": "typescript",
-      "sizeLines": 261,
+      "sizeLines": 467,
       "fileCategory": "code"
     },
     {
@@ -596,13 +1864,19 @@
     {
       "path": "src/main/services/__tests__/notification-service.test.ts",
       "language": "typescript",
-      "sizeLines": 353,
+      "sizeLines": 395,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/__tests__/rate-limiter.test.ts",
+      "language": "typescript",
+      "sizeLines": 54,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/__tests__/remote-risk-service.test.ts",
       "language": "typescript",
-      "sizeLines": 319,
+      "sizeLines": 605,
       "fileCategory": "code"
     },
     {
@@ -612,15 +1886,27 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/services/__tests__/update-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 432,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/services/admin-auth-service.ts",
       "language": "typescript",
-      "sizeLines": 171,
+      "sizeLines": 500,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/admin-settings-service.ts",
       "language": "typescript",
       "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/admin-shift-service.ts",
+      "language": "typescript",
+      "sizeLines": 229,
       "fileCategory": "code"
     },
     {
@@ -632,37 +1918,49 @@
     {
       "path": "src/main/services/attendance-service.ts",
       "language": "typescript",
-      "sizeLines": 406,
+      "sizeLines": 408,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/auth-service.ts",
       "language": "typescript",
-      "sizeLines": 291,
+      "sizeLines": 314,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/avatar-service.ts",
+      "language": "typescript",
+      "sizeLines": 108,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/device-sync-service.ts",
       "language": "typescript",
-      "sizeLines": 1351,
+      "sizeLines": 483,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/device-sync.types.ts",
+      "language": "typescript",
+      "sizeLines": 245,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/history-service.ts",
       "language": "typescript",
-      "sizeLines": 185,
+      "sizeLines": 192,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/machine-config-service.ts",
       "language": "typescript",
-      "sizeLines": 247,
+      "sizeLines": 308,
       "fileCategory": "code"
     },
     {
       "path": "src/main/services/notification-inout.ts",
       "language": "typescript",
-      "sizeLines": 176,
+      "sizeLines": 181,
       "fileCategory": "code"
     },
     {
@@ -672,9 +1970,21 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/services/python-device-sync-worker.ts",
+      "language": "typescript",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/rate-limiter.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/services/remote-risk-service.ts",
       "language": "typescript",
-      "sizeLines": 469,
+      "sizeLines": 643,
       "fileCategory": "code"
     },
     {
@@ -690,21 +2000,51 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/main/services/sql-device-sync-repository.ts",
+      "language": "typescript",
+      "sizeLines": 639,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/update-integrity.ts",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/services/update-service.ts",
+      "language": "typescript",
+      "sizeLines": 283,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/session-key-store.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/main/session-store.ts",
       "language": "typescript",
-      "sizeLines": 163,
+      "sizeLines": 170,
       "fileCategory": "code"
     },
     {
       "path": "src/main/startup.ts",
       "language": "typescript",
-      "sizeLines": 75,
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/main/window-options.ts",
+      "language": "typescript",
+      "sizeLines": 18,
       "fileCategory": "code"
     },
     {
       "path": "src/preload/index.ts",
       "language": "typescript",
-      "sizeLines": 55,
+      "sizeLines": 77,
       "fileCategory": "code"
     },
     {
@@ -716,13 +2056,13 @@
     {
       "path": "src/renderer/src/App.tsx",
       "language": "typescript",
-      "sizeLines": 85,
+      "sizeLines": 89,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/app/__tests__/full-flow.test.tsx",
       "language": "typescript",
-      "sizeLines": 215,
+      "sizeLines": 229,
       "fileCategory": "code"
     },
     {
@@ -732,15 +2072,57 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/app/__tests__/sandbox-smoke.test.tsx",
+      "language": "typescript",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/app/route-access.ts",
       "language": "typescript",
       "sizeLines": 16,
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/components/__tests__/update-notifier.test.tsx",
+      "language": "typescript",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/__tests__/date-picker.test.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/__tests__/date-time-picker.test.tsx",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/__tests__/month-picker.test.tsx",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/__tests__/time-picker.test.tsx",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/avatar-uploader.tsx",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/components/ui/avatar.tsx",
       "language": "typescript",
-      "sizeLines": 11,
+      "sizeLines": 20,
       "fileCategory": "code"
     },
     {
@@ -756,9 +2138,27 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/components/ui/date-picker.tsx",
+      "language": "typescript",
+      "sizeLines": 320,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/date-time-picker.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/components/ui/input.tsx",
       "language": "typescript",
       "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/month-picker.tsx",
+      "language": "typescript",
+      "sizeLines": 264,
       "fileCategory": "code"
     },
     {
@@ -768,15 +2168,51 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/components/ui/time-picker.tsx",
+      "language": "typescript",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/ui/use-floating-popover.ts",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/components/UpdateNotifier.tsx",
+      "language": "typescript",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/__tests__/temporal-input.test.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/lib/errors.ts",
       "language": "typescript",
-      "sizeLines": 26,
+      "sizeLines": 32,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/lib/format.ts",
       "language": "typescript",
       "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/image-utils.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/lib/temporal-input.ts",
+      "language": "typescript",
+      "sizeLines": 200,
       "fileCategory": "code"
     },
     {
@@ -792,21 +2228,45 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/pages/__tests__/admin-account-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx",
       "language": "typescript",
-      "sizeLines": 275,
+      "sizeLines": 489,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/__tests__/admin-users-page.test.tsx",
       "language": "typescript",
-      "sizeLines": 190,
+      "sizeLines": 202,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
       "language": "typescript",
-      "sizeLines": 175,
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/dashboard-sync-block.test.tsx",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/history-page.test.tsx",
+      "language": "typescript",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/__tests__/login-startup-status.test.tsx",
+      "language": "typescript",
+      "sizeLines": 125,
       "fileCategory": "code"
     },
     {
@@ -816,63 +2276,75 @@
       "fileCategory": "code"
     },
     {
+      "path": "src/renderer/src/pages/admin-account-page.tsx",
+      "language": "typescript",
+      "sizeLines": 305,
+      "fileCategory": "code"
+    },
+    {
       "path": "src/renderer/src/pages/admin-device-config-page.tsx",
       "language": "typescript",
-      "sizeLines": 556,
+      "sizeLines": 730,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/renderer/src/pages/admin-device-config-utils.ts",
+      "language": "typescript",
+      "sizeLines": 135,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/admin-login-page.tsx",
       "language": "typescript",
-      "sizeLines": 92,
+      "sizeLines": 114,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/admin-users-page.tsx",
       "language": "typescript",
-      "sizeLines": 520,
+      "sizeLines": 523,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/dashboard-page.tsx",
       "language": "typescript",
-      "sizeLines": 193,
+      "sizeLines": 240,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/history-page.tsx",
       "language": "typescript",
-      "sizeLines": 223,
+      "sizeLines": 337,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/login-page.tsx",
       "language": "typescript",
-      "sizeLines": 112,
+      "sizeLines": 131,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/notifications-page.tsx",
       "language": "typescript",
-      "sizeLines": 123,
+      "sizeLines": 116,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/pages/settings-page.tsx",
       "language": "typescript",
-      "sizeLines": 216,
+      "sizeLines": 249,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/providers/auth-provider.tsx",
       "language": "typescript",
-      "sizeLines": 81,
+      "sizeLines": 94,
       "fileCategory": "code"
     },
     {
       "path": "src/renderer/src/styles.css",
       "language": "css",
-      "sizeLines": 1231,
+      "sizeLines": 1760,
       "fileCategory": "markup"
     },
     {
@@ -890,13 +2362,19 @@
     {
       "path": "src/shared/api.ts",
       "language": "typescript",
-      "sizeLines": 280,
+      "sizeLines": 370,
       "fileCategory": "code"
     },
     {
       "path": "src/shared/app-time.ts",
       "language": "typescript",
       "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/shared/semver.ts",
+      "language": "typescript",
+      "sizeLines": 20,
       "fileCategory": "code"
     },
     {
@@ -908,7 +2386,13 @@
     {
       "path": "tsconfig.json",
       "language": "json",
-      "sizeLines": 25,
+      "sizeLines": 30,
+      "fileCategory": "config"
+    },
+    {
+      "path": "version.json",
+      "language": "json",
+      "sizeLines": 5,
       "fileCategory": "config"
     },
     {
@@ -930,7 +2414,7 @@
       "fileCategory": "docs"
     }
   ],
-  "totalFiles": 152,
+  "totalFiles": 399,
   "estimatedComplexity": "large",
   "importMap": {
     ".agent/skills/openspec-apply-change/SKILL.md": [],
@@ -941,28 +2425,199 @@
     ".agent/workflows/opsx-archive.md": [],
     ".agent/workflows/opsx-explore.md": [],
     ".agent/workflows/opsx-propose.md": [],
+    ".agents/skills/banner-design/SKILL.md": [],
+    ".agents/skills/banner-design/references/banner-sizes-and-styles.md": [],
+    ".agents/skills/brand/SKILL.md": [],
+    ".agents/skills/brand/references/approval-checklist.md": [],
+    ".agents/skills/brand/references/asset-organization.md": [],
+    ".agents/skills/brand/references/brand-guideline-template.md": [],
+    ".agents/skills/brand/references/color-palette-management.md": [],
+    ".agents/skills/brand/references/consistency-checklist.md": [],
+    ".agents/skills/brand/references/logo-usage-rules.md": [],
+    ".agents/skills/brand/references/messaging-framework.md": [],
+    ".agents/skills/brand/references/typography-specifications.md": [],
+    ".agents/skills/brand/references/update.md": [],
+    ".agents/skills/brand/references/visual-identity.md": [],
+    ".agents/skills/brand/references/voice-framework.md": [],
+    ".agents/skills/brand/scripts/extract-colors.cjs": [],
+    ".agents/skills/brand/scripts/inject-brand-context.cjs": [],
+    ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs": [],
+    ".agents/skills/brand/scripts/validate-asset.cjs": [],
+    ".agents/skills/brand/templates/brand-guidelines-starter.md": [],
+    ".agents/skills/design-system/SKILL.md": [],
+    ".agents/skills/design-system/data/slide-backgrounds.csv": [],
+    ".agents/skills/design-system/data/slide-charts.csv": [],
+    ".agents/skills/design-system/data/slide-color-logic.csv": [],
+    ".agents/skills/design-system/data/slide-copy.csv": [],
+    ".agents/skills/design-system/data/slide-layout-logic.csv": [],
+    ".agents/skills/design-system/data/slide-layouts.csv": [],
+    ".agents/skills/design-system/data/slide-strategies.csv": [],
+    ".agents/skills/design-system/data/slide-typography.csv": [],
+    ".agents/skills/design-system/references/component-specs.md": [],
+    ".agents/skills/design-system/references/component-tokens.md": [],
+    ".agents/skills/design-system/references/primitive-tokens.md": [],
+    ".agents/skills/design-system/references/semantic-tokens.md": [],
+    ".agents/skills/design-system/references/states-and-variants.md": [],
+    ".agents/skills/design-system/references/tailwind-integration.md": [],
+    ".agents/skills/design-system/references/token-architecture.md": [],
+    ".agents/skills/design-system/scripts/embed-tokens.cjs": [],
+    ".agents/skills/design-system/scripts/fetch-background.py": [],
+    ".agents/skills/design-system/scripts/generate-slide.py": [],
+    ".agents/skills/design-system/scripts/generate-tokens.cjs": [],
+    ".agents/skills/design-system/scripts/html-token-validator.py": [],
+    ".agents/skills/design-system/scripts/search-slides.py": [],
+    ".agents/skills/design-system/scripts/slide-token-validator.py": [],
+    ".agents/skills/design-system/scripts/slide_search_core.py": [],
+    ".agents/skills/design-system/scripts/validate-tokens.cjs": [],
+    ".agents/skills/design-system/templates/design-tokens-starter.json": [],
+    ".agents/skills/design/SKILL.md": [],
+    ".agents/skills/design/data/cip/deliverables.csv": [],
+    ".agents/skills/design/data/cip/industries.csv": [],
+    ".agents/skills/design/data/cip/mockup-contexts.csv": [],
+    ".agents/skills/design/data/cip/styles.csv": [],
+    ".agents/skills/design/data/icon/styles.csv": [],
+    ".agents/skills/design/data/logo/colors.csv": [],
+    ".agents/skills/design/data/logo/industries.csv": [],
+    ".agents/skills/design/data/logo/styles.csv": [],
+    ".agents/skills/design/references/banner-sizes-and-styles.md": [],
+    ".agents/skills/design/references/cip-deliverable-guide.md": [],
+    ".agents/skills/design/references/cip-design.md": [],
+    ".agents/skills/design/references/cip-prompt-engineering.md": [],
+    ".agents/skills/design/references/cip-style-guide.md": [],
+    ".agents/skills/design/references/design-routing.md": [],
+    ".agents/skills/design/references/icon-design.md": [],
+    ".agents/skills/design/references/logo-color-psychology.md": [],
+    ".agents/skills/design/references/logo-design.md": [],
+    ".agents/skills/design/references/logo-prompt-engineering.md": [],
+    ".agents/skills/design/references/logo-style-guide.md": [],
+    ".agents/skills/design/references/slides-copywriting-formulas.md": [],
+    ".agents/skills/design/references/slides-create.md": [],
+    ".agents/skills/design/references/slides-html-template.md": [],
+    ".agents/skills/design/references/slides-layout-patterns.md": [],
+    ".agents/skills/design/references/slides-strategies.md": [],
+    ".agents/skills/design/references/slides.md": [],
+    ".agents/skills/design/references/social-photos-design.md": [],
+    ".agents/skills/design/scripts/cip/core.py": [],
+    ".agents/skills/design/scripts/cip/generate.py": [],
+    ".agents/skills/design/scripts/cip/render-html.py": [],
+    ".agents/skills/design/scripts/cip/search.py": [],
+    ".agents/skills/design/scripts/icon/generate.py": [],
+    ".agents/skills/design/scripts/logo/core.py": [],
+    ".agents/skills/design/scripts/logo/generate.py": [],
+    ".agents/skills/design/scripts/logo/search.py": [],
+    ".agents/skills/slides/SKILL.md": [],
+    ".agents/skills/slides/references/copywriting-formulas.md": [],
+    ".agents/skills/slides/references/create.md": [],
+    ".agents/skills/slides/references/html-template.md": [],
+    ".agents/skills/slides/references/layout-patterns.md": [],
+    ".agents/skills/slides/references/slide-strategies.md": [],
+    ".agents/skills/ui-styling/LICENSE.txt": [],
+    ".agents/skills/ui-styling/SKILL.md": [],
+    ".agents/skills/ui-styling/canvas-fonts/ArsenalSC-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/BigShoulders-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Boldonse-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/DMMono-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/EricaOne-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/GeistMono-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Gloock-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/IBMPlexMono-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Italiana-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/JetBrainsMono-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Jura-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/LibreBaskerville-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Lora-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/NationalPark-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Outfit-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/PixelifySans-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/PoiretOne-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/RedHatMono-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Silkscreen-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/SmoochSans-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/Tektur-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/WorkSans-OFL.txt": [],
+    ".agents/skills/ui-styling/canvas-fonts/YoungSerif-OFL.txt": [],
+    ".agents/skills/ui-styling/references/canvas-design-system.md": [],
+    ".agents/skills/ui-styling/references/shadcn-accessibility.md": [],
+    ".agents/skills/ui-styling/references/shadcn-components.md": [],
+    ".agents/skills/ui-styling/references/shadcn-theming.md": [],
+    ".agents/skills/ui-styling/references/tailwind-customization.md": [],
+    ".agents/skills/ui-styling/references/tailwind-responsive.md": [],
+    ".agents/skills/ui-styling/references/tailwind-utilities.md": [],
+    ".agents/skills/ui-styling/scripts/.coverage": [],
+    ".agents/skills/ui-styling/scripts/requirements.txt": [],
+    ".agents/skills/ui-styling/scripts/shadcn_add.py": [],
+    ".agents/skills/ui-styling/scripts/tailwind_config_gen.py": [],
+    ".agents/skills/ui-styling/scripts/tests/coverage-ui.json": [],
+    ".agents/skills/ui-styling/scripts/tests/requirements.txt": [],
+    ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py": [],
+    ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py": [],
+    ".agents/skills/ui-ux-pro-max/SKILL.md": [],
+    ".agents/skills/ui-ux-pro-max/data": [],
+    ".agents/skills/ui-ux-pro-max/scripts": [],
     ".codex/skills/openspec-apply-change/SKILL.md": [],
     ".codex/skills/openspec-archive-change/SKILL.md": [],
     ".codex/skills/openspec-explore/SKILL.md": [],
     ".codex/skills/openspec-propose/SKILL.md": [],
+    ".codex/skills/utf8-vietnamese-guard/SKILL.md": [],
+    ".env.example": [],
+    ".githooks/pre-commit": [],
+    ".understand-anything/intermediate/scan-result.json": [],
+    ".understand-anything/knowledge-graph.json": [],
+    ".understand-anything/meta.json": [],
+    ".understand-anything/tmp/ua-format-scan.js": [],
+    ".understand-anything/tmp/ua-generate-graph.js": [],
     ".understand-anything/tmp/ua-project-scan.js": [],
     ".understand-anything/tmp/ua-scan-results.json": [],
+    "AGENTS.md": [],
+    "docs/admin-password-recovery.md": [],
     "docs/design-specs.md": [],
+    "docs/reports/audit_2026-04-02.md": [],
+    "docs/reports/production-go-live-checklist.md": [],
+    "docs/reports/update-integrity-rollout.md": [],
     "docs/superpowers/plans/2026-03-31-device-sync-runtime-plan.md": [],
     "docs/superpowers/plans/2026-04-01-machine-config-helper-plan.md": [],
+    "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md": [],
+    "docs/superpowers/plans/2026-04-02-electron-sandbox-hardening.md": [],
+    "docs/superpowers/plans/2026-04-02-history-temporal-inputs-phase-2.md": [],
+    "docs/superpowers/plans/2026-04-02-shared-temporal-inputs-phase-1.md": [],
+    "docs/superpowers/plans/2026-04-02-update-integrity-hardening.md": [],
+    "docs/superpowers/plans/2026-04-03-local-config-bootstrap.md": [],
+    "docs/superpowers/plans/2026-04-03-portable-no-admin-runtime.md": [],
+    "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md": [],
+    "docs/superpowers/specs/2026-04-03-local-config-bootstrap-design.md": [],
+    "docs/superpowers/specs/2026-04-03-portable-no-admin-runtime-design.md": [],
     "electron.vite.config.ts": [],
+    "eslint.config.mjs": [],
     "openspec/changes/admin-change-password/.openspec.yaml": [],
+    "openspec/changes/admin-change-password/design.md": [],
+    "openspec/changes/admin-change-password/proposal.md": [],
+    "openspec/changes/admin-change-password/specs/admin-auth/spec.md": [],
+    "openspec/changes/admin-change-password/tasks.md": [],
     "openspec/changes/admin-device-config/.openspec.yaml": [],
     "openspec/changes/admin-device-config/design.md": [],
     "openspec/changes/admin-device-config/proposal.md": [],
     "openspec/changes/admin-device-config/specs/admin-auth/spec.md": [],
     "openspec/changes/admin-device-config/specs/device-machine-config/spec.md": [],
     "openspec/changes/admin-device-config/tasks.md": [],
+    "openspec/changes/admin-shift-editor/.openspec.yaml": [],
+    "openspec/changes/admin-shift-editor/design.md": [],
+    "openspec/changes/admin-shift-editor/proposal.md": [],
+    "openspec/changes/admin-shift-editor/specs/shift-management/spec.md": [],
+    "openspec/changes/admin-shift-editor/tasks.md": [],
     "openspec/changes/admin-user-management/.openspec.yaml": [],
     "openspec/changes/admin-user-management/design.md": [],
     "openspec/changes/admin-user-management/proposal.md": [],
     "openspec/changes/admin-user-management/specs/admin-user-management/spec.md": [],
     "openspec/changes/admin-user-management/tasks.md": [],
+    "openspec/changes/attendance-network-guard/.openspec.yaml": [],
+    "openspec/changes/attendance-network-guard/design.md": [],
+    "openspec/changes/attendance-network-guard/proposal.md": [],
+    "openspec/changes/attendance-network-guard/specs/attendance-checkin/spec.md": [],
+    "openspec/changes/attendance-network-guard/tasks.md": [],
     "openspec/changes/attendance-remote-risk-guard/.openspec.yaml": [],
     "openspec/changes/attendance-remote-risk-guard/design.md": [],
     "openspec/changes/attendance-remote-risk-guard/proposal.md": [],
@@ -979,11 +2634,28 @@
     "openspec/changes/desktop-attendance-app/specs/employee-auth/spec.md": [],
     "openspec/changes/desktop-attendance-app/specs/notifications/spec.md": [],
     "openspec/changes/desktop-attendance-app/tasks.md": [],
+    "openspec/changes/manual-update-notification/.openspec.yaml": [],
+    "openspec/changes/manual-update-notification/design.md": [],
+    "openspec/changes/manual-update-notification/proposal.md": [],
+    "openspec/changes/manual-update-notification/specs/manual-update/spec.md": [],
+    "openspec/changes/manual-update-notification/tasks.md": [],
+    "openspec/changes/security-audit-fixes/.openspec.yaml": [],
+    "openspec/changes/security-audit-fixes/design.md": [],
+    "openspec/changes/security-audit-fixes/proposal.md": [],
+    "openspec/changes/security-audit-fixes/specs/env-config/spec.md": [],
+    "openspec/changes/security-audit-fixes/specs/login-rate-limiting/spec.md": [],
+    "openspec/changes/security-audit-fixes/specs/url-whitelist/spec.md": [],
+    "openspec/changes/security-audit-fixes/tasks.md": [],
     "openspec/changes/sync-device-time/.openspec.yaml": [],
     "openspec/changes/sync-device-time/design.md": [],
     "openspec/changes/sync-device-time/proposal.md": [],
     "openspec/changes/sync-device-time/specs/device-time-sync/spec.md": [],
     "openspec/changes/sync-device-time/tasks.md": [],
+    "openspec/changes/update-avatar/.openspec.yaml": [],
+    "openspec/changes/update-avatar/design.md": [],
+    "openspec/changes/update-avatar/proposal.md": [],
+    "openspec/changes/update-avatar/specs/user-avatar/spec.md": [],
+    "openspec/changes/update-avatar/tasks.md": [],
     "openspec/config.yaml": [],
     "package.json": [],
     "plans/260401-1910-remote-risk-guard-v2/phase-01-process-classification.md": [],
@@ -991,31 +2663,58 @@
     "plans/260401-1910-remote-risk-guard-v2/phase-03-risk-classification.md": [],
     "plans/260401-1910-remote-risk-guard-v2/phase-04-tests.md": [],
     "plans/260401-1910-remote-risk-guard-v2/plan.md": [],
+    "scripts/__tests__/script-security.test.ts": [],
+    "scripts/build-app-config-seed.mjs": [],
+    "scripts/build-app-icon.py": [],
     "scripts/build-device-sync-worker.ps1": [],
     "scripts/build-machine-config-helper.ps1": [],
+    "scripts/check-encoding.mjs": [],
     "scripts/device-sync-worker.py": [],
     "scripts/device-sync-worker.spec": [],
     "scripts/init-db.mjs": [],
     "scripts/machine-config-helper.py": [],
     "scripts/machine-config-helper.spec": [],
     "scripts/requirements-device-sync.txt": [],
+    "scripts/reset-admin-password.mjs": [],
     "scripts/tests/test_device_sync_worker.py": [],
     "scripts/tests/test_machine_config_helper.py": [],
     "scripts/tests/test_zk_apply_hc_auto_switch.py": [],
     "scripts/tests/test_zk_shortkey_tool.py": [],
     "scripts/tests/test_zk_state_mode.py": [],
+    "scripts/update-graph-auto.mjs": [],
+    "scripts/update-graph.mjs": [],
     "scripts/zk-apply-hc-auto-switch.ps1": [],
     "scripts/zk-proxy-capture.py": [],
     "scripts/zk-shortkey-tool.ps1": [],
     "scripts/zk-ssr-device-data-tool.ps1": [],
     "scripts/zk-state-mode.py": [],
+    "src/main/__tests__/external-url.test.ts": [
+      "src/main/external-url.ts"
+    ],
+    "src/main/__tests__/session-key-store.test.ts": [
+      "src/main/session-key-store.ts"
+    ],
+    "src/main/__tests__/session-store-resilience.test.ts": [],
     "src/main/__tests__/session-store.test.ts": [
       "src/main/session-store.ts"
+    ],
+    "src/main/__tests__/startup-config-bootstrap.test.ts": [
+      "src/main/startup.ts"
     ],
     "src/main/__tests__/startup.test.ts": [
       "src/main/startup.ts"
     ],
-    "src/main/config/app-config.ts": [],
+    "src/main/__tests__/window-security.test.ts": [
+      "src/main/window-options.ts"
+    ],
+    "src/main/config/__tests__/app-config.test.ts": [],
+    "src/main/config/app-config.ts": [
+      "src/main/config/app-runtime-config.ts"
+    ],
+    "src/main/config/app-runtime-config.ts": [],
+    "src/main/db/__tests__/init.test.ts": [
+      "src/main/db/init.ts"
+    ],
     "src/main/db/init.ts": [
       "src/main/config/app-config.ts",
       "src/main/db/sql.ts"
@@ -1023,11 +2722,17 @@
     "src/main/db/sql.ts": [
       "src/main/config/app-config.ts"
     ],
+    "src/main/electron-store.ts": [],
+    "src/main/external-url.ts": [],
     "src/main/index.ts": [
       "src/main/config/app-config.ts",
       "src/main/db/init.ts",
       "src/main/db/sql.ts",
+      "src/main/external-url.ts",
       "src/main/ipc/register-handlers.ts",
+      "src/main/runtime/runtime-environment.ts",
+      "src/main/window-options.ts",
+      "src/main/services/machine-config-service.ts",
       "src/main/startup.ts"
     ],
     "src/main/ipc/__tests__/register-handlers.test.ts": [],
@@ -1043,14 +2748,32 @@
       "src/main/services/machine-config-service.ts",
       "src/main/services/notification-service.ts",
       "src/main/services/settings-service.ts",
+      "src/main/services/admin-shift-service.ts",
+      "src/main/services/avatar-service.ts",
+      "src/main/services/update-service.ts",
       "src/main/startup.ts",
-      "src/main/config/app-config.ts"
+      "src/main/config/app-config.ts",
+      "src/main/external-url.ts"
+    ],
+    "src/main/runtime/__tests__/runtime-artifact-manager.test.ts": [
+      "src/main/runtime/runtime-artifact-manager.ts"
+    ],
+    "src/main/runtime/__tests__/runtime-environment.test.ts": [],
+    "src/main/runtime/runtime-artifact-manager.ts": [],
+    "src/main/runtime/runtime-environment.ts": [
+      "src/main/runtime/runtime-artifact-manager.ts"
     ],
     "src/main/services/__tests__/admin-auth-service.test.ts": [
       "src/main/services/admin-auth-service.ts"
     ],
     "src/main/services/__tests__/admin-settings-service.test.ts": [
       "src/main/services/admin-settings-service.ts"
+    ],
+    "src/main/services/__tests__/admin-shift-repository.test.ts": [
+      "src/main/services/admin-shift-service.ts"
+    ],
+    "src/main/services/__tests__/admin-shift-service.test.ts": [
+      "src/main/services/admin-shift-service.ts"
     ],
     "src/main/services/__tests__/admin-user-management-service.test.ts": [
       "src/main/services/admin-user-management-service.ts"
@@ -1061,6 +2784,7 @@
     "src/main/services/__tests__/auth-service.test.ts": [
       "src/main/services/auth-service.ts"
     ],
+    "src/main/services/__tests__/avatar-service.test.ts": [],
     "src/main/services/__tests__/device-sync-bulk-insert.test.ts": [
       "src/main/services/device-sync-service.ts"
     ],
@@ -1068,6 +2792,7 @@
       "src/main/services/device-sync-service.ts"
     ],
     "src/main/services/__tests__/device-sync-service.test.ts": [],
+    "src/main/services/__tests__/history-dedupe.test.ts": [],
     "src/main/services/__tests__/machine-config-service.test.ts": [],
     "src/main/services/__tests__/notification-repository.test.ts": [
       "src/main/services/notification-service.ts"
@@ -1076,13 +2801,22 @@
       "src/main/services/notification-service.ts",
       "src/main/services/notification-inout.ts"
     ],
+    "src/main/services/__tests__/rate-limiter.test.ts": [
+      "src/main/services/rate-limiter.ts"
+    ],
     "src/main/services/__tests__/remote-risk-service.test.ts": [],
     "src/main/services/__tests__/sql-datetime.test.ts": [],
+    "src/main/services/__tests__/update-service.test.ts": [],
     "src/main/services/admin-auth-service.ts": [
       "src/main/db/sql.ts",
+      "src/main/services/rate-limiter.ts",
       "src/main/services/sql-datetime.ts"
     ],
     "src/main/services/admin-settings-service.ts": [
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/admin-shift-service.ts": [
       "src/main/db/sql.ts",
       "src/main/services/sql-datetime.ts"
     ],
@@ -1098,13 +2832,18 @@
     ],
     "src/main/services/auth-service.ts": [
       "src/main/db/sql.ts",
+      "src/main/services/rate-limiter.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/avatar-service.ts": [
+      "src/main/db/sql.ts",
       "src/main/services/sql-datetime.ts"
     ],
     "src/main/services/device-sync-service.ts": [
       "src/main/config/app-config.ts",
-      "src/main/db/sql.ts",
       "src/main/services/sql-datetime.ts"
     ],
+    "src/main/services/device-sync.types.ts": [],
     "src/main/services/history-service.ts": [
       "src/main/db/sql.ts",
       "src/main/services/attendance-service.ts",
@@ -1124,15 +2863,34 @@
       "src/main/services/sql-datetime.ts",
       "src/main/services/attendance-service.ts"
     ],
+    "src/main/services/python-device-sync-worker.ts": [],
+    "src/main/services/rate-limiter.ts": [],
     "src/main/services/remote-risk-service.ts": [],
     "src/main/services/settings-service.ts": [
       "src/main/db/sql.ts"
     ],
     "src/main/services/sql-datetime.ts": [],
-    "src/main/session-store.ts": [
+    "src/main/services/sql-device-sync-repository.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/db/sql.ts",
+      "src/main/services/sql-datetime.ts"
+    ],
+    "src/main/services/update-integrity.ts": [],
+    "src/main/services/update-service.ts": [
+      "src/shared/semver.ts",
+      "src/main/external-url.ts",
       "src/main/config/app-config.ts"
     ],
+    "src/main/session-key-store.ts": [
+      "src/main/electron-store.ts"
+    ],
+    "src/main/session-store.ts": [
+      "src/main/config/app-config.ts",
+      "src/main/electron-store.ts",
+      "src/main/session-key-store.ts"
+    ],
     "src/main/startup.ts": [],
+    "src/main/window-options.ts": [],
     "src/preload/index.ts": [],
     "src/renderer/index.html": [],
     "src/renderer/src/App.tsx": [
@@ -1144,24 +2902,68 @@
       "src/renderer/src/pages/admin-login-page.tsx",
       "src/renderer/src/pages/admin-device-config-page.tsx",
       "src/renderer/src/pages/admin-users-page.tsx",
+      "src/renderer/src/pages/admin-account-page.tsx",
       "src/renderer/src/providers/auth-provider.tsx",
-      "src/renderer/src/app/route-access.ts"
+      "src/renderer/src/app/route-access.ts",
+      "src/renderer/src/components/UpdateNotifier.tsx"
     ],
     "src/renderer/src/app/__tests__/full-flow.test.tsx": [],
     "src/renderer/src/app/__tests__/route-access.test.ts": [
       "src/renderer/src/app/route-access.ts"
     ],
+    "src/renderer/src/app/__tests__/sandbox-smoke.test.tsx": [],
     "src/renderer/src/app/route-access.ts": [],
+    "src/renderer/src/components/UpdateNotifier.tsx": [],
+    "src/renderer/src/components/__tests__/update-notifier.test.tsx": [
+      "src/renderer/src/components/UpdateNotifier.tsx"
+    ],
+    "src/renderer/src/components/ui/__tests__/date-picker.test.tsx": [
+      "src/renderer/src/components/ui/date-picker.tsx"
+    ],
+    "src/renderer/src/components/ui/__tests__/date-time-picker.test.tsx": [
+      "src/renderer/src/components/ui/date-time-picker.tsx"
+    ],
+    "src/renderer/src/components/ui/__tests__/month-picker.test.tsx": [
+      "src/renderer/src/components/ui/month-picker.tsx"
+    ],
+    "src/renderer/src/components/ui/__tests__/time-picker.test.tsx": [
+      "src/renderer/src/components/ui/time-picker.tsx"
+    ],
+    "src/renderer/src/components/ui/avatar-uploader.tsx": [
+      "src/renderer/src/components/ui/avatar.tsx",
+      "src/renderer/src/components/ui/button.tsx",
+      "src/renderer/src/lib/image-utils.ts"
+    ],
     "src/renderer/src/components/ui/avatar.tsx": [],
     "src/renderer/src/components/ui/button.tsx": [],
     "src/renderer/src/components/ui/card.tsx": [],
+    "src/renderer/src/components/ui/date-picker.tsx": [
+      "src/renderer/src/components/ui/use-floating-popover.ts"
+    ],
+    "src/renderer/src/components/ui/date-time-picker.tsx": [
+      "src/renderer/src/components/ui/date-picker.tsx",
+      "src/renderer/src/components/ui/time-picker.tsx"
+    ],
     "src/renderer/src/components/ui/input.tsx": [],
+    "src/renderer/src/components/ui/month-picker.tsx": [
+      "src/renderer/src/components/ui/use-floating-popover.ts"
+    ],
     "src/renderer/src/components/ui/status-pill.tsx": [],
+    "src/renderer/src/components/ui/time-picker.tsx": [
+      "src/renderer/src/components/ui/use-floating-popover.ts"
+    ],
+    "src/renderer/src/components/ui/use-floating-popover.ts": [],
+    "src/renderer/src/lib/__tests__/temporal-input.test.ts": [],
     "src/renderer/src/lib/errors.ts": [],
     "src/renderer/src/lib/format.ts": [],
+    "src/renderer/src/lib/image-utils.ts": [],
+    "src/renderer/src/lib/temporal-input.ts": [],
     "src/renderer/src/lib/utils.ts": [],
     "src/renderer/src/main.tsx": [
       "src/renderer/src/App.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/admin-account-page.test.tsx": [
+      "src/renderer/src/pages/admin-account-page.tsx"
     ],
     "src/renderer/src/pages/__tests__/admin-device-config-page.test.tsx": [
       "src/renderer/src/pages/admin-device-config-page.tsx"
@@ -1172,10 +2974,22 @@
     "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx": [
       "src/renderer/src/pages/dashboard-page.tsx"
     ],
+    "src/renderer/src/pages/__tests__/dashboard-sync-block.test.tsx": [
+      "src/renderer/src/pages/dashboard-page.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/history-page.test.tsx": [
+      "src/renderer/src/pages/history-page.tsx"
+    ],
+    "src/renderer/src/pages/__tests__/login-startup-status.test.tsx": [
+      "src/renderer/src/pages/login-page.tsx",
+      "src/renderer/src/pages/admin-login-page.tsx"
+    ],
     "src/renderer/src/pages/__tests__/settings-page.test.tsx": [
       "src/renderer/src/pages/settings-page.tsx"
     ],
+    "src/renderer/src/pages/admin-account-page.tsx": [],
     "src/renderer/src/pages/admin-device-config-page.tsx": [],
+    "src/renderer/src/pages/admin-device-config-utils.ts": [],
     "src/renderer/src/pages/admin-login-page.tsx": [],
     "src/renderer/src/pages/admin-users-page.tsx": [],
     "src/renderer/src/pages/dashboard-page.tsx": [],
@@ -1189,12 +3003,12 @@
     "src/shared/__tests__/source-text-encoding.test.ts": [],
     "src/shared/api.ts": [],
     "src/shared/app-time.ts": [],
+    "src/shared/semver.ts": [],
     "src/test/setup.ts": [],
     "tsconfig.json": [],
+    "version.json": [],
     "vitest.config.ts": [],
     "wise_eye/explore_wiseeye.js": [],
-    "wise_eye/wiseeye_schema.txt": [],
-    "docs/superpowers/plans/2026-04-01-zk-shortkey-notification-plan.md": [],
-    "docs/superpowers/specs/2026-04-01-zk-shortkey-notification-design.md": []
+    "wise_eye/wiseeye_schema.txt": []
   }
 }

@@ -182,6 +182,10 @@ function Register-ZkemkeeperComServer {
 function Ensure-ZkemkeeperComRegistered {
   param([string]$DllPath)
 
+  if (Test-ZkemkeeperComAvailable) {
+    return
+  }
+
   Register-ZkemkeeperComServer -DllPath $DllPath
 
   if (-not (Test-ZkemkeeperComAvailable)) {

@@ -86,6 +86,29 @@ describe('SqlDeviceSyncRepository', () => {
     expect(resolveOriginType(5)).toBe('O')
   })
 
+  it('maps device user ids using enroll number, employee code, and device display id', async () => {
+    requestMock.query.mockResolvedValueOnce({
+      recordset: [
+        {
+          UserEnrollNumber: 1,
+          UserFullCode: 'E0112599',
+          UserLastName: '00001'
+        }
+      ]
+    })
+
+    const repository = new SqlDeviceSyncRepository('10.60.1.5')
+    const mapped = await repository.getMappedUsers(['1', '00001', 'E0112599'])
+
+    expect(mapped).toEqual(
+      new Map([
+        ['1', 1],
+        ['00001', 1],
+        ['E0112599', 1]
+      ])
+    )
+  })
+
   it('converts sync metadata timestamps from UTC instants into app-local SQL datetime strings before writing', async () => {
     const repository = new SqlDeviceSyncRepository('10.60.1.5')
 

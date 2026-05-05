@@ -15,6 +15,8 @@ export const LoginPage = (): JSX.Element => {
   const [rememberMe, setRememberMe] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const deviceBindingBlocked =
+    message?.includes('thiết bị khác') === true || message?.includes('đăng ký cho tài khoản khác') === true
 
   useEffect(() => {
     void window.ccpro.app
@@ -97,7 +99,16 @@ export const LoginPage = (): JSX.Element => {
             <span>Duy trì đăng nhập</span>
           </label>
 
-          {message ? <p className="inline-message inline-message--error">{message}</p> : null}
+          {message ? (
+            <div role="alert" style={{ display: 'grid', gap: '8px' }}>
+              <p className="inline-message inline-message--error">{message}</p>
+              {deviceBindingBlocked ? (
+                <p className="inline-message" style={{ margin: 0 }}>
+                  Vui lòng dùng đúng thiết bị đã đăng ký hoặc liên hệ quản trị viên để gỡ liên kết thiết bị.
+                </p>
+              ) : null}
+            </div>
+          ) : null}
 
           <Button type="submit" size="lg" disabled={submitting}>
             {submitting ? 'Đang đăng nhập...' : 'Đăng nhập'}

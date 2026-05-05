@@ -8,8 +8,9 @@ App hiện đã có admin login riêng, nhưng admin chưa thể quản lý tài
 - Cho phép admin bật/tắt trạng thái truy cập app desktop của từng user mà không phụ thuộc hoàn toàn vào `WiseEye.UserEnabled`
 - Cho phép admin reset mật khẩu user về mật khẩu tạm và đồng thời bật lại cờ yêu cầu đổi mật khẩu ở lần đăng nhập kế tiếp
 - Bổ sung app-level user state trong `dbo.app_users` để quản lý `active/inactive` riêng cho ứng dụng
-- Ghi audit log cho các thao tác quản trị user như activate, deactivate, reset password
+- Ghi audit log cho các thao tác quản trị user như activate, deactivate, reset password, unbind device
 - Hiển thị trạng thái account rõ ràng trong admin UI, bao gồm trạng thái app và trạng thái WiseEye
+- Hỗ trợ multi-select (checkbox) để admin chọn nhiều user cùng lúc và thực hiện bulk operations: khóa/mở tài khoản hàng loạt và gỡ liên kết thiết bị hàng loạt
 
 ## Capabilities
 
@@ -22,6 +23,6 @@ App hiện đã có admin login riêng, nhưng admin chưa thể quản lý tài
 ## Impact
 
 - App DB `CCPro_Desktop`: mở rộng `dbo.app_users` và thêm bảng audit cho thao tác quản trị user
-- Electron main process: thêm service/repository/IPC cho user management và enforcement trong employee login flow
-- Renderer: thêm trang admin quản lý users và các action activate/inactivate/reset password
+- Electron main process: thêm service/repository/IPC cho user management (bao gồm batch operations) và enforcement trong employee login flow
+- Renderer: thêm trang admin quản lý users với multi-select, bulk action bar, và các action đơn lẻ (activate/inactivate/reset password/unbind device)
 - Employee auth: login phải tôn trọng trạng thái app-level mới và tiếp tục dùng flow `is_first_login` sau reset password

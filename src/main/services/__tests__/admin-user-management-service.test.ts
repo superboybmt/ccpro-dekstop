@@ -22,11 +22,13 @@ describe('AdminUserManagementService', () => {
           employeeCode: 'E0112599',
           passwordHash: 'hash',
           isFirstLogin: false,
-          isActiveApp: false
+          isActiveApp: false,
+          boundHardwareId: 'hardware-1'
         }
       ],
       findAppUserByEnrollNumber: async () => null,
       upsertManagedUser: async () => undefined,
+      setBoundHardwareId: async () => undefined,
       insertAuditLog: async () => undefined
     })
 
@@ -41,7 +43,8 @@ describe('AdminUserManagementService', () => {
           wiseEyeEnabled: true,
           appActive: false,
           hasAppAccount: true,
-          mustChangePassword: false
+          mustChangePassword: false,
+          boundHardwareId: 'hardware-1'
         }
       ]
     })
@@ -61,9 +64,11 @@ describe('AdminUserManagementService', () => {
         employeeCode: 'E0112599',
         passwordHash: existingHash,
         isFirstLogin: false,
-        isActiveApp: true
+        isActiveApp: true,
+        boundHardwareId: null
       }),
       upsertManagedUser,
+      setBoundHardwareId: async () => undefined,
       insertAuditLog
     })
 
@@ -101,9 +106,11 @@ describe('AdminUserManagementService', () => {
         employeeCode: 'E0112599',
         passwordHash: 'old-hash',
         isFirstLogin: false,
-        isActiveApp: false
+        isActiveApp: false,
+        boundHardwareId: 'hardware-1'
       }),
       upsertManagedUser,
+      setBoundHardwareId: async () => undefined,
       insertAuditLog
     })
 
@@ -127,5 +134,142 @@ describe('AdminUserManagementService', () => {
         action: 'reset-password'
       })
     )
+  })
+
+  it('unbinds a device and writes an audit log', async () => {
+    const setBoundHardwareId = vi.fn<any>(async () => undefined)
+    const insertAuditLog = vi.fn<any>(async () => undefined)
+
+    const service = new AdminUserManagementService({
+      listEmployeeDirectory: async () => [],
+      findEmployeeByEnrollNumber: async () => buildEmployee(),
+      listAppUsersByEnrollNumbers: async () => [],
+      findAppUserByEnrollNumber: async () => ({
+        userEnrollNumber: 18,
+        employeeCode: 'E0112599',
+        passwordHash: 'old-hash',
+        isFirstLogin: false,
+        isActiveApp: true,
+        boundHardwareId: 'hardware-1'
+      }),
+      upsertManagedUser: async () => undefined,
+      setBoundHardwareId,
+      insertAuditLog
+    })
+
+    await expect(service.unbindDevice(11, 18)).resolves.toEqual({
+      ok: true,
+      message: 'Đã gỡ liên kết thiết bị của nhân viên'
+    })
+
+    expect(setBoundHardwareId).toHaveBeenCalledWith(18, null, 11)
+    expect(insertAuditLog).toHaveBeenCalledWith(
+      expect.objectContaining({
+        adminId: 11,
+        userEnrollNumber: 18,
+        action: 'unbind-device'
+      })
+    )
+  })
+
+  it('batch deactivates multiple users and aggregates results', async () => {
+    const upsertManagedUser = vi.fn<any>(async () => undefined)
+    const insertAuditLog = vi.fn<any>(async () => undefined)
+    const existingHash = await bcrypt.hash('123456', 10)
+
+    const service = new AdminUserManagementService({
+      listEmployeeDirectory: async () => [],
+      findEmployeeByEnrollNumber: async (num) =>
+        num === 18 || num === 19 ? { ...buildEmployee(), userEnrollNumber: num } : null,
+      listAppUsersByEnrollNumbers: async () => [],
+      findAppUserByEnrollNumber: async (num) =>
+        num === 18 || num === 19
+          ? {
+              userEnrollNumber: num,
+              employeeCode: 'E0112599',
+              passwordHash: existingHash,
+              isFirstLogin: false,
+              isActiveApp: true,
+              boundHardwareId: null
+            }
+          : null,
+      upsertManagedUser,
+      setBoundHardwareId: async () => undefined,
+      insertAuditLog
+    })
+
+    const result = await service.batchSetUserActiveState(
+      { userEnrollNumbers: [18, 19], isActive: false },
+      7
+    )
+
+    expect(result).toEqual({
+      ok: true,
+      successCount: 2,
+      failedCount: 0,
+      message: 'Đã vô hiệu hóa 2 tài khoản'
+    })
+    expect(upsertManagedUser).toHaveBeenCalledTimes(2)
+    expect(insertAuditLog).toHaveBeenCalledTimes(2)
+  })
+
+  it('batch unbinds devices for multiple users', async () => {
+    const setBoundHardwareId = vi.fn<any>(async () => undefined)
+    const insertAuditLog = vi.fn<any>(async () => undefined)
+
+    const service = new AdminUserManagementService({
+      listEmployeeDirectory: async () => [],
+      findEmployeeByEnrollNumber: async (num) =>
+        num === 18 ? buildEmployee() : null,
+      listAppUsersByEnrollNumbers: async () => [],
+      findAppUserByEnrollNumber: async (num) =>
+        num === 18
+          ? {
+              userEnrollNumber: 18,
+              employeeCode: 'E0112599',
+              passwordHash: 'hash',
+              isFirstLogin: false,
+              isActiveApp: true,
+              boundHardwareId: 'hw-1'
+            }
+          : null,
+      upsertManagedUser: async () => undefined,
+      setBoundHardwareId,
+      insertAuditLog
+    })
+
+    const result = await service.batchUnbindDevices(
+      { userEnrollNumbers: [18, 99] },
+      11
+    )
+
+    // user 18 succeeds, user 99 not found => fails
+    expect(result.successCount).toBe(1)
+    expect(result.failedCount).toBe(1)
+    expect(result.ok).toBe(true)
+  })
+
+  it('batch returns error for empty array', async () => {
+    const service = new AdminUserManagementService({
+      listEmployeeDirectory: async () => [],
+      findEmployeeByEnrollNumber: async () => null,
+      listAppUsersByEnrollNumbers: async () => [],
+      findAppUserByEnrollNumber: async () => null,
+      upsertManagedUser: async () => undefined,
+      setBoundHardwareId: async () => undefined,
+      insertAuditLog: async () => undefined
+    })
+
+    const result = await service.batchSetUserActiveState(
+      { userEnrollNumbers: [], isActive: true },
+      1
+    )
+
+    expect(result).toEqual({
+      ok: false,
+      successCount: 0,
+      failedCount: 0,
+      message: 'Không có người dùng nào được chọn'
+    })
   })
 })

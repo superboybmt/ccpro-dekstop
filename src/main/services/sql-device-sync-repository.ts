@@ -416,36 +416,112 @@ export class SqlDeviceSyncRepository implements DeviceSyncRepository {
   }
 
   async getMappedUsers(userIds: string[]): Promise<Map<string, number>> {
-    const numericUserIds = Array.from(
+    const requestedUserIds = Array.from(
       new Set(
         userIds
+          .map((value) => value.trim())
+          .filter(Boolean)
+      )
+    )
+
+    if (requestedUserIds.length === 0) {
+      return new Map()
+    }
+
+    const numericUserIds = Array.from(
+      new Set(
+        requestedUserIds
           .map((value) => Number(value))
           .filter((value) => Number.isFinite(value))
       )
     )
-
-    if (numericUserIds.length === 0) {
-      return new Map()
-    }
+    const displayUserIds = Array.from(new Set(requestedUserIds))
+    const employeeCodes = Array.from(new Set(requestedUserIds.map((value) => value.toUpperCase())))
 
     const pool = await getPool('wise-eye')
     const request = pool.request()
+    const whereClauses: string[] = []
 
-    const placeholders = numericUserIds.map((userId, index) => {
-      const name = `user${index}`
-      request.input(name, userId)
-      return `@${name}`
-    })
+    if (numericUserIds.length > 0) {
+      const numericPlaceholders = numericUserIds.map((userId, index) => {
+        const name = `numericUserId${index}`
+        request.input(name, userId)
+        return `@${name}`
+      })
+      whereClauses.push(`UserEnrollNumber IN (${numericPlaceholders.join(', ')})`)
+    }
+
+    if (displayUserIds.length > 0) {
+      const displayPlaceholders = displayUserIds.map((userId, index) => {
+        const name = `displayUserId${index}`
+        request.input(name, userId)
+        return `@${name}`
+      })
+      whereClauses.push(`LTRIM(RTRIM(ISNULL(UserLastName, N''))) IN (${displayPlaceholders.join(', ')})`)
+    }
+
+    if (employeeCodes.length > 0) {
+      const codePlaceholders = employeeCodes.map((userId, index) => {
+        const name = `employeeCode${index}`
+        request.input(name, userId)
+        return `@${name}`
+      })
+      whereClauses.push(`UPPER(LTRIM(RTRIM(ISNULL(UserFullCode, N'')))) IN (${codePlaceholders.join(', ')})`)
+    }
 
     const result = await request.query(`
-      SELECT UserEnrollNumber
+      SELECT
+        UserEnrollNumber,
+        UserFullCode,
+        UserLastName
       FROM dbo.UserInfo
-      WHERE UserEnrollNumber IN (${placeholders.join(', ')})
+      WHERE ${whereClauses.join('\n        OR ')}
     `)
 
-    return new Map(
-      result.recordset.map((row: Record<string, unknown>) => [String(row.UserEnrollNumber), Number(row.UserEnrollNumber)])
-    )
+    const enrollNumberMap = new Map<string, number>()
+    const displayIdMap = new Map<string, number>()
+    const employeeCodeMap = new Map<string, number>()
+
+    for (const row of result.recordset as Array<Record<string, unknown>>) {
+      const userEnrollNumber = Number(row.UserEnrollNumber)
+      if (!Number.isFinite(userEnrollNumber)) {
+        continue
+      }
+
+      enrollNumberMap.set(String(userEnrollNumber), userEnrollNumber)
+
+      const displayId = String(row.UserLastName ?? '').trim()
+      if (displayId) {
+        displayIdMap.set(displayId, userEnrollNumber)
+      }
+
+      const employeeCode = String(row.UserFullCode ?? '').trim().toUpperCase()
+      if (employeeCode) {
+        employeeCodeMap.set(employeeCode, userEnrollNumber)
+      }
+    }
+
+    const mappedUsers = new Map<string, number>()
+    for (const requestedUserId of requestedUserIds) {
+      const numericMatch = enrollNumberMap.get(String(Number(requestedUserId)))
+      if (numericMatch) {
+        mappedUsers.set(requestedUserId, numericMatch)
+        continue
+      }
+
+      const displayMatch = displayIdMap.get(requestedUserId)
+      if (displayMatch) {
+        mappedUsers.set(requestedUserId, displayMatch)
+        continue
+      }
+
+      const employeeCodeMatch = employeeCodeMap.get(requestedUserId.toUpperCase())
+      if (employeeCodeMatch) {
+        mappedUsers.set(requestedUserId, employeeCodeMatch)
+      }
+    }
+
+    return mappedUsers
   }
 
   async insertPunches(punches: DeviceSyncPunchDraft[]): Promise<{ importedCount: number; skippedCount: number }> {

@@ -13,6 +13,10 @@ import { formatSqlDateTime } from './sql-datetime'
 const INVALID_CREDENTIALS_MESSAGE = 'Sai mã nhân viên hoặc mật khẩu'
 const DISABLED_MESSAGE = 'Tài khoản đã bị vô hiệu hóa'
 const APP_DISABLED_MESSAGE = 'Tài khoản ứng dụng đã bị vô hiệu hóa'
+const ACCOUNT_BOUND_TO_OTHER_DEVICE_MESSAGE =
+  'Tài khoản của bạn đã được gắn với thiết bị khác. Vui lòng liên hệ quản trị viên.'
+const DEVICE_BOUND_TO_OTHER_ACCOUNT_MESSAGE =
+  'Thiết bị này đã được đăng ký cho tài khoản khác. Vui lòng liên hệ quản trị viên.'
 
 export interface EmployeeRecord {
   userEnrollNumber: number
@@ -32,17 +36,25 @@ export interface AppUserRecord {
   isFirstLogin: boolean
   isActiveApp: boolean
   avatarBase64: string | null
+  boundHardwareId: string | null
 }
 
 export interface AuthRepository {
   findEmployeeByCode(employeeCode: string): Promise<EmployeeRecord | null>
   findAppUserByEnrollNumber(userEnrollNumber: number): Promise<AppUserRecord | null>
+  findUserByHardwareId(hardwareId: string): Promise<AppUserRecord | null>
+  updateHardwareId(userEnrollNumber: number, hardwareId: string): Promise<void>
   upsertPassword(args: {
     userEnrollNumber: number
     employeeCode: string
     passwordHash: string
     isFirstLogin: boolean
   }): Promise<void>
+}
+
+const normalizeHardwareId = (hardwareId: string | null | undefined): string | null => {
+  const normalized = hardwareId?.trim().toLowerCase() ?? ''
+  return normalized.length > 0 ? normalized : null
 }
 
 const buildInitials = (fullName: string): string =>
@@ -57,10 +69,11 @@ const buildInitials = (fullName: string): string =>
 export class AuthService {
   constructor(
     private readonly repository: AuthRepository,
-    private readonly rateLimiter = new SlidingWindowRateLimiter()
+    private readonly rateLimiter = new SlidingWindowRateLimiter(),
+    private readonly getDeviceBindingEnabled: () => Promise<boolean> = async () => false
   ) {}
 
-  async login(payload: LoginPayload): Promise<LoginResult> {
+  async login(payload: LoginPayload, hardwareId?: string): Promise<LoginResult> {
     const employeeCode = payload.employeeCode.trim().toUpperCase()
     const lockout = this.rateLimiter.getLockout(employeeCode)
     if (lockout.locked) {
@@ -117,6 +130,32 @@ export class AuthService {
 
     const requiresPasswordChange = !appUser || appUser.isFirstLogin
     const avatarBase64 = appUser?.avatarBase64 ?? null
+    const normalizedHardwareId = normalizeHardwareId(hardwareId)
+    const deviceBindingEnabled = normalizedHardwareId ? await this.getDeviceBindingEnabled() : false
+
+    if (normalizedHardwareId && deviceBindingEnabled) {
+      if (appUser?.boundHardwareId && appUser.boundHardwareId !== normalizedHardwareId) {
+        return {
+          ok: false,
+          requiresPasswordChange: false,
+          message: ACCOUNT_BOUND_TO_OTHER_DEVICE_MESSAGE
+        }
+      }
+
+      const userBoundToDevice = await this.repository.findUserByHardwareId(normalizedHardwareId)
+      if (userBoundToDevice && userBoundToDevice.userEnrollNumber !== employee.userEnrollNumber) {
+        return {
+          ok: false,
+          requiresPasswordChange: false,
+          message: DEVICE_BOUND_TO_OTHER_ACCOUNT_MESSAGE
+        }
+      }
+    }
+
+    if (normalizedHardwareId && !appUser?.boundHardwareId) {
+      await this.repository.updateHardwareId(employee.userEnrollNumber, normalizedHardwareId)
+    }
+
     this.rateLimiter.reset(employeeCode)
 
     return {
@@ -238,7 +277,8 @@ export class SqlAuthRepository implements AuthRepository {
         password_hash,
         is_first_login,
         is_active_app,
-        avatar_base64
+        avatar_base64,
+        bound_hardware_id
       FROM dbo.app_users
       WHERE user_enroll_number = @userEnrollNumber
     `)
@@ -252,8 +292,93 @@ export class SqlAuthRepository implements AuthRepository {
       passwordHash: row.password_hash,
       isFirstLogin: row.is_first_login,
       isActiveApp: row.is_active_app,
-      avatarBase64: row.avatar_base64
+      avatarBase64: row.avatar_base64,
+      boundHardwareId: row.bound_hardware_id ?? null
     }
+  }
+
+  async findUserByHardwareId(hardwareId: string): Promise<AppUserRecord | null> {
+    const pool = await getPool('app')
+    const request = pool.request()
+    request.input('hardwareId', hardwareId)
+
+    const result = await request.query(`
+      SELECT TOP 1
+        user_enroll_number,
+        employee_code,
+        password_hash,
+        is_first_login,
+        is_active_app,
+        avatar_base64,
+        bound_hardware_id
+      FROM dbo.app_users
+      WHERE bound_hardware_id = @hardwareId
+    `)
+
+    const row = result.recordset[0]
+    if (!row) return null
+
+    return {
+      userEnrollNumber: row.user_enroll_number,
+      employeeCode: row.employee_code,
+      passwordHash: row.password_hash,
+      isFirstLogin: row.is_first_login,
+      isActiveApp: row.is_active_app,
+      avatarBase64: row.avatar_base64 ?? null,
+      boundHardwareId: row.bound_hardware_id ?? null
+    }
+  }
+
+  async updateHardwareId(userEnrollNumber: number, hardwareId: string): Promise<void> {
+    const employee = await this.findEmployeeByEnrollNumber(userEnrollNumber)
+    if (!employee) {
+      throw new Error('Không tìm thấy nhân viên để gắn thiết bị')
+    }
+
+    const pool = await getPool('app')
+    const request = pool.request()
+    request.input('userEnrollNumber', userEnrollNumber)
+    request.input('employeeCode', employee.employeeCode)
+    request.input('passwordHash', await bcrypt.hash(employee.employeeCode, 10))
+    request.input('hardwareId', hardwareId)
+    request.input('now', formatSqlDateTime(new Date()))
+
+    await request.query(`
+      MERGE dbo.app_users AS target
+      USING (
+        SELECT
+          @userEnrollNumber AS user_enroll_number,
+          @employeeCode AS employee_code,
+          @passwordHash AS password_hash,
+          @hardwareId AS bound_hardware_id
+      ) AS source
+      ON target.user_enroll_number = source.user_enroll_number
+      WHEN MATCHED THEN
+        UPDATE SET
+          bound_hardware_id = source.bound_hardware_id,
+          updated_at = CONVERT(datetime2, @now, 120)
+      WHEN NOT MATCHED THEN
+        INSERT (
+          user_enroll_number,
+          employee_code,
+          password_hash,
+          is_first_login,
+          is_active_app,
+          bound_hardware_id,
+          created_at,
+          updated_at
+        )
+        VALUES (
+          source.user_enroll_number,
+          source.employee_code,
+          source.password_hash,
+          1,
+          1,
+          source.bound_hardware_id,
+          CONVERT(datetime2, @now, 120),
+          CONVERT(datetime2, @now, 120)
+        );
+    `)
   }
 
   async upsertPassword(args: {
@@ -309,5 +434,27 @@ export class SqlAuthRepository implements AuthRepository {
           CONVERT(datetime2, @changedAt, 120)
         );
     `)
+  }
+
+  private async findEmployeeByEnrollNumber(
+    userEnrollNumber: number
+  ): Promise<Pick<EmployeeRecord, 'employeeCode'> | null> {
+    const pool = await getPool('wise-eye')
+    const request = pool.request()
+    request.input('userEnrollNumber', userEnrollNumber)
+
+    const result = await request.query(`
+      SELECT TOP 1
+        u.UserFullCode
+      FROM dbo.UserInfo u
+      WHERE u.UserEnrollNumber = @userEnrollNumber
+    `)
+
+    const row = result.recordset[0]
+    if (!row) return null
+
+    return {
+      employeeCode: row.UserFullCode
+    }
   }
 }

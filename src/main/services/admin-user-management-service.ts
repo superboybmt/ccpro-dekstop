@@ -5,6 +5,9 @@ import type {
   AdminManagedUserList,
   AdminResetUserPasswordPayload,
   AdminSetUserActivePayload,
+  AdminBatchSetActivePayload,
+  AdminBatchUnbindPayload,
+  BatchMutationResult,
   MutationResult
 } from '@shared/api'
 import { getPool } from '../db/sql'
@@ -25,13 +28,14 @@ interface ManagedAppUserRecord {
   passwordHash: string
   isFirstLogin: boolean
   isActiveApp: boolean
+  boundHardwareId: string | null
 }
 
 interface AdminUserAuditPayload {
   adminId: number
   userEnrollNumber: number
   employeeCode: string
-  action: 'activate' | 'deactivate' | 'reset-password'
+  action: 'activate' | 'deactivate' | 'reset-password' | 'unbind-device'
   beforeJson: string | null
   afterJson: string | null
 }
@@ -49,6 +53,7 @@ export interface AdminUserManagementRepository {
     isActiveApp: boolean
     updatedByAdminId: number
   }): Promise<void>
+  setBoundHardwareId(userEnrollNumber: number, hardwareId: string | null, updatedByAdminId: number): Promise<void>
   insertAuditLog(payload: AdminUserAuditPayload): Promise<void>
 }
 
@@ -56,7 +61,8 @@ const serializeManagedState = (user: AdminManagedUser) =>
   JSON.stringify({
     appActive: user.appActive,
     hasAppAccount: user.hasAppAccount,
-    mustChangePassword: user.mustChangePassword
+    mustChangePassword: user.mustChangePassword,
+    boundHardwareId: user.boundHardwareId
   })
 
 const normalizeFilter = (filter: AdminManagedUserFilter): string => filter.query?.trim() ?? ''
@@ -170,6 +176,99 @@ export class AdminUserManagementService {
     }
   }
 
+  async unbindDevice(adminId: number, userEnrollNumber: number): Promise<MutationResult> {
+    const employee = await this.repository.findEmployeeByEnrollNumber(userEnrollNumber)
+    if (!employee) {
+      return { ok: false, message: 'Không tìm thấy nhân viên' }
+    }
+
+    const existingAppUser = await this.repository.findAppUserByEnrollNumber(userEnrollNumber)
+    if (!existingAppUser?.boundHardwareId) {
+      return { ok: false, message: 'Nhân viên chưa có thiết bị được gắn' }
+    }
+
+    const beforeUser = this.toManagedUser(employee, existingAppUser)
+    await this.repository.setBoundHardwareId(userEnrollNumber, null, adminId)
+    const afterUser = this.toManagedUser(employee, {
+      ...existingAppUser,
+      boundHardwareId: null
+    })
+
+    await this.repository.insertAuditLog({
+      adminId,
+      userEnrollNumber,
+      employeeCode: employee.employeeCode,
+      action: 'unbind-device',
+      beforeJson: serializeManagedState(beforeUser),
+      afterJson: serializeManagedState(afterUser)
+    })
+
+    return {
+      ok: true,
+      message: 'Đã gỡ liên kết thiết bị của nhân viên'
+    }
+  }
+
+  async batchSetUserActiveState(
+    payload: AdminBatchSetActivePayload,
+    adminId: number
+  ): Promise<BatchMutationResult> {
+    if (payload.userEnrollNumbers.length === 0) {
+      return { ok: false, successCount: 0, failedCount: 0, message: 'Không có người dùng nào được chọn' }
+    }
+
+    let successCount = 0
+    let failedCount = 0
+
+    for (const userEnrollNumber of payload.userEnrollNumbers) {
+      const result = await this.setUserActiveState(
+        { userEnrollNumber, isActive: payload.isActive },
+        adminId
+      )
+      if (result.ok) {
+        successCount++
+      } else {
+        failedCount++
+      }
+    }
+
+    const action = payload.isActive ? 'kích hoạt' : 'vô hiệu hóa'
+    const ok = successCount > 0
+    const message = failedCount === 0
+      ? `Đã ${action} ${successCount} tài khoản`
+      : `Đã ${action} ${successCount} tài khoản, ${failedCount} thất bại`
+
+    return { ok, successCount, failedCount, message }
+  }
+
+  async batchUnbindDevices(
+    payload: AdminBatchUnbindPayload,
+    adminId: number
+  ): Promise<BatchMutationResult> {
+    if (payload.userEnrollNumbers.length === 0) {
+      return { ok: false, successCount: 0, failedCount: 0, message: 'Không có người dùng nào được chọn' }
+    }
+
+    let successCount = 0
+    let failedCount = 0
+
+    for (const userEnrollNumber of payload.userEnrollNumbers) {
+      const result = await this.unbindDevice(adminId, userEnrollNumber)
+      if (result.ok) {
+        successCount++
+      } else {
+        failedCount++
+      }
+    }
+
+    const ok = successCount > 0
+    const message = failedCount === 0
+      ? `Đã gỡ liên kết thiết bị của ${successCount} nhân viên`
+      : `Đã gỡ ${successCount} thiết bị, ${failedCount} thất bại`
+
+    return { ok, successCount, failedCount, message }
+  }
+
   private toManagedUser(
     employee: EmployeeDirectoryRecord,
     appUser?: ManagedAppUserRecord | null
@@ -183,7 +282,8 @@ export class AdminUserManagementService {
       wiseEyeEnabled: employee.wiseEyeEnabled,
       appActive: appUser?.isActiveApp ?? true,
       hasAppAccount: Boolean(appUser),
-      mustChangePassword: appUser ? appUser.isFirstLogin : true
+      mustChangePassword: appUser ? appUser.isFirstLogin : true,
+      boundHardwareId: appUser?.boundHardwareId ?? null
     }
   }
 }
@@ -275,7 +375,8 @@ export class SqlAdminUserManagementRepository implements AdminUserManagementRepo
         employee_code,
         password_hash,
         is_first_login,
-        is_active_app
+        is_active_app,
+        bound_hardware_id
       FROM dbo.app_users
       WHERE user_enroll_number IN (${placeholders.join(', ')})
     `)
@@ -285,7 +386,8 @@ export class SqlAdminUserManagementRepository implements AdminUserManagementRepo
       employeeCode: row.employee_code,
       passwordHash: row.password_hash,
       isFirstLogin: row.is_first_login,
-      isActiveApp: row.is_active_app
+      isActiveApp: row.is_active_app,
+      boundHardwareId: row.bound_hardware_id ?? null
     }))
   }
 
@@ -356,6 +458,28 @@ export class SqlAdminUserManagementRepository implements AdminUserManagementRepo
           CONVERT(datetime2, @now, 120),
           CONVERT(datetime2, @now, 120)
         );
+    `)
+  }
+
+  async setBoundHardwareId(
+    userEnrollNumber: number,
+    hardwareId: string | null,
+    updatedByAdminId: number
+  ): Promise<void> {
+    const pool = await getPool('app')
+    const request = pool.request()
+    request.input('userEnrollNumber', userEnrollNumber)
+    request.input('hardwareId', hardwareId)
+    request.input('updatedByAdminId', updatedByAdminId)
+    request.input('now', formatSqlDateTime(new Date()))
+
+    await request.query(`
+      UPDATE dbo.app_users
+      SET
+        bound_hardware_id = @hardwareId,
+        updated_by_admin_id = @updatedByAdminId,
+        updated_at = CONVERT(datetime2, @now, 120)
+      WHERE user_enroll_number = @userEnrollNumber
     `)
   }
 

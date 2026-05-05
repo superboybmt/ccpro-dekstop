@@ -225,4 +225,83 @@ describe('attendance full flow', () => {
       expect(api.attendance.getHistory).toHaveBeenCalled()
     })
   })
+
+  it('keeps the user on the login screen and shows the device binding guidance when login is blocked', async () => {
+    window.ccpro = {
+      ...mockApi(),
+      auth: {
+        login: vi.fn(async () => ({
+          ok: false,
+          requiresPasswordChange: false,
+          message: 'Tài khoản của bạn đã được gắn với thiết bị khác. Vui lòng liên hệ quản trị viên.'
+        })),
+        getSession: vi.fn(async () => ({
+          authenticated: false,
+          mustChangePassword: false,
+          user: null
+        })),
+        changePassword: vi.fn(async () => ({
+          ok: true,
+          message: 'ok'
+        })),
+        logout: vi.fn(async () => undefined)
+      }
+    } as unknown as RendererApi
+    window.location.hash = '#/login'
+
+    render(<App />)
+
+    const user = userEvent.setup()
+    await user.type(await screen.findByLabelText('Mã nhân viên'), 'E0112599')
+    await user.type(screen.getByLabelText('Mật khẩu'), '123456')
+    await user.click(screen.getByRole('button', { name: 'Đăng nhập' }))
+
+    expect(
+      await screen.findByText('Tài khoản của bạn đã được gắn với thiết bị khác. Vui lòng liên hệ quản trị viên.')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Vui lòng dùng đúng thiết bị đã đăng ký hoặc liên hệ quản trị viên để gỡ liên kết thiết bị.')
+    ).toBeInTheDocument()
+  })
+
+  it('navigates to the dashboard when device binding enforcement is off and login succeeds', async () => {
+    window.ccpro = {
+      ...mockApi(),
+      auth: {
+        login: vi.fn(async () => ({
+          ok: true,
+          requiresPasswordChange: false,
+          user: {
+            userEnrollNumber: 1,
+            employeeCode: 'E0112599',
+            fullName: 'Nguyen Van A',
+            department: 'Van phong',
+            hireDate: '2024-01-01',
+            scheduleName: 'Hanh chanh',
+            avatarInitials: 'NA'
+          }
+        })),
+        getSession: vi.fn(async () => ({
+          authenticated: false,
+          mustChangePassword: false,
+          user: null
+        })),
+        changePassword: vi.fn(async () => ({
+          ok: true,
+          message: 'ok'
+        })),
+        logout: vi.fn(async () => undefined)
+      }
+    } as unknown as RendererApi
+    window.location.hash = '#/login'
+
+    render(<App />)
+
+    const user = userEvent.setup()
+    await user.type(await screen.findByLabelText('Mã nhân viên'), 'E0112599')
+    await user.type(screen.getByLabelText('Mật khẩu'), '123456')
+    await user.click(screen.getByRole('button', { name: 'Đăng nhập' }))
+
+    expect(await screen.findByRole('button', { name: /Chấm công vào/i })).toBeInTheDocument()
+  })
 })

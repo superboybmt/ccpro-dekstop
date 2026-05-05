@@ -1351,7 +1351,7 @@
         "category": "code"
       },
       "filePath": "src/main/ipc/__tests__/register-handlers.test.ts",
-      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -1367,7 +1367,7 @@
         "category": "code"
       },
       "filePath": "src/main/ipc/register-handlers.ts",
-      "summary": "Updated to reflect attendance stats refactor (avgWorkingHoursPerDay).",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -1709,7 +1709,7 @@
         "category": "code"
       },
       "filePath": "src/main/services/history-service.ts",
-      "summary": "Backend service for history logic, calculating attendance stats like avgWorkingHoursPerDay with 60-second duplicates filtration.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -1887,7 +1887,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/app/__tests__/full-flow.test.tsx",
-      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -2143,7 +2143,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/pages/__tests__/dashboard-error-state.test.tsx",
-      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -2226,12 +2226,18 @@
     {
       "id": "file:src/renderer/src/pages/dashboard-page.tsx",
       "type": "file",
-      "name": "src/renderer/src/pages/dashboard-page.tsx",
+      "name": "dashboard-page.tsx",
       "description": "code file in typescript",
       "metadata": {
         "lines": 228,
         "category": "code"
-      }
+      },
+      "filePath": "src/renderer/src/pages/dashboard-page.tsx",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
     },
     {
       "id": "file:src/renderer/src/pages/history-page.tsx",
@@ -2243,7 +2249,7 @@
         "category": "code"
       },
       "filePath": "src/renderer/src/pages/history-page.tsx",
-      "summary": "Frontend History page visualizing detailed metrics including Average Working Hours.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -2359,7 +2365,7 @@
         "category": "code"
       },
       "filePath": "src/shared/api.ts",
-      "summary": "Shared API interfaces, defining AttendanceStats (including avgWorkingHoursPerDay replacing missingPunchDays).",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -3198,7 +3204,7 @@
       "type": "file",
       "name": "sandbox-smoke.test.tsx",
       "filePath": "src/renderer/src/app/__tests__/sandbox-smoke.test.tsx",
-      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -3352,7 +3358,7 @@
       "type": "file",
       "name": "history-page.test.tsx",
       "filePath": "src/renderer/src/pages/__tests__/history-page.test.tsx",
-      "summary": "Test suite validating average working hours per day metric and 60-second deduplication logic.",
+      "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
       ],
@@ -3462,6 +3468,2085 @@
       "type": "config",
       "name": "tsconfig.json",
       "filePath": "tsconfig.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/banner-design/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/banner-design/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "type": "config",
+      "name": "banner-sizes-and-styles.md",
+      "filePath": ".agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/brand/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/approval-checklist.md",
+      "type": "config",
+      "name": "approval-checklist.md",
+      "filePath": ".agents/skills/brand/references/approval-checklist.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/asset-organization.md",
+      "type": "config",
+      "name": "asset-organization.md",
+      "filePath": ".agents/skills/brand/references/asset-organization.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/brand-guideline-template.md",
+      "type": "config",
+      "name": "brand-guideline-template.md",
+      "filePath": ".agents/skills/brand/references/brand-guideline-template.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/color-palette-management.md",
+      "type": "config",
+      "name": "color-palette-management.md",
+      "filePath": ".agents/skills/brand/references/color-palette-management.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/consistency-checklist.md",
+      "type": "config",
+      "name": "consistency-checklist.md",
+      "filePath": ".agents/skills/brand/references/consistency-checklist.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/logo-usage-rules.md",
+      "type": "config",
+      "name": "logo-usage-rules.md",
+      "filePath": ".agents/skills/brand/references/logo-usage-rules.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/messaging-framework.md",
+      "type": "config",
+      "name": "messaging-framework.md",
+      "filePath": ".agents/skills/brand/references/messaging-framework.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/typography-specifications.md",
+      "type": "config",
+      "name": "typography-specifications.md",
+      "filePath": ".agents/skills/brand/references/typography-specifications.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/update.md",
+      "type": "config",
+      "name": "update.md",
+      "filePath": ".agents/skills/brand/references/update.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/visual-identity.md",
+      "type": "config",
+      "name": "visual-identity.md",
+      "filePath": ".agents/skills/brand/references/visual-identity.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/references/voice-framework.md",
+      "type": "config",
+      "name": "voice-framework.md",
+      "filePath": ".agents/skills/brand/references/voice-framework.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "type": "file",
+      "name": "extract-colors.cjs",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "type": "file",
+      "name": "inject-brand-context.cjs",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "type": "file",
+      "name": "sync-brand-to-tokens.cjs",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "type": "file",
+      "name": "validate-asset.cjs",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/brand/templates/brand-guidelines-starter.md",
+      "type": "config",
+      "name": "brand-guidelines-starter.md",
+      "filePath": ".agents/skills/brand/templates/brand-guidelines-starter.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/design-system/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-backgrounds.csv",
+      "type": "file",
+      "name": "slide-backgrounds.csv",
+      "filePath": ".agents/skills/design-system/data/slide-backgrounds.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-charts.csv",
+      "type": "file",
+      "name": "slide-charts.csv",
+      "filePath": ".agents/skills/design-system/data/slide-charts.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-color-logic.csv",
+      "type": "file",
+      "name": "slide-color-logic.csv",
+      "filePath": ".agents/skills/design-system/data/slide-color-logic.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-copy.csv",
+      "type": "file",
+      "name": "slide-copy.csv",
+      "filePath": ".agents/skills/design-system/data/slide-copy.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-layout-logic.csv",
+      "type": "file",
+      "name": "slide-layout-logic.csv",
+      "filePath": ".agents/skills/design-system/data/slide-layout-logic.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-layouts.csv",
+      "type": "file",
+      "name": "slide-layouts.csv",
+      "filePath": ".agents/skills/design-system/data/slide-layouts.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-strategies.csv",
+      "type": "file",
+      "name": "slide-strategies.csv",
+      "filePath": ".agents/skills/design-system/data/slide-strategies.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/data/slide-typography.csv",
+      "type": "file",
+      "name": "slide-typography.csv",
+      "filePath": ".agents/skills/design-system/data/slide-typography.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/component-specs.md",
+      "type": "config",
+      "name": "component-specs.md",
+      "filePath": ".agents/skills/design-system/references/component-specs.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/component-tokens.md",
+      "type": "config",
+      "name": "component-tokens.md",
+      "filePath": ".agents/skills/design-system/references/component-tokens.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/primitive-tokens.md",
+      "type": "config",
+      "name": "primitive-tokens.md",
+      "filePath": ".agents/skills/design-system/references/primitive-tokens.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "config",
+      "name": "semantic-tokens.md",
+      "filePath": ".agents/skills/design-system/references/semantic-tokens.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/states-and-variants.md",
+      "type": "config",
+      "name": "states-and-variants.md",
+      "filePath": ".agents/skills/design-system/references/states-and-variants.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/tailwind-integration.md",
+      "type": "config",
+      "name": "tailwind-integration.md",
+      "filePath": ".agents/skills/design-system/references/tailwind-integration.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/references/token-architecture.md",
+      "type": "config",
+      "name": "token-architecture.md",
+      "filePath": ".agents/skills/design-system/references/token-architecture.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/embed-tokens.cjs",
+      "type": "file",
+      "name": "embed-tokens.cjs",
+      "filePath": ".agents/skills/design-system/scripts/embed-tokens.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/fetch-background.py",
+      "type": "file",
+      "name": "fetch-background.py",
+      "filePath": ".agents/skills/design-system/scripts/fetch-background.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/generate-slide.py",
+      "type": "file",
+      "name": "generate-slide.py",
+      "filePath": ".agents/skills/design-system/scripts/generate-slide.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/generate-tokens.cjs",
+      "type": "file",
+      "name": "generate-tokens.cjs",
+      "filePath": ".agents/skills/design-system/scripts/generate-tokens.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/html-token-validator.py",
+      "type": "file",
+      "name": "html-token-validator.py",
+      "filePath": ".agents/skills/design-system/scripts/html-token-validator.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/search-slides.py",
+      "type": "file",
+      "name": "search-slides.py",
+      "filePath": ".agents/skills/design-system/scripts/search-slides.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/slide-token-validator.py",
+      "type": "file",
+      "name": "slide-token-validator.py",
+      "filePath": ".agents/skills/design-system/scripts/slide-token-validator.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/slide_search_core.py",
+      "type": "file",
+      "name": "slide_search_core.py",
+      "filePath": ".agents/skills/design-system/scripts/slide_search_core.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design-system/scripts/validate-tokens.cjs",
+      "type": "file",
+      "name": "validate-tokens.cjs",
+      "filePath": ".agents/skills/design-system/scripts/validate-tokens.cjs",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design-system/templates/design-tokens-starter.json",
+      "type": "config",
+      "name": "design-tokens-starter.json",
+      "filePath": ".agents/skills/design-system/templates/design-tokens-starter.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/design/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/cip/deliverables.csv",
+      "type": "file",
+      "name": "deliverables.csv",
+      "filePath": ".agents/skills/design/data/cip/deliverables.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/cip/industries.csv",
+      "type": "file",
+      "name": "industries.csv",
+      "filePath": ".agents/skills/design/data/cip/industries.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "type": "file",
+      "name": "mockup-contexts.csv",
+      "filePath": ".agents/skills/design/data/cip/mockup-contexts.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/cip/styles.csv",
+      "type": "file",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/design/data/cip/styles.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/icon/styles.csv",
+      "type": "file",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/design/data/icon/styles.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/logo/colors.csv",
+      "type": "file",
+      "name": "colors.csv",
+      "filePath": ".agents/skills/design/data/logo/colors.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/logo/industries.csv",
+      "type": "file",
+      "name": "industries.csv",
+      "filePath": ".agents/skills/design/data/logo/industries.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/data/logo/styles.csv",
+      "type": "file",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/design/data/logo/styles.csv",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/banner-sizes-and-styles.md",
+      "type": "config",
+      "name": "banner-sizes-and-styles.md",
+      "filePath": ".agents/skills/design/references/banner-sizes-and-styles.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/cip-deliverable-guide.md",
+      "type": "config",
+      "name": "cip-deliverable-guide.md",
+      "filePath": ".agents/skills/design/references/cip-deliverable-guide.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/cip-design.md",
+      "type": "config",
+      "name": "cip-design.md",
+      "filePath": ".agents/skills/design/references/cip-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/cip-prompt-engineering.md",
+      "type": "config",
+      "name": "cip-prompt-engineering.md",
+      "filePath": ".agents/skills/design/references/cip-prompt-engineering.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/cip-style-guide.md",
+      "type": "config",
+      "name": "cip-style-guide.md",
+      "filePath": ".agents/skills/design/references/cip-style-guide.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/design-routing.md",
+      "type": "config",
+      "name": "design-routing.md",
+      "filePath": ".agents/skills/design/references/design-routing.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/icon-design.md",
+      "type": "config",
+      "name": "icon-design.md",
+      "filePath": ".agents/skills/design/references/icon-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/logo-color-psychology.md",
+      "type": "config",
+      "name": "logo-color-psychology.md",
+      "filePath": ".agents/skills/design/references/logo-color-psychology.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/logo-design.md",
+      "type": "config",
+      "name": "logo-design.md",
+      "filePath": ".agents/skills/design/references/logo-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/logo-prompt-engineering.md",
+      "type": "config",
+      "name": "logo-prompt-engineering.md",
+      "filePath": ".agents/skills/design/references/logo-prompt-engineering.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/logo-style-guide.md",
+      "type": "config",
+      "name": "logo-style-guide.md",
+      "filePath": ".agents/skills/design/references/logo-style-guide.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides-copywriting-formulas.md",
+      "type": "config",
+      "name": "slides-copywriting-formulas.md",
+      "filePath": ".agents/skills/design/references/slides-copywriting-formulas.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides-create.md",
+      "type": "config",
+      "name": "slides-create.md",
+      "filePath": ".agents/skills/design/references/slides-create.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides-html-template.md",
+      "type": "config",
+      "name": "slides-html-template.md",
+      "filePath": ".agents/skills/design/references/slides-html-template.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides-layout-patterns.md",
+      "type": "config",
+      "name": "slides-layout-patterns.md",
+      "filePath": ".agents/skills/design/references/slides-layout-patterns.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides-strategies.md",
+      "type": "config",
+      "name": "slides-strategies.md",
+      "filePath": ".agents/skills/design/references/slides-strategies.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/slides.md",
+      "type": "config",
+      "name": "slides.md",
+      "filePath": ".agents/skills/design/references/slides.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/design/references/social-photos-design.md",
+      "type": "config",
+      "name": "social-photos-design.md",
+      "filePath": ".agents/skills/design/references/social-photos-design.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/cip/core.py",
+      "type": "file",
+      "name": "core.py",
+      "filePath": ".agents/skills/design/scripts/cip/core.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/cip/generate.py",
+      "type": "file",
+      "name": "generate.py",
+      "filePath": ".agents/skills/design/scripts/cip/generate.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/cip/render-html.py",
+      "type": "file",
+      "name": "render-html.py",
+      "filePath": ".agents/skills/design/scripts/cip/render-html.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/cip/search.py",
+      "type": "file",
+      "name": "search.py",
+      "filePath": ".agents/skills/design/scripts/cip/search.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/icon/generate.py",
+      "type": "file",
+      "name": "generate.py",
+      "filePath": ".agents/skills/design/scripts/icon/generate.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/logo/core.py",
+      "type": "file",
+      "name": "core.py",
+      "filePath": ".agents/skills/design/scripts/logo/core.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/logo/generate.py",
+      "type": "file",
+      "name": "generate.py",
+      "filePath": ".agents/skills/design/scripts/logo/generate.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/design/scripts/logo/search.py",
+      "type": "file",
+      "name": "search.py",
+      "filePath": ".agents/skills/design/scripts/logo/search.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/slides/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/references/copywriting-formulas.md",
+      "type": "config",
+      "name": "copywriting-formulas.md",
+      "filePath": ".agents/skills/slides/references/copywriting-formulas.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/references/create.md",
+      "type": "config",
+      "name": "create.md",
+      "filePath": ".agents/skills/slides/references/create.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/references/html-template.md",
+      "type": "config",
+      "name": "html-template.md",
+      "filePath": ".agents/skills/slides/references/html-template.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/references/layout-patterns.md",
+      "type": "config",
+      "name": "layout-patterns.md",
+      "filePath": ".agents/skills/slides/references/layout-patterns.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/slides/references/slide-strategies.md",
+      "type": "config",
+      "name": "slide-strategies.md",
+      "filePath": ".agents/skills/slides/references/slide-strategies.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/LICENSE.txt",
+      "type": "file",
+      "name": "LICENSE.txt",
+      "filePath": ".agents/skills/ui-styling/LICENSE.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/ui-styling/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/ArsenalSC-OFL.txt",
+      "type": "file",
+      "name": "ArsenalSC-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/ArsenalSC-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/ArsenalSC-Regular.ttf",
+      "type": "file",
+      "name": "ArsenalSC-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/ArsenalSC-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BigShoulders-Bold.ttf",
+      "type": "file",
+      "name": "BigShoulders-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BigShoulders-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BigShoulders-OFL.txt",
+      "type": "file",
+      "name": "BigShoulders-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BigShoulders-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BigShoulders-Regular.ttf",
+      "type": "file",
+      "name": "BigShoulders-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BigShoulders-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Boldonse-OFL.txt",
+      "type": "file",
+      "name": "Boldonse-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Boldonse-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Boldonse-Regular.ttf",
+      "type": "file",
+      "name": "Boldonse-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Boldonse-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-Bold.ttf",
+      "type": "file",
+      "name": "BricolageGrotesque-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-OFL.txt",
+      "type": "file",
+      "name": "BricolageGrotesque-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-Regular.ttf",
+      "type": "file",
+      "name": "BricolageGrotesque-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/BricolageGrotesque-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/CrimsonPro-Bold.ttf",
+      "type": "file",
+      "name": "CrimsonPro-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/CrimsonPro-Italic.ttf",
+      "type": "file",
+      "name": "CrimsonPro-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/CrimsonPro-OFL.txt",
+      "type": "file",
+      "name": "CrimsonPro-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/CrimsonPro-Regular.ttf",
+      "type": "file",
+      "name": "CrimsonPro-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/CrimsonPro-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/DMMono-OFL.txt",
+      "type": "file",
+      "name": "DMMono-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/DMMono-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/DMMono-Regular.ttf",
+      "type": "file",
+      "name": "DMMono-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/DMMono-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/EricaOne-OFL.txt",
+      "type": "file",
+      "name": "EricaOne-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/EricaOne-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/EricaOne-Regular.ttf",
+      "type": "file",
+      "name": "EricaOne-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/EricaOne-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/GeistMono-Bold.ttf",
+      "type": "file",
+      "name": "GeistMono-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/GeistMono-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/GeistMono-OFL.txt",
+      "type": "file",
+      "name": "GeistMono-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/GeistMono-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/GeistMono-Regular.ttf",
+      "type": "file",
+      "name": "GeistMono-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/GeistMono-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Gloock-OFL.txt",
+      "type": "file",
+      "name": "Gloock-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Gloock-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Gloock-Regular.ttf",
+      "type": "file",
+      "name": "Gloock-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Gloock-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexMono-Bold.ttf",
+      "type": "file",
+      "name": "IBMPlexMono-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexMono-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexMono-OFL.txt",
+      "type": "file",
+      "name": "IBMPlexMono-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexMono-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexMono-Regular.ttf",
+      "type": "file",
+      "name": "IBMPlexMono-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexMono-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Bold.ttf",
+      "type": "file",
+      "name": "IBMPlexSerif-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-BoldItalic.ttf",
+      "type": "file",
+      "name": "IBMPlexSerif-BoldItalic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-BoldItalic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Italic.ttf",
+      "type": "file",
+      "name": "IBMPlexSerif-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Regular.ttf",
+      "type": "file",
+      "name": "IBMPlexSerif-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/IBMPlexSerif-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSans-Bold.ttf",
+      "type": "file",
+      "name": "InstrumentSans-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSans-BoldItalic.ttf",
+      "type": "file",
+      "name": "InstrumentSans-BoldItalic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-BoldItalic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSans-Italic.ttf",
+      "type": "file",
+      "name": "InstrumentSans-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSans-OFL.txt",
+      "type": "file",
+      "name": "InstrumentSans-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSans-Regular.ttf",
+      "type": "file",
+      "name": "InstrumentSans-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSans-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSerif-Italic.ttf",
+      "type": "file",
+      "name": "InstrumentSerif-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSerif-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/InstrumentSerif-Regular.ttf",
+      "type": "file",
+      "name": "InstrumentSerif-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/InstrumentSerif-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Italiana-OFL.txt",
+      "type": "file",
+      "name": "Italiana-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Italiana-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Italiana-Regular.ttf",
+      "type": "file",
+      "name": "Italiana-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Italiana-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/JetBrainsMono-Bold.ttf",
+      "type": "file",
+      "name": "JetBrainsMono-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/JetBrainsMono-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/JetBrainsMono-OFL.txt",
+      "type": "file",
+      "name": "JetBrainsMono-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/JetBrainsMono-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/JetBrainsMono-Regular.ttf",
+      "type": "file",
+      "name": "JetBrainsMono-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/JetBrainsMono-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Jura-Light.ttf",
+      "type": "file",
+      "name": "Jura-Light.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Jura-Light.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Jura-Medium.ttf",
+      "type": "file",
+      "name": "Jura-Medium.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Jura-Medium.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Jura-OFL.txt",
+      "type": "file",
+      "name": "Jura-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Jura-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/LibreBaskerville-OFL.txt",
+      "type": "file",
+      "name": "LibreBaskerville-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/LibreBaskerville-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/LibreBaskerville-Regular.ttf",
+      "type": "file",
+      "name": "LibreBaskerville-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/LibreBaskerville-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Lora-Bold.ttf",
+      "type": "file",
+      "name": "Lora-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Lora-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Lora-BoldItalic.ttf",
+      "type": "file",
+      "name": "Lora-BoldItalic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Lora-BoldItalic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Lora-Italic.ttf",
+      "type": "file",
+      "name": "Lora-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Lora-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Lora-OFL.txt",
+      "type": "file",
+      "name": "Lora-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Lora-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Lora-Regular.ttf",
+      "type": "file",
+      "name": "Lora-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Lora-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/NationalPark-Bold.ttf",
+      "type": "file",
+      "name": "NationalPark-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/NationalPark-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/NationalPark-OFL.txt",
+      "type": "file",
+      "name": "NationalPark-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/NationalPark-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/NationalPark-Regular.ttf",
+      "type": "file",
+      "name": "NationalPark-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/NationalPark-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-OFL.txt",
+      "type": "file",
+      "name": "NothingYouCouldDo-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-Regular.ttf",
+      "type": "file",
+      "name": "NothingYouCouldDo-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/NothingYouCouldDo-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Outfit-Bold.ttf",
+      "type": "file",
+      "name": "Outfit-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Outfit-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Outfit-OFL.txt",
+      "type": "file",
+      "name": "Outfit-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Outfit-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Outfit-Regular.ttf",
+      "type": "file",
+      "name": "Outfit-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Outfit-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/PixelifySans-Medium.ttf",
+      "type": "file",
+      "name": "PixelifySans-Medium.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/PixelifySans-Medium.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/PixelifySans-OFL.txt",
+      "type": "file",
+      "name": "PixelifySans-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/PixelifySans-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/PoiretOne-OFL.txt",
+      "type": "file",
+      "name": "PoiretOne-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/PoiretOne-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/PoiretOne-Regular.ttf",
+      "type": "file",
+      "name": "PoiretOne-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/PoiretOne-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/RedHatMono-Bold.ttf",
+      "type": "file",
+      "name": "RedHatMono-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/RedHatMono-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/RedHatMono-OFL.txt",
+      "type": "file",
+      "name": "RedHatMono-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/RedHatMono-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/RedHatMono-Regular.ttf",
+      "type": "file",
+      "name": "RedHatMono-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/RedHatMono-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Silkscreen-OFL.txt",
+      "type": "file",
+      "name": "Silkscreen-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Silkscreen-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Silkscreen-Regular.ttf",
+      "type": "file",
+      "name": "Silkscreen-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Silkscreen-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/SmoochSans-Medium.ttf",
+      "type": "file",
+      "name": "SmoochSans-Medium.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/SmoochSans-Medium.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/SmoochSans-OFL.txt",
+      "type": "file",
+      "name": "SmoochSans-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/SmoochSans-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Tektur-Medium.ttf",
+      "type": "file",
+      "name": "Tektur-Medium.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Tektur-Medium.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Tektur-OFL.txt",
+      "type": "file",
+      "name": "Tektur-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Tektur-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/Tektur-Regular.ttf",
+      "type": "file",
+      "name": "Tektur-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/Tektur-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/WorkSans-Bold.ttf",
+      "type": "file",
+      "name": "WorkSans-Bold.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/WorkSans-Bold.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/WorkSans-BoldItalic.ttf",
+      "type": "file",
+      "name": "WorkSans-BoldItalic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/WorkSans-BoldItalic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/WorkSans-Italic.ttf",
+      "type": "file",
+      "name": "WorkSans-Italic.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/WorkSans-Italic.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/WorkSans-OFL.txt",
+      "type": "file",
+      "name": "WorkSans-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/WorkSans-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/WorkSans-Regular.ttf",
+      "type": "file",
+      "name": "WorkSans-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/WorkSans-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/YoungSerif-OFL.txt",
+      "type": "file",
+      "name": "YoungSerif-OFL.txt",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/YoungSerif-OFL.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/canvas-fonts/YoungSerif-Regular.ttf",
+      "type": "file",
+      "name": "YoungSerif-Regular.ttf",
+      "filePath": ".agents/skills/ui-styling/canvas-fonts/YoungSerif-Regular.ttf",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/canvas-design-system.md",
+      "type": "config",
+      "name": "canvas-design-system.md",
+      "filePath": ".agents/skills/ui-styling/references/canvas-design-system.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "type": "config",
+      "name": "shadcn-accessibility.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/shadcn-components.md",
+      "type": "config",
+      "name": "shadcn-components.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-components.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/shadcn-theming.md",
+      "type": "config",
+      "name": "shadcn-theming.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-theming.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "type": "config",
+      "name": "tailwind-customization.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-customization.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/tailwind-responsive.md",
+      "type": "config",
+      "name": "tailwind-responsive.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-responsive.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/references/tailwind-utilities.md",
+      "type": "config",
+      "name": "tailwind-utilities.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-utilities.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/.coverage",
+      "type": "file",
+      "name": ".coverage",
+      "filePath": ".agents/skills/ui-styling/scripts/.coverage",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/requirements.txt",
+      "type": "file",
+      "name": "requirements.txt",
+      "filePath": ".agents/skills/ui-styling/scripts/requirements.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/shadcn_add.py",
+      "type": "file",
+      "name": "shadcn_add.py",
+      "filePath": ".agents/skills/ui-styling/scripts/shadcn_add.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/tailwind_config_gen.py",
+      "type": "file",
+      "name": "tailwind_config_gen.py",
+      "filePath": ".agents/skills/ui-styling/scripts/tailwind_config_gen.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-styling/scripts/tests/coverage-ui.json",
+      "type": "config",
+      "name": "coverage-ui.json",
+      "filePath": ".agents/skills/ui-styling/scripts/tests/coverage-ui.json",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/tests/requirements.txt",
+      "type": "file",
+      "name": "requirements.txt",
+      "filePath": ".agents/skills/ui-styling/scripts/tests/requirements.txt",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/tests/test_shadcn_add.py",
+      "type": "file",
+      "name": "test_shadcn_add.py",
+      "filePath": ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
+      "type": "file",
+      "name": "test_tailwind_config_gen.py",
+      "filePath": ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:.agents/skills/ui-ux-pro-max/SKILL.md",
+      "type": "config",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/ui-ux-pro-max/SKILL.md",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-ux-pro-max/data",
+      "type": "file",
+      "name": "data",
+      "filePath": ".agents/skills/ui-ux-pro-max/data",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/ui-ux-pro-max/scripts",
+      "type": "file",
+      "name": "scripts",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main/services/__tests__/history-dedupe.test.ts",
+      "type": "file",
+      "name": "history-dedupe.test.ts",
+      "filePath": "src/main/services/__tests__/history-dedupe.test.ts",
+      "summary": "Updated automatically from git diff.",
+      "tags": [
+        "auto-updated"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/renderer/src/pages/__tests__/dashboard-sync-block.test.tsx",
+      "type": "file",
+      "name": "dashboard-sync-block.test.tsx",
+      "filePath": "src/renderer/src/pages/__tests__/dashboard-sync-block.test.tsx",
       "summary": "Updated automatically from git diff.",
       "tags": [
         "auto-updated"
@@ -5945,6 +8030,6 @@
     ]
   },
   "project": {
-    "analyzedAt": "2026-04-03T07:11:41.206Z"
+    "analyzedAt": "2026-05-05T01:59:29.997Z"
   }
 }

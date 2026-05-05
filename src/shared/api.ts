@@ -66,6 +66,7 @@ export interface AdminManagedUser {
   appActive: boolean
   hasAppAccount: boolean
   mustChangePassword: boolean
+  boundHardwareId: string | null
 }
 
 export interface AdminManagedUserList {
@@ -84,6 +85,22 @@ export interface AdminSetUserActivePayload {
 export interface AdminResetUserPasswordPayload {
   userEnrollNumber: number
   temporaryPassword: string
+}
+
+export interface AdminBatchSetActivePayload {
+  userEnrollNumbers: number[]
+  isActive: boolean
+}
+
+export interface AdminBatchUnbindPayload {
+  userEnrollNumbers: number[]
+}
+
+export interface BatchMutationResult {
+  ok: boolean
+  successCount: number
+  failedCount: number
+  message: string
 }
 
 export interface AutoSwitchState {
@@ -345,6 +362,9 @@ export interface RendererApi {
     listUsers(filter: AdminManagedUserFilter): Promise<AdminManagedUserList>
     setUserActiveState(payload: AdminSetUserActivePayload): Promise<MutationResult>
     resetUserPassword(payload: AdminResetUserPasswordPayload): Promise<MutationResult>
+    unbindDevice(userEnrollNumber: number): Promise<MutationResult>
+    batchSetActiveState(payload: AdminBatchSetActivePayload): Promise<BatchMutationResult>
+    batchUnbindDevices(payload: AdminBatchUnbindPayload): Promise<BatchMutationResult>
   }
   machineConfig: {
     getConfig(): Promise<DeviceConfig>
@@ -352,6 +372,8 @@ export interface RendererApi {
     syncTime(): Promise<MutationResult>
   }
   adminSettings: {
+    getDeviceBindingEnabled(): Promise<boolean>
+    saveDeviceBindingEnabled(enabled: boolean): Promise<MutationResult>
     getRemoteRiskPolicy(): Promise<RemoteRiskPolicy>
     saveRemoteRiskPolicy(policy: RemoteRiskPolicy): Promise<MutationResult & RemoteRiskPolicy>
   }

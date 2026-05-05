@@ -119,6 +119,8 @@ export const getScheduleTimeAriaLabel = (index: number): string => {
 // ---------------------------------------------------------------------------
 
 export type AdminSettingsBridge = {
+  getDeviceBindingEnabled: () => Promise<boolean>
+  saveDeviceBindingEnabled: (enabled: boolean) => Promise<MutationResult>
   getRemoteRiskPolicy: () => Promise<{ mode: RemoteRiskPolicyMode }>
   saveRemoteRiskPolicy: (
     policy: { mode: RemoteRiskPolicyMode }
@@ -128,6 +130,8 @@ export type AdminSettingsBridge = {
 export const resolveAdminSettingsBridge = (): AdminSettingsBridge | null => {
   const bridge = (window.ccpro as typeof window.ccpro & { adminSettings?: AdminSettingsBridge }).adminSettings
   if (!bridge) return null
+  if (typeof bridge.getDeviceBindingEnabled !== 'function') return null
+  if (typeof bridge.saveDeviceBindingEnabled !== 'function') return null
   if (typeof bridge.getRemoteRiskPolicy !== 'function') return null
   if (typeof bridge.saveRemoteRiskPolicy !== 'function') return null
   return bridge

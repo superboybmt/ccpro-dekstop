@@ -2,6 +2,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const ipcHandlers = new Map<string, (...args: unknown[]) => unknown>()
 const shellOpenExternalMock = vi.fn(async () => undefined)
+const authLoginMock = vi.fn(async () => ({ ok: false, requiresPasswordChange: false }))
+const getHardwareIdMock = vi.fn(async () => 'hardware-1')
 const machineConfigGetMock = vi.fn(async () => ({ stateMode: 2, schedule: [] }))
 const adminUsersListMock = vi.fn(async () => ({ users: [] }))
 const setUserActiveStateMock = vi.fn(async () => ({
@@ -11,6 +13,22 @@ const setUserActiveStateMock = vi.fn(async () => ({
 const resetUserPasswordMock = vi.fn(async () => ({
   ok: true,
   message: 'Đã reset mật khẩu tạm và yêu cầu đổi lại ở lần đăng nhập tiếp theo'
+}))
+const unbindDeviceMock = vi.fn(async () => ({
+  ok: true,
+  message: 'Đã gỡ liên kết thiết bị của nhân viên'
+}))
+const batchSetActiveStateMock = vi.fn(async () => ({
+  ok: true,
+  successCount: 2,
+  failedCount: 0,
+  message: 'Đã vô hiệu hóa 2 tài khoản'
+}))
+const batchUnbindDevicesMock = vi.fn(async () => ({
+  ok: true,
+  successCount: 2,
+  failedCount: 0,
+  message: 'Đã gỡ liên kết thiết bị của 2 nhân viên'
 }))
 const changeAdminPasswordMock = vi.fn(async () => ({
   ok: true,
@@ -25,6 +43,11 @@ const saveRemoteRiskPolicyMock = vi.fn(async (policy) => ({
   ok: true,
   message: 'Đã lưu cấu hình chặn điều khiển từ xa',
   mode: policy.mode
+}))
+const getDeviceBindingEnabledMock = vi.fn(async () => false)
+const saveDeviceBindingEnabledMock = vi.fn(async (enabled: boolean) => ({
+  ok: true,
+  message: enabled ? 'Đã bật ràng buộc thiết bị đăng nhập' : 'Đã tắt ràng buộc thiết bị đăng nhập'
 }))
 const checkForUpdatesMock = vi.fn(async () => null)
 const downloadVerifiedUpdateMock = vi.fn(async () => ({
@@ -103,10 +126,14 @@ vi.mock('../../db/sql', () => ({
 
 vi.mock('../../services/auth-service', () => ({
   AuthService: class {
-    login = vi.fn(async () => ({ ok: false, requiresPasswordChange: false }))
+    login = authLoginMock
     changePassword = vi.fn(async () => ({ ok: true, message: 'ok' }))
   },
   SqlAuthRepository: class {}
+}))
+
+vi.mock('../../services/hardware-id', () => ({
+  getHardwareId: getHardwareIdMock
 }))
 
 vi.mock('../../services/admin-auth-service', () => ({
@@ -125,6 +152,9 @@ vi.mock('../../services/admin-user-management-service', () => ({
     listUsers = adminUsersListMock
     setUserActiveState = setUserActiveStateMock
     resetUserPassword = resetUserPasswordMock
+    unbindDevice = unbindDeviceMock
+    batchSetUserActiveState = batchSetActiveStateMock
+    batchUnbindDevices = batchUnbindDevicesMock
   },
   SqlAdminUserManagementRepository: class {}
 }))
@@ -139,6 +169,8 @@ vi.mock('../../services/machine-config-service', () => ({
 
 vi.mock('../../services/admin-settings-service', () => ({
   AdminSettingsService: class {
+    getDeviceBindingEnabled = getDeviceBindingEnabledMock
+    saveDeviceBindingEnabled = saveDeviceBindingEnabledMock
     getRemoteRiskPolicy = vi.fn(async () => ({ mode: 'audit_only' }))
     saveRemoteRiskPolicy = saveRemoteRiskPolicyMock
   },
@@ -206,10 +238,17 @@ describe('registerIpcHandlers', () => {
     adminUsersListMock.mockClear()
     setUserActiveStateMock.mockClear()
     resetUserPasswordMock.mockClear()
+    unbindDeviceMock.mockClear()
+    batchSetActiveStateMock.mockClear()
+    batchUnbindDevicesMock.mockClear()
     changeAdminPasswordMock.mockClear()
     resetAdminPasswordMock.mockClear()
     listAdminsMock.mockClear()
     saveRemoteRiskPolicyMock.mockClear()
+    getDeviceBindingEnabledMock.mockClear()
+    saveDeviceBindingEnabledMock.mockClear()
+    authLoginMock.mockClear()
+    getHardwareIdMock.mockClear()
     checkForUpdatesMock.mockClear()
     downloadVerifiedUpdateMock.mockClear()
     shellOpenExternalMock.mockClear()
@@ -257,6 +296,56 @@ describe('registerIpcHandlers', () => {
     expect(saveRemoteRiskPolicyMock).toHaveBeenCalledWith({ mode: 'block_high_risk' })
   })
 
+  it('allows reading the device binding toggle when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: {
+        id: 1,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+    getDeviceBindingEnabledMock.mockResolvedValueOnce(true)
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-settings:get-device-binding-enabled')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({})).resolves.toBe(true)
+  })
+
+  it('allows saving the device binding toggle when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: {
+        id: 1,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-settings:save-device-binding-enabled')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, true)).resolves.toEqual({
+      ok: true,
+      message: 'Đã bật ràng buộc thiết bị đăng nhập'
+    })
+
+    expect(saveDeviceBindingEnabledMock).toHaveBeenCalledWith(true)
+  })
+
   it('rejects admin user list reads when the admin session is missing', async () => {
     const { registerIpcHandlers } = await import('../register-handlers')
 
@@ -297,6 +386,33 @@ describe('registerIpcHandlers', () => {
       { userEnrollNumber: 18, temporaryPassword: 'Temp@123' },
       5
     )
+  })
+
+  it('allows unbinding a device when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: {
+        id: 5,
+        username: 'admin',
+        displayName: 'Admin',
+        role: 'super_admin'
+      }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:unbind-device')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, 18)).resolves.toEqual({
+      ok: true,
+      message: 'Đã gỡ liên kết thiết bị của nhân viên'
+    })
+
+    expect(unbindDeviceMock).toHaveBeenCalledWith(5, 18)
   })
 
   it('blocks protected admin actions while password change is pending', async () => {
@@ -420,6 +536,37 @@ describe('registerIpcHandlers', () => {
     expect(result).toMatchObject({ message: expect.stringMatching(/đồng bộ dữ liệu/i) })
   })
 
+  it('passes the resolved hardware id into AuthService during login', async () => {
+    authLoginMock.mockResolvedValueOnce({
+      ok: true,
+      requiresPasswordChange: false,
+      user: {
+        userEnrollNumber: 18,
+        employeeCode: 'E0112599',
+        fullName: 'Nguyen Van A',
+        department: null,
+        hireDate: null,
+        scheduleName: null,
+        avatarInitials: 'NA'
+      }
+    })
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('auth:login')
+    expect(handler).toBeTypeOf('function')
+
+    await handler?.({}, { employeeCode: 'E0112599', password: '123456', rememberMe: true })
+
+    expect(getHardwareIdMock).toHaveBeenCalledTimes(1)
+    expect(authLoginMock).toHaveBeenCalledWith(
+      { employeeCode: 'E0112599', password: '123456', rememberMe: true },
+      'hardware-1'
+    )
+  })
+
   it('opens external links only when the URL uses HTTPS', async () => {
     const { registerIpcHandlers } = await import('../register-handlers')
 
@@ -514,5 +661,71 @@ describe('registerIpcHandlers', () => {
 
     expect(downloadVerifiedUpdateMock).toHaveBeenCalledWith(updateInfo)
     expect(shellOpenExternalMock).not.toHaveBeenCalled()
+  })
+
+  it('rejects batch-set-active-state when admin session is missing', async () => {
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:batch-set-active-state')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { userEnrollNumbers: [18, 19], isActive: false })).rejects.toThrow('Phiên đăng nhập admin đã hết hạn')
+    expect(batchSetActiveStateMock).not.toHaveBeenCalled()
+  })
+
+  it('allows batch-set-active-state when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: { id: 5, username: 'admin', displayName: 'Admin', role: 'super_admin' }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:batch-set-active-state')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { userEnrollNumbers: [18, 19], isActive: false })).resolves.toEqual({
+      ok: true,
+      successCount: 2,
+      failedCount: 0,
+      message: 'Đã vô hiệu hóa 2 tài khoản'
+    })
+
+    expect(batchSetActiveStateMock).toHaveBeenCalledWith(
+      { userEnrollNumbers: [18, 19], isActive: false },
+      5
+    )
+  })
+
+  it('allows batch-unbind-devices when an admin session is active', async () => {
+    adminSession = {
+      authenticated: true,
+      mustChangePassword: false,
+      admin: { id: 5, username: 'admin', displayName: 'Admin', role: 'super_admin' }
+    }
+
+    const { registerIpcHandlers } = await import('../register-handlers')
+
+    registerIpcHandlers({ ensureAppReady: async () => undefined })
+
+    const handler = ipcHandlers.get('admin-users:batch-unbind-devices')
+    expect(handler).toBeTypeOf('function')
+
+    await expect(handler?.({}, { userEnrollNumbers: [18] })).resolves.toEqual({
+      ok: true,
+      successCount: 2,
+      failedCount: 0,
+      message: 'Đã gỡ liên kết thiết bị của 2 nhân viên'
+    })
+
+    expect(batchUnbindDevicesMock).toHaveBeenCalledWith(
+      { userEnrollNumbers: [18] },
+      5
+    )
   })
 })

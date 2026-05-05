@@ -4,6 +4,7 @@ import { formatSqlDateTime } from './sql-datetime'
 
 const REMOTE_RISK_GUARD_MODE_KEY = 'remote_risk_guard_mode'
 const DEFAULT_REMOTE_RISK_POLICY_MODE: RemoteRiskPolicyMode = 'audit_only'
+const DEVICE_BINDING_ENABLED_KEY = 'device_binding_enabled'
 
 export interface AdminSettingsRepository {
   getSetting(key: string): Promise<string | null>
@@ -12,6 +13,21 @@ export interface AdminSettingsRepository {
 
 export class AdminSettingsService {
   constructor(private readonly repository: AdminSettingsRepository) {}
+
+  async getDeviceBindingEnabled(): Promise<boolean> {
+    return normalizeDeviceBindingEnabled(await this.repository.getSetting(DEVICE_BINDING_ENABLED_KEY))
+  }
+
+  async saveDeviceBindingEnabled(enabled: boolean): Promise<MutationResult> {
+    await this.repository.upsertSetting(DEVICE_BINDING_ENABLED_KEY, enabled ? 'on' : 'off')
+
+    return {
+      ok: true,
+      message: enabled
+        ? 'Đã bật ràng buộc thiết bị đăng nhập'
+        : 'Đã tắt ràng buộc thiết bị đăng nhập'
+    }
+  }
 
   async getRemoteRiskPolicy(): Promise<RemoteRiskPolicy> {
     const rawMode = await this.repository.getSetting(REMOTE_RISK_GUARD_MODE_KEY)
@@ -88,8 +104,12 @@ export class SqlAdminSettingsRepository implements AdminSettingsRepository {
 const normalizeRemoteRiskPolicyMode = (value: string | null | undefined): RemoteRiskPolicyMode =>
   value === 'block_high_risk' ? 'block_high_risk' : DEFAULT_REMOTE_RISK_POLICY_MODE
 
+const normalizeDeviceBindingEnabled = (value: string | null | undefined): boolean => value === 'on'
+
 export const __internal = {
   normalizeRemoteRiskPolicyMode,
+  normalizeDeviceBindingEnabled,
+  DEVICE_BINDING_ENABLED_KEY,
   REMOTE_RISK_GUARD_MODE_KEY,
   DEFAULT_REMOTE_RISK_POLICY_MODE
 }

@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import {
   Loader2, LogOut, MonitorCog, RefreshCw, Search,
   ShieldCheck, UserCog, KeyRound, ShieldAlert,
-  ChevronLeft, ChevronRight, X, AlertTriangle, CheckCircle2
+  ChevronLeft, ChevronRight, X, AlertTriangle, CheckCircle2,
+  CheckSquare, Square, Lock, Unlock, Unlink
 } from 'lucide-react'
 import type {
   AdminManagedUser, AdminManagedUserFilter, AdminManagedUserList,
-  AdminResetUserPasswordPayload, AdminSessionState, AdminSetUserActivePayload, MutationResult
+  AdminResetUserPasswordPayload, AdminSessionState, AdminSetUserActivePayload,
+  AdminBatchSetActivePayload, AdminBatchUnbindPayload,
+  MutationResult, BatchMutationResult
 } from '@shared/api'
 import { Button } from '@renderer/components/ui/button'
 import { Card } from '@renderer/components/ui/card'
@@ -19,6 +22,9 @@ type AdminUsersBridge = {
   listUsers(filter: AdminManagedUserFilter): Promise<AdminManagedUserList>
   setUserActiveState(payload: AdminSetUserActivePayload): Promise<MutationResult>
   resetUserPassword(payload: AdminResetUserPasswordPayload): Promise<MutationResult>
+  unbindDevice(userEnrollNumber: number): Promise<MutationResult>
+  batchSetActiveState(payload: AdminBatchSetActivePayload): Promise<BatchMutationResult>
+  batchUnbindDevices(payload: AdminBatchUnbindPayload): Promise<BatchMutationResult>
 }
 
 const resolveAdminUsersBridge = (): AdminUsersBridge | null => {
@@ -27,6 +33,7 @@ const resolveAdminUsersBridge = (): AdminUsersBridge | null => {
   if (typeof bridge.listUsers !== 'function') return null
   if (typeof bridge.setUserActiveState !== 'function') return null
   if (typeof bridge.resetUserPassword !== 'function') return null
+  if (typeof bridge.unbindDevice !== 'function') return null
   return bridge
 }
 
@@ -59,6 +66,11 @@ export const AdminUsersPage = (): JSX.Element => {
   const [confirmToggle, setConfirmToggle] = useState<{ user: AdminManagedUser; nextIsActive: boolean } | null>(null)
   
   const [adminUsersAvailable, setAdminUsersAvailable] = useState(false)
+
+  // Multi-select state
+  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
+  const [bulkConfirm, setBulkConfirm] = useState<{ type: 'activate' | 'deactivate' | 'unbind'; count: number } | null>(null)
+  const [bulkBusy, setBulkBusy] = useState(false)
 
   const loadUsers = useCallback(
     async (nextQuery: string, options?: { silent?: boolean }) => {
@@ -95,6 +107,7 @@ export const AdminUsersPage = (): JSX.Element => {
         const result = await adminUsersBridge.listUsers({ query: nextQuery })
         setUsers(result.users)
         setCurrentPage(1) // Reset to first page on new search
+        setSelectedIds(new Set()) // Clear selection on search
       } catch (error) {
         showToast({
           ok: false,
@@ -194,6 +207,32 @@ export const AdminUsersPage = (): JSX.Element => {
     }
   }
 
+  const handleUnbindDevice = async (user: AdminManagedUser): Promise<void> => {
+    const adminUsersBridge = resolveAdminUsersBridge()
+    if (!adminUsersBridge) {
+      setAdminUsersAvailable(false)
+      showToast({ ok: false, text: missingAdminUsersMessage })
+      return
+    }
+
+    setBusyUserIds((current) => [...current, user.userEnrollNumber])
+
+    try {
+      const result = await adminUsersBridge.unbindDevice(user.userEnrollNumber)
+      showToast({ ok: result.ok, text: result.message })
+      if (result.ok) {
+        await loadUsers(appliedQuery, { silent: true })
+      }
+    } catch (error) {
+      showToast({
+        ok: false,
+        text: `Không thể gỡ liên kết thiết bị: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setBusyUserIds((current) => current.filter((id) => id !== user.userEnrollNumber))
+    }
+  }
+
   const handleLogout = async (): Promise<void> => {
     await window.ccpro.admin.logout()
     navigate('/admin/login', { replace: true })
@@ -205,6 +244,77 @@ export const AdminUsersPage = (): JSX.Element => {
   }, [users, currentPage])
 
   const totalPages = Math.ceil(users.length / PAGE_SIZE)
+
+  // Selection helpers
+  const isAllPageSelected = paginatedUsers.length > 0 && paginatedUsers.every(u => selectedIds.has(u.userEnrollNumber))
+  const hasSelection = selectedIds.size > 0
+
+  const toggleSelectAll = (): void => {
+    setSelectedIds(prev => {
+      const next = new Set(prev)
+      if (isAllPageSelected) {
+        paginatedUsers.forEach(u => next.delete(u.userEnrollNumber))
+      } else {
+        paginatedUsers.forEach(u => next.add(u.userEnrollNumber))
+      }
+      return next
+    })
+  }
+
+  const toggleSelectOne = (userEnrollNumber: number): void => {
+    setSelectedIds(prev => {
+      const next = new Set(prev)
+      if (next.has(userEnrollNumber)) {
+        next.delete(userEnrollNumber)
+      } else {
+        next.add(userEnrollNumber)
+      }
+      return next
+    })
+  }
+
+  const handlePageChange = (nextPage: number): void => {
+    setCurrentPage(nextPage)
+    setSelectedIds(new Set()) // Clear selection on page change
+  }
+
+  const executeBulkAction = async (): Promise<void> => {
+    if (!bulkConfirm) return
+    const adminUsersBridge = resolveAdminUsersBridge()
+    if (!adminUsersBridge) {
+      setAdminUsersAvailable(false)
+      showToast({ ok: false, text: missingAdminUsersMessage })
+      setBulkConfirm(null)
+      return
+    }
+
+    setBulkBusy(true)
+    try {
+      let result: BatchMutationResult
+      const ids = Array.from(selectedIds)
+      if (bulkConfirm.type === 'activate') {
+        result = await adminUsersBridge.batchSetActiveState({ userEnrollNumbers: ids, isActive: true })
+      } else if (bulkConfirm.type === 'deactivate') {
+        result = await adminUsersBridge.batchSetActiveState({ userEnrollNumbers: ids, isActive: false })
+      } else {
+        result = await adminUsersBridge.batchUnbindDevices({ userEnrollNumbers: ids })
+      }
+
+      showToast({ ok: result.ok, text: result.message })
+      if (result.ok) {
+        setSelectedIds(new Set())
+        await loadUsers(appliedQuery, { silent: true })
+      }
+    } catch (error) {
+      showToast({
+        ok: false,
+        text: `Lỗi thực hiện hàng loạt: ${error instanceof Error ? error.message : String(error)}`
+      })
+    } finally {
+      setBulkBusy(false)
+      setBulkConfirm(null)
+    }
+  }
 
   if (loading) {
     return (
@@ -328,6 +438,62 @@ export const AdminUsersPage = (): JSX.Element => {
           </Card>
         )}
 
+        {/* Bulk Action Bar */}
+        {hasSelection && (
+          <div style={{
+            background: 'var(--primary)', color: 'white',
+            padding: '10px 16px', borderRadius: 'var(--radius-lg)',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            gap: '12px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.25)'
+          }}>
+            <span style={{ fontSize: '14px', fontWeight: 600 }}>
+              Đã chọn {selectedIds.size} người dùng
+            </span>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <Button
+                variant="secondary"
+                size="md"
+                style={{ height: '34px', background: 'rgba(255,255,255,0.15)', color: 'white', border: 'none' }}
+                onClick={() => setBulkConfirm({ type: 'deactivate', count: selectedIds.size })}
+                disabled={bulkBusy}
+              >
+                <Lock size={14} />
+                <span style={{ marginLeft: '4px' }}>Khóa tất cả</span>
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
+                style={{ height: '34px', background: 'rgba(255,255,255,0.15)', color: 'white', border: 'none' }}
+                onClick={() => setBulkConfirm({ type: 'activate', count: selectedIds.size })}
+                disabled={bulkBusy}
+              >
+                <Unlock size={14} />
+                <span style={{ marginLeft: '4px' }}>Mở tất cả</span>
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
+                style={{ height: '34px', background: 'rgba(255,255,255,0.15)', color: 'white', border: 'none' }}
+                onClick={() => setBulkConfirm({ type: 'unbind', count: selectedIds.size })}
+                disabled={bulkBusy}
+              >
+                <Unlink size={14} />
+                <span style={{ marginLeft: '4px' }}>Gỡ thiết bị</span>
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
+                style={{ height: '34px', background: 'rgba(255,255,255,0.2)', color: 'white', border: 'none' }}
+                onClick={() => setSelectedIds(new Set())}
+                disabled={bulkBusy}
+              >
+                <X size={14} />
+                <span style={{ marginLeft: '4px' }}>Bỏ chọn</span>
+              </Button>
+            </div>
+          </div>
+        )}
+
         <div style={{
           background: 'var(--bg-card)', 
           borderRadius: 'var(--radius-lg)', 
@@ -342,9 +508,20 @@ export const AdminUsersPage = (): JSX.Element => {
               <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', whiteSpace: 'nowrap' }}>
                 <thead style={{ background: 'var(--sidebar-bg)' }}>
                   <tr>
+                    <th style={{ padding: '14px 12px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)', width: '44px', textAlign: 'center' }}>
+                      <button
+                        type="button"
+                        onClick={toggleSelectAll}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--sidebar-text)', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        title={isAllPageSelected ? 'Bỏ chọn tất cả' : 'Chọn tất cả trang này'}
+                      >
+                        {isAllPageSelected ? <CheckSquare size={18} /> : <Square size={18} />}
+                      </button>
+                    </th>
                     <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)' }}>Mã NV</th>
                     <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)' }}>Họ và tên</th>
                     <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)' }}>Phòng ban</th>
+                    <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)' }}>Thiết bị</th>
                     <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)' }}>Trạng thái App</th>
                     <th style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--sidebar-text)', borderBottom: '1px solid var(--line)', textAlign: 'center' }}>Thao tác</th>
                   </tr>
@@ -352,8 +529,18 @@ export const AdminUsersPage = (): JSX.Element => {
                 <tbody>
                   {paginatedUsers.map((user) => {
                     const busy = busyUserIds.includes(user.userEnrollNumber)
+                    const isSelected = selectedIds.has(user.userEnrollNumber)
                     return (
-                      <tr key={user.userEnrollNumber} style={{ borderBottom: '1px solid var(--line)', transition: 'background 0.2s', cursor: 'default' }} onMouseOver={e => e.currentTarget.style.background = 'var(--bg-hover)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
+                      <tr key={user.userEnrollNumber} style={{ borderBottom: '1px solid var(--line)', transition: 'background 0.2s', cursor: 'default', background: isSelected ? 'rgba(59, 130, 246, 0.06)' : 'transparent' }} onMouseOver={e => { if (!isSelected) e.currentTarget.style.background = 'var(--bg-hover)' }} onMouseOut={e => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}>
+                        <td style={{ padding: '14px 12px', textAlign: 'center', width: '44px' }}>
+                          <button
+                            type="button"
+                            onClick={() => toggleSelectOne(user.userEnrollNumber)}
+                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: isSelected ? 'var(--primary)' : 'var(--text-muted)', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                          >
+                            {isSelected ? <CheckSquare size={18} /> : <Square size={18} />}
+                          </button>
+                        </td>
                         <td style={{ padding: '14px 16px', fontWeight: 600 }}>{user.employeeCode}</td>
                         <td style={{ padding: '14px 16px' }}>
                           <div style={{ display: 'grid', gap: '2px' }}>
@@ -364,6 +551,16 @@ export const AdminUsersPage = (): JSX.Element => {
                           </div>
                         </td>
                         <td style={{ padding: '14px 16px', color: 'var(--text-muted)' }}>{user.department ?? '--'}</td>
+                        <td style={{ padding: '14px 16px' }}>
+                          <div style={{ display: 'grid', gap: '2px' }}>
+                            <span style={{ fontWeight: 600, color: user.boundHardwareId ? 'var(--text-main)' : 'var(--text-muted)' }}>
+                              {user.boundHardwareId ? 'Đã gắn thiết bị' : 'Chưa gắn thiết bị'}
+                            </span>
+                            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                              {user.boundHardwareId ? user.boundHardwareId.slice(0, 12) : '--'}
+                            </span>
+                          </div>
+                        </td>
                         <td style={{ padding: '14px 16px' }}>
                           <div style={{ 
                             display: 'inline-flex', alignItems: 'center', gap: '6px', 
@@ -413,6 +610,21 @@ export const AdminUsersPage = (): JSX.Element => {
                             >
                               <KeyRound size={16} />
                             </Button>
+                            <Button
+                              type="button"
+                              className="icon-action-btn"
+                              style={{
+                                height: '34px', width: '34px', padding: 0,
+                                background: 'transparent',
+                                border: '1px solid var(--line)',
+                                color: user.boundHardwareId ? 'var(--warning-strong)' : 'var(--text-muted)'
+                              }}
+                              title="Gỡ liên kết thiết bị"
+                              onClick={() => void handleUnbindDevice(user)}
+                              disabled={!adminUsersAvailable || !user.boundHardwareId || busy}
+                            >
+                              <X size={16} />
+                            </Button>
                           </div>
                         </td>
                       </tr>
@@ -434,7 +646,7 @@ export const AdminUsersPage = (): JSX.Element => {
                     <Button 
                       variant="ghost" 
                       size="md" 
-                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                      onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                       disabled={currentPage === 1}
                       style={{ height: '34px', padding: '0 12px' }}
                     >
@@ -443,7 +655,7 @@ export const AdminUsersPage = (): JSX.Element => {
                     <Button 
                       variant="ghost" 
                       size="md" 
-                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                      onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                       disabled={currentPage === totalPages}
                       style={{ height: '34px', padding: '0 12px' }}
                     >
@@ -489,6 +701,47 @@ export const AdminUsersPage = (): JSX.Element => {
                 style={confirmToggle.nextIsActive ? {} : { background: 'var(--danger)', boxShadow: '0 8px 24px -6px rgba(229, 69, 58, 0.3)' }}
               >
                 Xác nhận
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Confirmation Dialog */}
+      {bulkConfirm && (
+        <div
+          className="admin-users__dialog-overlay"
+          style={{
+            position: 'fixed', inset: 0, zIndex: 1000,
+            background: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(2px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <div style={{
+            background: 'var(--bg-card)', padding: '24px', borderRadius: 'var(--radius-xl)',
+            width: '420px', maxWidth: '90%', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            border: '1px solid var(--line)', display: 'grid', gap: '16px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: bulkConfirm.type === 'activate' ? 'var(--success-strong)' : 'var(--warning-strong)' }}>
+              {bulkConfirm.type === 'activate' ? <Unlock size={28} /> : bulkConfirm.type === 'deactivate' ? <Lock size={28} /> : <Unlink size={28} />}
+              <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: 'var(--text-main)' }}>
+                {bulkConfirm.type === 'activate' ? 'Kích hoạt hàng loạt' : bulkConfirm.type === 'deactivate' ? 'Khóa hàng loạt' : 'Gỡ thiết bị hàng loạt'}
+              </h3>
+            </div>
+            <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+              Bạn có chắc chắn muốn {bulkConfirm.type === 'activate' ? 'kích hoạt' : bulkConfirm.type === 'deactivate' ? 'tạm khóa' : 'gỡ liên kết thiết bị của'}{' '}
+              <strong>{bulkConfirm.count} người dùng</strong> đã chọn?
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '8px' }}>
+              <Button variant="ghost" onClick={() => setBulkConfirm(null)} disabled={bulkBusy}>Hủy bỏ</Button>
+              <Button
+                variant="primary"
+                onClick={executeBulkAction}
+                disabled={bulkBusy}
+                style={bulkConfirm.type === 'deactivate' ? { background: 'var(--danger)', boxShadow: '0 8px 24px -6px rgba(229, 69, 58, 0.3)' } : {}}
+              >
+                {bulkBusy ? <Loader2 size={16} className="top-header__sync-spin" /> : null}
+                <span style={{ marginLeft: bulkBusy ? '6px' : '0' }}>{bulkBusy ? 'Đang xử lý...' : 'Xác nhận'}</span>
               </Button>
             </div>
           </div>

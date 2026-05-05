@@ -34,6 +34,7 @@ export const initializeAppDatabase = async (): Promise<void> => {
         password_hash NVARCHAR(255) NOT NULL,
         is_first_login BIT NOT NULL DEFAULT 0,
         is_active_app BIT NOT NULL DEFAULT 1,
+        bound_hardware_id NVARCHAR(64) NULL,
         updated_by_admin_id INT NULL,
         password_changed_at DATETIME2 NULL,
         created_at DATETIME2 NOT NULL DEFAULT DATEADD(HOUR, 7, SYSUTCDATETIME()),
@@ -252,6 +253,12 @@ export const initializeAppDatabase = async (): Promise<void> => {
       ADD avatar_base64 NVARCHAR(MAX) NULL
     END
 
+    IF COL_LENGTH(N'dbo.app_users', N'bound_hardware_id') IS NULL
+    BEGIN
+      ALTER TABLE dbo.app_users
+      ADD bound_hardware_id NVARCHAR(64) NULL
+    END
+
     IF OBJECT_ID(N'dbo.device_config_audit_logs', N'U') IS NULL
     BEGIN
       CREATE TABLE dbo.device_config_audit_logs (
@@ -454,6 +461,22 @@ export const initializeAppDatabase = async (): Promise<void> => {
       VALUES (
         N'remote_risk_guard_mode',
         N'audit_only'
+      )
+    END
+
+    IF NOT EXISTS (
+      SELECT 1
+      FROM dbo.app_settings
+      WHERE setting_key = N'device_binding_enabled'
+    )
+    BEGIN
+      INSERT INTO dbo.app_settings (
+        setting_key,
+        setting_value
+      )
+      VALUES (
+        N'device_binding_enabled',
+        N'off'
       )
     END
   `)

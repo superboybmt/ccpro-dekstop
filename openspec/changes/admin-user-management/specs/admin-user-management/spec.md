@@ -47,5 +47,37 @@ The system SHALL let an authenticated admin reset an employee app password to a 
 The system SHALL persist an audit trail for app-level employee account management actions performed by admins.
 
 #### Scenario: Admin action writes audit log
-- **WHEN** an admin activates, deactivates, or resets the password of an employee account
+- **WHEN** an admin activates, deactivates, resets the password, or unbinds the device of an employee account
 - **THEN** the system stores the admin identifier, employee identifier, action name, and before/after state in the admin user audit log
+
+### Requirement: Admin can select multiple users and perform bulk operations
+The system SHALL let an authenticated admin select multiple employee accounts via checkboxes and perform batch activate/deactivate or batch unbind device operations.
+
+#### Scenario: Admin selects multiple users via checkboxes
+- **WHEN** an authenticated admin checks the checkbox next to one or more employee rows
+- **THEN** the system tracks the selected user enroll numbers in UI state
+- **AND** the system shows a floating action bar displaying the count of selected users and available bulk actions
+
+#### Scenario: Admin uses "Select All" checkbox
+- **WHEN** an authenticated admin checks the header "Select All" checkbox
+- **THEN** the system selects all users on the current paginated page
+- **AND** unchecking it deselects all users on the current page
+
+#### Scenario: Admin bulk activates or deactivates selected users
+- **WHEN** an authenticated admin clicks "Khóa tất cả" or "Mở tất cả" from the bulk action bar
+- **THEN** the system shows a confirmation dialog with the count of affected users
+- **AND** upon confirmation, the system sends the list of selected user enroll numbers to the batch set active state IPC
+- **AND** the system persists the app-level active state for each user and records an audit entry per user
+- **AND** the system clears the selection and reloads the user list after completion
+
+#### Scenario: Admin bulk unbinds devices for selected users
+- **WHEN** an authenticated admin clicks "Gỡ thiết bị" from the bulk action bar
+- **THEN** the system shows a confirmation dialog with the count of affected users who have a bound device
+- **AND** upon confirmation, the system sends the list of selected user enroll numbers to the batch unbind device IPC
+- **AND** the system removes the device binding for each user and records an audit entry per user
+- **AND** the system clears the selection and reloads the user list after completion
+
+#### Scenario: Batch operation returns summary result
+- **WHEN** a batch operation completes
+- **THEN** the system returns a summary with success count, failure count, and a human-readable message
+- **AND** the UI displays a toast reflecting the batch result

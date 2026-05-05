@@ -10,14 +10,16 @@ Change này chạm cả app DB, employee auth, admin IPC, và admin UI. Ngoài r
 - Cho phép admin tìm kiếm và xem danh sách nhân viên từ WiseEye kèm trạng thái app account hiện tại
 - Cho phép admin bật/tắt quyền truy cập app desktop ở mức app-level
 - Cho phép admin reset mật khẩu về mật khẩu tạm và buộc user đổi lại ở lần login kế tiếp
-- Ghi audit log cho các thao tác activate, deactivate, reset password
+- Ghi audit log cho các thao tác activate, deactivate, reset password, unbind device
 - Giữ employee login flow hiện tại, chỉ bổ sung enforcement cho trạng thái app-level mới
+- Hỗ trợ multi-select và bulk operations cho khóa/mở tài khoản và gỡ liên kết thiết bị hàng loạt
 
 **Non-Goals:**
 - Không tạo mới employee ngoài dữ liệu sẵn có của WiseEye
 - Không làm RBAC chi tiết cho nhiều role admin trong phase 1
 - Không đồng bộ ngược trạng thái app-level sang WiseEye hoặc máy chấm công
 - Không thêm self-service password reset cho nhân viên
+- Không làm bulk reset password (mỗi user cần mật khẩu tạm riêng, UX không phù hợp cho batch)
 
 ## Decisions
 
@@ -73,13 +75,28 @@ Thêm bảng `dbo.admin_user_audit_logs`:
 
 Audit này tách khỏi `device_config_audit_logs` để đúng domain và query/report dễ hơn. Phase 1 chưa cần UI đọc audit, nhưng bảng phải có ngay để giữ traceability cho reset password và disable account.
 
-### 6. IPC/service tách rõ 3 use case
-Main process nên có service/repository riêng cho admin user management với ba operation chính:
+### 6. IPC/service tách rõ use cases
+Main process nên có service/repository riêng cho admin user management với các operation:
 - `listUsers(filter)`
 - `setUserActiveState(userEnrollNumber, isActive)`
 - `resetUserPassword(userEnrollNumber, temporaryPassword)`
+- `unbindDevice(userEnrollNumber)`
+- `batchSetUserActiveState(userEnrollNumbers[], isActive)` ← batch
+- `batchUnbindDevices(userEnrollNumbers[])` ← batch
 
 Không reuse trực tiếp `AuthService` cho action admin. `AuthService` giữ vai trò employee-facing login/change-password; admin action nên đi qua service riêng để business rules và audit rõ ràng hơn.
+
+### 7. Multi-select + Bulk action bar UX
+Bảng user thêm cột checkbox ở đầu. Header row có checkbox "Select All" toggle tất cả user trên trang hiện tại (paginated page, không phải toàn bộ dataset). Khi có ≥1 user được chọn, hiện floating action bar phía trên bảng với:
+- Text: "Đã chọn N người dùng"
+- Button: "Khóa tất cả" / "Mở tất cả"
+- Button: "Gỡ thiết bị"
+- Button: "Bỏ chọn"
+
+Bulk action luôn yêu cầu confirmation dialog trước khi thực thi, hiển thị rõ số lượng bị ảnh hưởng. Sau khi bulk action hoàn tất, tự động clear selection và reload danh sách.
+
+### 8. Batch operations xử lý tuần tự với audit per-user
+Batch IPC nhận mảng `userEnrollNumbers[]`. Backend xử lý tuần tự trong một transaction (hoặc loop nếu cross-db). Mỗi user trong batch vẫn ghi một dòng audit log riêng để giữ traceability. Response trả về tổng hợp: `{ ok, successCount, failedCount, message }`.
 
 ## Risks / Trade-offs
 
@@ -87,6 +104,8 @@ Không reuse trực tiếp `AuthService` cho action admin. `AuthService` giữ v
 - `[Admin reset password có thể cấp mật khẩu yếu]` → Enforce rule tối thiểu về độ dài và xác nhận rõ đây là mật khẩu tạm
 - `[Disable app-level có thể gây nhầm với WiseEye disabled]` → UI phải hiển thị song song hai trạng thái và text giải thích rõ
 - `[Join cross-database cho danh sách users có thể nặng]` → Phase 1 dùng filter + phân trang đơn giản, chỉ lấy các cột cần thiết
+- `[Bulk khóa nhầm nhiều user]` → Confirmation dialog bắt buộc, hiển thị rõ số lượng. Admin phải xác nhận trước khi thực thi
+- `[Batch upsert app_users cho user chưa có row]` → Batch operation sẽ upsert row cho mỗi user trong danh sách, tương tự single action nhưng lặp
 
 ## Migration Plan
 
@@ -104,5 +123,5 @@ Rollback:
 
 ## Open Questions
 
-- Phase 1 có cần phân trang thật sự ngay từ đầu hay chỉ search + danh sách giới hạn?
-- Mật khẩu tạm nên để admin tự nhập hay có thêm nút generate nhanh ở UI?
+- ~~Phase 1 có cần phân trang thật sự ngay từ đầu hay chỉ search + danh sách giới hạn?~~ → Đã có client-side pagination (PAGE_SIZE=12)
+- ~~Mật khẩu tạm nên để admin tự nhập hay có thêm nút generate nhanh ở UI?~~ → Admin tự nhập, giữ đơn giản

@@ -41,7 +41,10 @@ const api: RendererApi = {
   adminUsers: {
     listUsers: (filter) => ipcRenderer.invoke('admin-users:list', filter),
     setUserActiveState: (payload) => ipcRenderer.invoke('admin-users:set-active-state', payload),
-    resetUserPassword: (payload) => ipcRenderer.invoke('admin-users:reset-password', payload)
+    resetUserPassword: (payload) => ipcRenderer.invoke('admin-users:reset-password', payload),
+    unbindDevice: (userEnrollNumber) => ipcRenderer.invoke('admin-users:unbind-device', userEnrollNumber),
+    batchSetActiveState: (payload) => ipcRenderer.invoke('admin-users:batch-set-active-state', payload),
+    batchUnbindDevices: (payload) => ipcRenderer.invoke('admin-users:batch-unbind-devices', payload)
   },
   machineConfig: {
     getConfig: () => ipcRenderer.invoke('machine-config:get'),
@@ -49,6 +52,8 @@ const api: RendererApi = {
     syncTime: () => ipcRenderer.invoke('machine-config:sync-time')
   },
   adminSettings: {
+    getDeviceBindingEnabled: () => ipcRenderer.invoke('admin-settings:get-device-binding-enabled'),
+    saveDeviceBindingEnabled: (enabled) => ipcRenderer.invoke('admin-settings:save-device-binding-enabled', enabled),
     getRemoteRiskPolicy: () => ipcRenderer.invoke('admin-settings:get-remote-risk-policy'),
     saveRemoteRiskPolicy: (policy) => ipcRenderer.invoke('admin-settings:save-remote-risk-policy', policy)
   },

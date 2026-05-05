@@ -204,15 +204,6 @@ def read_snapshot(connection, payload):
     record_count = int(getattr(connection, "records", 0) or 0)
     device_time = connection.get_time()
 
-    if last_log_time and last_device_record_count is not None and record_count <= int(last_device_record_count):
-        return {
-            "deviceIp": payload["deviceIp"],
-            "recordCount": record_count,
-            "deviceTime": serialize_device_time(device_time),
-            "logs": [],
-            "warnings": [],
-        }
-
     attendance_data, _size = connection.read_with_buffer(const.CMD_ATTLOG_RRQ)
     new_logs = extract_new_logs_from_buffer(
         attendance_data=attendance_data,
